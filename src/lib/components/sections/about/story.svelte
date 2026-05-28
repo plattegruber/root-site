@@ -18,9 +18,7 @@ description.
 				aria-label="Photo placeholder"
 				role="img"
 			>
-				<span
-					class="px-4 text-center font-sans text-[13px] leading-[1.4] text-drift"
-				>
+				<span class="px-4 text-center font-sans text-[13px] leading-[1.4] text-drift">
 					Your photo here
 				</span>
 			</div>
@@ -28,21 +26,19 @@ description.
 			<div class="min-w-[280px] flex-1">
 				<div class="flex flex-col gap-4">
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
-						I started root because dental websites were getting the worst of
-						the web.
+						I started root because dental websites were getting the worst of the web.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						Overpriced agencies. Cookie-cutter templates. “Patient acquisition
-						strategies.” Dentists were paying thousands for websites that
-						looked like every other dentist’s website.
+						Overpriced agencies. Cookie-cutter templates. “Patient acquisition strategies.” Dentists
+						were paying thousands for websites that looked like every other dentist’s website.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						I figured I could do better. Build each site by hand, charge a
-						fair price, and skip all the noise. So I did.
+						I figured I could do better. Build each site by hand, charge a fair price, and skip all
+						the noise. So I did.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						I’ve built websites for practices in 14 states. I’m still one
-						person, and I plan to keep it that way.
+						I’ve built websites for practices in 14 states. I’m still one person, and I plan to keep
+						it that way.
 					</p>
 				</div>
 			</div>

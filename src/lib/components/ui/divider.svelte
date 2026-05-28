@@ -14,10 +14,4 @@ remains visible on the ink-colored sections.
 	let { dark = false, class: className }: Props = $props();
 </script>
 
-<hr
-	class={cn(
-		'm-0 h-px w-full border-0',
-		dark ? 'bg-cream/10' : 'bg-stone',
-		className
-	)}
-/>
+<hr class={cn('m-0 h-px w-full border-0', dark ? 'bg-cream/10' : 'bg-stone', className)} />

@@ -9,7 +9,7 @@ designed line break; on narrow viewports the line wrap takes over.
 
 <section class="section-py" style="padding-bottom: var(--section-sm-v-padding)">
 	<Container>
-		<h1 class="text-page-title m-0 font-serif font-normal text-ink">
+		<h1 class="m-0 font-serif text-page-title font-normal text-ink">
 			One person, building websites<br />for dental practices.
 		</h1>
 	</Container>

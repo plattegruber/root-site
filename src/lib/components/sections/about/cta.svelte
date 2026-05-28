@@ -9,14 +9,11 @@ already laid out the offer.
 	import { Container } from '$lib/components/ui';
 </script>
 
-<section class="section-py bg-ink">
+<section class="bg-ink section-py">
 	<Container>
-		<h2 class="mb-4 font-serif text-[28px] font-normal leading-[1.25] text-cream">
-			Interested?
-		</h2>
+		<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Interested?</h2>
 		<p class="mb-6 max-w-[440px] font-sans text-[17px] leading-[1.6] text-drift">
-			Happy to walk you through how it works if you’re curious. No pressure
-			either way.
+			Happy to walk you through how it works if you’re curious. No pressure either way.
 		</p>
 		<a
 			href="/#contact"

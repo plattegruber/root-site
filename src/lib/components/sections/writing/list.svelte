@@ -28,7 +28,7 @@ visual noise.
 							{post.date}
 						</span>
 						<h2
-							class="m-0 mb-2 font-serif text-[22px] font-normal leading-[1.3] text-ink transition-colors duration-150 group-hover:text-root"
+							class="m-0 mb-2 font-serif text-[22px] leading-[1.3] font-normal text-ink transition-colors duration-150 group-hover:text-root"
 						>
 							{post.title}
 						</h2>

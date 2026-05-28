@@ -26,8 +26,7 @@ Examples:
 		variants: {
 			variant: {
 				primary: 'bg-root text-cream border-root hover:bg-root-dark hover:border-root-dark',
-				secondary:
-					'bg-transparent text-charcoal border-stone hover:border-clay',
+				secondary: 'bg-transparent text-charcoal border-stone hover:border-clay',
 				ghost:
 					'bg-transparent text-root border-transparent hover:bg-root/[0.06] hover:text-root-dark px-3.5'
 			},
@@ -48,10 +47,7 @@ Examples:
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type {
-		HTMLAnchorAttributes,
-		HTMLButtonAttributes
-	} from 'svelte/elements';
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 	import { cn } from '$lib/utils';
 
 	type CommonProps = {
@@ -80,7 +76,9 @@ Examples:
 </script>
 
 {#if href}
-	<a {href} class={classes} {...rest as HTMLAnchorAttributes}>{@render children()}</a>
+	<a {href} class={classes} {...rest as HTMLAnchorAttributes}>
+		{@render children()}
+	</a>
 {:else}
 	<button
 		type={(rest as HTMLButtonAttributes).type ?? 'button'}

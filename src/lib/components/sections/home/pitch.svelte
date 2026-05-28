@@ -11,15 +11,15 @@ number a tactile, ledger-like weight against the surrounding sans serif.
 
 <section class="section-py">
 	<Container>
-		<h2 class="mb-6 font-serif text-[28px] font-normal leading-[1.25] tracking-[-0.01em] text-ink">
+		<h2 class="mb-6 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink">
 			I make websites for dental practices.
 		</h2>
 		<div class="max-w-[560px]">
-			<p class="text-hero-sub mb-5 font-sans text-clay">
-				Custom design, reliable hosting, updates whenever you need them. One
-				person doing one thing well.
+			<p class="mb-5 font-sans text-hero-sub text-clay">
+				Custom design, reliable hosting, updates whenever you need them. One person doing one thing
+				well.
 			</p>
-			<p class="text-hero-sub m-0 font-sans text-clay">
+			<p class="m-0 font-sans text-hero-sub text-clay">
 				You pay
 				<span class="font-mono text-charcoal">$250</span>
 				a month. No setup fee. No contract. Cancel anytime.

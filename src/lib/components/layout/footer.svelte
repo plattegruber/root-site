@@ -13,12 +13,7 @@ places. Visible top border separates it from the page above.
 	<div
 		class="mx-auto flex w-full max-w-(--container-page) flex-wrap items-center justify-between gap-4 px-6"
 	>
-		<a
-			href="/"
-			class="font-serif text-[20px] text-ink no-underline tracking-[-0.5px]"
-		>
-			root.
-		</a>
+		<a href="/" class="font-serif text-[20px] tracking-[-0.5px] text-ink no-underline"> root. </a>
 
 		<nav class="flex items-center gap-6" aria-label="Footer">
 			{#each nav as link (link.id)}

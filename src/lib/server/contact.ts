@@ -54,10 +54,7 @@ export function validate(input: Partial<Record<string, unknown>>): ValidationRes
  * Why a seam: keeps the HTTP layer thin and lets us swap providers
  * without touching the form. Also lets local dev no-op cleanly.
  */
-export type Deliverer = (
-	submission: ContactSubmission,
-	env: ContactEnv
-) => Promise<void>;
+export type Deliverer = (submission: ContactSubmission, env: ContactEnv) => Promise<void>;
 
 export type ContactEnv = {
 	/** Airtable PAT (Bearer token), if Airtable wiring is chosen. */

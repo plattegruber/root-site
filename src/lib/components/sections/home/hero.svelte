@@ -11,9 +11,7 @@ calm, so the hero lets the sentence breathe.
 
 <section class="hero-py">
 	<Container>
-		<h1
-			class="text-hero m-0 max-w-[560px] font-serif font-normal text-cream"
-		>
+		<h1 class="m-0 max-w-[560px] font-serif text-hero font-normal text-cream">
 			Your website is often the first room a patient walks into.
 		</h1>
 	</Container>

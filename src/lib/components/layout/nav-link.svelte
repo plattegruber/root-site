@@ -25,7 +25,7 @@ both get the cue.
 	class={cn(
 		'font-sans text-[15px] no-underline transition-colors duration-150',
 		dark ? 'text-drift hover:text-cream' : 'text-clay hover:text-charcoal',
-		active && (dark ? 'text-cream font-medium' : 'text-charcoal font-medium')
+		active && (dark ? 'font-medium text-cream' : 'font-medium text-charcoal')
 	)}
 >
 	{@render children()}

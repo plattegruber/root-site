@@ -12,11 +12,9 @@ the in-place confirmation the JS path renders.
 	<Header dark />
 </div>
 
-<main id="main" class="section-py bg-ink">
+<main id="main" class="bg-ink section-py">
 	<Container>
-		<h1 class="mb-4 font-serif text-[36px] font-normal leading-[1.2] text-cream">
-			Got it.
-		</h1>
+		<h1 class="mb-4 font-serif text-[36px] leading-[1.2] font-normal text-cream">Got it.</h1>
 		<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
 			I’ll be in touch within a day — usually sooner.
 		</p>

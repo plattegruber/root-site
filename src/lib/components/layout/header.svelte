@@ -19,20 +19,18 @@ hero section without a seam. `currentPage` highlights the active nav link.
 </script>
 
 <header class="py-6">
-	<div
-		class="mx-auto flex w-full max-w-(--container-page) items-center justify-between px-6"
-	>
+	<div class="mx-auto flex w-full max-w-(--container-page) items-center justify-between px-6">
 		<a
 			href="/"
 			class={cn(
-				'font-serif text-[28px] leading-none no-underline tracking-[-0.5px]',
+				'font-serif text-[28px] leading-none tracking-[-0.5px] no-underline',
 				dark ? 'text-cream' : 'text-ink'
 			)}
 		>
 			root.
 		</a>
 
-		<nav class="nav-gap flex items-center" aria-label="Primary">
+		<nav class="flex items-center nav-gap" aria-label="Primary">
 			{#each nav as link (link.id)}
 				<NavLink href={link.href} active={currentPage === link.id} {dark}>
 					{link.label}

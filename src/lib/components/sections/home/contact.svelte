@@ -63,23 +63,15 @@ content blockers, hospital networks).
 	}
 </script>
 
-<section id="contact" class="section-py bg-ink">
+<section id="contact" class="bg-ink section-py">
 	<Container>
 		{#if submitted}
-			<h2
-				class="mb-4 font-serif text-[28px] font-normal leading-[1.25] text-cream"
-			>
-				Got it.
-			</h2>
+			<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Got it.</h2>
 			<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
 				I’ll be in touch within a day — usually sooner.
 			</p>
 		{:else}
-			<h2
-				class="mb-8 font-serif text-[28px] font-normal leading-[1.25] text-cream"
-			>
-				Say hello
-			</h2>
+			<h2 class="mb-8 font-serif text-[28px] leading-[1.25] font-normal text-cream">Say hello</h2>
 
 			<form
 				action="/api/contact"
@@ -93,18 +85,10 @@ content blockers, hospital networks).
 					sized to zero, and aria-hidden. Bots that auto-fill every
 					field trip it; the server short-circuits to a 200.
 				-->
-				<div
-					class="absolute h-0 w-0 overflow-hidden"
-					aria-hidden="true"
-				>
+				<div class="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
 					<label>
 						Company
-						<input
-							type="text"
-							name="company"
-							tabindex="-1"
-							autocomplete="off"
-						/>
+						<input type="text" name="company" tabindex="-1" autocomplete="off" />
 					</label>
 				</div>
 

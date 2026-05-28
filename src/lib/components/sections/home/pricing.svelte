@@ -17,7 +17,7 @@ list, which would lean too SaaS-y for the voice of the site.
 	];
 </script>
 
-<section class="section-sm-py bg-linen">
+<section class="bg-linen section-sm-py">
 	<Container>
 		<div class="mb-6 flex items-baseline gap-1.5">
 			<span class="font-serif text-[36px] leading-none text-ink">$250</span>
@@ -30,9 +30,7 @@ list, which would lean too SaaS-y for the voice of the site.
 
 		<ul class="m-0 flex flex-col gap-2.5 p-0">
 			{#each included as item (item)}
-				<li
-					class="flex items-center gap-3 font-sans text-[15px] text-charcoal"
-				>
+				<li class="flex items-center gap-3 font-sans text-[15px] text-charcoal">
 					<span class="size-1 shrink-0 rounded-full bg-stone" aria-hidden="true"></span>
 					{item}
 				</li>

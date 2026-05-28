@@ -28,34 +28,23 @@ so the copy can stay conversational.
 	];
 </script>
 
-<section class="section-py bg-linen">
+<section class="bg-linen section-py">
 	<Container>
-		<h2 class="mb-10 font-serif text-[28px] font-normal leading-[1.25] tracking-[-0.01em] text-ink">
+		<h2 class="mb-10 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink">
 			How I work
 		</h2>
 
 		<ol class="m-0 flex list-none flex-col gap-0 p-0">
 			{#each steps as step, i (step.title)}
-				<li
-					class="flex items-start gap-5 py-6 {i === 0
-						? ''
-						: 'border-t border-stone'}"
-				>
-					<span
-						class="w-6 shrink-0 pt-0.5 font-mono text-[13px] text-drift"
-						aria-hidden="true"
-					>
+				<li class="flex items-start gap-5 py-6 {i === 0 ? '' : 'border-t border-stone'}">
+					<span class="w-6 shrink-0 pt-0.5 font-mono text-[13px] text-drift" aria-hidden="true">
 						{String(i + 1).padStart(2, '0')}
 					</span>
 					<div>
-						<h3
-							class="m-0 mb-1.5 font-sans text-[17px] font-semibold leading-[1.4] text-charcoal"
-						>
+						<h3 class="m-0 mb-1.5 font-sans text-[17px] leading-[1.4] font-semibold text-charcoal">
 							{step.title}
 						</h3>
-						<p
-							class="m-0 max-w-[480px] font-sans text-[15px] leading-[1.6] text-clay"
-						>
+						<p class="m-0 max-w-[480px] font-sans text-[15px] leading-[1.6] text-clay">
 							{step.text}
 						</p>
 					</div>

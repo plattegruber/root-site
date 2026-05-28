@@ -45,10 +45,7 @@ the input flips aria-invalid on error so AT announces correctly.
 	const errorId = $derived(`${fieldId}-error`);
 
 	const labelClass = $derived(
-		cn(
-			'mb-1.5 block font-sans text-[13px] font-medium',
-			dark ? 'text-drift' : 'text-clay'
-		)
+		cn('mb-1.5 block font-sans text-[13px] font-medium', dark ? 'text-drift' : 'text-clay')
 	);
 
 	const inputBase = cn(
@@ -63,10 +60,7 @@ the input flips aria-invalid on error so AT announces correctly.
 					'bg-white/[0.04] text-cream',
 					error ? 'border-error' : 'border-cream/15 focus:border-root-light'
 				)
-			: cn(
-					'bg-white text-charcoal',
-					error ? 'border-error' : 'border-stone focus:border-root'
-				)
+			: cn('bg-white text-charcoal', error ? 'border-error' : 'border-stone focus:border-root')
 	);
 </script>
 

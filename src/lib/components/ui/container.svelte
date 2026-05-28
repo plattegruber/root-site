@@ -18,12 +18,7 @@ renders a plain `<div>` by default but can render as a semantic element
 		children: Snippet;
 	};
 
-	let {
-		wide = false,
-		class: className,
-		children,
-		...rest
-	}: Props = $props();
+	let { wide = false, class: className, children, ...rest }: Props = $props();
 </script>
 
 <div

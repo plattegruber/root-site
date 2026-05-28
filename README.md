@@ -1,42 +1,101 @@
-# sv
+# root.site
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+The marketing site for [root.](https://root.site) — websites for dental
+practices.
 
-## Creating a project
+## Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **SvelteKit 2** (Svelte 5, runes mode) — every page route is statically prerendered
+- **Tailwind v4** — CSS-first config, design tokens live in `src/app.css`
+- **Self-hosted fonts** — Karla Variable, Instrument Serif, IBM Plex Mono
+  via Fontsource (no Google Fonts CDN)
+- **Cloudflare Workers** — single Worker with static assets binding;
+  `/api/contact` runs as a Worker function, www → apex redirect via
+  `hooks.server.ts` with `run_worker_first`
+- **mdsvex** — blog posts authored as Markdown with YAML frontmatter
+- **TypeScript everywhere** — `pnpm run check` is zero-error
 
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types ts --no-install .
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Develop
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm install
+pnpm run dev          # vite dev server (no Worker, no asset binding)
+pnpm run preview      # wrangler dev — Worker + static assets, like prod
+pnpm run check        # type-check (wipes .svelte-kit/cloudflare first)
+pnpm run lint         # prettier + eslint
+pnpm run format       # rewrite with prettier
+pnpm run gen:og       # regenerate static/og.png (run when copy/tagline changes)
 ```
 
-## Building
-
-To create a production version of your app:
+## Deploy
 
 ```sh
-npm run build
+pnpm run build
+wrangler deploy
 ```
 
-You can preview the production build with `npm run preview`.
+Custom domains (`root.site` apex + `www.root.site`) are declared in
+`wrangler.jsonc`; Cloudflare provisions DNS + TLS automatically when
+the zone lives on the same account. The Worker handles every request
+(thanks to `assets.run_worker_first`), 301-redirects www → apex via
+`src/hooks.server.ts`, and falls through to the static asset binding
+for everything else.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Contact form
+
+The form posts to `/api/contact`, which runs as a Worker function. The
+default `deliver()` chains two backends:
+
+1. **Resend** → email to the address in `CONTACT_TO` (primary; must succeed)
+2. **Airtable** → row append to `AIRTABLE_TABLE_NAME` (best-effort; failures logged)
+
+Each backend no-ops cleanly when its env vars are missing, so local
+dev and pre-secret deploys stay quiet. Configure secrets:
+
+- Local: copy `.dev.vars.example` → `.dev.vars` and fill in
+- Prod: `wrangler secret put <NAME>` for each
+
+See `src/lib/server/contact.ts` for the deliverers and the
+`chainStrict` / `chainSoft` helpers for alternative policies.
+
+## Cloudflare Web Analytics
+
+The beacon snippet is included only when `PUBLIC_CF_ANALYTICS_TOKEN`
+is set in env at build time. Paste the token from
+Cloudflare → Analytics → Web Analytics → Add a site, redeploy.
+
+## Project layout
+
+```
+src/
+  app.css                Tailwind import + @theme design tokens
+  app.html               Document shell
+  app.d.ts               SvelteKit / Cloudflare ambient types
+  hooks.server.ts        www → apex redirect at the Worker layer
+  routes/
+    +layout.svelte       Shared <head>, OG/Twitter, beacon, skip link
+    +page.svelte         Homepage
+    about/               About page
+    writing/             Writing index
+    writing/[slug]/      Post detail (prerendered per .md file)
+    thanks/              No-JS contact confirmation
+    api/contact/         Form endpoint (Worker function)
+    sitemap.xml/         Prerendered sitemap
+  lib/
+    components/
+      ui/                Button, Container, Divider, FormField
+      layout/            Header, Footer, NavLink
+      sections/          Page-specific composable sections
+    config/              site.ts, blog.ts (Markdown glob)
+    content/writing/     Post Markdown files
+    server/              Worker-only modules (contact backends)
+    utils.ts             cn() = clsx + tailwind-merge
+scripts/
+  generate-og.mjs        SVG → PNG OG card builder
+static/
+  favicon.svg
+  og.png                 1200x630 social card (regenerable)
+  robots.txt
+_headers                 Security headers + cache rules
+wrangler.jsonc           Cloudflare Worker config (routes, assets, observability)
+```

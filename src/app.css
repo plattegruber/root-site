@@ -1,0 +1,202 @@
+@import 'tailwindcss';
+
+/* Self-hosted variable + static fonts (no FOUT, no third-party CDN) */
+@import '@fontsource-variable/karla';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Design tokens — root. design system
+ *
+ * Warm, muted neutrals. Like linen and wood. One accent (warm leather)
+ * used sparingly. Tokens follow Tailwind v4's @theme convention so they
+ * project as utilities (bg-cream, text-ink, font-serif, etc.) automatically.
+ * ────────────────────────────────────────────────────────────────────────── */
+@theme {
+	/* Disable Tailwind's default color palette — design uses a curated set */
+	--color-*: initial;
+
+	/* Neutrals */
+	--color-cream: #f7f4ef;
+	--color-linen: #ede9e3;
+	--color-stone: #d4cfc7;
+	--color-drift: #a09a92;
+	--color-clay: #6b6560;
+	--color-charcoal: #2a2522;
+	--color-ink: #1a1715;
+	--color-white: #ffffff;
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* Accent — warm wood/leather */
+	--color-root: #7c5e44;
+	--color-root-dark: #5c4430;
+	--color-root-light: #a68b70;
+
+	/* Semantic */
+	--color-success: #5a7c52;
+	--color-error: #9c4a3a;
+
+	/* Typography */
+	--font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Karla Variable', 'Karla', system-ui, -apple-system, sans-serif;
+	--font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+	/* Layout */
+	--container-content: 680px;
+	--container-page: 1080px;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Responsive rhythm tokens — hero, section, and nav spacing shift per
+ * breakpoint. Plain CSS variables (not @theme) because they cascade per
+ * media query without regenerating utilities.
+ * ────────────────────────────────────────────────────────────────────────── */
+:root {
+	--hero-headline-size: 3rem;
+	--hero-subtext-size: 1.1875rem;
+	--section-v-padding: 6rem;
+	--section-sm-v-padding: 4rem;
+	--hero-top-padding: 6.25rem;
+	--hero-bottom-padding: 7.5rem;
+	--nav-gap: 2rem;
+	--page-title-size: 2.25rem;
+}
+
+@media (max-width: 768px) {
+	:root {
+		--hero-headline-size: 2.25rem;
+		--hero-subtext-size: 1.0625rem;
+		--section-v-padding: 4rem;
+		--section-sm-v-padding: 3rem;
+		--hero-top-padding: 4rem;
+		--hero-bottom-padding: 5rem;
+		--nav-gap: 1.5rem;
+		--page-title-size: 1.875rem;
+	}
+}
+
+@media (max-width: 480px) {
+	:root {
+		--hero-headline-size: 1.875rem;
+		--hero-subtext-size: 1rem;
+		--section-v-padding: 3rem;
+		--section-sm-v-padding: 2.5rem;
+		--hero-top-padding: 3rem;
+		--hero-bottom-padding: 3.5rem;
+		--nav-gap: 1.25rem;
+		--page-title-size: 1.625rem;
+	}
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Base
+ * ────────────────────────────────────────────────────────────────────────── */
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
+	body {
+		font-family: var(--font-sans);
+		font-size: 17px;
+		line-height: 1.6;
+		color: var(--color-charcoal);
+		background-color: var(--color-cream);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		color: var(--color-ink);
+		margin: 0;
+		text-wrap: pretty;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-root);
+		outline-offset: 3px;
+		border-radius: 3px;
+	}
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Custom utilities — design-token-derived helpers Tailwind doesn't ship by
+ * default. Kept minimal; everything else uses stock utilities.
+ * ────────────────────────────────────────────────────────────────────────── */
+@utility section-py {
+	padding-block: var(--section-v-padding);
+}
+
+@utility section-sm-py {
+	padding-block: var(--section-sm-v-padding);
+}
+
+@utility hero-py {
+	padding-top: var(--hero-top-padding);
+	padding-bottom: var(--hero-bottom-padding);
+}
+
+@utility nav-gap {
+	gap: var(--nav-gap);
+}
+
+@utility text-hero {
+	font-size: var(--hero-headline-size);
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+
+@utility text-hero-sub {
+	font-size: var(--hero-subtext-size);
+	line-height: 1.65;
+}
+
+@utility text-page-title {
+	font-size: var(--page-title-size);
+	line-height: 1.2;
+	letter-spacing: -0.015em;
+}
+
+@utility skip-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	transform: translateY(-100%);
+	background: var(--color-ink);
+	color: var(--color-cream);
+	padding: 0.75rem 1.25rem;
+	border-radius: 0 0 4px 0;
+	font-family: var(--font-sans);
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: transform 150ms ease;
+}
+
+.skip-link:focus {
+	transform: translateY(0);
+}

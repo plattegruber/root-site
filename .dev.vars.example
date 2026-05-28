@@ -1,0 +1,15 @@
+# Local secrets for `wrangler dev` — copy to .dev.vars (gitignored).
+# In production, set the same names via `wrangler secret put <NAME>`.
+
+# Airtable backend (if chosen)
+# AIRTABLE_TOKEN=pat_xxx
+# AIRTABLE_BASE_ID=app_xxx
+# AIRTABLE_TABLE_NAME=Contacts
+
+# Resend backend (if chosen — recommended)
+# RESEND_API_KEY=re_xxx
+# CONTACT_TO=platte@root.site
+# CONTACT_FROM=root. <hello@root.site>
+
+# Generic webhook (Discord, Slack, Zapier, etc.)
+# WEBHOOK_URL=https://hooks.example.com/...

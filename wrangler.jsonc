@@ -28,5 +28,15 @@
 	"preview_urls": true,
 	"observability": {
 		"enabled": true
+	},
+	// Non-secret contact-form config. RESEND_API_KEY is set via
+	// `wrangler secret put` and never lives in the repo.
+	// CONTACT_FROM is Resend's test sender until root.site is verified
+	// in the Resend dashboard (add the DKIM/SPF records they show into
+	// Cloudflare DNS — they coexist with the existing Google Workspace
+	// MX). Once verified, switch this to `root. <hello@root.site>`.
+	"vars": {
+		"CONTACT_TO": "platte@root.site",
+		"CONTACT_FROM": "onboarding@resend.dev"
 	}
 }

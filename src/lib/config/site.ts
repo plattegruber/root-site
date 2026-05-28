@@ -25,8 +25,8 @@ export const site = {
 	 */
 	about: {
 		photo: {
-			src: undefined as string | undefined,
-			alt: 'Platte — the person behind root.'
+			src: '/about-photo.jpg' as string | undefined,
+			alt: 'Platte and his wife, in the Colorado foothills.'
 		}
 	}
 } as const;

@@ -8,7 +8,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.leadsy.ai; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self' https://static.cloudflareinsights.com https://r2.leadsy.ai https://*.leadsy.ai; connect-src 'self' https://cloudflareinsights.com https://*.leadsy.ai; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests
 
 # Sitemap and feeds — let CDNs cache more aggressively
 /sitemap.xml

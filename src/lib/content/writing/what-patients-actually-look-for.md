@@ -2,6 +2,7 @@
 title: What patients actually look for on your site
 date: 2026-04-22
 excerpt: It’s not your degrees. It’s not your mission statement. It’s your hours, your location, and whether you look like someone they’d trust.
+draft: true
 ---
 
 I’ve sat with a lot of dentists who think their website needs to communicate

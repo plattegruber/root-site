@@ -2,6 +2,7 @@
 title: The case against stock photos of smiling people
 date: 2026-03-10
 excerpt: A wall of beaming faces in scrubs doesn’t make anyone feel at ease. Here’s what to do instead.
+draft: true
 ---
 
 Look at any dental website built by an agency in the last decade. Scroll

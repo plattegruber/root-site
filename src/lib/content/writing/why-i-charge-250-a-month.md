@@ -2,6 +2,7 @@
 title: Why I charge $250 a month
 date: 2026-01-05
 excerpt: It’s not the cheapest option. It’s not the most expensive. Here’s what goes into the number and why it works.
+draft: true
 ---
 
 The cheapest way to get a dental website is to sign up with one of the

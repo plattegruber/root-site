@@ -13,9 +13,10 @@
 	// isn't on this account, attach it via the Cloudflare dashboard
 	// (Workers & Pages → root-site → Settings → Triggers → Add custom
 	// domain) instead — same end-state, no DNS edits needed there either.
+	// Apex only — set up a www→apex redirect via a Cloudflare Bulk Redirect
+	// in the dashboard if/when you want to claim www.root.site.
 	"routes": [
-		{ "pattern": "root.site", "custom_domain": true },
-		{ "pattern": "www.root.site", "custom_domain": true }
+		{ "pattern": "root.site", "custom_domain": true }
 	],
 	"workers_dev": true,
 	"preview_urls": true,

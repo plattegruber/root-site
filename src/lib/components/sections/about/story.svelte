@@ -52,8 +52,7 @@ linen-colored placeholder so the page composition is intact.
 						the noise. So I did.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						I’ve built websites for practices in 14 states. I’m still one person, and I plan to keep
-						it that way.
+						I’m still one person, and I plan to keep it that way.
 					</p>
 				</div>
 			</div>

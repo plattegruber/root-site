@@ -8,9 +8,9 @@ visual noise.
 -->
 <script lang="ts">
 	import { Container } from '$lib/components/ui';
-	import type { BlogPost } from '$lib/config/blog';
+	import type { PostSummary } from '$lib/config/blog';
 
-	type Props = { posts: BlogPost[] };
+	type Props = { posts: PostSummary[] };
 
 	let { posts }: Props = $props();
 </script>
@@ -24,9 +24,9 @@ visual noise.
 						href={`/writing/${post.slug}`}
 						class="group block border-t border-stone py-7 no-underline"
 					>
-						<span class="mb-2 block font-mono text-[13px] text-drift">
-							{post.date}
-						</span>
+						<time datetime={post.date} class="mb-2 block font-mono text-[13px] text-drift">
+							{post.dateDisplay}
+						</time>
 						<h2
 							class="m-0 mb-2 font-serif text-[22px] leading-[1.3] font-normal text-ink transition-colors duration-150 group-hover:text-root"
 						>

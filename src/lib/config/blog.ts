@@ -1,51 +1,86 @@
+import type { Component } from 'svelte';
+
 /**
- * Editorial post list for the Writing page.
+ * Editorial posts for /writing — backed by Markdown via mdsvex.
  *
- * Posts are currently placeholders mirroring the design. When real posts
- * land, swap this for an mdsvex collection or a CMS-backed loader — the
- * page component reads from this module so the migration is local.
+ * Files live in src/lib/content/writing/<slug>.md. Each must have YAML
+ * frontmatter:
+ *   ---
+ *   title: ...
+ *   date: YYYY-MM-DD
+ *   excerpt: ...
+ *   draft: true   # optional — hides from production builds
+ *   ---
+ *
+ * We resolve the glob at module load time, parse the metadata, and
+ * expose a stable, date-sorted list. Adding a new post is one
+ * file — no manual index, no slug list.
  */
-export type BlogPost = {
-	slug: string;
+
+/**
+ * YAML may parse `date: 2026-05-15` as a Date object instead of a string;
+ * we accept either and normalize when reading.
+ */
+export type PostMetadata = {
 	title: string;
-	date: string;
+	date: string | Date;
 	excerpt: string;
+	draft?: boolean;
 };
 
-export const posts: BlogPost[] = [
-	{
-		slug: 'why-your-dental-website-loads-too-slowly',
-		title: 'Why your dental website probably loads too slowly',
-		date: 'May 15, 2026',
-		excerpt:
-			'Your site is probably running on shared hosting with uncompressed images and three analytics scripts. Here’s what that actually costs you.'
-	},
-	{
-		slug: 'what-patients-actually-look-for',
-		title: 'What patients actually look for on your site',
-		date: 'April 22, 2026',
-		excerpt:
-			'It’s not your degrees. It’s not your mission statement. It’s your hours, your location, and whether you look like someone they’d trust.'
-	},
-	{
-		slug: 'against-stock-photos-of-smiling-people',
-		title: 'The case against stock photos of smiling people',
-		date: 'March 10, 2026',
-		excerpt:
-			'A wall of beaming faces in scrubs doesn’t make anyone feel at ease. Here’s what to do instead.'
-	},
-	{
-		slug: 'you-dont-need-a-chatbot',
-		title: 'You don’t need a chatbot',
-		date: 'February 18, 2026',
-		excerpt:
-			'If a patient has a question at 2am, they’ll email you. They don’t want to talk to a purple bubble in the corner of your screen.'
-	},
-	{
-		slug: 'why-i-charge-250-a-month',
-		title: 'Why I charge $250 a month',
-		date: 'January 5, 2026',
-		excerpt:
-			'It’s not the cheapest option. It’s not the most expensive. Here’s what goes into the number and why it works.'
-	}
-];
+export type PostModule = {
+	default: Component;
+	metadata: PostMetadata;
+};
+
+export type PostSummary = Omit<PostMetadata, 'date'> & {
+	slug: string;
+	date: string;
+	dateDisplay: string;
+};
+
+/**
+ * Eager glob — bundles the metadata directly into the dependent module
+ * (the writing index page). The post body is lazy-loaded per-route by
+ * the [slug] page so the index doesn't ship every post's full HTML.
+ */
+const modules = import.meta.glob<PostModule>('$lib/content/writing/*.md', { eager: true });
+
+function slugFromPath(path: string): string {
+	const match = path.match(/\/([^/]+)\.md$/);
+	if (!match) throw new Error(`Unexpected post path: ${path}`);
+	return match[1];
+}
+
+const DATE_FMT = new Intl.DateTimeFormat('en-US', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric'
+});
+
+function toIsoDate(input: string | Date): string {
+	if (input instanceof Date) return input.toISOString().slice(0, 10);
+	// String can be either YYYY-MM-DD or a full ISO timestamp.
+	return input.length > 10 ? input.slice(0, 10) : input;
+}
+
+function formatDate(isoDay: string): string {
+	// Parse as UTC noon so timezone never shifts the displayed day.
+	const d = new Date(`${isoDay}T12:00:00Z`);
+	return DATE_FMT.format(d);
+}
+
+export const posts: PostSummary[] = Object.entries(modules)
+	.map(([path, mod]) => {
+		const date = toIsoDate(mod.metadata.date);
+		return {
+			...mod.metadata,
+			slug: slugFromPath(path),
+			date,
+			dateDisplay: formatDate(date)
+		};
+	})
+	.filter((p) => !p.draft || import.meta.env.DEV)
+	.sort((a, b) => (a.date < b.date ? 1 : -1));
+
+export const postSlugs = posts.map((p) => p.slug);

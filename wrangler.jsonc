@@ -6,16 +6,24 @@
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"assets": {
 		"binding": "ASSETS",
-		"directory": ".svelte-kit/cloudflare"
+		"directory": ".svelte-kit/cloudflare",
+		// Run the Worker before serving assets so src/hooks.server.ts can
+		// 301-redirect www → apex (Cloudflare's _redirects file doesn't
+		// allow host patterns). The SvelteKit adapter falls through to the
+		// ASSETS binding for any path it doesn't handle, so static asset
+		// performance is unchanged for the apex.
+		"run_worker_first": true
 	},
-	// Custom domains: Cloudflare provisions DNS + TLS automatically for
-	// any pattern whose zone lives on the same account. If root.site
-	// isn't on this account, attach it via the Cloudflare dashboard
-	// (Workers & Pages → root-site → Settings → Triggers → Add custom
-	// domain) instead — same end-state, no DNS edits needed there either.
-	// Apex only — set up a www→apex redirect via a Cloudflare Bulk Redirect
-	// in the dashboard if/when you want to claim www.root.site.
-	"routes": [{ "pattern": "root.site", "custom_domain": true }],
+	// Custom domains. Cloudflare provisions DNS + TLS automatically when
+	// the matching zone lives on this account. Both apex and www are
+	// attached so the Worker handles either host; src/hooks.server.ts
+	// 301-redirects www → apex so root.site is the single canonical
+	// hostname for SEO. If the DNS record for www isn't auto-provisioned,
+	// add CNAME `www → root.site` (proxied) in the Cloudflare dashboard.
+	"routes": [
+		{ "pattern": "root.site", "custom_domain": true },
+		{ "pattern": "www.root.site", "custom_domain": true }
+	],
 	"workers_dev": true,
 	"preview_urls": true,
 	"observability": {

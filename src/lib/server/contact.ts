@@ -155,5 +155,63 @@ export const resendDeliverer: Deliverer = async (submission, env) => {
 	}
 };
 
-/** Active deliverer — change this one line to switch backends. */
-export const deliver: Deliverer = noopDeliverer;
+/**
+ * Sequential deliverer — runs the given deliverers in order and stops
+ * on the first failure. Use when you want strict ordering (e.g. email
+ * MUST succeed before recording to Airtable).
+ */
+export function chainStrict(...deliverers: Deliverer[]): Deliverer {
+	return async (submission, env) => {
+		for (const fn of deliverers) await fn(submission, env);
+	};
+}
+
+/**
+ * Soft-chain — the *first* deliverer is required (it throws on failure),
+ * every later deliverer is best-effort (failures are logged and
+ * swallowed). Use this when one channel is the source of truth (the
+ * notification you can't miss) and the others are convenience records.
+ */
+export function chainSoft(primary: Deliverer, ...secondary: Deliverer[]): Deliverer {
+	return async (submission, env) => {
+		await primary(submission, env);
+		for (const fn of secondary) {
+			try {
+				await fn(submission, env);
+			} catch (err) {
+				console.error('[contact] secondary deliverer failed (ignored):', err);
+			}
+		}
+	};
+}
+
+/**
+ * Active deliverer. Edit this one expression to switch backends.
+ *
+ * Default for this site: Resend → email is the primary channel (so a
+ * missed submission is impossible if the API key is set), with Airtable
+ * as a best-effort record. If either set of env vars is missing, that
+ * deliverer falls back to the no-op so local dev and pre-secret deploys
+ * stay quiet.
+ */
+function pickDeliverer(): Deliverer {
+	// In a Worker, env reads happen in the request — we can't inspect them
+	// here at module load. Instead, build the chain unconditionally and let
+	// each deliverer's own env-check decide whether to no-op vs throw.
+	return chainSoft(
+		async (submission, env) => {
+			if (env.RESEND_API_KEY && env.CONTACT_TO) {
+				await resendDeliverer(submission, env);
+			} else {
+				await noopDeliverer(submission, env);
+			}
+		},
+		async (submission, env) => {
+			if (env.AIRTABLE_TOKEN && env.AIRTABLE_BASE_ID && env.AIRTABLE_TABLE_NAME) {
+				await airtableDeliverer(submission, env);
+			}
+		}
+	);
+}
+
+export const deliver: Deliverer = pickDeliverer();

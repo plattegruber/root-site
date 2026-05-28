@@ -1,27 +1,42 @@
 <!--
 @component
-About story — photo placeholder beside a four-paragraph origin story.
+About story — origin story with a 200×240 portrait alongside.
 
-Photo placeholder is sized to match the design's 200×240 frame. When the
-real headshot lands, replace the inner span with an `<img>` and an alt
-description.
+If `site.about.photo.src` is set, renders the photo (lazy-loaded, with
+explicit dimensions to prevent layout shift). Otherwise renders a calm
+linen-colored placeholder so the page composition is intact.
 -->
 <script lang="ts">
 	import { Container } from '$lib/components/ui';
+	import { site } from '$lib/config/site';
+
+	const photo = site.about.photo;
 </script>
 
 <section style="padding-bottom: var(--section-v-padding)">
 	<Container>
 		<div class="flex flex-wrap items-start gap-12">
-			<div
-				class="flex h-[240px] w-[200px] shrink-0 items-center justify-center rounded-md border border-stone bg-linen"
-				aria-label="Photo placeholder"
-				role="img"
-			>
-				<span class="px-4 text-center font-sans text-[13px] leading-[1.4] text-drift">
-					Your photo here
-				</span>
-			</div>
+			{#if photo.src}
+				<img
+					src={photo.src}
+					alt={photo.alt}
+					width="200"
+					height="240"
+					loading="lazy"
+					decoding="async"
+					class="h-[240px] w-[200px] shrink-0 rounded-md border border-stone object-cover"
+				/>
+			{:else}
+				<div
+					class="flex h-[240px] w-[200px] shrink-0 items-center justify-center rounded-md border border-stone bg-linen"
+					aria-label="Photo placeholder"
+					role="img"
+				>
+					<span class="px-4 text-center font-sans text-[13px] leading-[1.4] text-drift">
+						Your photo here
+					</span>
+				</div>
+			{/if}
 
 			<div class="min-w-[280px] flex-1">
 				<div class="flex flex-col gap-4">

@@ -1,17 +1,16 @@
+import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-cloudflare';
 
 /**
  * @type {import('@sveltejs/kit').Config}
  *
- * Notes:
  *  - `adapter-cloudflare` ships a single Worker that serves static assets
  *    via the assets binding and routes the rest (e.g. /api/contact) to
- *    Worker functions. We mark every page route as `prerender = true`
- *    so the static path takes priority.
- *  - `handleHttpError: 'warn'` lets us ship the Writing index without
- *    the placeholder post-detail pages existing yet. When real posts
- *    land we drop them under /writing/<slug>/+page.svelte and the
- *    prerenderer will pick them up automatically.
+ *    Worker functions. Every page route is prerendered, so the static
+ *    path takes priority.
+ *  - `mdsvex` preprocesses .md files into Svelte components so the
+ *    /writing/[slug] route can render Markdown post bodies with full
+ *    component capabilities (and frontmatter-driven metadata).
  */
 const config = {
 	compilerOptions: {
@@ -19,22 +18,10 @@ const config = {
 	},
 	kit: {
 		adapter: adapter(),
-		prerender: {
-			handleHttpError: ({ path, referrer, message }) => {
-				// Allow placeholder /writing/<slug> links to be 404s during
-				// prerender — they're real URLs that will be filled later.
-				if (path.startsWith('/writing/')) {
-					console.warn(`[prerender] skipping ${path} (linked from ${referrer})`);
-					return;
-				}
-				throw new Error(message);
-			}
-		},
-		alias: {
-			$config: 'src/lib/config',
-			$server: 'src/lib/server'
-		}
-	}
+		alias: { $config: 'src/lib/config', $server: 'src/lib/server' }
+	},
+	preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
+	extensions: ['.svelte', '.svx', '.md']
 };
 
 export default config;

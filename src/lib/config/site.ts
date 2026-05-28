@@ -15,7 +15,20 @@ export const site = {
 	author: 'Platte',
 	twitter: undefined,
 	locale: 'en_US',
-	year: new Date().getFullYear()
+	year: new Date().getFullYear(),
+	/**
+	 * About-page headshot. Set `src` to a path under `static/` (e.g.
+	 * `/about-photo.jpg`) once a real photo lands; the placeholder frame
+	 * stays until then. Recommended source dimensions: at least 400×480
+	 * (1.2× the rendered 200×240 frame for retina); keep file under 80 KB
+	 * via mozjpeg/squoosh.
+	 */
+	about: {
+		photo: {
+			src: undefined as string | undefined,
+			alt: 'Platte — the person behind root.'
+		}
+	}
 } as const;
 
 export const nav = [

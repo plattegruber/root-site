@@ -2,14 +2,24 @@
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "root-site",
 	"compatibility_date": "2026-05-28",
-	"compatibility_flags": [
-		"nodejs_als"
-	],
+	"compatibility_flags": ["nodejs_als"],
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
+	// Custom domains: Cloudflare provisions DNS + TLS automatically for
+	// any pattern whose zone lives on the same account. If root.site
+	// isn't on this account, attach it via the Cloudflare dashboard
+	// (Workers & Pages → root-site → Settings → Triggers → Add custom
+	// domain) instead — same end-state, no DNS edits needed there either.
+	"routes": [
+		{ "pattern": "root.site", "custom_domain": true },
+		{ "pattern": "www.root.site", "custom_domain": true }
+	],
 	"workers_dev": true,
-	"preview_urls": true
+	"preview_urls": true,
+	"observability": {
+		"enabled": true
+	}
 }

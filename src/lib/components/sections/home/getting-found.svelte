@@ -22,9 +22,7 @@ same serif-number + mono "/month" style; neither is framed as the
 			<span class="font-serif text-[36px] leading-none text-ink">$1,000</span>
 			<span class="font-mono text-[15px] text-drift">/month</span>
 		</div>
-		<p class="mb-6 font-sans text-[15px] leading-[1.55] text-clay">
-			Everything from the website included.
-		</p>
+		<p class="mb-6 font-sans text-[15px] leading-[1.55] text-clay">The website comes with it.</p>
 
 		<div class="flex max-w-[560px] flex-col gap-4">
 			<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
@@ -32,8 +30,8 @@ same serif-number + mono "/month" style; neither is framed as the
 				ongoing work: reviews, fresh content, keeping your listing active. Every month, not once.
 			</p>
 			<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-				If you want that, I do it. You’ll see where you rank and how many people call. I won’t
-				promise a magic patient count — anyone who does is guessing.
+				If that’s you, I do it. You’ll see where you rank and how many people call. I won’t promise
+				a magic patient count — anyone who does is guessing.
 			</p>
 			<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 				No contract here either — cancel anytime. Most practices are happy with just the site, and

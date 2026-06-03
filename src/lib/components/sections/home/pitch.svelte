@@ -16,8 +16,7 @@ number a tactile, ledger-like weight against the surrounding sans serif.
 		</h2>
 		<div class="max-w-[560px]">
 			<p class="mb-5 font-sans text-hero-sub text-clay">
-				Custom design, reliable hosting, updates whenever you need them. One person doing one thing
-				well.
+				Custom design, reliable hosting. One person doing one thing well.
 			</p>
 			<p class="m-0 font-sans text-hero-sub text-clay">
 				You pay

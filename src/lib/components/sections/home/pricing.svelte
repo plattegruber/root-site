@@ -20,12 +20,16 @@ list, which would lean too SaaS-y for the voice of the site.
 
 <section class="bg-linen section-sm-py">
 	<Container>
-		<div class="mb-6 flex items-baseline gap-1.5">
+		<h2 class="mb-5 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink">
+			Your site, built right
+		</h2>
+
+		<div class="mb-2 flex items-baseline gap-1.5">
 			<span class="font-serif text-[36px] leading-none text-ink">$250</span>
 			<span class="font-mono text-[15px] text-drift">/month</span>
 		</div>
 
-		<p class="mb-5 font-sans text-[15px] leading-[1.55] text-clay">
+		<p class="mb-6 font-sans text-[15px] leading-[1.55] text-clay">
 			Everything included. One flat fee.
 		</p>
 
@@ -39,8 +43,12 @@ list, which would lean too SaaS-y for the voice of the site.
 		</ul>
 
 		<p class="mt-6 max-w-[560px] font-sans text-[15px] leading-[1.6] text-clay">
-			Your Google listing, set up right. The behind-the-scenes markup that lets search engines and
-			AI tools read your site and know who and where you are. Most shops skip it. I don’t.
+			That’s your Google listing plus the markup that lets search engines and AI find you. Most
+			shops skip it. I don’t.
+		</p>
+		<p class="mt-4 max-w-[560px] font-sans text-[15px] leading-[1.6] text-clay">
+			For most practices, this is the whole job. A great site, handled. I’m a quick email away
+			whenever you need a change.
 		</p>
 	</Container>
 </section>

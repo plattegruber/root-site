@@ -12,7 +12,7 @@ list, which would lean too SaaS-y for the voice of the site.
 		'Custom design — not a template',
 		'Fast, reliable hosting',
 		'Mobile-friendly, always',
-		'Edits and updates, anytime',
+		'Edits and updates, anytime — just message me',
 		'Built to be found — set up right for search and AI from day one',
 		'No setup fee, no contract'
 	];
@@ -47,8 +47,9 @@ list, which would lean too SaaS-y for the voice of the site.
 			shops skip it. I don’t.
 		</p>
 		<p class="mt-4 max-w-[560px] font-sans text-[15px] leading-[1.6] text-clay">
-			For most practices, this is the whole job. A great site, handled. I’m a quick email away
-			whenever you need a change.
+			For most practices, this is the whole job. A great site, handled — no dashboard to learn, no
+			password to dig up. When something needs changing, you message me and it’s done. Same person
+			who built it, every time.
 		</p>
 	</Container>
 </section>

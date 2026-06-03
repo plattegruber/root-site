@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { posts } from '$lib/config/blog';
 import { site } from '$lib/config/site';
+import { articleSchema, breadcrumbSchema } from '$lib/seo';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
@@ -18,6 +19,18 @@ export const load: PageLoad = async ({ params }) => {
 		title: `${post.title} — root.`,
 		description: post.excerpt,
 		canonical: `${site.url}/writing/${post.slug}`,
+		// Mark this as an article so the layout emits og:type=article with
+		// published-time/author, plus Article + breadcrumb JSON-LD.
+		ogType: 'article',
+		publishedTime: post.date,
+		ogImageAlt: post.title,
+		jsonld: [
+			articleSchema(post),
+			breadcrumbSchema([
+				{ name: 'Writing', path: '/writing' },
+				{ name: post.title, path: `/writing/${post.slug}` }
+			])
+		],
 		post,
 		Body: mod.default as typeof mod.default
 	};

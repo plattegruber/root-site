@@ -20,8 +20,8 @@ link into the live site. bg-linen keeps the section-color alternation going
 			See it in action
 		</h2>
 		<p class="mb-10 max-w-[560px] font-sans text-hero-sub text-clay">
-			I build example practices you can actually click through — real sites, top to bottom. Here’s
-			one to start; more on the way.
+			Here are some example practices you can actually click through — real sites, built top to
+			bottom. Here’s one to start; more on the way.
 		</p>
 
 		{#if featured}

@@ -20,6 +20,8 @@ export type Demo = {
 	blurb: string;
 	/** Full URL to the live demo. Omit while it's still being built. */
 	url?: string;
+	/** Screengrab under static/ (e.g. /screens/stillwater.webp), used as the homepage teaser visual. */
+	image?: string;
 	/** Hides the link and shows a muted "In progress" state instead. */
 	comingSoon?: boolean;
 };
@@ -30,7 +32,8 @@ export const demos: Demo[] = [
 		category: 'Family & general dentistry',
 		blurb:
 			'A calm, modern practice site — services, team, and an online booking flow, all in the warm, unhurried voice a family practice wants.',
-		url: 'https://stillwater.demo.root.site'
+		url: 'https://stillwater.demo.root.site',
+		image: '/screens/stillwater.webp'
 	},
 	{
 		name: 'Demo two',

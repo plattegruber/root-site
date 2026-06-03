@@ -6,7 +6,7 @@ canvas rather than two stacked rectangles.
 -->
 <script lang="ts">
 	import { Header, Footer } from '$lib/components/layout';
-	import { Hero, Pitch, Pricing, Process, Contact } from '$lib/components/sections/home';
+	import { Hero, Pitch, Pricing, Process, Demos, Contact } from '$lib/components/sections/home';
 </script>
 
 <div class="bg-ink">
@@ -18,6 +18,7 @@ canvas rather than two stacked rectangles.
 	<Pitch />
 	<Pricing />
 	<Process />
+	<Demos />
 	<Contact />
 </main>
 

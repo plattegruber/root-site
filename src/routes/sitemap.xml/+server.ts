@@ -10,7 +10,7 @@ type SitemapEntry = { loc: string; lastmod?: string };
  */
 export const prerender = true;
 
-const STATIC = ['/', '/about', '/writing'] as const;
+const STATIC = ['/', '/demos', '/about', '/writing'] as const;
 
 export const GET = async () => {
 	const urls: SitemapEntry[] = [

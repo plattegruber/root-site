@@ -52,6 +52,13 @@ linen-colored placeholder so the page composition is intact.
 						the noise. So I did.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
+						For a long time that was the whole story — just the website, nothing else. But “patient
+						acquisition strategy” was never the problem. The problem was the markup, the jargon, and
+						the agencies charging four grand a month to do it badly. Helping a practice actually get
+						found is fine. So now, for the practices that want it, I do that too — same as
+						everything else: by hand, fair price, no noise.
+					</p>
+					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 						I’m still one person, and I plan to keep it that way.
 					</p>
 				</div>

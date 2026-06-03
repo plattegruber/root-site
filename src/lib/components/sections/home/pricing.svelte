@@ -13,6 +13,7 @@ list, which would lean too SaaS-y for the voice of the site.
 		'Fast, reliable hosting',
 		'Mobile-friendly, always',
 		'Edits and updates, anytime',
+		'Built to be found — set up right for search and AI from day one',
 		'No setup fee, no contract'
 	];
 </script>
@@ -36,5 +37,10 @@ list, which would lean too SaaS-y for the voice of the site.
 				</li>
 			{/each}
 		</ul>
+
+		<p class="mt-6 max-w-[560px] font-sans text-[15px] leading-[1.6] text-clay">
+			Your Google listing, set up right. The behind-the-scenes markup that lets search engines and
+			AI tools read your site and know who and where you are. Most shops skip it. I don’t.
+		</p>
 	</Container>
 </section>

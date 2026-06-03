@@ -36,10 +36,12 @@ export const demos: Demo[] = [
 		image: '/screens/stillwater.webp'
 	},
 	{
-		name: 'Demo two',
-		category: 'Coming soon',
-		blurb: 'A second example practice, in the works.',
-		comingSoon: true
+		name: 'Treehouse Pediatric Dentistry',
+		category: 'Pediatric dentistry',
+		blurb:
+			'A bright, playful pediatric site — services, a friendly intro to Dr. Priya, and easy booking, built to put nervous first-timers (and the parents booking for them) at ease.',
+		url: 'https://treehouse.demo.root.site'
+		// image: '/screens/treehouse.webp' — add once a 1440-wide screengrab lands.
 	},
 	{
 		name: 'Demo three',

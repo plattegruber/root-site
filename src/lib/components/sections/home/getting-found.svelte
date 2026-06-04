@@ -30,8 +30,7 @@ same serif-number + mono "/month" style; neither is framed as the
 				ongoing work: reviews, fresh content, keeping your listing active. Every month, not once.
 			</p>
 			<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-				If that’s you, I do it. You’ll see where you rank and how many people call. I won’t promise
-				a magic patient count — anyone who does is guessing.
+				If that’s you, I do it. You’ll see where you rank.
 			</p>
 			<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 				No contract here either — cancel anytime. Most practices are happy with just the site, and

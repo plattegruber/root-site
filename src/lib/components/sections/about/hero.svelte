@@ -1,7 +1,6 @@
 <!--
 @component
-About hero — a two-line statement, no decoration. The <br/> is the
-designed line break; on narrow viewports the line wrap takes over.
+About hero — a short slogan, no decoration.
 -->
 <script lang="ts">
 	import { Container } from '$lib/components/ui';
@@ -10,7 +9,7 @@ designed line break; on narrow viewports the line wrap takes over.
 <section class="section-py" style="padding-bottom: var(--section-sm-v-padding)">
 	<Container>
 		<h1 class="m-0 font-serif text-page-title font-normal text-ink">
-			One person, building websites<br />for dental practices.
+			Your dental website, handled.
 		</h1>
 	</Container>
 </section>

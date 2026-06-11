@@ -157,4 +157,41 @@ section having to know about heading levels in advance.
 		background: none;
 		padding: 0;
 	}
+
+	/*
+	 * Tables are authored as raw HTML in the Markdown (mdsvex doesn't parse
+	 * GFM pipe tables). The wrapper scrolls horizontally on narrow phones so
+	 * a wide pricing table never forces the whole page to overflow.
+	 */
+	.prose :global(.table-wrap) {
+		margin: 1.75rem 0;
+		overflow-x: auto;
+	}
+
+	.prose :global(table) {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.9375rem;
+	}
+
+	.prose :global(th),
+	.prose :global(td) {
+		padding: 0.625rem 0.875rem;
+		text-align: left;
+		vertical-align: top;
+		border-bottom: 1px solid var(--color-stone);
+	}
+
+	.prose :global(th) {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		color: var(--color-clay);
+	}
+
+	.prose :global(thead th) {
+		border-bottom-width: 2px;
+	}
 </style>

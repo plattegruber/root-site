@@ -103,6 +103,27 @@ export function articleSchema(post: ArticleInput): JsonLdNode {
 	};
 }
 
+/** A single question/answer pair, as authored in a post's `faq` frontmatter. */
+export type FaqItem = { q: string; a: string };
+
+/**
+ * FAQPage schema for a post that ends in a Q&A section. Lets search and
+ * AI assistants extract each answer as a self-contained unit. Authored in
+ * the post's frontmatter (`faq:`) so the prose and the structured data
+ * stay in one file.
+ */
+export function faqSchema(faqs: FaqItem[]): JsonLdNode {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqs.map((f) => ({
+			'@type': 'Question',
+			name: f.q,
+			acceptedAnswer: { '@type': 'Answer', text: f.a }
+		}))
+	};
+}
+
 /**
  * BreadcrumbList for an inner page. `trail` is ordered root → leaf; pass
  * paths relative to the site root (the home crumb is added implicitly).

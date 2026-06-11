@@ -1,7 +1,8 @@
 import { error } from '@sveltejs/kit';
 import { posts } from '$lib/config/blog';
 import { site } from '$lib/config/site';
-import { articleSchema, breadcrumbSchema } from '$lib/seo';
+import { articleSchema, breadcrumbSchema, faqSchema } from '$lib/seo';
+import type { PostMetadata } from '$lib/config/blog';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
@@ -14,6 +15,7 @@ export const load: PageLoad = async ({ params }) => {
 	if (!post) error(404, 'Post not found');
 
 	const mod = await import(`$lib/content/writing/${post.slug}.md`);
+	const { faq } = mod.metadata as PostMetadata;
 
 	return {
 		title: `${post.title} — root.`,
@@ -29,7 +31,9 @@ export const load: PageLoad = async ({ params }) => {
 			breadcrumbSchema([
 				{ name: 'Writing', path: '/writing' },
 				{ name: post.title, path: `/writing/${post.slug}` }
-			])
+			]),
+			// Posts with a Q&A section carry FAQPage schema for rich results.
+			...(faq?.length ? [faqSchema(faq)] : [])
 		],
 		post,
 		Body: mod.default as typeof mod.default

@@ -1,6 +1,7 @@
 <!--
 @component
-About story — origin story with a 200×240 portrait alongside.
+About story — the "space in between" positioning, with a 200×240
+portrait alongside.
 
 If `site.about.photo.src` is set, renders the photo (lazy-loaded, with
 explicit dimensions to prevent layout shift). Otherwise renders a calm
@@ -41,25 +42,35 @@ linen-colored placeholder so the page composition is intact.
 			<div class="min-w-[280px] flex-1">
 				<div class="flex flex-col gap-4">
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
-						I started root because dental websites were getting the worst of the web.
+						Most dental website options ask you to make a tradeoff.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						Overpriced agencies. Cookie-cutter templates. “Patient acquisition strategies.” Dentists
-						were paying thousands for websites that looked like every other dentist’s website.
+						You can go with a big dental marketing company. You’ll get a process, a platform, and
+						probably a lot of words like “conversion funnel.” You may also get a template, a long
+						contract, slow support, and a website that feels a lot like every other practice in
+						town.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						I figured I could do better. Build each site by hand, charge a fair price, and skip all
-						the noise. So I did.
+						You can go with a freelance designer. That can work too. You pay once, get a
+						nice-looking site, and then hope you know what to do the next time a provider leaves,
+						your hours change, a form needs updating, or Google decides your site is suddenly too
+						slow.
+					</p>
+					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
+						root is built for the space in between.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						For a long time that was the whole story — just the website, nothing else. But “patient
-						acquisition strategy” was never the problem. The problem was the markup, the jargon, and
-						the agencies charging four grand a month to do it badly. Helping a practice actually get
-						found is fine. So now, for the practices that want it, I do that too — same as
-						everything else: by hand, fair price, no noise.
+						I build the site by hand, with your actual practice in mind. Then I keep taking care of
+						it. Not in a “submit a ticket and wait” way. More like: email me when something changes,
+						and I’ll help.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						I’m still one person, and I plan to keep it that way.
+						I’m not trying to rebrand your practice, bury you in strategy, or convince you that your
+						dental office needs to become a media company.
+					</p>
+					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
+						I’m here to give you a website that feels current, stays useful, and doesn’t become one
+						more thing you have to manage.
 					</p>
 				</div>
 			</div>

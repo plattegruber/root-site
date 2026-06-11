@@ -1,4 +1,5 @@
 import type { Component } from 'svelte';
+import type { FaqItem } from '$lib/seo';
 
 /**
  * Editorial posts for /writing — backed by Markdown via mdsvex.
@@ -26,6 +27,12 @@ export type PostMetadata = {
 	date: string | Date;
 	excerpt: string;
 	draft?: boolean;
+	/**
+	 * Optional Q&A pairs. When present, the [slug] page emits FAQPage
+	 * JSON-LD alongside the Article schema. Read from the lazily-imported
+	 * post module on the detail route, so it isn't bundled into the index.
+	 */
+	faq?: FaqItem[];
 };
 
 export type PostModule = {

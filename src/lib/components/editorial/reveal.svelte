@@ -2,11 +2,12 @@
 @component
 Reveal — fades and lifts its contents into view on scroll.
 
-Progressive by design: the hidden start state is only applied when JS is
-running and motion is allowed (see the `.reveal` rules in app.css —
-`@media (scripting: none)` and `prefers-reduced-motion` both show content
-immediately), so SSR / no-JS / reduced-motion visitors never see a blank
-section.
+Visible by default. Content is NEVER hidden by CSS alone — the hidden state
+(`.reveal-hidden`) is added by this component on mount, and only for
+elements that are below the fold (so there's no above-the-fold flash) when
+motion is allowed and IntersectionObserver exists. If JS doesn't run, hasn't
+hydrated, or motion is reduced, nothing is hidden and the content simply
+shows. The animation is a pure enhancement.
 -->
 <script lang="ts">
 	import { onMount } from 'svelte';
@@ -25,17 +26,24 @@ section.
 
 	onMount(() => {
 		const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-		if (reduce || !('IntersectionObserver' in window)) {
-			el.classList.add('is-visible');
-			return;
-		}
+		if (reduce || !('IntersectionObserver' in window)) return;
+
+		// Only animate elements that start below the fold; in-view content
+		// stays visible so there's no flash of hidden → shown on load.
+		const vh = window.innerHeight || document.documentElement.clientHeight;
+		if (el.getBoundingClientRect().top < vh * 0.92) return;
+
+		el.classList.add('reveal-hidden');
 
 		let timer: ReturnType<typeof setTimeout>;
 		const io = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
 					if (entry.isIntersecting) {
-						timer = setTimeout(() => el.classList.add('is-visible'), delay);
+						timer = setTimeout(() => {
+							el.classList.remove('reveal-hidden');
+							el.classList.add('is-visible');
+						}, delay);
 						io.unobserve(entry.target);
 					}
 				}

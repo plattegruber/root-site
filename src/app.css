@@ -248,15 +248,19 @@ body::before {
 	}
 }
 
-/* Scroll reveals — opacity + a small rise. The hidden start state only
- * applies when JS can clear it and motion is allowed; no-JS, reduced-motion,
- * and print all show content immediately so nothing stays hidden. */
+/* Scroll reveals — opacity + a small rise. Content is VISIBLE by default;
+ * the hidden state (.reveal-hidden) is added by the Reveal component on mount
+ * and only for below-the-fold elements. If JS never runs / hasn't hydrated /
+ * motion is reduced, nothing is hidden and content shows normally. */
 .reveal {
-	opacity: 0;
-	transform: translateY(12px);
 	transition:
 		opacity 700ms ease,
 		transform 700ms ease;
+}
+
+.reveal.reveal-hidden {
+	opacity: 0;
+	transform: translateY(12px);
 	will-change: opacity, transform;
 }
 
@@ -266,16 +270,10 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.reveal {
+	.reveal,
+	.reveal.reveal-hidden {
 		opacity: 1;
 		transform: none;
 		transition: none;
-	}
-}
-
-@media (scripting: none) {
-	.reveal {
-		opacity: 1;
-		transform: none;
 	}
 }

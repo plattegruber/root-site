@@ -45,6 +45,7 @@
 
 	/* Layout */
 	--container-content: 680px;
+	--container-editorial: 860px;
 	--container-page: 1080px;
 }
 
@@ -55,7 +56,9 @@
  * ────────────────────────────────────────────────────────────────────────── */
 :root {
 	--hero-headline-size: 3rem;
+	--hero-display-size: 4.25rem;
 	--hero-subtext-size: 1.1875rem;
+	--price-numeral-size: 3.75rem;
 	--section-v-padding: 6rem;
 	--section-sm-v-padding: 4rem;
 	--hero-top-padding: 6.25rem;
@@ -67,7 +70,9 @@
 @media (max-width: 768px) {
 	:root {
 		--hero-headline-size: 2.25rem;
+		--hero-display-size: 2.75rem;
 		--hero-subtext-size: 1.0625rem;
+		--price-numeral-size: 3rem;
 		--section-v-padding: 4rem;
 		--section-sm-v-padding: 3rem;
 		--hero-top-padding: 4rem;
@@ -80,7 +85,9 @@
 @media (max-width: 480px) {
 	:root {
 		--hero-headline-size: 1.875rem;
+		--hero-display-size: 2.125rem;
 		--hero-subtext-size: 1rem;
+		--price-numeral-size: 2.5rem;
 		--section-v-padding: 3rem;
 		--section-sm-v-padding: 2.5rem;
 		--hero-top-padding: 3rem;
@@ -169,6 +176,12 @@
 	letter-spacing: -0.02em;
 }
 
+@utility text-hero-display {
+	font-size: var(--hero-display-size);
+	line-height: 1.12;
+	letter-spacing: -0.025em;
+}
+
 @utility text-hero-sub {
 	font-size: var(--hero-subtext-size);
 	line-height: 1.65;
@@ -199,4 +212,70 @@
 
 .skip-link:focus {
 	transform: translateY(0);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Editorial layer — paper grain, pricing collapse, and scroll reveals.
+ * Introduced with the editorial homepage; the grain is a body-level texture
+ * so it sits quietly over every page.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+/* Paper grain — a barely-there warm tooth over everything. Fixed,
+ * non-interactive, hidden in print. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	mix-blend-mode: overlay;
+	opacity: 0.5;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
+	background-size: 180px 180px;
+}
+
+@media print {
+	body::before {
+		display: none;
+	}
+}
+
+/* Pricing two-column → single column on the narrowest screens. */
+@media (max-width: 560px) {
+	.pricing-grid {
+		grid-template-columns: 1fr !important;
+		gap: 1.75rem !important;
+	}
+}
+
+/* Scroll reveals — opacity + a small rise. The hidden start state only
+ * applies when JS can clear it and motion is allowed; no-JS, reduced-motion,
+ * and print all show content immediately so nothing stays hidden. */
+.reveal {
+	opacity: 0;
+	transform: translateY(12px);
+	transition:
+		opacity 700ms ease,
+		transform 700ms ease;
+	will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
+@media (scripting: none) {
+	.reveal {
+		opacity: 1;
+		transform: none;
+	}
 }

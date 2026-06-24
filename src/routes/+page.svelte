@@ -9,8 +9,8 @@ canvas rather than two stacked rectangles.
 	import {
 		Hero,
 		Pitch,
+		Why,
 		Pricing,
-		GettingFound,
 		Process,
 		Demos,
 		Contact
@@ -24,8 +24,8 @@ canvas rather than two stacked rectangles.
 
 <main id="main">
 	<Pitch />
+	<Why />
 	<Pricing />
-	<GettingFound />
 	<Process />
 	<Demos />
 	<Contact />

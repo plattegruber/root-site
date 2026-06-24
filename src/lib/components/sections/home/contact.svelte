@@ -10,7 +10,8 @@ for the audience that's most likely to disable scripts (older browsers,
 content blockers, hospital networks).
 -->
 <script lang="ts">
-	import { Container, Button, FormField } from '$lib/components/ui';
+	import { Button, FormField } from '$lib/components/ui';
+	import { EdWrap, MarginRow } from '$lib/components/editorial';
 	import { site } from '$lib/config/site';
 
 	let name = $state('');
@@ -64,88 +65,90 @@ content blockers, hospital networks).
 </script>
 
 <section id="contact" class="bg-ink section-py">
-	<Container>
-		{#if submitted}
-			<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Got it.</h2>
-			<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
-				I’ll be in touch within a day — usually sooner.
-			</p>
-		{:else}
-			<h2 class="mb-8 font-serif text-[28px] leading-[1.25] font-normal text-cream">Say hello</h2>
+	<EdWrap>
+		<MarginRow icon="mail" label="say hello" dark>
+			{#if submitted}
+				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Got it.</h2>
+				<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
+					I’ll be in touch within a day — usually sooner.
+				</p>
+			{:else}
+				<h2 class="mb-8 font-serif text-[28px] leading-[1.25] font-normal text-cream">Say hello</h2>
 
-			<form
-				action="/api/contact"
-				method="POST"
-				novalidate
-				onsubmit={handleSubmit}
-				class="max-w-[400px]"
-			>
-				<!--
+				<form
+					action="/api/contact"
+					method="POST"
+					novalidate
+					onsubmit={handleSubmit}
+					class="max-w-[400px]"
+				>
+					<!--
 					Honeypot — hidden from real users via inert + tab-index,
 					sized to zero, and aria-hidden. Bots that auto-fill every
 					field trip it; the server short-circuits to a 200.
 				-->
-				<div class="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
-					<label>
-						Company
-						<input type="text" name="company" tabindex="-1" autocomplete="off" />
-					</label>
-				</div>
+					<div class="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
+						<label>
+							Company
+							<input type="text" name="company" tabindex="-1" autocomplete="off" />
+						</label>
+					</div>
 
-				<FormField
-					dark
-					name="name"
-					label="Name"
-					autocomplete="name"
-					required
-					error={errors.name}
-					bind:value={name}
-				/>
-				<FormField
-					dark
-					name="email"
-					label="Email"
-					type="email"
-					autocomplete="email"
-					required
-					error={errors.email}
-					bind:value={email}
-				/>
-				<FormField
-					dark
-					name="message"
-					label="Message"
-					multiline
-					rows={4}
-					placeholder="Optional — but happy to hear what's on your mind."
-					bind:value={message}
-				/>
+					<FormField
+						dark
+						name="name"
+						label="Name"
+						autocomplete="name"
+						required
+						error={errors.name}
+						bind:value={name}
+					/>
+					<FormField
+						dark
+						name="email"
+						label="Email"
+						type="email"
+						autocomplete="email"
+						required
+						error={errors.email}
+						bind:value={email}
+					/>
+					<FormField
+						dark
+						name="message"
+						label="Message"
+						multiline
+						rows={4}
+						placeholder="Optional — but happy to hear what's on your mind."
+						bind:value={message}
+					/>
 
-				{#if errors.form}
-					<p class="mb-4 font-sans text-[13px] text-error" role="alert">
-						{errors.form}
+					{#if errors.form}
+						<p class="mb-4 font-sans text-[13px] text-error" role="alert">
+							{errors.form}
+						</p>
+					{/if}
+
+					<Button type="submit" disabled={submitting} class="mt-1">
+						{submitting ? 'Sending…' : 'Send'}
+					</Button>
+				</form>
+
+				<div class="mt-10 border-t border-cream/8 pt-6">
+					<p class="m-0 font-sans text-[15px] leading-[1.55] text-drift">
+						Or email me directly:
+						<a
+							href="mailto:{site.email}"
+							class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
+						>
+							{site.emailDisplay}
+						</a>
 					</p>
-				{/if}
-
-				<Button type="submit" disabled={submitting} class="mt-1">
-					{submitting ? 'Sending…' : 'Send'}
-				</Button>
-			</form>
-
-			<div class="mt-10 border-t border-cream/8 pt-6">
-				<p class="m-0 font-sans text-[15px] leading-[1.55] text-drift">
-					Or email me directly:
-					<a
-						href="mailto:{site.email}"
-						class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
-					>
-						{site.emailDisplay}
-					</a>
-				</p>
-				<p class="mt-2 font-sans text-[15px] leading-[1.55] text-drift">
-					I’ll get back to you within a day — usually sooner.
-				</p>
-			</div>
-		{/if}
-	</Container>
+					<p class="mt-2 font-sans text-[15px] leading-[1.55] text-drift">
+						I’ll get back to you within a day — usually sooner.
+					</p>
+				</div>
+			{/if}
+		</MarginRow>
+	</EdWrap>
 </section>

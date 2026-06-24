@@ -2,70 +2,81 @@
 @component
 Demos teaser — a short pointer from the homepage to the full /demos page.
 
-Leads with a screengrab of the featured (first live) demo so the homepage
-gets a real visual, then links onward to the rest. The whole frame is the
-link into the live site. bg-linen keeps the section-color alternation going
-(it sits between the cream Process section and the ink Contact section).
+Leads with a screengrab of the featured (first live) demo, presented like a
+plate in a book: framed image, then a hairline, then the practice name and a
+"Visit" link. Then a pointer onward to the rest. bg-linen keeps the
+section-color alternation going (between cream Process and ink Contact).
 -->
 <script lang="ts">
-	import { Container } from '$lib/components/ui';
+	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
 	import { demos } from '$lib/config/demos';
 
 	const featured = demos.find((d) => d.url && !d.comingSoon);
 </script>
 
-<section class="bg-linen section-py">
-	<Container>
-		<h2 class="mb-6 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink">
-			See it in action
-		</h2>
-		<p class="mb-10 max-w-[560px] font-sans text-hero-sub text-clay">
-			Here are some example practices you can actually click through — real sites, built top to
-			bottom. Here’s one to start; more on the way.
-		</p>
+<section id="demos" class="bg-linen section-py">
+	<EdWrap>
+		<Reveal>
+			<MarginRow icon="eye" label="see it live">
+				<h2
+					class="mb-5 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
+				>
+					See it in action
+				</h2>
+				<p class="m-0 max-w-[520px] font-sans text-[17px] leading-[1.65] text-clay">
+					A real practice site you can click through, built top to bottom. Here’s one to start —
+					more on the way.
+				</p>
+			</MarginRow>
+		</Reveal>
 
 		{#if featured}
-			<a
-				href={featured.url}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="group block no-underline"
-			>
-				{#if featured.image}
+			<Reveal delay={100} class="mt-12">
+				<figure class="m-0">
+					{#if featured.image}
+						<div class="overflow-hidden rounded-md border border-stone bg-linen">
+							<img
+								src={featured.image}
+								alt={`Screenshot of the ${featured.name} demo site`}
+								width="1440"
+								height="900"
+								loading="lazy"
+								class="block h-auto w-full"
+							/>
+						</div>
+					{/if}
+
 					<div
-						class="overflow-hidden rounded-md border border-stone bg-white shadow-[0_1px_2px_rgba(26,23,21,0.04),0_12px_32px_-12px_rgba(26,23,21,0.18)] transition-[transform,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:shadow-[0_2px_4px_rgba(26,23,21,0.05),0_20px_44px_-14px_rgba(26,23,21,0.24)]"
+						class="mt-[18px] flex items-baseline justify-between gap-4 border-t border-stone pt-[18px]"
 					>
-						<img
-							src={featured.image}
-							alt={`Screenshot of the ${featured.name} demo site`}
-							width="1440"
-							height="900"
-							loading="lazy"
-							class="block h-auto w-full"
-						/>
+						<div>
+							<div class="font-serif text-[22px] leading-tight font-normal text-ink">
+								{featured.name}
+							</div>
+							<div class="mt-1.5 font-mono text-[12px] tracking-[0.02em] text-drift">
+								{featured.category}
+							</div>
+						</div>
+						<a
+							href={featured.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="shrink-0 font-sans text-[15px] font-medium whitespace-nowrap text-root no-underline transition-colors hover:text-root-dark"
+						>
+							Visit ↗
+						</a>
 					</div>
-				{/if}
-				<div class="mt-4 flex items-baseline gap-3">
-					<span
-						class="font-serif text-[20px] leading-tight font-normal text-ink transition-colors duration-150 group-hover:text-root"
-					>
-						{featured.name}
-					</span>
-					<span class="font-mono text-[13px] text-drift">{featured.category}</span>
-					<span
-						aria-hidden="true"
-						class="font-sans text-[15px] text-drift transition-[color,transform] duration-150 group-hover:translate-x-0.5 group-hover:text-root"
-						>↗</span
-					>
-				</div>
-			</a>
+				</figure>
+			</Reveal>
 		{/if}
 
-		<a
-			href="/demos"
-			class="mt-8 inline-block font-sans text-[15px] text-root underline decoration-root/30 underline-offset-2 transition-colors hover:text-root-dark"
-		>
-			See all demos →
-		</a>
-	</Container>
+		<div class="mt-7">
+			<a
+				href="/demos"
+				class="font-sans text-[15px] font-medium text-root underline decoration-root/30 underline-offset-2 transition-colors hover:text-root-dark"
+			>
+				See all demos →
+			</a>
+		</div>
+	</EdWrap>
 </section>

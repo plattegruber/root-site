@@ -5,12 +5,15 @@ type SitemapEntry = { loc: string; lastmod?: string };
 
 /**
  * sitemap.xml — prerendered at build time. Lists the site's
- * canonical, indexable URLs. We omit /thanks (transactional) and
- * /api/* (machine-only) so crawlers don't waste budget on them.
+ * canonical, indexable URLs. We omit /thanks (transactional),
+ * /api/* (machine-only), and /the-boring-stuff (a 301 to
+ * /whats-included) so crawlers don't waste budget on them.
+ *
+ * Order mirrors the primary nav.
  */
 export const prerender = true;
 
-const STATIC = ['/', '/demos', '/about', '/writing'] as const;
+const STATIC = ['/', '/demos', '/about', '/whats-included', '/writing'] as const;
 
 export const GET = async () => {
 	const urls: SitemapEntry[] = [

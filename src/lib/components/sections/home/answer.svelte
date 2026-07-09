@@ -84,10 +84,10 @@ elective, never framed as the better choice; the site stands on its own.
 				<p class={cn(para, 'mt-7 text-[15px]')}>
 					The full list lives on
 					<a
-						href="/the-boring-stuff"
+						href="/whats-included"
 						class="text-root underline decoration-root/30 underline-offset-[3px] transition-colors hover:text-root-dark"
 					>
-						the boring stuff
+						what’s included
 					</a>
 					— everything there comes with every site.
 				</p>

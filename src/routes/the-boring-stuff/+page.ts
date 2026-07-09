@@ -1,10 +1,16 @@
-import { breadcrumbSchema } from '$lib/seo';
+import { redirect } from '@sveltejs/kit';
 
+/**
+ * The page moved to /whats-included. This route exists only to keep the old
+ * URL alive — it was linked from the homepage and the nav for months.
+ *
+ * Prerendering a redirect makes SvelteKit record it in `builder.prerendered
+ * .redirects`, which adapter-cloudflare writes into `_redirects`. Cloudflare's
+ * asset layer serves it, so no Worker is invoked and the 301 survives even
+ * though every page here is static.
+ */
 export const prerender = true;
 
-export const load = () => ({
-	title: 'The boring stuff — root.',
-	description:
-		'The technical stuff a dental website needs — SEO, mobile, speed, hosting, backups, security, accessibility, and domain ownership — handled for you and included in every plan.',
-	jsonld: [breadcrumbSchema([{ name: 'The boring stuff', path: '/the-boring-stuff' }])]
-});
+export const load = () => {
+	redirect(301, '/whats-included');
+};

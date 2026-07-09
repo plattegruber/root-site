@@ -1,14 +1,6 @@
-<script lang="ts">
-	import { Header, Footer } from '$lib/components/layout';
-	import { Hero, List, CTA } from '$lib/components/sections/boring';
-</script>
-
-<Header currentPage="boring" />
-
-<main id="main">
-	<Hero />
-	<List />
-	<CTA />
-</main>
-
-<Footer />
+<!--
+@component
+Never rendered — +page.ts redirects to /whats-included before this loads.
+SvelteKit requires a component for the route to exist, so this is the
+smallest legal one.
+-->

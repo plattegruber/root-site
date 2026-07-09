@@ -1,6 +1,6 @@
 <!--
 @component
-Boring-stuff CTA — a calm linen section inviting questions. Single leather
+What's-included CTA — a calm linen section inviting questions. Single leather
 link to the homepage contact form. The tone stays in character: ask if you
 want to, but you don't have to.
 -->

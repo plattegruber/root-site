@@ -6,20 +6,24 @@
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"assets": {
 		"binding": "ASSETS",
-		"directory": ".svelte-kit/cloudflare",
-		// Run the Worker before serving assets so src/hooks.server.ts can
-		// 301-redirect www → apex (Cloudflare's _redirects file doesn't
-		// allow host patterns). The SvelteKit adapter falls through to the
-		// ASSETS binding for any path it doesn't handle, so static asset
-		// performance is unchanged for the apex.
-		"run_worker_first": true
+		"directory": ".svelte-kit/cloudflare"
+		// No `run_worker_first`: static assets and prerendered pages are served
+		// straight from the edge without invoking the Worker. It used to be true
+		// so a SvelteKit hook could 301 www → apex, but that never worked — the
+		// adapter's worker hands prerendered pages to the ASSETS binding without
+		// running hooks, so the redirect only ever fired on /api/* and 404s. The
+		// www → apex 301 is now a zone-level Redirect Rule (see below).
 	},
 	// Custom domains. Cloudflare provisions DNS + TLS automatically when
-	// the matching zone lives on this account. Both apex and www are
-	// attached so the Worker handles either host; src/hooks.server.ts
-	// 301-redirects www → apex so root.site is the single canonical
-	// hostname for SEO. If the DNS record for www isn't auto-provisioned,
-	// add CNAME `www → root.site` (proxied) in the Cloudflare dashboard.
+	// the matching zone lives on this account. Both apex and www are attached:
+	// www needs the DNS record to exist for the Redirect Rule to match on it.
+	//
+	// www → apex is a zone Redirect Rule ("www → apex", Rules → Redirect Rules),
+	// not code. It's a dynamic 301 to concat("https://root.site",
+	// http.request.uri.path) with the query string preserved, and it runs ahead
+	// of the Worker in Cloudflare's pipeline. root.site is the single canonical
+	// hostname for SEO. Cloudflare's _redirects file can't express this — it has
+	// no host patterns — and a SvelteKit hook can't either (see above).
 	"routes": [
 		{ "pattern": "root.site", "custom_domain": true },
 		{ "pattern": "www.root.site", "custom_domain": true }

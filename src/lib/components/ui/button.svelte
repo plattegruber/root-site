@@ -1,6 +1,8 @@
 <!--
 @component
-Button — primary, secondary, and ghost variants matching the root. design system.
+Button — primary, secondary, secondaryDark, and ghost variants matching the
+root. design system. `secondaryDark` is the outline button for ink bands,
+where `secondary`'s charcoal-on-stone would disappear.
 
 Polymorphic: renders an `<a>` when `href` is set, a `<button>` otherwise. This
 keeps semantics correct (links navigate, buttons act) while letting callers use
@@ -27,6 +29,8 @@ Examples:
 			variant: {
 				primary: 'bg-root text-cream border-root hover:bg-root-dark hover:border-root-dark',
 				secondary: 'bg-transparent text-charcoal border-stone hover:border-clay',
+				secondaryDark:
+					'bg-transparent text-drift border-drift/40 hover:text-cream hover:border-drift',
 				ghost:
 					'bg-transparent text-root border-transparent hover:bg-root/[0.06] hover:text-root-dark px-3.5'
 			},

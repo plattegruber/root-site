@@ -3,16 +3,19 @@
 Homepage — sections sit on top of the global layout. The ink-colored
 hero envelops the Header so the dark band reads as a single piece of
 canvas rather than two stacked rectangles.
+
+The argument runs: idea → problem → answer → how → proof → ask.
 -->
 <script lang="ts">
 	import { Header, Footer } from '$lib/components/layout';
 	import {
 		Hero,
-		Pitch,
-		Why,
-		Pricing,
-		Process,
+		Position,
+		Problem,
+		Answer,
+		HowItWorks,
 		Demos,
+		FinalCta,
 		Contact
 	} from '$lib/components/sections/home';
 </script>
@@ -23,11 +26,12 @@ canvas rather than two stacked rectangles.
 </div>
 
 <main id="main">
-	<Pitch />
-	<Why />
-	<Pricing />
-	<Process />
+	<Position />
+	<Problem />
+	<Answer />
+	<HowItWorks />
 	<Demos />
+	<FinalCta />
 	<Contact />
 </main>
 

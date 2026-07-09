@@ -1,14 +1,15 @@
 <!--
 @component
-Hero — full-bleed ink section with an oversized serif statement.
+Hero — full-bleed ink section that names the category in the first breath.
 
-A mono eyebrow sets the context, the display sentence is given room to
-breathe, and a hairline + mono price line anchor the bottom. No CTA up
-here on purpose: the page sells craft and calm, so the sentence leads.
+A mono eyebrow sets context, the display sentence says plainly what this is,
+and a short subtext draws the line against templates. Two CTAs (review, then
+demos) sit above a hairline and the mono price line, so the offer and its
+price are both legible before a scroll.
 -->
 <script lang="ts">
 	import { EdWrap } from '$lib/components/editorial';
-	import { Divider } from '$lib/components/ui';
+	import { Button, Divider } from '$lib/components/ui';
 </script>
 
 <section class="hero-py">
@@ -18,8 +19,21 @@ here on purpose: the page sells craft and calm, so the sentence leads.
 		</div>
 
 		<h1 class="m-0 max-w-[780px] font-serif text-hero-display font-normal text-balance text-cream">
-			Your website is often the first room a patient walks into.
+			Custom dental websites, kept current.
 		</h1>
+
+		<p class="mt-8 mb-0 max-w-[560px] font-sans text-hero-sub text-pretty text-drift">
+			I build and manage websites for independent dental practices — custom design, Google-ready
+			foundations, ongoing updates. No template pretending to know your office.
+		</p>
+
+		<div class="mt-10 flex flex-wrap gap-3.5">
+			<Button href="#contact">
+				Get a free website review
+				<span aria-hidden="true">→</span>
+			</Button>
+			<Button variant="secondaryDark" href="#demos">See example sites</Button>
+		</div>
 
 		<div class="mt-[52px] max-w-[600px]">
 			<Divider dark />

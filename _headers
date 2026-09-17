@@ -1,6 +1,14 @@
 # Security headers applied to every response.
 # The SvelteKit Cloudflare adapter appends its own immutable-asset rules
 # below this block when it copies static/ into the build.
+#
+# The Content-Security-Policy lives in svelte.config.js (kit.csp), not
+# here. SvelteKit boots every page from an inline <script>, so the policy
+# has to carry a per-page hash for it; a fixed header can't, and a header
+# without one silently blocks hydration (nothing interactive runs — the
+# JS form path, scroll reveals, the mobile menu state). SvelteKit emits the
+# policy as a <meta> tag on prerendered pages. The only directive a <meta>
+# tag can't carry is frame-ancestors, so that one stays here.
 
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -8,7 +16,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.leadsy.ai; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self' https://static.cloudflareinsights.com https://r2.leadsy.ai https://*.leadsy.ai; connect-src 'self' https://cloudflareinsights.com https://*.leadsy.ai; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests
+  Content-Security-Policy: frame-ancestors 'none'
 
 # Sitemap and feeds — let CDNs cache more aggressively
 /sitemap.xml

@@ -20,7 +20,7 @@ export const GET = async () => {
 		...STATIC.map((path) => ({ loc: `${site.url}${path}` })),
 		...posts.map((p) => ({
 			loc: `${site.url}/writing/${p.slug}`,
-			lastmod: p.date
+			lastmod: p.updated
 		}))
 	];
 

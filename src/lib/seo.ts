@@ -60,8 +60,14 @@ export function siteGraph(): JsonLdNode {
 			{
 				'@type': 'Person',
 				'@id': PERSON_ID,
-				name: site.author,
-				url: `${site.url}/about`
+				name: site.person.name,
+				givenName: site.person.givenName,
+				jobTitle: site.person.jobTitle,
+				worksFor: { '@id': ORG_ID },
+				url: `${site.url}/about`,
+				...(site.about.photo.src ? { image: `${site.url}${site.about.photo.src}` } : {}),
+				homeLocation: { '@type': 'Place', name: `${site.person.location}, United States` },
+				...(site.person.sameAs.length ? { sameAs: [...site.person.sameAs] } : {})
 			},
 			{
 				'@type': 'WebSite',
@@ -82,6 +88,8 @@ type ArticleInput = {
 	excerpt: string;
 	/** ISO day, e.g. "2026-05-15". */
 	date: string;
+	/** ISO day of the last substantive edit. */
+	updated: string;
 	slug: string;
 };
 
@@ -99,7 +107,7 @@ export function articleSchema(post: ArticleInput): JsonLdNode {
 		headline: post.title,
 		description: post.excerpt,
 		datePublished: post.date,
-		dateModified: post.date,
+		dateModified: post.updated,
 		author: { '@id': PERSON_ID },
 		publisher: { '@id': ORG_ID },
 		image: `${site.url}/og.png`,

@@ -1,6 +1,7 @@
 ---
 title: 'What Is a New Dental Patient Actually Worth?'
 date: 2026-07-27
+updated: 2026-09-16
 excerpt: The $4,220 figure everyone quotes comes from one 2017 article. Here's what it actually measured, why it's gross production rather than profit, and a defensible number.
 faq:
   - q: 'What is a new dental patient worth?'
@@ -113,7 +114,7 @@ Three things follow, and none of them are "so don't market."
 
 **Notice that retention is cheaper than acquisition.** The average practice has 46% of its active patients with nothing on the books. Fixing that is free relative to buying new patients, and it moves the same number.
 
-And the honest self-interested note: at roughly $1,200–$2,000 of contribution per patient, a website costing $250 a month pays for itself if it brings in about two patients a year. I'd rather you do that math with the real figure than a flattering one. If it doesn't work out, don't buy the website.
+And the honest self-interested note: at roughly $1,200–$2,000 of contribution per patient, a website costing $149 a month — $1,788 a year — pays for itself if it brings in one or two patients a year. I'd rather you do that math with the real figure than a flattering one. If it doesn't work out, don't buy the website.
 
 If you want help figuring out where your patients are actually coming from, [get in touch](https://root.site/#contact). No pressure either way.
 

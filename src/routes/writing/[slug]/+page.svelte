@@ -10,6 +10,7 @@ section having to know about heading levels in advance.
 <script lang="ts">
 	import { Header, Footer } from '$lib/components/layout';
 	import { Container } from '$lib/components/ui';
+	import { site } from '$lib/config/site';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -30,6 +31,19 @@ section having to know about heading levels in advance.
 				>
 					{post.title}
 				</h1>
+				<p class="mt-4 mb-0 font-sans text-[14px] leading-[1.5] text-clay">
+					By <a
+						href="/about"
+						rel="author"
+						class="text-charcoal underline decoration-stone underline-offset-[3px] transition-colors hover:text-root"
+						>{site.person.name}</a
+					>, {site.person.jobTitle.toLowerCase()} of root.
+					{#if post.updated !== post.date}
+						<span class="text-drift">
+							· Updated <time datetime={post.updated}>{post.updatedDisplay}</time></span
+						>
+					{/if}
+				</p>
 			</header>
 
 			<div class="prose">

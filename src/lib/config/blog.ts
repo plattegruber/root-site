@@ -26,6 +26,12 @@ export type PostMetadata = {
 	title: string;
 	date: string | Date;
 	excerpt: string;
+	/**
+	 * Optional last-substantive-edit date. Becomes `dateModified` in the
+	 * Article schema and `lastmod` in the sitemap, so a corrected post
+	 * signals freshness without lying about when it was published.
+	 */
+	updated?: string | Date;
 	draft?: boolean;
 	/**
 	 * Optional Q&A pairs. When present, the [slug] page emits FAQPage
@@ -40,10 +46,13 @@ export type PostModule = {
 	metadata: PostMetadata;
 };
 
-export type PostSummary = Omit<PostMetadata, 'date'> & {
+export type PostSummary = Omit<PostMetadata, 'date' | 'updated'> & {
 	slug: string;
 	date: string;
 	dateDisplay: string;
+	/** ISO day of the last substantive edit; equals `date` if never updated. */
+	updated: string;
+	updatedDisplay: string;
 };
 
 /**
@@ -80,11 +89,14 @@ function formatDate(isoDay: string): string {
 export const posts: PostSummary[] = Object.entries(modules)
 	.map(([path, mod]) => {
 		const date = toIsoDate(mod.metadata.date);
+		const updated = mod.metadata.updated ? toIsoDate(mod.metadata.updated) : date;
 		return {
 			...mod.metadata,
 			slug: slugFromPath(path),
 			date,
-			dateDisplay: formatDate(date)
+			dateDisplay: formatDate(date),
+			updated,
+			updatedDisplay: formatDate(updated)
 		};
 	})
 	.filter((p) => !p.draft || import.meta.env.DEV)

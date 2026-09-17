@@ -12,7 +12,24 @@ export const site = {
 	url: 'https://root.site',
 	email: 'platte@root.site',
 	emailDisplay: 'platte@root.site',
-	author: 'Platte',
+	/** Display name used in bylines, meta author tags, and Person schema. */
+	author: 'Platte Gruber',
+	/**
+	 * The person behind root. One identity, used everywhere a name appears:
+	 * the About page intro, article bylines, `meta name="author"`, and the
+	 * Person node in the sitewide JSON-LD graph. Add established profile
+	 * URLs (LinkedIn, GitHub, etc.) to `sameAs` so search and AI engines can
+	 * tie the name here to the same person elsewhere.
+	 */
+	person: {
+		name: 'Platte Gruber',
+		givenName: 'Platte',
+		jobTitle: 'Founder',
+		/** Where root is run from. Shown on About and in schema. */
+		location: 'Colorado',
+		/** Public profile URLs for the same person. Empty until added. */
+		sameAs: [] as readonly string[]
+	},
 	twitter: undefined,
 	locale: 'en_US',
 	year: new Date().getFullYear(),
@@ -44,6 +61,11 @@ export const pricing = {
 		limit: 10
 	}
 } as const;
+
+/** `$149` — the standard price, formatted for prose and titles. */
+export const price = `$${pricing.monthly}`;
+/** `$100` — the founding price, formatted for prose and titles. */
+export const foundingPrice = `$${pricing.founding.monthly}`;
 
 export const nav = [
 	{ label: 'Home', href: '/', id: 'home' },

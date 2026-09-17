@@ -29,6 +29,7 @@ section without a visual seam.
 	const ogImageAlt = $derived(page.data?.ogImageAlt ?? site.title);
 	const noindex = $derived(page.data?.noindex === true);
 	const publishedTime = $derived(page.data?.publishedTime as string | undefined);
+	const modifiedTime = $derived(page.data?.modifiedTime as string | undefined);
 	const pageJsonld = $derived((page.data?.jsonld ?? []) as Record<string, unknown>[]);
 	const cfAnalyticsToken = env.PUBLIC_CF_ANALYTICS_TOKEN;
 </script>
@@ -57,6 +58,9 @@ section without a visual seam.
 		<!-- Article-specific OG: lets social/AI parsers date and attribute the post. -->
 		{#if publishedTime}
 			<meta property="article:published_time" content={publishedTime} />
+		{/if}
+		{#if modifiedTime && modifiedTime !== publishedTime}
+			<meta property="article:modified_time" content={modifiedTime} />
 		{/if}
 		<meta property="article:author" content={site.author} />
 	{/if}

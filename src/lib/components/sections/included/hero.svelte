@@ -8,7 +8,9 @@ explains the grey jargon labels in the list below.
 -->
 <script lang="ts">
 	import { Container } from '$lib/components/ui';
-	import { pricing } from '$lib/config/site';
+	import { pricing, price, foundingPrice } from '$lib/config/site';
+
+	const { founding } = pricing;
 </script>
 
 <section class="section-py" style="padding-bottom: var(--section-sm-v-padding)">
@@ -17,9 +19,20 @@ explains the grey jargon labels in the list below.
 			Everything your practice’s website and Google presence need, without making it your job.
 		</h1>
 		<p class="m-0 mb-4 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay">
-			There is one service and one price: ${pricing.monthly} a month, no setup fee, no contract. Every
-			item on this page comes with it. Yes, it’s included. No, you don’t have to manage it.
+			There is one service and one price: {price} a month, no setup fee, no contract. Every item on this
+			page comes with it. Yes, it’s included. No, you don’t have to manage it.
 		</p>
+		{#if founding.active}
+			<p class="m-0 mb-4 max-w-[520px] font-sans text-[15px] leading-[1.6] text-pretty text-clay">
+				The first {founding.limit} practices get the same service for {foundingPrice} a month, locked
+				in for as long as they stay.
+				<a
+					href="/#pricing"
+					class="text-root underline decoration-root/30 underline-offset-[3px] transition-colors hover:text-root-dark"
+					>Details on the homepage.</a
+				>
+			</p>
+		{/if}
 		<p class="m-0 max-w-[520px] font-sans text-[15px] leading-[1.6] text-pretty text-drift">
 			Where the industry has a name for something, it’s in grey next to ours. Useful if you’re
 			comparing root to the big companies.

@@ -3,6 +3,10 @@
 About story — the "space in between" positioning, with a 200×240
 portrait alongside.
 
+Opens by introducing the person behind root by name and location (from
+`site.person`), so the page names who is accountable before it explains
+the philosophy.
+
 If `site.about.photo.src` is set, renders the photo (lazy-loaded, with
 explicit dimensions to prevent layout shift). Otherwise renders a calm
 linen-colored placeholder so the page composition is intact.
@@ -41,6 +45,11 @@ linen-colored placeholder so the page composition is intact.
 
 			<div class="min-w-[280px] flex-1">
 				<div class="flex flex-col gap-4">
+					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
+						I’m {site.person.name}. I run root from {site.person.location}, and I’m the person who
+						builds, writes, and looks after every site here. There is no one else to be handed off
+						to.
+					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
 						root exists for one kind of customer: the dentist who owns and runs an independent
 						practice. Most of the ways that dentist can get a website ask for a tradeoff.

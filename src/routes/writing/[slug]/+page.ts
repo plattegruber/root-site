@@ -25,6 +25,7 @@ export const load: PageLoad = async ({ params }) => {
 		// published-time/author, plus Article + breadcrumb JSON-LD.
 		ogType: 'article',
 		publishedTime: post.date,
+		modifiedTime: post.updated,
 		ogImageAlt: post.title,
 		jsonld: [
 			articleSchema(post),

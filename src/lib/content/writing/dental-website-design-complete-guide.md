@@ -1,6 +1,7 @@
 ---
 title: 'Dental Website Design: The Complete Guide for Practice Owners (2026)'
 date: 2026-06-08
+updated: 2026-09-16
 excerpt: What dental website design actually involves in 2026 — what it should cost, what a site really needs, and how to avoid paying thousands for a template.
 faq:
   - q: 'How much does a dental website cost in 2026?'
@@ -73,7 +74,7 @@ Second, watch the ongoing column. That $300–$2,500/month is where the real mon
 
 Third — and I'd say this even though it's my own model — there's a real difference between paying _for_ a website and _renting_ one. Some arrangements are a flat monthly fee where the site is built for you and maintained, with no contract. Others are a lease where you stop paying and the site goes dark. Those look identical on a pricing page and are completely different things. More on that below.
 
-For the record: I charge $250 a month, flat, with no setup fee and no contract. I'm not putting that here to sell you — I'm putting it here because almost nobody in this industry will give you a straight number, and you deserve at least one to compare against.
+For the record: I charge $149 a month, flat, with no setup fee and no contract, and that includes managing your Google Business Profile. I'm not putting that here to sell you — I'm putting it here because almost nobody in this industry will give you a straight number, and you deserve at least one to compare against.
 
 ## What does a dental website actually need?
 
@@ -166,7 +167,7 @@ I build each site by hand, charge one flat monthly fee, host it, keep it fast, a
 ## Frequently asked questions
 
 **How much does a dental website cost in 2026?**
-Most small practices pay between $4,000 and $8,000 for a custom build, with fully custom sites running $8,000–$20,000 or more, plus ongoing costs of roughly $300–$2,500 a month. The market overall spans about $3,500 to $30,000+. The wide range is mostly driven by company overhead and contract structure, not quality. A flat monthly model (mine is $250/month, no contract) is one way to make the real, all-in cost easy to compare.
+Most small practices pay between $4,000 and $8,000 for a custom build, with fully custom sites running $8,000–$20,000 or more, plus ongoing costs of roughly $300–$2,500 a month. The market overall spans about $3,500 to $30,000+. The wide range is mostly driven by company overhead and contract structure, not quality. A flat monthly model (mine is $149/month, no setup fee, no contract) is one way to make the real, all-in cost easy to compare.
 
 **What makes a dental website "good"?**
 Four things: it loads fast, it builds trust quickly with real photos and real reviews, it answers the obvious questions (hours, location, insurance), and it makes booking easy. A plain site that does all four beats a flashy one that doesn't.

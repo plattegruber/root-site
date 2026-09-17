@@ -9,7 +9,7 @@ About hero — a short slogan, no decoration.
 <section class="section-py" style="padding-bottom: var(--section-sm-v-padding)">
 	<Container>
 		<h1 class="m-0 font-serif text-page-title font-normal text-ink">
-			Your dental website, handled.
+			Your website and Google presence, taken care of.
 		</h1>
 	</Container>
 </section>

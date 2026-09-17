@@ -5,6 +5,6 @@ export const prerender = true;
 export const load = () => ({
 	title: 'About — root.',
 	description:
-		'One person, building websites for dental practices. Custom design, fair pricing, no agency middlemen.',
+		'The person behind root, the dental web agency for solo practices. Custom websites and Google presence, taken care of, with no agency middlemen.',
 	jsonld: [breadcrumbSchema([{ name: 'About', path: '/about' }])]
 });

@@ -15,15 +15,15 @@ so the copy can stay conversational.
 		},
 		{
 			title: 'I do the homework',
-			text: 'I look at your current site, your reviews, your area. I come back with a plan: what I’d build, what it’d look like, and why.'
+			text: 'I look at your current site, your Google Business Profile, your reviews, your area. I come back with a plan: what I’d build, what it’d look like, and why.'
 		},
 		{
 			title: 'I build it',
-			text: 'Custom design, built from scratch. Not a template. You see drafts along the way and tell me what you think. Takes about two weeks.'
+			text: 'Custom design, built from scratch. Not a template. You see drafts along the way and tell me what you think. I set up your Google presence to match before launch.'
 		},
 		{
 			title: 'Then I take care of it',
-			text: 'Hosting, speed, security, updates. You email me when you need something changed, and I change it. That’s the whole arrangement.'
+			text: 'Hosting, security, updates, and your Google Business Profile. You email me when something changes, and I change it. That’s the whole arrangement.'
 		}
 	];
 </script>

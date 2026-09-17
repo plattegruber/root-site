@@ -5,6 +5,6 @@ export const prerender = true;
 export const load = () => ({
 	title: 'What’s included — root.',
 	description:
-		'Everything that comes with a root. dental website: custom design, coordinated photography, pages built around patient questions, local SEO, mobile, speed, hosting, backups, security, accessibility, and domain ownership. All in one flat fee.',
+		'Everything that comes with root: a custom website, hosting and maintenance, updates handled for you, Google Business Profile management, and local search fundamentals. One monthly price, no setup fee, no contract.',
 	jsonld: [breadcrumbSchema([{ name: 'What’s included', path: '/whats-included' }])]
 });

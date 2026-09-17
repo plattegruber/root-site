@@ -4,8 +4,8 @@ Demos teaser — a short pointer from the homepage to the full /demos page.
 
 Leads with a screengrab of the featured (first live) demo, presented like a
 plate in a book: framed image, then a hairline, then the practice name and a
-"Visit" link. Then a pointer onward to the rest. bg-linen keeps the
-section-color alternation going (between cream Process and ink Contact).
+"Visit" link. Then a pointer onward to the rest. Real work beats generic
+photography, so this is the one visual the homepage spends space on.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -14,18 +14,18 @@ section-color alternation going (between cream Process and ink Contact).
 	const featured = demos.find((d) => d.url && !d.comingSoon);
 </script>
 
-<section id="demos" class="bg-linen section-py">
+<section id="demos" class="section-py">
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="eye" label="see it live">
 				<h2
 					class="mb-5 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 				>
-					See it in action
+					What one looks like.
 				</h2>
 				<p class="m-0 max-w-[520px] font-sans text-[17px] leading-[1.65] text-clay">
-					A real practice site you can click through, built top to bottom. Here’s one to start —
-					more on the way.
+					An example practice site you can click through, built top to bottom. Yours would be
+					designed around your practice, not this one.
 				</p>
 			</MarginRow>
 		</Reveal>

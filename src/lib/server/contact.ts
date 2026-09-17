@@ -14,6 +14,10 @@
 export type ContactSubmission = {
 	name: string;
 	email: string;
+	/** Optional qualification fields from the homepage form. */
+	practice: string;
+	website: string;
+	location: string;
 	message: string;
 };
 
@@ -24,6 +28,7 @@ export type ValidationResult =
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
+const MAX_SHORT = 200;
 const MAX_MESSAGE = 4000;
 
 export function validate(input: Partial<Record<string, unknown>>): ValidationResult {
@@ -31,6 +36,9 @@ export function validate(input: Partial<Record<string, unknown>>): ValidationRes
 
 	const name = String(input.name ?? '').trim();
 	const email = String(input.email ?? '').trim();
+	const practice = String(input.practice ?? '').trim();
+	const website = String(input.website ?? '').trim();
+	const location = String(input.location ?? '').trim();
 	const message = String(input.message ?? '').trim();
 
 	if (!name) errors.name = 'Name is required';
@@ -41,10 +49,13 @@ export function validate(input: Partial<Record<string, unknown>>): ValidationRes
 		errors.email = 'Enter a valid email';
 	}
 
+	if (practice.length > MAX_SHORT) errors.practice = 'Practice name is too long';
+	if (website.length > MAX_SHORT) errors.website = 'Website is too long';
+	if (location.length > MAX_SHORT) errors.location = 'Location is too long';
 	if (message.length > MAX_MESSAGE) errors.message = 'Message is too long';
 
 	if (Object.keys(errors).length > 0) return { ok: false, errors };
-	return { ok: true, value: { name, email, message } };
+	return { ok: true, value: { name, email, practice, website, location, message } };
 }
 
 /**
@@ -71,6 +82,22 @@ export type ContactEnv = {
 	CONTACT_FROM?: string;
 };
 
+/**
+ * Plain-text block of the optional practice fields, one per line, blanks
+ * omitted. Shared by the email body and the Airtable note so the two
+ * records always say the same thing.
+ */
+export function practiceDetails(submission: ContactSubmission): string {
+	return [
+		['Practice', submission.practice],
+		['Website', submission.website],
+		['Location', submission.location]
+	]
+		.filter(([, v]) => v)
+		.map(([k, v]) => `${k}: ${v}`)
+		.join('\n');
+}
+
 /** Default no-op deliverer — logs to the Worker console and returns. */
 export const noopDeliverer: Deliverer = async (submission) => {
 	console.log('[contact] submission received (no backend configured):', {
@@ -85,6 +112,8 @@ export const noopDeliverer: Deliverer = async (submission) => {
  * Airtable deliverer — appends a row to the configured base/table.
  * Field names default to "Name", "Email", "Message", "Received" so they
  * line up with a typical Airtable base; adjust if your schema differs.
+ * The optional practice fields are folded into "Message" rather than sent
+ * as their own columns, so the base needs no schema change to accept them.
  *
  * Activate by setting AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME
  * via `wrangler secret put` and picking this deliverer in +server.ts.
@@ -106,7 +135,7 @@ export const airtableDeliverer: Deliverer = async (submission, env) => {
 			fields: {
 				Name: submission.name,
 				Email: submission.email,
-				Message: submission.message,
+				Message: [practiceDetails(submission), submission.message].filter(Boolean).join('\n\n'),
 				Received: new Date().toISOString()
 			}
 		})
@@ -128,9 +157,11 @@ export const resendDeliverer: Deliverer = async (submission, env) => {
 		throw new Error('Resend env vars missing');
 	}
 
+	const details = practiceDetails(submission);
 	const text = [
 		`Name: ${submission.name}`,
 		`Email: ${submission.email}`,
+		...(details ? [details] : []),
 		'',
 		submission.message || '(no message)'
 	].join('\n');
@@ -145,7 +176,7 @@ export const resendDeliverer: Deliverer = async (submission, env) => {
 			from: CONTACT_FROM ?? 'root. <hello@root.site>',
 			to: CONTACT_TO.split(',').map((s) => s.trim()),
 			reply_to: submission.email,
-			subject: `Contact form — ${submission.name}`,
+			subject: `New practice inquiry — ${submission.practice || submission.name}`,
 			text
 		})
 	});

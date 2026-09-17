@@ -13,7 +13,7 @@ already laid out the offer.
 	<Container>
 		<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Interested?</h2>
 		<p class="mb-6 max-w-[440px] font-sans text-[17px] leading-[1.6] text-drift">
-			Happy to walk you through how it works if you’re curious. No pressure either way.
+			Tell me about your practice and I’ll come back with what I’d build. No pressure either way.
 		</p>
 		<a
 			href="/#contact"

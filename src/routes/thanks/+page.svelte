@@ -16,7 +16,7 @@ the in-place confirmation the JS path renders.
 	<Container>
 		<h1 class="mb-4 font-serif text-[36px] leading-[1.2] font-normal text-cream">Got it.</h1>
 		<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
-			I’ll be in touch within a day — usually sooner.
+			We’ll be in touch within a day, usually sooner.
 		</p>
 		<p class="mt-8 font-sans text-[15px]">
 			<a

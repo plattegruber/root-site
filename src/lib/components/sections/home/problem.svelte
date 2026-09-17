@@ -1,47 +1,52 @@
 <!--
 @component
-Problem — the three places dental websites come from, and what each costs you.
+Problem — solo dentists shouldn't need to become web marketers.
 
-Sits on the same cream band as Position with no top padding, so the idea and
-the problem read as two beats of one thought rather than separate sections.
-The closing line is the hinge into the Answer.
+Names the three places a practice website usually comes from and what each
+one hands back to the dentist. The closing line is the hinge into what root
+takes care of.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
 	import TermList from './term-list.svelte';
 
-	const buckets = [
+	const alternatives = [
 		{
-			term: 'Template platforms',
-			text: 'Cheap and fast, but your site looks like a thousand other practices — and updating it becomes your job.'
+			term: 'Big marketing firms',
+			text: 'Packages, contracts, and upsells. Your website is one line item in a bundle built for practices much larger than yours.'
 		},
 		{
-			term: 'One-time freelancers',
-			text: 'A custom build, then silence. The site slowly goes stale and nobody answers the email.'
+			term: 'Freelancers',
+			text: 'A nice site at launch, then silence. The next time your hours change, there’s nobody to email.'
 		},
 		{
-			term: 'Marketing agencies',
-			text: 'A big team and a big invoice — bundles, dashboards, and a website that’s a line item in a package you didn’t ask for.'
+			term: 'DIY website tools',
+			text: 'Cheap to start, but now you own the hosting, the updates, the plugins, and the Google listing. It all becomes your job.'
 		}
 	];
 </script>
 
-<section style="padding-bottom: var(--section-v-padding)">
+<section class="section-py">
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="signpost" label="the problem">
 				<h2
 					class="mb-6 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 				>
-					Dental websites usually come from one of three places.
+					You have a practice to run.
 				</h2>
+				<p class="mb-8 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay">
+					Your website shouldn’t become another piece of software your team has to manage. But most
+					of the ways to get one leave you holding it.
+				</p>
 
-				<TermList items={buckets} />
+				<TermList items={alternatives} />
 
 				<p
 					class="mt-6 mb-0 max-w-[520px] font-sans text-[17px] leading-[1.65] font-medium text-charcoal"
 				>
-					Each one trades away something a practice actually needs.
+					root sits in between. We build it, host it, keep it current, and handle your presence on
+					Google.
 				</p>
 			</MarginRow>
 		</Reveal>

@@ -49,7 +49,13 @@ export function siteGraph(): JsonLdNode {
 				},
 				founder: { '@id': PERSON_ID },
 				areaServed: { '@type': 'Country', name: 'United States' },
-				knowsAbout: ['Dental practice websites', 'Web design', 'Web development']
+				knowsAbout: [
+					'Dental practice websites',
+					'Google Business Profile management',
+					'Local SEO for dental practices',
+					'Web design',
+					'Web development'
+				]
 			},
 			{
 				'@type': 'Person',

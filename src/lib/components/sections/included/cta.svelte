@@ -14,7 +14,7 @@ want to, but you don't have to.
 			Questions about any of this?
 		</h2>
 		<p class="mb-6 max-w-[440px] font-sans text-[17px] leading-[1.6] text-clay">
-			Ask. I like talking about this stuff — you just don’t have to.
+			Ask. We like talking about this stuff. You just don’t have to.
 		</p>
 		<a
 			href="/#contact"

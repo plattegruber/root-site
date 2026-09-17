@@ -10,8 +10,8 @@ Demos hero — page title plus single-line description.
 	<Container>
 		<h1 class="mb-3 font-serif text-page-title font-normal text-ink">Demos</h1>
 		<p class="m-0 max-w-[560px] font-sans text-[17px] leading-[1.6] text-clay">
-			Example practices, built end to end. Click around — they’re real sites, you just can’t book a
-			real appointment.
+			Example practices, built end to end. Click around. They’re real sites, you just can’t book a
+			real appointment. Yours would be designed around your own practice.
 		</p>
 	</Container>
 </section>

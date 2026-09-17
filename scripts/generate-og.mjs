@@ -46,17 +46,17 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 		<text
 			y="180"
 			font-family="Instrument Serif, Georgia, serif"
-			font-size="64"
+			font-size="56"
 			fill="${CHARCOAL}"
 			letter-spacing="-1"
-		>Websites for dental practices.</text>
+		>The dental web agency for solo practices.</text>
 
 		<text
 			y="280"
 			font-family="-apple-system, system-ui, sans-serif"
 			font-size="28"
 			fill="${CLAY}"
-		>$250 a month. Everything included.</text>
+		>Your website and Google presence, taken care of.</text>
 	</g>
 
 	<text

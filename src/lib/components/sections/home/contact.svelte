@@ -8,6 +8,9 @@ the same calm confirmation message the no-JS path would show. The
 behavior matches whether JS is available or not, so the lights stay on
 for the audience that's most likely to disable scripts (older browsers,
 content blockers, hospital networks).
+
+Fields: name and email are required; practice name, current website,
+location, and a free-text note are optional so the form stays low-friction.
 -->
 <script lang="ts">
 	import { Button, FormField } from '$lib/components/ui';
@@ -15,6 +18,9 @@ content blockers, hospital networks).
 	import { site } from '$lib/config/site';
 
 	let name = $state('');
+	let practice = $state('');
+	let website = $state('');
+	let location = $state('');
 	let email = $state('');
 	let message = $state('');
 	let errors = $state<{ name?: string; email?: string; form?: string }>({});
@@ -44,7 +50,7 @@ content blockers, hospital networks).
 					'Content-Type': 'application/json',
 					Accept: 'application/json'
 				},
-				body: JSON.stringify({ name, email, message })
+				body: JSON.stringify({ name, practice, website, location, email, message })
 			});
 
 			if (!res.ok) {
@@ -66,21 +72,26 @@ content blockers, hospital networks).
 
 <section id="contact" class="bg-ink section-py">
 	<EdWrap>
-		<MarginRow icon="mail" label="say hello" dark>
+		<MarginRow icon="mail" label="get started" dark>
 			{#if submitted}
 				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Got it.</h2>
 				<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
-					I’ll be in touch within a day — usually sooner.
+					We’ll be in touch within a day, usually sooner.
 				</p>
 			{:else}
-				<h2 class="mb-8 font-serif text-[28px] leading-[1.25] font-normal text-cream">Say hello</h2>
+				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">
+					Tell us about your practice.
+				</h2>
+				<p class="mb-8 max-w-[440px] font-sans text-[17px] leading-[1.6] text-drift">
+					A name and an email is enough. The rest helps us come back with something specific.
+				</p>
 
 				<form
 					action="/api/contact"
 					method="POST"
 					novalidate
 					onsubmit={handleSubmit}
-					class="max-w-[400px]"
+					class="max-w-[440px]"
 				>
 					<!--
 					Honeypot — hidden from real users via inert + tab-index,
@@ -97,7 +108,7 @@ content blockers, hospital networks).
 					<FormField
 						dark
 						name="name"
-						label="Name"
+						label="Your name"
 						autocomplete="name"
 						required
 						error={errors.name}
@@ -115,11 +126,34 @@ content blockers, hospital networks).
 					/>
 					<FormField
 						dark
+						name="practice"
+						label="Practice name"
+						autocomplete="organization"
+						bind:value={practice}
+					/>
+					<FormField
+						dark
+						name="website"
+						label="Current website"
+						type="url"
+						autocomplete="url"
+						placeholder="Optional — if you have one"
+						bind:value={website}
+					/>
+					<FormField
+						dark
+						name="location"
+						label="City and state"
+						autocomplete="address-level2"
+						bind:value={location}
+					/>
+					<FormField
+						dark
 						name="message"
-						label="Message"
+						label="Anything you want us to know"
 						multiline
 						rows={4}
-						placeholder="Optional — but happy to hear what's on your mind."
+						placeholder="Optional"
 						bind:value={message}
 					/>
 
@@ -136,7 +170,7 @@ content blockers, hospital networks).
 
 				<div class="mt-10 border-t border-cream/8 pt-6">
 					<p class="m-0 font-sans text-[15px] leading-[1.55] text-drift">
-						Or email me directly:
+						Or just email us:
 						<a
 							href="mailto:{site.email}"
 							class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
@@ -145,7 +179,7 @@ content blockers, hospital networks).
 						</a>
 					</p>
 					<p class="mt-2 font-sans text-[15px] leading-[1.55] text-drift">
-						I’ll get back to you within a day — usually sooner.
+						We’ll get back to you within a day, usually sooner.
 					</p>
 				</div>
 			{/if}

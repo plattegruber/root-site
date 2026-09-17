@@ -42,7 +42,8 @@ linen-colored placeholder so the page composition is intact.
 			<div class="min-w-[280px] flex-1">
 				<div class="flex flex-col gap-4">
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
-						Most dental website options ask you to make a tradeoff.
+						root exists for one kind of customer: the dentist who owns and runs an independent
+						practice. Most of the ways that dentist can get a website ask for a tradeoff.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 						You can go with a big dental marketing company. You’ll get a process, a platform, and
@@ -53,24 +54,24 @@ linen-colored placeholder so the page composition is intact.
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 						You can go with a freelance designer. That can work too. You pay once, get a
 						nice-looking site, and then hope you know what to do the next time a provider leaves,
-						your hours change, a form needs updating, or Google decides your site is suddenly too
-						slow.
+						your hours change, a form needs updating, or your Google listing quietly goes stale.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-charcoal">
 						root is built for the space in between.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 						I build the site by hand, with your actual practice in mind. Then I keep taking care of
-						it. Not in a “submit a ticket and wait” way. More like: email me when something changes,
-						and I’ll help.
+						it, and of your Google Business Profile alongside it. Not in a “submit a ticket and
+						wait” way. More like: email me when something changes, and I’ll handle it.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
 						I’m not trying to rebrand your practice, bury you in strategy, or convince you that your
 						dental office needs to become a media company.
 					</p>
 					<p class="m-0 font-sans text-[17px] leading-[1.65] text-clay">
-						I’m here to give you a website that feels current, stays useful, and doesn’t become one
-						more thing you have to manage.
+						I’m here so your website and your Google presence are taken care of, and stop being one
+						more thing you have to manage. Small on purpose: one practice, one website, one
+						relationship, one monthly price.
 					</p>
 				</div>
 			</div>

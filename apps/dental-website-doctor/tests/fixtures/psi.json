@@ -1,0 +1,30 @@
+{
+	"fixture": true,
+	"analysisUTCTimestamp": "2026-10-01T12:00:00.000Z",
+	"lighthouseResult": {
+		"lighthouseVersion": "SIMULATED-13",
+		"finalUrl": "https://maple-grove.example/",
+		"configSettings": {
+			"formFactor": "mobile",
+			"throttlingMethod": "simulate",
+			"throttling": { "rttMs": 150, "cpuSlowdownMultiplier": 4 }
+		},
+		"environment": { "networkUserAgent": "SIMULATED fixture; no live Lighthouse run" },
+		"audits": {
+			"first-contentful-paint": { "numericValue": 1800 },
+			"largest-contentful-paint": { "numericValue": 4800 },
+			"speed-index": { "numericValue": 4100 },
+			"total-blocking-time": { "numericValue": 430 },
+			"cumulative-layout-shift": { "numericValue": 0.08 }
+		}
+	},
+	"loadingExperience": { "metrics": {} },
+	"originLoadingExperience": {
+		"id": "https://maple-grove.example",
+		"metrics": {
+			"LARGEST_CONTENTFUL_PAINT_MS": { "percentile": 3100, "category": "AVERAGE" },
+			"CUMULATIVE_LAYOUT_SHIFT_SCORE": { "percentile": 8, "category": "FAST" },
+			"INTERACTION_TO_NEXT_PAINT": { "percentile": 220, "category": "AVERAGE" }
+		}
+	}
+}

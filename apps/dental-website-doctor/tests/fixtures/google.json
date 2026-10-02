@@ -1,0 +1,27 @@
+{
+	"id": "FICTIONAL_MAPLE_GROVE",
+	"displayName": { "text": "Maple Grove Dental" },
+	"formattedAddress": "12 Maple Lane, Brookfield, CO 80000",
+	"websiteUri": "https://maple-grove.example/",
+	"googleMapsUri": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+	"nationalPhoneNumber": "(555) 010-0123",
+	"internationalPhoneNumber": "+1 555-010-0123",
+	"primaryType": "dentist",
+	"types": ["dentist", "health", "point_of_interest"],
+	"businessStatus": "OPERATIONAL",
+	"regularOpeningHours": {
+		"weekdayDescriptions": [
+			"Monday: 9:00 AM – 5:00 PM",
+			"Tuesday: 9:00 AM – 5:00 PM",
+			"Wednesday: 9:00 AM – 5:00 PM",
+			"Thursday: 9:00 AM – 5:00 PM",
+			"Friday: 9:00 AM – 5:00 PM",
+			"Saturday: Closed",
+			"Sunday: Closed"
+		]
+	},
+	"rating": 4.6,
+	"userRatingCount": 27,
+	"reviews": [{ "rating": 5, "publishTime": "2026-09-01T00:00:00Z" }],
+	"photos": [{ "authorAttributions": [] }]
+}

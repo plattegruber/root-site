@@ -4,6 +4,10 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"doctor:dev": "pnpm --dir apps/dental-website-doctor dev",
+		"doctor:build": "pnpm --dir apps/dental-website-doctor build",
+		"doctor:test": "pnpm --dir apps/dental-website-doctor test",
+		"doctor:sample": "pnpm --dir apps/dental-website-doctor sample",
 		"dev": "vite dev",
 		"build": "wrangler types && vite build",
 		"preview": "wrangler dev .svelte-kit/cloudflare/_worker.js --port 4173",

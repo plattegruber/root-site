@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta
+			name="description"
+			content="An evidence-grounded dental website and public Google presence assessment by root.site."
+		/>
+		<title>Dental Website Doctor · root.site</title>
+		<link rel="stylesheet" href="/styles.css" />
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<a class="skip" href="#main">Skip to assessment</a>
+		<header class="site-header">
+			<a href="/" class="wordmark" aria-label="Dental Website Doctor home">root<span>.</span></a
+			><span>Dental Website Doctor</span><span class="tag">local V0</span>
+		</header>
+		<main id="main">
+			<section class="intro">
+				<p class="eyebrow">A clearer picture of your online practice</p>
+				<h1>See your website<br />through a patient’s eyes.</h1>
+				<p class="lede">
+					Practical patient journeys, your public Google presence, measured technical checks, and
+					three useful content drafts. Evidence first, with clear next steps.
+				</p>
+			</section>
+			<section class="start" aria-labelledby="start-heading">
+				<h2 id="start-heading">Start with your practice website</h2>
+				<form id="audit-form">
+					<label for="website">Public website URL</label
+					><input
+						id="website"
+						name="websiteUrl"
+						type="text"
+						inputmode="url"
+						autocomplete="url"
+						placeholder="https://yourpractice.com"
+						required
+						maxlength="2048"
+						aria-describedby="url-help"
+					/>
+					<p id="url-help" class="help">
+						Use a public practice page. Patient portals and URLs containing patient information are
+						outside this assessment.
+					</p>
+					<label for="google">Google Maps link <span class="muted">(optional)</span></label
+					><input
+						id="google"
+						name="googleMapsUrl"
+						type="url"
+						inputmode="url"
+						placeholder="A place or share link for the same office"
+						maxlength="2048"
+					/>
+					<div class="actions">
+						<button type="submit" id="submit">
+							Assess this practice <span aria-hidden="true">↗</span></button
+						><button type="button" id="sample" class="secondary">
+							Explore the fictional sample
+						</button>
+					</div>
+					<p class="help">
+						No account connection or patient details needed. Up to 8 pages are sampled. Unavailable
+						checks stay clearly labeled. Reports remain in local process memory for 30 minutes.
+					</p>
+				</form>
+				<div id="progress" role="status" aria-live="polite"></div>
+				<p id="error" role="alert"></p>
+			</section>
+			<div id="report" tabindex="-1"></div>
+			<section class="scope">
+				<h2>What this assessment can tell you</h2>
+				<div class="columns">
+					<div>
+						<p class="eyebrow">01 / patient experience</p>
+						<p>
+							Can a new patient find the dentist, understand their visit, and reach the correct
+							office?
+						</p>
+					</div>
+					<div>
+						<p class="eyebrow">02 / public Google presence</p>
+						<p>
+							Does the right listing match the website? Public observations are separated from
+							owner-only checks.
+						</p>
+					</div>
+					<div>
+						<p class="eyebrow">03 / technical foundations</p>
+						<p>
+							Which mobile, accessibility, crawl, and performance issues have evidence behind them?
+						</p>
+					</div>
+					<div>
+						<p class="eyebrow">04 / better content</p>
+						<p>
+							Three proposed sections, grounded in observed facts, with anything unconfirmed flagged
+							for review.
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer>
+			Published by root.site · Development build · No clinical advice or search-ranking promises.
+		</footer>
+	</body>
+</html>

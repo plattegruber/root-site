@@ -1,0 +1,107 @@
+[
+	{
+		"name": "overview",
+		"url": "https://developers.openai.com/apps-sdk/",
+		"final_url": "https://developers.openai.com/plugins",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:25.089825+00:00",
+		"sha256": "57e8554975d39a641f2f493c2dc755e27df61ab785759e485f8c19f88da1d2b7"
+	},
+	{
+		"name": "build-mcp",
+		"url": "https://developers.openai.com/apps-sdk/build/mcp-server/",
+		"final_url": "https://developers.openai.com/plugins/build/mcp-server",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:24.991866+00:00",
+		"sha256": "759c5145318fc19c606b63fc07cd7d9654f31eb6b430bc59e32b167a50cd52d8"
+	},
+	{
+		"name": "build-ui",
+		"url": "https://developers.openai.com/apps-sdk/build/chatgpt-ui/",
+		"final_url": "https://developers.openai.com/plugins/build/chatgpt-ui",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:24.942199+00:00",
+		"sha256": "e04d06cb3b15e4412aee5904e65b6532553fe37e444c95443178b37d2b86522c"
+	},
+	{
+		"name": "distribution",
+		"url": "https://developers.openai.com/apps-sdk/deploy/submission/",
+		"final_url": "https://developers.openai.com/plugins/deploy/submission",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:25.062190+00:00",
+		"sha256": "d6d9416c8f373e4ef1f33be1291a28b8a1ae6826109705a300647d93a1f2605a"
+	},
+	{
+		"name": "guidelines",
+		"url": "https://developers.openai.com/apps-sdk/app-submission-guidelines/",
+		"final_url": "https://developers.openai.com/plugins/plugin-guidelines",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:25.162563+00:00",
+		"sha256": "e0a2a55ca914e9b1f2c54c0ab5ef6621250f8dc79b44b08b82bd4b1b7aeaf071"
+	},
+	{
+		"name": "policies",
+		"url": "https://openai.com/policies/usage-policies/",
+		"final_url": "https://openai.com/policies/usage-policies/",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:24.656589+00:00",
+		"sha256": "24aca97bbd222953764b43b97a2131441e1e719d1a112326feeb835e74f4fbaf"
+	},
+	{
+		"name": "security",
+		"url": "https://developers.openai.com/apps-sdk/guides/security-privacy/",
+		"final_url": "https://developers.openai.com/plugins/guides/security-privacy",
+		"status": 200,
+		"checked_at": "2026-10-01T06:32:25.011683+00:00",
+		"sha256": "f4b4871c94fed0a6192030836958869e6741e962176e2b22f0911b1034eaccb4"
+	},
+	{
+		"name": "mcp",
+		"url": "https://developers.openai.com/plugins/build/mcp-server.md",
+		"final_url": "https://developers.openai.com/plugins/build/mcp-server.md",
+		"checked_at": "2026-10-01T06:32:55.560923+00:00",
+		"sha256": "7b63ef8fba292a449b925436b2ae7bc16ecf756dd271569c20a75e121ace33a9"
+	},
+	{
+		"name": "ui",
+		"url": "https://developers.openai.com/plugins/build/chatgpt-ui.md",
+		"final_url": "https://developers.openai.com/plugins/build/chatgpt-ui.md",
+		"checked_at": "2026-10-01T06:32:55.556603+00:00",
+		"sha256": "9403394ff61d97fd0185a24acdb7602648371c4d58f450d59af762d63bb536ab"
+	},
+	{
+		"name": "submission",
+		"url": "https://developers.openai.com/plugins/deploy/submission.md",
+		"final_url": "https://developers.openai.com/plugins/deploy/submission.md",
+		"checked_at": "2026-10-01T06:32:55.595470+00:00",
+		"sha256": "b89bbdeecec9faf9e7023b4828937a9c0df572b5fc4b1249e471a216b3d7c3b6"
+	},
+	{
+		"name": "guidelines",
+		"url": "https://developers.openai.com/plugins/plugin-guidelines.md",
+		"final_url": "https://developers.openai.com/plugins/plugin-guidelines.md",
+		"checked_at": "2026-10-01T06:32:55.552602+00:00",
+		"sha256": "d756819aa5e7c9db77db43224910ebf90ba1590c9f990c7ef3b2b851384fac43"
+	},
+	{
+		"name": "google-places",
+		"url": "https://developers.google.com/maps/documentation/places/web-service/place-details",
+		"final_url": "https://developers.google.com/maps/documentation/places/web-service/place-details",
+		"checked_at": "2026-10-01T06:32:56.055312+00:00",
+		"sha256": "338ce4cea1ff72b57ca589d48ba13c46441d9bd7c66fc7379e673a2a56e66104"
+	},
+	{
+		"name": "google-gbp",
+		"url": "https://developers.google.com/my-business/content/basic-setup",
+		"final_url": "https://developers.google.com/my-business/content/basic-setup",
+		"checked_at": "2026-10-01T06:32:55.834374+00:00",
+		"sha256": "217998d43231bbeec47bd2f0108e9b25154acbe94c7d2b36da445156886ccb0d"
+	},
+	{
+		"name": "package",
+		"url": "https://developers.openai.com/plugins/build/plugins.md",
+		"final_url": "https://developers.openai.com/plugins/build/plugins.md",
+		"checked_date": "2026-10-01",
+		"sha256": "cc5b62094f9c8fcd910c6ae72fa58c63a13191abdc29fb45b19500e241f71460"
+	}
+]

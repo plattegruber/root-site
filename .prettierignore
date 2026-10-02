@@ -7,3 +7,6 @@ bun.lockb
 
 # Miscellaneous
 /static/
+apps/**/dist/
+apps/**/artifacts/
+apps/**/coverage/

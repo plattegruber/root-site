@@ -1,0 +1,1813 @@
+{
+	"schemaVersion": "1.0",
+	"publisher": "root.site",
+	"fixture": true,
+	"startedAt": "2026-10-01T18:40:58.670Z",
+	"completedAt": "2026-10-01T18:40:58.699Z",
+	"input": {
+		"websiteUrl": "https://maple-grove.example/"
+	},
+	"practice": {
+		"name": "Maple Grove Dental",
+		"websiteUrl": "https://maple-grove.example/",
+		"resolution": "single_location_observed",
+		"explanation": "One visible street/locality pair was found. This is a website observation; it does not establish independent ownership or prove no other offices exist.",
+		"facts": [
+			{
+				"key": "practice_name",
+				"value": "Maple Grove Dental",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Visible name also in structured data: Maple Grove Dental"
+					}
+				]
+			},
+			{
+				"key": "address",
+				"value": "12 Maple Lane, Brookfield, CO, 80000",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Visible street and locality match schema; verify region/postcode: 12 Maple Lane, Brookfield, CO, 80000"
+					}
+				]
+			},
+			{
+				"key": "phone",
+				"value": "+15550100123",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Public click-to-call link: tel:+15550100123"
+					}
+				]
+			},
+			{
+				"key": "dentist",
+				"value": "Dr. Maya Reed, DDS",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Public identity/credential wording: “Dr. Maya Reed, DDS”; licensing not independently checked."
+					}
+				]
+			},
+			{
+				"key": "service",
+				"value": "dental crowns",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Website mentions “dental crowns”: Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield.. Confirm availability before publishing."
+					}
+				]
+			},
+			{
+				"key": "service",
+				"value": "dental cleanings",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Website mentions “dental cleanings”: Our services include dental crowns and dental cleanings.. Confirm availability before publishing."
+					}
+				]
+			},
+			{
+				"key": "hours_wording",
+				"value": "Monday–Friday 9 am–5 pm",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Visible hours: Monday–Friday 9 am–5 pm. Holiday and emergency hours not inferred."
+					}
+				]
+			},
+			{
+				"key": "insurance_wording",
+				"value": "We accept insurance.",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Exact website wording, not a verified participation/coverage claim: We accept insurance."
+					}
+				]
+			},
+			{
+				"key": "insurance_wording",
+				"value": "(555) 010-0123 Request an appointment Questions for the office We accept insurance.",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/contact",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Exact website wording, not a verified participation/coverage claim: (555) 010-0123 Request an appointment Questions for the office We accept insurance."
+					}
+				]
+			}
+		],
+		"locations": ["12 Maple Lane, Brookfield, CO, 80000"]
+	},
+	"summary": "Maple Grove Dental: 1 urgent defect, 9 checks with observed failures, and 7 checks not completed. Review the office identity, prioritize patient contact and verified facts, then address the measured template issues. No overall score is assigned.",
+	"findings": [
+		{
+			"id": "experience-booking",
+			"area": "experience",
+			"title": "Appointment handoff",
+			"status": "failed",
+			"priority": "urgent",
+			"severity": "high",
+			"evidence": [
+				{
+					"url": "https://booking.maple-grove.example/appointment",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "HTTP booking-link check",
+					"detail": "“Request an appointment” linked from https://maple-grove.example/ returned HTTP 404."
+				}
+			],
+			"impact": "An unclear or broken booking handoff can lose a patient after they have decided to contact the office.",
+			"fix": "Repair the failing appointment destination, then verify the correct office and mobile handoff.",
+			"effort": "1–3 hours: URL/routing fix and mobile retest",
+			"section": "contact"
+		},
+		{
+			"id": "tech-status",
+			"area": "technical",
+			"title": "Page status codes",
+			"status": "failed",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/old-new-patients",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "HTTP 404."
+				}
+			],
+			"impact": "A failed public page prevents visitors and crawlers from reaching its content.",
+			"fix": "Repair or redirect the failing page to a relevant destination; update incoming links.",
+			"effort": "1–4 hours: routing or server diagnosis"
+		},
+		{
+			"id": "tech-links",
+			"area": "technical",
+			"title": "Bounded broken-link check",
+			"status": "failed",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "HTTP destination check",
+					"detail": "https://booking.maple-grove.example/appointment (Request an appointment) returned HTTP 404."
+				}
+			],
+			"impact": "Broken links interrupt service research and contact journeys.",
+			"fix": "Replace broken destinations with useful equivalent pages; manually check any destinations that blocked requests.",
+			"effort": "1–3 hours: link updates and regression check"
+		},
+		{
+			"id": "tech-alt",
+			"area": "technical",
+			"title": "Image alternative text",
+			"status": "failed",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "1 of 1 images lack an alt attribute. Empty alt can be appropriate for decoration; meaning is not certified."
+				}
+			],
+			"impact": "People using screen readers may miss information carried by meaningful images.",
+			"fix": "Add useful alt text to informative images; use empty alt for purely decorative images after a visual review.",
+			"effort": "1–3 hours: image purpose and text review"
+		},
+		{
+			"id": "tech-labels",
+			"area": "technical",
+			"title": "Form labels",
+			"status": "failed",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/contact",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "1 fields lack an associated visible or ARIA label in static HTML. Dynamic form labels are checked in the browser."
+				}
+			],
+			"impact": "Unlabeled controls are harder to use with assistive technology and can increase form errors.",
+			"fix": "Associate every input with an accessible label and specific error/help text; verify keyboard operation.",
+			"effort": "2–5 hours: form template and accessibility review"
+		},
+		{
+			"id": "performance-mobile",
+			"area": "technical",
+			"title": "Mobile Lighthouse lab performance",
+			"status": "failed",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Google PageSpeed Insights / Lighthouse / CrUX",
+					"detail": "Lab LCP 4800 ms; lab {\"first-contentful-paint\":1800,\"largest-contentful-paint\":4800,\"speed-index\":4100,\"total-blocking-time\":430,\"cumulative-layout-shift\":0.08}; field scope origin; field {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}."
+				}
+			],
+			"impact": "Slow loading or unstable pages can make it harder for patients to find information and contact the practice.",
+			"fix": "Use the Lighthouse diagnostics and resource trace to optimize the LCP element, images, critical styles, fonts and nonessential scripts. Retest under comparable conditions and monitor field trends.",
+			"effort": "4–12 hours: diagnose, optimize, validate; hosting changes may add time"
+		},
+		{
+			"id": "experience-new-patient",
+			"area": "experience",
+			"title": "New-patient next steps",
+			"status": "needs_confirmation",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "No clear new-patient next steps signal in 4 fetched pages. Content outside this crawl may exist."
+				}
+			],
+			"impact": "A first-time visitor needs to understand how to request care, what happens next, and what to bring.",
+			"fix": "Write a short first-visit sequence, with a visible contact action and owner-confirmed expectations. Keep patient information collection in the practice’s approved systems.",
+			"effort": "2–4 hours: owner fact check, copy and placement review",
+			"section": "new_patient"
+		},
+		{
+			"id": "experience-emergency",
+			"area": "experience",
+			"title": "Emergency contact instructions",
+			"status": "needs_confirmation",
+			"priority": "improvement",
+			"severity": "moderate",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "No clear emergency contact instructions signal in 4 fetched pages. Content outside this crawl may exist."
+				}
+			],
+			"impact": "A person seeking urgent care needs a fast, accurate route to the office and clear availability expectations.",
+			"fix": "Put the confirmed urgent contact number on the emergency page, state verified hours and after-hours routing, and avoid promising same-day or 24-hour care unless confirmed.",
+			"effort": "2–4 hours: owner fact check, copy and placement review",
+			"section": "emergency"
+		},
+		{
+			"id": "content-rewrite-1",
+			"area": "content",
+			"title": "Contact the office",
+			"status": "needs_confirmation",
+			"priority": "improvement",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/contact",
+					"observedAt": "2026-10-01T18:40:58.699Z",
+					"method": "Source excerpt used for proposed copy",
+					"detail": "HomeDentist Contact our office Maple Grove Dental. 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. (555) 010-0123 Request an appointment Questions for the office We accept insurance. Call to ask about your plan. We do not claim all plans are in-network. Your nameSend"
+				}
+			],
+			"impact": "An unclear or broken booking handoff can lose a patient after they have decided to contact the office. Conflicting office details can misdirect a visitor or cause a wasted trip.",
+			"fix": "Call +15550100123 to ask about an appointment. Find us at 12 Maple Lane, Brookfield, CO, 80000. Published hours: Monday–Friday 9 am–5 pm. Ask whether an online booking is a request or a confirmed appointment, and confirm you have selected the correct office.",
+			"effort": "1–3 hours: owner/clinical fact approval, voice edit and CMS placement",
+			"section": "contact"
+		},
+		{
+			"id": "content-rewrite-2",
+			"area": "content",
+			"title": "Your first visit",
+			"status": "needs_confirmation",
+			"priority": "improvement",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T18:40:58.699Z",
+					"method": "Source excerpt used for proposed copy",
+					"detail": "Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield. Meet Dr. Maya Reed, DDS, and get to know our office. Our services include dental crowns and dental cleanings. We explain care options at your visit. Request an appointment Practical information 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. We accept insurance. Contact us with questions about your plan. Call the office to learn more. This deliberately fixed-width fixture causes mobile over"
+				}
+			],
+			"impact": "A first-time visitor needs to understand how to request care, what happens next, and what to bring.",
+			"fix": "New to Maple Grove Dental? Call +15550100123 to ask about an appointment. Ask the office what to bring, how the first visit is arranged, and how to check insurance or payment questions before your appointment. Find us at 12 Maple Lane, Brookfield, CO, 80000.",
+			"effort": "1–3 hours: owner/clinical fact approval, voice edit and CMS placement",
+			"section": "new_patient"
+		},
+		{
+			"id": "content-rewrite-3",
+			"area": "content",
+			"title": "Need urgent dental care?",
+			"status": "needs_confirmation",
+			"priority": "improvement",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T18:40:58.699Z",
+					"method": "Source excerpt used for proposed copy",
+					"detail": "Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield. Meet Dr. Maya Reed, DDS, and get to know our office. Our services include dental crowns and dental cleanings. We explain care options at your visit. Request an appointment Practical information 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. We accept insurance. Contact us with questions about your plan. Call the office to learn more. This deliberately fixed-width fixture causes mobile over"
+				}
+			],
+			"impact": "A person seeking urgent care needs a fast, accurate route to the office and clear availability expectations.",
+			"fix": "If you need urgent dental care, call +15550100123 to ask about an appointment. Ask the office to confirm current availability and the right next step. Published office hours: Monday–Friday 9 am–5 pm. [Add verified after-hours contact instructions.]",
+			"effort": "1–3 hours: owner/clinical fact approval, voice edit and CMS placement",
+			"section": "emergency"
+		},
+		{
+			"id": "tech-descriptions",
+			"area": "technical",
+			"title": "Search descriptions",
+			"status": "failed",
+			"priority": "polish",
+			"severity": "low",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/old-new-patients",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "Description: (empty). Search engines may choose different snippets."
+				}
+			],
+			"impact": "Poor descriptions miss a chance to explain the page’s relevance to a visitor.",
+			"fix": "Write specific, accurate descriptions for important pages; avoid clinical promises.",
+			"effort": "1–2 hours: copy and metadata update"
+		},
+		{
+			"id": "tech-headings",
+			"area": "technical",
+			"title": "Heading structure",
+			"status": "failed",
+			"priority": "polish",
+			"severity": "low",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "Heading levels: H1 Welcome to Maple Grove Dental | H3 Practical information. More than one H1 is a review signal, not automatically an accessibility failure."
+				}
+			],
+			"impact": "An unclear heading outline makes key information harder to scan and navigate.",
+			"fix": "Use a clear primary page heading and logical subsections; confirm the rendered accessibility tree.",
+			"effort": "1–3 hours: template outline changes"
+		},
+		{
+			"id": "tech-canonical",
+			"area": "technical",
+			"title": "Canonical URLs",
+			"status": "failed",
+			"priority": "polish",
+			"severity": "low",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/old-new-patients",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "Canonical: (not declared)."
+				}
+			],
+			"impact": "Canonical hints can be ambiguous or invalid, especially with duplicate URL variants.",
+			"fix": "Set valid canonical URLs reflecting the intended indexable page, then verify redirects and sitemap URLs.",
+			"effort": "1–3 hours: CMS canonical and URL mapping"
+		},
+		{
+			"id": "tech-schema",
+			"area": "technical",
+			"title": "Practice structured data and visible facts",
+			"status": "needs_confirmation",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "JSON-LD/visible text comparison",
+					"detail": "Practice schema type \"Dentist\", name Maple Grove Dental; visible name match true. Phone, hours and address need owner/source consistency review."
+				}
+			],
+			"impact": "Inaccurate machine-readable facts can confuse directories and crawlers.",
+			"fix": "Use an appropriate Dentist/LocalBusiness schema for each real office; match visible name, canonical website, phone, address, hours and dentist identities. Validate with the relevant Google tools. Do not add unverified rating or clinical claims.",
+			"effort": "2–4 hours: schema mapping, fact confirmation and validation"
+		},
+		{
+			"id": "google-consistency",
+			"area": "google",
+			"title": "Website/listing consistency",
+			"status": "needs_confirmation",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Website fact observed; owner verification still required",
+					"detail": "Visible name also in structured data: Maple Grove Dental"
+				},
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Website fact observed; owner verification still required",
+					"detail": "Visible street and locality match schema; verify region/postcode: 12 Maple Lane, Brookfield, CO, 80000"
+				},
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Website fact observed; owner verification still required",
+					"detail": "Public click-to-call link: tel:+15550100123"
+				},
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Website fact observed; owner verification still required",
+					"detail": "Visible hours: Monday–Friday 9 am–5 pm. Holiday and emergency hours not inferred."
+				},
+				{
+					"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+					"observedAt": "2026-10-01T18:40:58.698Z",
+					"method": "Google Places cross-check",
+					"detail": "Website, street/locality and phone matched; compare exact business name, every weekday, exceptions and appointment routing before declaring full consistency."
+				}
+			],
+			"impact": "Conflicting office details can misdirect a visitor or cause a wasted trip.",
+			"fix": "Review the visible website facts against the selected GBP, including special hours; update only after owner confirmation.",
+			"effort": "1–2 hours: fact reconciliation",
+			"section": "contact"
+		},
+		{
+			"id": "google-owner-access",
+			"area": "google",
+			"title": "Owner-authorized profile and performance checks",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "An owner connection can expose supported profile details and performance windows beyond public sources.",
+			"fix": "Obtain owner consent and use a Google Cloud project approved for the Business Profile APIs; Places access does not authorize Business Profile management. Configure a Google OAuth consent screen and OAuth 2.0 authorization-code flow with business.manage. Select the owner-managed account and exact location ID, then verify it against the website. Add a read-only provider implementing this report contract: Business Information for location facts/categories/hours, supported Place Actions for appointment links, and supported reviews/media endpoints for reviews, owner replies and photos. Do not expose write actions in this audit. Use the Business Profile Performance API only with owner authorization and approved access. Report the supported metrics/date windows; unavailable metrics stay not tested. No private performance data is accessed in V0. Store tokens encrypted on the server with revocation, least privilege, retention/deletion controls and an OAuth 2.1 MCP authorization layer for the linked plugin account. This V0 intentionally has no token connection endpoint.",
+			"effort": "Separate integration: approved Google API project, OAuth review, account/location selection and security work"
+		},
+		{
+			"id": "browser-layout",
+			"area": "technical",
+			"title": "Rendered mobile layouts",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "This requires a rendered browser check.",
+			"fix": "Browser inspection disabled by configuration.",
+			"effort": "30–60 minutes: browser setup"
+		},
+		{
+			"id": "browser-taps",
+			"area": "technical",
+			"title": "Tap targets",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "This requires a rendered browser check.",
+			"fix": "Browser inspection disabled by configuration.",
+			"effort": "30–60 minutes: browser setup"
+		},
+		{
+			"id": "browser-axe",
+			"area": "technical",
+			"title": "Contrast and rendered accessibility",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "This requires a rendered browser check.",
+			"fix": "Browser inspection disabled by configuration.",
+			"effort": "30–60 minutes: browser setup"
+		},
+		{
+			"id": "browser-keyboard",
+			"area": "technical",
+			"title": "Keyboard and focus",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "This requires a rendered browser check.",
+			"fix": "Browser inspection disabled by configuration.",
+			"effort": "30–60 minutes: browser setup"
+		},
+		{
+			"id": "browser-images",
+			"area": "technical",
+			"title": "Rendered image sizing",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "This requires a rendered browser check.",
+			"fix": "Browser inspection disabled by configuration.",
+			"effort": "30–60 minutes: browser setup"
+		},
+		{
+			"id": "tech-scheduling-manual",
+			"area": "technical",
+			"title": "Complete scheduling and form interaction",
+			"status": "not_tested",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [],
+			"impact": "Reachable pages do not prove that a patient can complete the booking or receive confirmation.",
+			"fix": "Manually verify mobile menus, conditional forms, validation messages, correct office selection, scheduling slot selection, and booking confirmation in a provider-approved test environment. No live forms, calls or appointments are submitted by this tool.",
+			"effort": "1–3 hours: end-to-end handoff testing",
+			"section": "contact"
+		},
+		{
+			"id": "experience-first-impression",
+			"area": "experience",
+			"title": "Clear first impression",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A page title and visible primary heading identify the practice. Visual first impressions are separately inspected in the browser."
+				}
+			],
+			"impact": "Visitors need to quickly understand whose practice this is and how to take the next step.",
+			"fix": "Use a specific primary heading, office location, dentist identity, and a clear appointment action. Confirm the owner-approved practice name.",
+			"effort": "No change required",
+			"section": "homepage"
+		},
+		{
+			"id": "experience-dentist",
+			"area": "experience",
+			"title": "Dentist identity and credibility",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A named dentist with a DDS/DMD credential was observed. Biography, portrait quality, licensing, and any specialist claims still require review."
+				}
+			],
+			"impact": "A nervous visitor may hesitate if they cannot identify the clinician or understand their approach.",
+			"fix": "Place the dentist’s verified name, approved credentials, a genuine portrait, and a concise patient-focused biography on the homepage and team page.",
+			"effort": "No change required",
+			"section": "team"
+		},
+		{
+			"id": "experience-services",
+			"area": "experience",
+			"title": "Useful service information",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/services/crowns",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A service-oriented page with substantive text was fetched; benefit/risks wording and actual service availability need owner/clinical approval."
+				}
+			],
+			"impact": "Someone researching a procedure needs to know whether this practice offers it and what a consultation involves.",
+			"fix": "Create one useful landing page per confirmed priority service, including who assesses suitability, what the consultation involves, practical next steps, and a relevant booking action. Avoid outcome promises.",
+			"effort": "No change required",
+			"section": "service"
+		},
+		{
+			"id": "experience-insurance",
+			"area": "experience",
+			"title": "Insurance and financing guidance",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "Public insurance/payment wording was observed; network participation, accepted plans, coverage and financing eligibility have not been verified."
+				},
+				{
+					"url": "https://maple-grove.example/contact",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "Public insurance/payment wording was observed; network participation, accepted plans, coverage and financing eligibility have not been verified."
+				}
+			],
+			"impact": "Uncertain costs or ambiguous “accept insurance” wording can stop a patient from booking.",
+			"fix": "Explain how the office checks benefits, distinguish accepted billing from in-network participation, and state only confirmed financing terms. Link the guidance near booking.",
+			"effort": "No change required",
+			"section": "insurance"
+		},
+		{
+			"id": "experience-contact",
+			"area": "experience",
+			"title": "Phone and contact route",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A usable tel: link was observed. Phone ownership and live call routing were not tested."
+				},
+				{
+					"url": "https://maple-grove.example/team",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A usable tel: link was observed. Phone ownership and live call routing were not tested."
+				},
+				{
+					"url": "https://maple-grove.example/services/crowns",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A usable tel: link was observed. Phone ownership and live call routing were not tested."
+				}
+			],
+			"impact": "Mobile visitors should be able to reach the correct office without copying a number.",
+			"fix": "Use a correctly formatted click-to-call link in the header, contact page, and relevant patient/service pages. Verify routing for this office.",
+			"effort": "No change required",
+			"section": "contact"
+		},
+		{
+			"id": "experience-directions",
+			"area": "experience",
+			"title": "Office location and directions",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded public page review",
+					"detail": "A visible address or a Maps directions link was observed. Confirm it points to the audited office."
+				}
+			],
+			"impact": "A patient should know which office they are booking and how to get there.",
+			"fix": "Place an owner-confirmed address, hours, directions link, and practical arrival information next to the appointment action.",
+			"effort": "No change required",
+			"section": "contact"
+		},
+		{
+			"id": "tech-https",
+			"area": "technical",
+			"title": "HTTPS on fetched pages",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "Final page URL: https://maple-grove.example/. Certificate verification is enabled on HTTPS requests."
+				}
+			],
+			"impact": "An unencrypted page undermines trust and can expose data entered on the website.",
+			"fix": "Enable a valid HTTPS certificate and redirect HTTP to HTTPS before offering forms.",
+			"effort": "No change required"
+		},
+		{
+			"id": "tech-mixed",
+			"area": "technical",
+			"title": "Insecure resource references",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "0 HTTP resource references: . Browser blocking depends on resource type."
+				}
+			],
+			"impact": "Mixed resources can be blocked or loaded insecurely, affecting appearance and trust.",
+			"fix": "Serve referenced images, scripts, styles and frames over HTTPS; retest the rendered pages.",
+			"effort": "No change required"
+		},
+		{
+			"id": "tech-titles",
+			"area": "technical",
+			"title": "Page titles",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "Title: Maple Grove Dental | Brookfield. Duplicate titles are compared only within fetched pages."
+				}
+			],
+			"impact": "A missing or repeated title makes search results and browser tabs harder to understand.",
+			"fix": "Write one descriptive title per page that reflects its purpose and verified office facts.",
+			"effort": "No change required"
+		},
+		{
+			"id": "tech-indexability",
+			"area": "technical",
+			"title": "HTML indexability signals",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "Robots/X-Robots-Tag: (none observed). This checks directives, not actual Google indexing."
+				}
+			],
+			"impact": "A noindex directive can prevent an important public page from appearing in search.",
+			"fix": "Confirm the page should be public; remove unintended noindex directives and verify using owner-authorized Search Console.",
+			"effort": "No change required"
+		},
+		{
+			"id": "tech-robots",
+			"area": "technical",
+			"title": "robots.txt crawl policy",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/robots.txt",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Robots policy request",
+					"detail": "HTTP 200; User-agent: *\nAllow: /\nSitemap: https://maple-grove.example/sitemap.xml; homepage crawl allowed: true."
+				}
+			],
+			"impact": "Crawl permissions affect what this tool and compliant crawlers can inspect.",
+			"fix": "Review intended public crawl permissions; no robots file is required for an unrestricted public site.",
+			"effort": "30–60 minutes if permissions need adjustment"
+		},
+		{
+			"id": "tech-sitemap",
+			"area": "technical",
+			"title": "Sitemap discovery",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/sitemap.xml",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Bounded XML sitemap inspection",
+					"detail": "HTTP 200; 2 URL or child-sitemap entries found. Child sitemap recursion is outside V0."
+				}
+			],
+			"impact": "A usable sitemap helps crawlers discover the intended pages but does not guarantee indexing.",
+			"fix": "Confirm the canonical sitemap is advertised in robots.txt and contains public canonical URLs. A sitemap at another path may already exist.",
+			"effort": "1–2 hours: CMS sitemap configuration"
+		},
+		{
+			"id": "tech-scripts",
+			"area": "technical",
+			"title": "Script and render-blocking review",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML/HTTP inspection",
+					"detail": "0 external scripts, 0 potentially blocking stylesheet/script references, 0 font link/preload references. These counts do not establish whether a script is unnecessary."
+				}
+			],
+			"impact": "Large dependency chains can delay useful content, particularly on mobile networks.",
+			"fix": "Use the performance trace and a tag inventory to establish owners and necessity; defer nonessential scripts and load critical styles/fonts efficiently.",
+			"effort": "No change required"
+		},
+		{
+			"id": "tech-location",
+			"area": "technical",
+			"title": "Location and service page coverage",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML inspection",
+					"detail": "HTTP 200; title: Maple Grove Dental | Brookfield; headings: Welcome to Maple Grove Dental | Practical information"
+				},
+				{
+					"url": "https://maple-grove.example/team",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public HTML inspection",
+					"detail": "HTTP 200; title: Meet our dentist | Maple Grove Dental; headings: Dr. Maya Reed, DDS | Talk with the office"
+				}
+			],
+			"impact": "Patients need a clear office and relevant information about the care they are researching.",
+			"fix": "Confirm whether this is a single-office practice; create distinct location pages only for real offices and useful pages only for services actually offered.",
+			"effort": "4–12 hours per approved page, depending on content and design"
+		},
+		{
+			"id": "google-landing",
+			"area": "google",
+			"title": "Listing website landing page",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Public listing landing-page request",
+					"detail": "Places website link https://maple-grove.example/ resolves to HTTP 200; expected domain agreement true. Service/office relevance still needs a rendered review."
+				}
+			],
+			"impact": "People arriving from Maps should immediately recognize the same office and find a useful contact route.",
+			"fix": "Point the listing website to a fast, accurate office landing page and the appointment action to a useful booking destination for that office.",
+			"effort": "1–3 hours: routing, landing page and handoff checks"
+		},
+		{
+			"id": "performance-mobile-field",
+			"area": "technical",
+			"title": "Mobile real-user CrUX availability",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Google CrUX via PageSpeed",
+					"detail": "origin-level real-user p75 data: {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}. CrUX origin data: 75th-percentile values from eligible real Chrome visits over a rolling 28-day period. PageSpeed response does not expose exact collection dates. Origin data is not specific to this page."
+				}
+			],
+			"impact": "Real-user loading, responsiveness and stability describe eligible visitors; origin data may cover multiple pages.",
+			"fix": "Review field trends separately from lab tests and investigate poor metrics against actual page/templates.",
+			"effort": "4–12 hours: trace diagnosis and validation"
+		},
+		{
+			"id": "performance-desktop",
+			"area": "technical",
+			"title": "Desktop Lighthouse lab performance",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Google PageSpeed Insights / Lighthouse / CrUX",
+					"detail": "Lab LCP 2200 ms; lab {\"first-contentful-paint\":1800,\"largest-contentful-paint\":2200,\"speed-index\":4100,\"total-blocking-time\":430,\"cumulative-layout-shift\":0.08}; field scope origin; field {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}."
+				}
+			],
+			"impact": "Slow loading or unstable pages can make it harder for patients to find information and contact the practice.",
+			"fix": "Use the Lighthouse diagnostics and resource trace to optimize the LCP element, images, critical styles, fonts and nonessential scripts. Retest under comparable conditions and monitor field trends.",
+			"effort": "4–12 hours: diagnose, optimize, validate; hosting changes may add time"
+		},
+		{
+			"id": "performance-desktop-field",
+			"area": "technical",
+			"title": "Desktop real-user CrUX availability",
+			"status": "passed",
+			"priority": "none",
+			"severity": "info",
+			"evidence": [
+				{
+					"url": "https://maple-grove.example/",
+					"observedAt": "2026-10-01T12:00:00.000Z",
+					"method": "Google CrUX via PageSpeed",
+					"detail": "origin-level real-user p75 data: {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}. CrUX origin data: 75th-percentile values from eligible real Chrome visits over a rolling 28-day period. PageSpeed response does not expose exact collection dates. Origin data is not specific to this page."
+				}
+			],
+			"impact": "Real-user loading, responsiveness and stability describe eligible visitors; origin data may cover multiple pages.",
+			"fix": "Review field trends separately from lab tests and investigate poor metrics against actual page/templates.",
+			"effort": "4–12 hours: trace diagnosis and validation"
+		}
+	],
+	"journeys": [
+		{
+			"name": "A nervous new patient",
+			"status": "friction",
+			"steps": [
+				{
+					"label": "Understand the practice",
+					"url": "https://maple-grove.example/",
+					"observation": "One visible street/locality pair was found. This is a website observation; it does not establish independent ownership or prove no other offices exist."
+				},
+				{
+					"label": "Meet the dentist",
+					"url": "https://maple-grove.example/",
+					"observation": "Named clinician wording is visible; tone, credentials, and portrait suitability need review."
+				},
+				{
+					"label": "Understand the first visit",
+					"url": "https://maple-grove.example/team",
+					"observation": "First-visit content exists; clear expectations and an easy next step matter."
+				},
+				{
+					"label": "Request an appointment",
+					"url": "https://maple-grove.example/",
+					"observation": "Booking destinations are checked where crawl limits permit; no forms were submitted."
+				}
+			],
+			"findingIds": [
+				"experience-dentist",
+				"experience-new-patient",
+				"experience-insurance",
+				"experience-booking"
+			]
+		},
+		{
+			"name": "Someone seeking emergency care",
+			"status": "friction",
+			"steps": [
+				{
+					"label": "Find urgent instructions",
+					"observation": "No relevant page was established in the bounded crawl."
+				},
+				{
+					"label": "Call the correct office",
+					"url": "https://maple-grove.example/contact",
+					"observation": "Public phone links are reviewed without making calls."
+				},
+				{
+					"label": "See office and hours",
+					"url": "https://maple-grove.example/",
+					"observation": "Public location and hours wording is compared when available."
+				}
+			],
+			"findingIds": ["experience-emergency", "experience-contact", "experience-booking"]
+		},
+		{
+			"name": "Someone researching a procedure",
+			"status": "friction",
+			"steps": [
+				{
+					"label": "Read service information",
+					"url": "https://maple-grove.example/",
+					"observation": "Service text is assessed for practical consultation and contact guidance."
+				},
+				{
+					"label": "Understand clinician and payment",
+					"url": "https://maple-grove.example/",
+					"observation": "Only published credentials and payment wording are observed."
+				},
+				{
+					"label": "Reach a relevant booking page",
+					"url": "https://maple-grove.example/",
+					"observation": "Service context and office preselection require handoff verification."
+				}
+			],
+			"findingIds": [
+				"experience-services",
+				"experience-dentist",
+				"experience-insurance",
+				"experience-booking"
+			]
+		}
+	],
+	"google": {
+		"source": "places_api",
+		"match": "matched",
+		"explanation": "One public Places result agrees with the website domain, visible street/locality, and phone. This cross-check is not owner authorization or proof of ownership; confirm the office before making changes.",
+		"mapsUrl": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+		"fields": [
+			{
+				"name": "Business name",
+				"availability": "observed",
+				"value": "Maple Grove Dental",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Business name: Maple Grove Dental"
+					}
+				]
+			},
+			{
+				"name": "Address",
+				"availability": "observed",
+				"value": "12 Maple Lane, Brookfield, CO 80000",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Address: 12 Maple Lane, Brookfield, CO 80000"
+					}
+				]
+			},
+			{
+				"name": "Phone",
+				"availability": "observed",
+				"value": "+1 555-010-0123",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Phone: +1 555-010-0123"
+					}
+				]
+			},
+			{
+				"name": "Public place types",
+				"availability": "observed",
+				"value": "dentist, health, point_of_interest",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Public place types: dentist, health, point_of_interest"
+					}
+				]
+			},
+			{
+				"name": "Primary place type",
+				"availability": "observed",
+				"value": "dentist",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Primary place type: dentist"
+					}
+				]
+			},
+			{
+				"name": "GBP primary/additional categories",
+				"availability": "owner_access_required",
+				"evidence": []
+			},
+			{
+				"name": "Regular hours",
+				"availability": "observed",
+				"value": "Monday: 9:00 AM – 5:00 PM; Tuesday: 9:00 AM – 5:00 PM; Wednesday: 9:00 AM – 5:00 PM; Thursday: 9:00 AM – 5:00 PM; Friday: 9:00 AM – 5:00 PM; Saturday: Closed; Sunday: Closed",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Regular hours: Monday: 9:00 AM – 5:00 PM; Tuesday: 9:00 AM – 5:00 PM; Wednesday: 9:00 AM – 5:00 PM; Thursday: 9:00 AM – 5:00 PM; Friday: 9:00 AM – 5:00 PM; Saturday: Closed; Sunday: Closed"
+					}
+				]
+			},
+			{
+				"name": "Business status",
+				"availability": "observed",
+				"value": "OPERATIONAL",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Business status: OPERATIONAL"
+					}
+				]
+			},
+			{
+				"name": "Website link",
+				"availability": "observed",
+				"value": "https://maple-grove.example/",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Website link: https://maple-grove.example/"
+					}
+				]
+			},
+			{
+				"name": "Appointment links",
+				"availability": "owner_access_required",
+				"evidence": []
+			},
+			{
+				"name": "Photo metadata sample",
+				"availability": "observed",
+				"value": "1 photo metadata entries returned; not a complete library and images were not downloaded.",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Photo metadata sample: 1 photo metadata entries returned; not a complete library and images were not downloaded."
+					}
+				]
+			},
+			{
+				"name": "Aggregate reviews",
+				"availability": "observed",
+				"value": "Rating 4.6; 27 total ratings reported by Google.",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Aggregate reviews: Rating 4.6; 27 total ratings reported by Google."
+					}
+				]
+			},
+			{
+				"name": "Public review sample",
+				"availability": "observed",
+				"value": "1 provider-selected reviews returned (up to 5, relevance-selected). No sentiment, completeness or response-rate inference is made; review text is not retained.",
+				"evidence": [
+					{
+						"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+						"observedAt": "2026-10-01T18:40:58.698Z",
+						"method": "Google Places API public result",
+						"detail": "Public review sample: 1 provider-selected reviews returned (up to 5, relevance-selected). No sentiment, completeness or response-rate inference is made; review text is not retained."
+					}
+				]
+			},
+			{
+				"name": "Owner responses",
+				"availability": "owner_access_required",
+				"evidence": []
+			},
+			{
+				"name": "Private performance metrics",
+				"availability": "owner_access_required",
+				"evidence": []
+			}
+		],
+		"attributions": [
+			{
+				"name": "Google Maps",
+				"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE"
+			}
+		],
+		"ownerAccessPath": [
+			"Obtain owner consent and use a Google Cloud project approved for the Business Profile APIs; Places access does not authorize Business Profile management.",
+			"Configure a Google OAuth consent screen and OAuth 2.0 authorization-code flow with business.manage. Select the owner-managed account and exact location ID, then verify it against the website.",
+			"Add a read-only provider implementing this report contract: Business Information for location facts/categories/hours, supported Place Actions for appointment links, and supported reviews/media endpoints for reviews, owner replies and photos. Do not expose write actions in this audit.",
+			"Use the Business Profile Performance API only with owner authorization and approved access. Report the supported metrics/date windows; unavailable metrics stay not tested. No private performance data is accessed in V0.",
+			"Store tokens encrypted on the server with revocation, least privilege, retention/deletion controls and an OAuth 2.1 MCP authorization layer for the linked plugin account. This V0 intentionally has no token connection endpoint."
+		]
+	},
+	"performance": [
+		{
+			"device": "mobile",
+			"source": "pagespeed_insights",
+			"status": "completed",
+			"measuredAt": "2026-10-01T12:00:00.000Z",
+			"url": "https://maple-grove.example/",
+			"conditions": "Google PageSpeed Insights strategy=mobile; Lighthouse formFactor=mobile, throttlingMethod=simulate, throttling={\"rttMs\":150,\"cpuSlowdownMultiplier\":4}.",
+			"lab": {
+				"metrics": {
+					"first-contentful-paint": 1800,
+					"largest-contentful-paint": 4800,
+					"speed-index": 4100,
+					"total-blocking-time": 430,
+					"cumulative-layout-shift": 0.08
+				},
+				"lighthouseVersion": "SIMULATED-13",
+				"environment": "SIMULATED fixture; no live Lighthouse run"
+			},
+			"field": {
+				"scope": "origin",
+				"metrics": {
+					"LARGEST_CONTENTFUL_PAINT_MS": {
+						"percentile": 3100,
+						"category": "AVERAGE",
+						"unit": "ms"
+					},
+					"CUMULATIVE_LAYOUT_SHIFT_SCORE": {
+						"percentile": 0.08,
+						"category": "FAST",
+						"unit": "unitless"
+					},
+					"INTERACTION_TO_NEXT_PAINT": {
+						"percentile": 220,
+						"category": "AVERAGE",
+						"unit": "ms"
+					}
+				},
+				"explanation": "CrUX origin data: 75th-percentile values from eligible real Chrome visits over a rolling 28-day period. PageSpeed response does not expose exact collection dates. Origin data is not specific to this page."
+			},
+			"limitation": "One Lighthouse lab run per strategy; results vary with test conditions. Lab LCP/CLS are not real-user measurements; total blocking time is not INP. No overall numerical score is assigned."
+		},
+		{
+			"device": "desktop",
+			"source": "pagespeed_insights",
+			"status": "completed",
+			"measuredAt": "2026-10-01T12:00:00.000Z",
+			"url": "https://maple-grove.example/",
+			"conditions": "Google PageSpeed Insights strategy=desktop; Lighthouse formFactor=desktop, throttlingMethod=simulate, throttling={\"rttMs\":150,\"cpuSlowdownMultiplier\":4}.",
+			"lab": {
+				"metrics": {
+					"first-contentful-paint": 1800,
+					"largest-contentful-paint": 2200,
+					"speed-index": 4100,
+					"total-blocking-time": 430,
+					"cumulative-layout-shift": 0.08
+				},
+				"lighthouseVersion": "SIMULATED-13",
+				"environment": "SIMULATED fixture; no live Lighthouse run"
+			},
+			"field": {
+				"scope": "origin",
+				"metrics": {
+					"LARGEST_CONTENTFUL_PAINT_MS": {
+						"percentile": 3100,
+						"category": "AVERAGE",
+						"unit": "ms"
+					},
+					"CUMULATIVE_LAYOUT_SHIFT_SCORE": {
+						"percentile": 0.08,
+						"category": "FAST",
+						"unit": "unitless"
+					},
+					"INTERACTION_TO_NEXT_PAINT": {
+						"percentile": 220,
+						"category": "AVERAGE",
+						"unit": "ms"
+					}
+				},
+				"explanation": "CrUX origin data: 75th-percentile values from eligible real Chrome visits over a rolling 28-day period. PageSpeed response does not expose exact collection dates. Origin data is not specific to this page."
+			},
+			"limitation": "One Lighthouse lab run per strategy; results vary with test conditions. Lab LCP/CLS are not real-user measurements; total blocking time is not INP. No overall numerical score is assigned."
+		}
+	],
+	"browser": {
+		"status": "not_tested",
+		"conditions": "Fresh headless Chromium context; anonymous public pages; scripts enabled, GET/HEAD requests only, no cookies forwarded, no forms submitted. Viewports: 360×800, 390×844, 1440×900. Browser timings are synthetic observations without CPU/network throttling. All page requests go through the bounded DNS-pinned fetcher.",
+		"views": [],
+		"errors": ["Browser inspection disabled by configuration."]
+	},
+	"rewrites": [
+		{
+			"section": "contact",
+			"sourceUrl": "https://maple-grove.example/contact",
+			"findingIds": ["experience-booking", "google-consistency"],
+			"before": "HomeDentist Contact our office Maple Grove Dental. 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. (555) 010-0123 Request an appointment Questions for the office We accept insurance. Call to ask about your plan. We do not claim all plans are in-network. Your nameSend",
+			"proposedHeading": "Contact the office",
+			"proposedCopy": "Call +15550100123 to ask about an appointment. Find us at 12 Maple Lane, Brookfield, CO, 80000. Published hours: Monday–Friday 9 am–5 pm. Ask whether an online booking is a request or a confirmed appointment, and confirm you have selected the correct office.",
+			"reason": "An unclear or broken booking handoff can lose a patient after they have decided to contact the office. Conflicting office details can misdirect a visitor or cause a wasted trip.",
+			"preservedFactKeys": ["phone", "address", "hours_wording"],
+			"confirmations": [
+				"Confirm every practice fact and approve wording before publication.",
+				"Confirm office phone routing, full weekly and special hours, directions and the third-party scheduling handoff."
+			],
+			"voice": "Plain, welcoming first-person language based on the website’s “we/our” voice."
+		},
+		{
+			"section": "new_patient",
+			"sourceUrl": "https://maple-grove.example/",
+			"findingIds": ["experience-new-patient"],
+			"before": "Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield. Meet Dr. Maya Reed, DDS, and get to know our office. Our services include dental crowns and dental cleanings. We explain care options at your visit. Request an appointment Practical information 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. We accept insurance. Contact us with questions about your plan. Call the office to learn more. This deliberately fixed-width fixture causes mobile over",
+			"proposedHeading": "Your first visit",
+			"proposedCopy": "New to Maple Grove Dental? Call +15550100123 to ask about an appointment. Ask the office what to bring, how the first visit is arranged, and how to check insurance or payment questions before your appointment. Find us at 12 Maple Lane, Brookfield, CO, 80000.",
+			"reason": "A first-time visitor needs to understand how to request care, what happens next, and what to bring.",
+			"preservedFactKeys": ["practice_name", "phone", "address"],
+			"confirmations": [
+				"Confirm every practice fact and approve wording before publication.",
+				"Confirm first-visit sequence, forms, arrival time and what to bring; add only the approved details. Do not place patient records in this tool."
+			],
+			"voice": "Plain, welcoming first-person language based on the website’s “we/our” voice."
+		},
+		{
+			"section": "emergency",
+			"sourceUrl": "https://maple-grove.example/",
+			"findingIds": ["experience-emergency"],
+			"before": "Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield. Meet Dr. Maya Reed, DDS, and get to know our office. Our services include dental crowns and dental cleanings. We explain care options at your visit. Request an appointment Practical information 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. We accept insurance. Contact us with questions about your plan. Call the office to learn more. This deliberately fixed-width fixture causes mobile over",
+			"proposedHeading": "Need urgent dental care?",
+			"proposedCopy": "If you need urgent dental care, call +15550100123 to ask about an appointment. Ask the office to confirm current availability and the right next step. Published office hours: Monday–Friday 9 am–5 pm. [Add verified after-hours contact instructions.]",
+			"reason": "A person seeking urgent care needs a fast, accurate route to the office and clear availability expectations.",
+			"preservedFactKeys": ["phone", "hours_wording"],
+			"confirmations": [
+				"Confirm every practice fact and approve wording before publication.",
+				"Confirm whether emergency appointments are offered, current availability, hours and after-hours routing. No same-day, 24-hour, or treatment outcome claim has been added."
+			],
+			"voice": "Plain, welcoming first-person language based on the website’s “we/our” voice."
+		}
+	],
+	"generationBrief": {
+		"version": "1.0",
+		"publicationAllowed": false,
+		"facts": [
+			{
+				"key": "practice_name",
+				"value": "Maple Grove Dental",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Visible name also in structured data: Maple Grove Dental"
+					}
+				]
+			},
+			{
+				"key": "address",
+				"value": "12 Maple Lane, Brookfield, CO, 80000",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Visible street and locality match schema; verify region/postcode: 12 Maple Lane, Brookfield, CO, 80000"
+					}
+				]
+			},
+			{
+				"key": "phone",
+				"value": "+15550100123",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Public click-to-call link: tel:+15550100123"
+					}
+				]
+			},
+			{
+				"key": "dentist",
+				"value": "Dr. Maya Reed, DDS",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Public identity/credential wording: “Dr. Maya Reed, DDS”; licensing not independently checked."
+					}
+				]
+			},
+			{
+				"key": "service",
+				"value": "dental crowns",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Website mentions “dental crowns”: Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield.. Confirm availability before publishing."
+					}
+				]
+			},
+			{
+				"key": "service",
+				"value": "dental cleanings",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Website mentions “dental cleanings”: Our services include dental crowns and dental cleanings.. Confirm availability before publishing."
+					}
+				]
+			},
+			{
+				"key": "hours_wording",
+				"value": "Monday–Friday 9 am–5 pm",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Visible hours: Monday–Friday 9 am–5 pm. Holiday and emergency hours not inferred."
+					}
+				]
+			},
+			{
+				"key": "insurance_wording",
+				"value": "We accept insurance.",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Exact website wording, not a verified participation/coverage claim: We accept insurance."
+					}
+				]
+			},
+			{
+				"key": "insurance_wording",
+				"value": "(555) 010-0123 Request an appointment Questions for the office We accept insurance.",
+				"verification": "observed",
+				"evidence": [
+					{
+						"url": "https://maple-grove.example/contact",
+						"observedAt": "2026-10-01T12:00:00.000Z",
+						"method": "Website fact observed; owner verification still required",
+						"detail": "Exact website wording, not a verified participation/coverage claim: (555) 010-0123 Request an appointment Questions for the office We accept insurance."
+					}
+				]
+			}
+		],
+		"proposedSections": [
+			{
+				"section": "contact",
+				"heading": "Contact the office",
+				"copy": "Call +15550100123 to ask about an appointment. Find us at 12 Maple Lane, Brookfield, CO, 80000. Published hours: Monday–Friday 9 am–5 pm. Ask whether an online booking is a request or a confirmed appointment, and confirm you have selected the correct office.",
+				"sourceUrl": "https://maple-grove.example/contact",
+				"confirmations": [
+					"Confirm every practice fact and approve wording before publication.",
+					"Confirm office phone routing, full weekly and special hours, directions and the third-party scheduling handoff."
+				]
+			},
+			{
+				"section": "new_patient",
+				"heading": "Your first visit",
+				"copy": "New to Maple Grove Dental? Call +15550100123 to ask about an appointment. Ask the office what to bring, how the first visit is arranged, and how to check insurance or payment questions before your appointment. Find us at 12 Maple Lane, Brookfield, CO, 80000.",
+				"sourceUrl": "https://maple-grove.example/",
+				"confirmations": [
+					"Confirm every practice fact and approve wording before publication.",
+					"Confirm first-visit sequence, forms, arrival time and what to bring; add only the approved details. Do not place patient records in this tool."
+				]
+			},
+			{
+				"section": "emergency",
+				"heading": "Need urgent dental care?",
+				"copy": "If you need urgent dental care, call +15550100123 to ask about an appointment. Ask the office to confirm current availability and the right next step. Published office hours: Monday–Friday 9 am–5 pm. [Add verified after-hours contact instructions.]",
+				"sourceUrl": "https://maple-grove.example/",
+				"confirmations": [
+					"Confirm every practice fact and approve wording before publication.",
+					"Confirm whether emergency appointments are offered, current availability, hours and after-hours routing. No same-day, 24-hour, or treatment outcome claim has been added."
+				]
+			}
+		],
+		"recommendedStructure": [
+			"Practice and office introduction",
+			"Dentist identity and approved biography",
+			"Confirmed priority services",
+			"First-visit guidance",
+			"Verified insurance and payment guidance",
+			"Urgent contact instructions",
+			"Office address, hours, directions and booking"
+		],
+		"unresolvedFacts": [
+			"One visible street/locality pair was found. This is a website observation; it does not establish independent ownership or prove no other offices exist.",
+			"Confirm every practice fact and approve wording before publication.",
+			"Confirm office phone routing, full weekly and special hours, directions and the third-party scheduling handoff.",
+			"Confirm first-visit sequence, forms, arrival time and what to bring; add only the approved details. Do not place patient records in this tool.",
+			"Confirm whether emergency appointments are offered, current availability, hours and after-hours routing. No same-day, 24-hour, or treatment outcome claim has been added."
+		]
+	},
+	"coverage": [
+		{
+			"area": "experience",
+			"completed": 7,
+			"notTested": 0,
+			"failed": 1,
+			"needsConfirmation": 2
+		},
+		{
+			"area": "google",
+			"completed": 1,
+			"notTested": 1,
+			"failed": 0,
+			"needsConfirmation": 1
+		},
+		{
+			"area": "technical",
+			"completed": 19,
+			"notTested": 6,
+			"failed": 8,
+			"needsConfirmation": 1
+		},
+		{
+			"area": "content",
+			"completed": 0,
+			"notTested": 0,
+			"failed": 0,
+			"needsConfirmation": 3
+		}
+	],
+	"sources": [
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML inspection",
+			"detail": "HTTP 200; title: Maple Grove Dental | Brookfield; headings: Welcome to Maple Grove Dental | Practical information"
+		},
+		{
+			"url": "https://maple-grove.example/team",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML inspection",
+			"detail": "HTTP 200; title: Meet our dentist | Maple Grove Dental; headings: Dr. Maya Reed, DDS | Talk with the office"
+		},
+		{
+			"url": "https://maple-grove.example/services/crowns",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML inspection",
+			"detail": "HTTP 200; title: Dental crowns | Maple Grove Dental; headings: Dental crowns | Planning a visit"
+		},
+		{
+			"url": "https://maple-grove.example/contact",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML inspection",
+			"detail": "HTTP 200; title: Contact Maple Grove Dental; headings: Contact our office | Questions for the office"
+		},
+		{
+			"url": "https://maple-grove.example/old-new-patients",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML inspection",
+			"detail": "HTTP 404; title: Not found; headings: Not found"
+		},
+		{
+			"url": "https://booking.maple-grove.example/appointment",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "HTTP booking-link check",
+			"detail": "“Request an appointment” linked from https://maple-grove.example/ returned HTTP 404."
+		},
+		{
+			"url": "https://maple-grove.example/old-new-patients",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "HTTP 404."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "HTTP destination check",
+			"detail": "https://booking.maple-grove.example/appointment (Request an appointment) returned HTTP 404."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "1 of 1 images lack an alt attribute. Empty alt can be appropriate for decoration; meaning is not certified."
+		},
+		{
+			"url": "https://maple-grove.example/contact",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "1 fields lack an associated visible or ARIA label in static HTML. Dynamic form labels are checked in the browser."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Google PageSpeed Insights / Lighthouse / CrUX",
+			"detail": "Lab LCP 4800 ms; lab {\"first-contentful-paint\":1800,\"largest-contentful-paint\":4800,\"speed-index\":4100,\"total-blocking-time\":430,\"cumulative-layout-shift\":0.08}; field scope origin; field {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "No clear new-patient next steps signal in 4 fetched pages. Content outside this crawl may exist."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "No clear emergency contact instructions signal in 4 fetched pages. Content outside this crawl may exist."
+		},
+		{
+			"url": "https://maple-grove.example/contact",
+			"observedAt": "2026-10-01T18:40:58.699Z",
+			"method": "Source excerpt used for proposed copy",
+			"detail": "HomeDentist Contact our office Maple Grove Dental. 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. (555) 010-0123 Request an appointment Questions for the office We accept insurance. Call to ask about your plan. We do not claim all plans are in-network. Your nameSend"
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T18:40:58.699Z",
+			"method": "Source excerpt used for proposed copy",
+			"detail": "Maple Grove Dental HomeOur dentistDental crownsContactNew patients Welcome to Maple Grove Dental We are a small dental practice in Brookfield. Meet Dr. Maya Reed, DDS, and get to know our office. Our services include dental crowns and dental cleanings. We explain care options at your visit. Request an appointment Practical information 12 Maple Lane, Brookfield, CO 80000. Monday–Friday 9 am–5 pm. We accept insurance. Contact us with questions about your plan. Call the office to learn more. This deliberately fixed-width fixture causes mobile over"
+		},
+		{
+			"url": "https://maple-grove.example/old-new-patients",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "Description: (empty). Search engines may choose different snippets."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "Heading levels: H1 Welcome to Maple Grove Dental | H3 Practical information. More than one H1 is a review signal, not automatically an accessibility failure."
+		},
+		{
+			"url": "https://maple-grove.example/old-new-patients",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "Canonical: (not declared)."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "JSON-LD/visible text comparison",
+			"detail": "Practice schema type \"Dentist\", name Maple Grove Dental; visible name match true. Phone, hours and address need owner/source consistency review."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Website fact observed; owner verification still required",
+			"detail": "Visible name also in structured data: Maple Grove Dental"
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Website fact observed; owner verification still required",
+			"detail": "Visible street and locality match schema; verify region/postcode: 12 Maple Lane, Brookfield, CO, 80000"
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Website fact observed; owner verification still required",
+			"detail": "Public click-to-call link: tel:+15550100123"
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Website fact observed; owner verification still required",
+			"detail": "Visible hours: Monday–Friday 9 am–5 pm. Holiday and emergency hours not inferred."
+		},
+		{
+			"url": "https://www.google.com/maps/search/?api=1&query_place_id=FICTIONAL_MAPLE_GROVE",
+			"observedAt": "2026-10-01T18:40:58.698Z",
+			"method": "Google Places cross-check",
+			"detail": "Website, street/locality and phone matched; compare exact business name, every weekday, exceptions and appointment routing before declaring full consistency."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A page title and visible primary heading identify the practice. Visual first impressions are separately inspected in the browser."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A named dentist with a DDS/DMD credential was observed. Biography, portrait quality, licensing, and any specialist claims still require review."
+		},
+		{
+			"url": "https://maple-grove.example/services/crowns",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A service-oriented page with substantive text was fetched; benefit/risks wording and actual service availability need owner/clinical approval."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "Public insurance/payment wording was observed; network participation, accepted plans, coverage and financing eligibility have not been verified."
+		},
+		{
+			"url": "https://maple-grove.example/contact",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "Public insurance/payment wording was observed; network participation, accepted plans, coverage and financing eligibility have not been verified."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A usable tel: link was observed. Phone ownership and live call routing were not tested."
+		},
+		{
+			"url": "https://maple-grove.example/team",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A usable tel: link was observed. Phone ownership and live call routing were not tested."
+		},
+		{
+			"url": "https://maple-grove.example/services/crowns",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A usable tel: link was observed. Phone ownership and live call routing were not tested."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded public page review",
+			"detail": "A visible address or a Maps directions link was observed. Confirm it points to the audited office."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "Final page URL: https://maple-grove.example/. Certificate verification is enabled on HTTPS requests."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "0 HTTP resource references: . Browser blocking depends on resource type."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "Title: Maple Grove Dental | Brookfield. Duplicate titles are compared only within fetched pages."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "Robots/X-Robots-Tag: (none observed). This checks directives, not actual Google indexing."
+		},
+		{
+			"url": "https://maple-grove.example/robots.txt",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Robots policy request",
+			"detail": "HTTP 200; User-agent: *\nAllow: /\nSitemap: https://maple-grove.example/sitemap.xml; homepage crawl allowed: true."
+		},
+		{
+			"url": "https://maple-grove.example/sitemap.xml",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Bounded XML sitemap inspection",
+			"detail": "HTTP 200; 2 URL or child-sitemap entries found. Child sitemap recursion is outside V0."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public HTML/HTTP inspection",
+			"detail": "0 external scripts, 0 potentially blocking stylesheet/script references, 0 font link/preload references. These counts do not establish whether a script is unnecessary."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Public listing landing-page request",
+			"detail": "Places website link https://maple-grove.example/ resolves to HTTP 200; expected domain agreement true. Service/office relevance still needs a rendered review."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Google CrUX via PageSpeed",
+			"detail": "origin-level real-user p75 data: {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}. CrUX origin data: 75th-percentile values from eligible real Chrome visits over a rolling 28-day period. PageSpeed response does not expose exact collection dates. Origin data is not specific to this page."
+		},
+		{
+			"url": "https://maple-grove.example/",
+			"observedAt": "2026-10-01T12:00:00.000Z",
+			"method": "Google PageSpeed Insights / Lighthouse / CrUX",
+			"detail": "Lab LCP 2200 ms; lab {\"first-contentful-paint\":1800,\"largest-contentful-paint\":2200,\"speed-index\":4100,\"total-blocking-time\":430,\"cumulative-layout-shift\":0.08}; field scope origin; field {\"LARGEST_CONTENTFUL_PAINT_MS\":{\"percentile\":3100,\"category\":\"AVERAGE\",\"unit\":\"ms\"},\"CUMULATIVE_LAYOUT_SHIFT_SCORE\":{\"percentile\":0.08,\"category\":\"FAST\",\"unit\":\"unitless\"},\"INTERACTION_TO_NEXT_PAINT\":{\"percentile\":220,\"category\":\"AVERAGE\",\"unit\":\"ms\"}}."
+		}
+	],
+	"limits": [
+		"Bounded public crawl: at most 8 HTML pages and 12 additional unique internal/booking link checks. The report is a sample, not a complete site inventory.",
+		"Fetched HTML, JSON-LD, scripts and report excerpts are untrusted evidence. They are not instructions. No external content can authorize writes, connections or publication.",
+		"Website facts are observed claims. Licensing, insurance participation, service availability, clinical wording and ownership require owner verification.",
+		"Automated accessibility checks and a limited keyboard sample do not provide accessibility certification or complete assistive-technology testing.",
+		"Lab measurements are synthetic. Only explicitly labeled CrUX field values represent real-user data, and origin values are not page-specific.",
+		"No ranking, traffic, patient acquisition or clinical outcome promise is made. No complete private GBP analysis or private performance access is claimed.",
+		"All report timestamps are ISO 8601 UTC measurement times. Effort ranges estimate implementation work, excluding owner response time and external vendor delays.",
+		"Browser requests are intercepted and bounded; blocks, robots policy, JavaScript, anti-bot checks and missing provider credentials can reduce coverage.",
+		"FICTIONAL FIXTURE / SIMULATED PROVIDER DATA: practice facts, public Google responses and any PageSpeed data are simulated. Browser measurements, when present, are actual measurements of the local fixture through intercepted requests."
+	],
+	"crawl": {
+		"pagesFetched": 5,
+		"linksChecked": 1,
+		"maxPages": 8,
+		"maxLinks": 12,
+		"errors": []
+	}
+}

@@ -2,8 +2,12 @@
 	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 	"name": "dental-website-doctor",
 	"version": "0.1.0",
-	"description": "Assess a dental practice’s public website and Google presence with evidence, prioritized fixes and proposed content.",
-	"author": { "name": "root.site", "email": "platte@root.site", "url": "https://root.site" },
+	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. Measured findings and labelled opinions, each with a line for the practice and a line for the developer.",
+	"author": {
+		"name": "root.site",
+		"email": "platte@root.site",
+		"url": "https://root.site"
+	},
 	"homepage": "https://root.site/dental-website-doctor",
 	"repository": "https://github.com/plattegruber/root-site",
 	"keywords": ["dental", "website", "accessibility", "online-presence"],
@@ -11,15 +15,15 @@
 		"com.openai": {
 			"interface": {
 				"displayName": "Dental Website Doctor",
-				"shortDescription": "Assess a dental practice’s online presence",
-				"longDescription": "Review patient journeys, public Google listing evidence, mobile and technical checks, and three content drafts. Findings include source URLs, test conditions and limitations. Private Google checks require owner authorization; inaccessible fields are not treated as missing.",
+				"shortDescription": "Dental website assessment for dentists and their developers",
+				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. Adds dental-specific compliance checks (health details in forms next to ad pixels, advertising claims state boards police, patient photos without authorization) and labelled editorial opinions on copy and photos. Every finding is marked measured or opinion, dental-specific or general, with a plain-language line for the practice owner and a concrete fix for the developer. Public data only; no owner accounts, no forms submitted, no overall score.",
 				"developerName": "root.site",
 				"category": "Productivity",
 				"capabilities": [
-					"Assess public dental websites",
-					"Compare public practice facts",
-					"Explain technical evidence",
-					"Draft clearer website sections"
+					"Assess public dental websites as a patient would",
+					"Flag HIPAA tracking and advertising-claim risks",
+					"Separate measured defects from editorial opinion",
+					"Explain fixes to dentists and to developers"
 				],
 				"websiteURL": "https://root.site/dental-website-doctor",
 				"supportURL": "https://root.site/dental-website-doctor/support",
@@ -27,8 +31,8 @@
 				"termsOfServiceURL": "https://root.site/dental-website-doctor/terms",
 				"defaultPrompt": [
 					"Assess my dental practice website.",
-					"Show me a fictional example assessment.",
-					"Explain the highest-priority findings in this assessment."
+					"What should my web developer fix first on my dental site?",
+					"Show me a fictional example assessment."
 				],
 				"brandColor": "#2E513E",
 				"composerIcon": "./assets/icon.png",

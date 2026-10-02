@@ -1,6 +1,6 @@
 import { evidence, type Fact, type Report } from '../model.js';
 import type { Page } from './pages.js';
-import { schemaNodes } from './pages.js';
+import { isPracticeNode, schemaNodes } from './pages.js';
 
 export const serviceNames = [
 	'dental implants',
@@ -15,6 +15,48 @@ export const serviceNames = [
 	'pediatric dentistry',
 	'tooth extraction',
 	'veneers'
+];
+/** Insurers patients search for by name; a named list beats "we accept most insurance". */
+export const insurerNames = [
+	'Delta Dental',
+	'Cigna',
+	'Aetna',
+	'MetLife',
+	'Guardian',
+	'UnitedHealthcare',
+	'United Healthcare',
+	'Humana',
+	'Blue Cross',
+	'BlueCross',
+	'BCBS',
+	'Anthem',
+	'Principal',
+	'Ameritas',
+	'Sun Life',
+	'Lincoln Financial',
+	'Careington',
+	'DentaQuest',
+	'Medicaid',
+	'Medicare',
+	'CHIP',
+	'Tricare',
+	'Denali',
+	'Dental Network of America',
+	'GEHA',
+	'Liberty Dental',
+	'MCNA'
+];
+/** Third-party patient financing brands; naming one is a concrete, checkable claim. */
+export const financingNames = [
+	'CareCredit',
+	'Sunbit',
+	'Cherry',
+	'LendingClub',
+	'Proceed Finance',
+	'Alphaeon',
+	'Scratchpay',
+	'Wells Fargo Health Advantage',
+	'Affirm'
 ];
 export function practiceFromPages(pages: Page[], fallback: string): Report['practice'] {
 	const home = pages[0];
@@ -40,12 +82,7 @@ export function practiceFromPages(pages: Page[], fallback: string): Report['prac
 		page.text.toLowerCase().includes(value.toLowerCase());
 	for (const page of pages.filter((p) => p.status >= 200 && p.status < 300)) {
 		for (const node of page.jsonLd.flatMap(schemaNodes)) {
-			const types = Array.isArray(node['@type']) ? node['@type'] : [node['@type']];
-			if (
-				types.some((t) =>
-					['Dentist', 'DentalClinic', 'MedicalClinic', 'LocalBusiness'].includes(String(t))
-				)
-			) {
+			if (isPracticeNode(node)) {
 				if (typeof node.name === 'string' && visible(page, node.name))
 					add(
 						'practice_name',
@@ -128,6 +165,45 @@ export function practiceFromPages(pages: Page[], fallback: string): Report['prac
 				page,
 				`Exact website wording, not a verified participation/coverage claim: ${insurance.trim()}`
 			);
+		for (const insurer of insurerNames)
+			if (new RegExp(`\\b${insurer.replace(/\s+/g, '\\s+')}\\b`, 'i').test(page.text))
+				add(
+					'insurer',
+					insurer,
+					page,
+					`Website names “${insurer}”; participation status is not verified.`
+				);
+		// Lender names double as ordinary words ("Cherry", "Affirm"), so require payment context.
+		if (/financ|payment plan|pay over time|monthly payments|payment options/i.test(page.text))
+			for (const lender of financingNames)
+				if (new RegExp(`\\b${lender.replace(/\s+/g, '\\s+')}\\b`).test(page.text))
+					add(
+						'financing',
+						lender,
+						page,
+						`Website names “${lender}” financing; terms are not verified.`
+					);
+		const membership = page.text.match(
+			/[^.!?]{0,80}(?:membership plan|in-house (?:dental |savings )?plan|dental savings plan|no insurance\? no problem|wellness plan)[^.!?]{0,160}[.!?]?/i
+		)?.[0];
+		if (membership)
+			add(
+				'membership_plan',
+				membership.trim(),
+				page,
+				`In-house plan wording: ${membership.trim()}`
+			);
+		const language = page.text.match(
+			/(se habla español|hablamos español|spanish[- ]speaking|we speak (?:spanish|[a-z]+ and [a-z]+)|bilingual staff)/i
+		)?.[0];
+		if (language) add('languages', language, page, `Language wording: ${language}`);
+		const newPatients = page.text.match(
+			/(?:now |currently |always )?(?:accepting|welcoming|taking) new patients/i
+		)?.[0];
+		if (newPatients)
+			add('accepting_new_patients', newPatients, page, `New-patient wording: ${newPatients}`);
+		for (const email of page.links.filter((l) => l.kind === 'email'))
+			add('email', email.url.slice(7).toLowerCase(), page, `Public mailto link: ${email.url}`);
 	}
 	if (!facts.some((f) => f.key === 'practice_name') && home) {
 		const title = home.title

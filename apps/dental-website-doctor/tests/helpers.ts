@@ -88,3 +88,64 @@ export const fixturePlaces: PlacesProvider = {
 		return [JSON.parse(fixture('google.json')) as Place];
 	}
 };
+
+/**
+ * Fetcher for a multi-page fixture site. `brightsmiles` is a template-heavy practice built
+ * from static HTML files; `riverbend` is a well-run practice assembled from a shared shell
+ * plus per-page content in pages.json. Both are fictional.
+ */
+export function siteFetcher(site: 'brightsmiles' | 'riverbend'): SafeFetcher {
+	const host = `${site}.example`;
+	const robots = `User-agent: *\nAllow: /\nSitemap: https://${host}/sitemap.xml`;
+	const brightPages: Record<string, string> = {
+		'/': 'home.html',
+		'/about': 'about.html',
+		'/services': 'services.html',
+		'/contact': 'contact.html',
+		'/blog': 'blog.html'
+	};
+	const riverbend = JSON.parse(fixture('riverbend/pages.json')) as Record<
+		string,
+		{ title: string; description: string; main: string }
+	>;
+	const shell = fixture('riverbend/_shell.html');
+	const paths = site === 'brightsmiles' ? Object.keys(brightPages) : Object.keys(riverbend);
+	return async (url) => {
+		const u = new URL(url);
+		if (u.hostname === 'www.googleapis.com')
+			return response(url, fixture('psi.json'), 200, { 'content-type': 'application/json' });
+		if (u.pathname === '/robots.txt')
+			return response(url, robots, 200, { 'content-type': 'text/plain' });
+		if (u.pathname === '/sitemap.xml')
+			return response(
+				url,
+				`<urlset>${paths.map((p) => `<url><loc>https://${host}${p}</loc></url>`).join('')}</urlset>`,
+				200,
+				{ 'content-type': 'application/xml' }
+			);
+		if (u.hostname !== host)
+			return response(url, '<html><title>External</title><body>ok</body></html>');
+		if (site === 'brightsmiles') {
+			const file = brightPages[u.pathname];
+			if (file) return response(url, fixture(`brightsmiles/${file}`));
+			if (u.pathname.endsWith('.pdf'))
+				return response(url, '%PDF-1.4', 200, { 'content-type': 'application/pdf' });
+		} else {
+			const page = riverbend[u.pathname];
+			if (page)
+				return response(
+					url,
+					shell
+						.replace('{{TITLE}}', page.title)
+						.replace('{{DESCRIPTION}}', page.description)
+						.replace('{{PATH}}', u.pathname === '/' ? '/' : u.pathname)
+						.replace('{{MAIN}}', page.main)
+				);
+		}
+		return response(
+			url,
+			'<!doctype html><html lang="en"><title>Not found</title><h1>Not found</h1></html>',
+			404
+		);
+	};
+}

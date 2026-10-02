@@ -416,3 +416,20 @@ th {
 		padding-top: 0;
 	}
 }
+
+.badge.objective {
+	background: #e3ecf7;
+	color: #1f3a5f;
+}
+.badge.subjective {
+	background: #f6ecd9;
+	color: #6b4a12;
+}
+.badge.dental {
+	background: #e2f1e8;
+	color: #1f4d33;
+}
+.badge.general {
+	background: #ececec;
+	color: #444;
+}

@@ -1,4 +1,43 @@
-# Verification results
+# Verification
+
+## 2026-10-02 (this change)
+
+Run on Node 24.21 / pnpm 12.8 in a sandboxed Linux container with Playwright Chromium
+1194 from `/opt/pw-browsers`.
+
+**Found and fixed before any new checks were added**
+
+- The browser provider failed on every page under `pnpm dev` / `pnpm test:browser`
+  with `ReferenceError: __name is not defined`: tsx/esbuild `keepNames` rewrites the
+  functions passed to `page.evaluate` to call a Node-side helper that does not exist in
+  the page. An init script now shims it. Browser errors now carry the error class and
+  first line instead of a generic “provider failed”.
+- The UI/HTTP integration test asserted a 403 for a spoofed `Host` header using
+  `fetch()`, which silently drops that header; the test now uses `http.request`.
+
+**Passing in this environment**
+
+- `pnpm typecheck`, `pnpm build`, `pnpm test` (unit, MCP, security, providers, and the
+  new `tests/dental.test.ts` which audits two multi-page fictional sites: a
+  template-heavy practice that should trip the dental checks and a well-run practice
+  that should not).
+- `pnpm test:browser` with `CHROMIUM_EXECUTABLE_PATH` set: rendered mobile overflow,
+  axe and keyboard checks on the fixture, the MCP Apps resource, the standalone UI on
+  desktop and mobile, XSS-safe rendering, Host/Origin safeguards, HTTP MCP round trip.
+
+**Not verifiable from this environment**
+
+- Live audits of real practice websites: the container’s egress policy returns 403 for
+  arbitrary public hosts (only package registries and a few Google APIs are allowed),
+  so `pnpm audit https://…` cannot reach any dental website here. The unkeyed PageSpeed
+  endpoint was reachable but quota-exhausted; Places needs a key. Run
+  `pnpm audit <url>` from an unrestricted machine before trusting any live result, and
+  expect to tune thresholds (cliché list, readability bands, PHI field words) against
+  real sites.
+- ChatGPT host rendering, plugin submission, publisher verification: unchanged, not
+  attempted.
+
+## 2026-10-01 (initial V0)
 
 Verified in the managed workspace on **2026-10-01** with Node 24.19.0.
 No public deployment, Google account connection or ChatGPT directory submission

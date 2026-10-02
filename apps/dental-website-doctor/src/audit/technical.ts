@@ -1,9 +1,11 @@
 import { evidence, finding, type Finding, type Report } from '../model.js';
 import type { Crawl, Page } from './pages.js';
-import { schemaNodes } from './pages.js';
+import { isPracticeNode, schemaNodes } from './pages.js';
 
 export function technicalChecks(crawl: Crawl, practice: Report['practice']): Finding[] {
-	const pages = crawl.pages;
+	// Content checks run on pages that actually rendered; error pages are reported once below.
+	const pages = crawl.pages.filter((p) => p.status < 400);
+	const allPages = crawl.pages;
 	const out: Finding[] = [];
 	const pageCheck = (
 		id: string,
@@ -43,7 +45,7 @@ export function technicalChecks(crawl: Crawl, practice: Report['practice']): Fin
 	pageCheck(
 		'tech-status',
 		'Page status codes',
-		pages.filter((p) => p.status >= 400),
+		allPages.filter((p) => p.status >= 400),
 		(p) => `HTTP ${p.status}.`,
 		'A failed public page prevents visitors and crawlers from reaching its content.',
 		'Repair or redirect the failing page to a relevant destination; update incoming links.',
@@ -192,7 +194,10 @@ export function technicalChecks(crawl: Crawl, practice: Report['practice']): Fin
 			}
 		)
 	);
-	const broken = crawl.linkChecks.filter((l) => l.status && l.status >= 400);
+	// Broken booking links are reported by the appointment finding; do not count them twice.
+	const broken = crawl.linkChecks.filter(
+		(l) => l.status && l.status >= 400 && l.kind !== 'booking'
+	);
 	const unknown = crawl.linkChecks.filter((l) => l.error);
 	out.push(
 		finding(
@@ -267,84 +272,171 @@ export function technicalChecks(crawl: Crawl, practice: Report['practice']): Fin
 		'4–8 hours: measurement, dependency review, staged retest',
 		'low'
 	);
-	const nodes = pages.flatMap((p) =>
-		p.jsonLd.flatMap(schemaNodes).map((n) => ({ page: p, node: n }))
-	);
-	const practiceNodes = nodes.filter(({ node }) =>
-		[node['@type']]
-			.flat()
-			.some((t) =>
-				['Dentist', 'DentalClinic', 'MedicalClinic', 'LocalBusiness'].includes(String(t))
-			)
-	);
-	const invisible = practiceNodes.filter(
-		({ page, node }) =>
-			typeof node.name === 'string' && !page.text.toLowerCase().includes(node.name.toLowerCase())
-	);
 	const invalid = pages.filter((p) => p.jsonLdErrors);
-	out.push(
-		finding(
-			'tech-schema',
-			'technical',
-			'Practice structured data and visible facts',
-			invalid.length || invisible.length
-				? 'failed'
-				: practiceNodes.length
-					? 'needs_confirmation'
-					: pages.length
-						? 'needs_confirmation'
-						: 'not_tested',
-			{
-				priority: invalid.length || invisible.length ? 'improvement' : 'none',
-				severity: invalid.length || invisible.length ? 'moderate' : 'info',
-				evidence: [
-					...invalid.map((p) =>
-						evidence(
-							p.url,
-							`${p.jsonLdErrors} malformed JSON-LD blocks.`,
-							'JSON-LD parser',
-							p.fetchedAt
-						)
-					),
-					...practiceNodes
-						.slice(0, 3)
-						.map(({ page, node }) =>
+	const invisible = pages.flatMap((p) =>
+		p.jsonLd
+			.flatMap(schemaNodes)
+			.filter(
+				(n) =>
+					isPracticeNode(n) &&
+					typeof n.name === 'string' &&
+					!p.text.toLowerCase().includes(n.name.toLowerCase())
+			)
+			.map((n) => ({ page: p, name: String(n.name) }))
+	);
+	if (invalid.length || invisible.length)
+		out.push(
+			finding(
+				'tech-schema',
+				'technical',
+				'Structured data that is broken or contradicts the page',
+				'failed',
+				{
+					scope: 'general',
+					priority: 'improvement',
+					severity: 'moderate',
+					evidence: [
+						...invalid.map((p) =>
+							evidence(
+								p.url,
+								`${p.jsonLdErrors} malformed JSON-LD blocks (parse error).`,
+								'JSON-LD parser',
+								p.fetchedAt
+							)
+						),
+						...invisible.map(({ page, name }) =>
 							evidence(
 								page.url,
-								`Practice schema type ${JSON.stringify(node['@type'])}, name ${String(node.name ?? '(not exposed)')}; visible name match ${typeof node.name === 'string' && page.text.toLowerCase().includes(node.name.toLowerCase())}. Phone, hours and address need owner/source consistency review.`,
+								`Schema names the business “${name}” but that name does not appear in the visible page text.`,
 								'JSON-LD/visible text comparison',
 								page.fetchedAt
 							)
 						)
-				],
-				impact: 'Inaccurate machine-readable facts can confuse directories and crawlers.',
-				fix: 'Use an appropriate Dentist/LocalBusiness schema for each real office; match visible name, canonical website, phone, address, hours and dentist identities. Validate with the relevant Google tools. Do not add unverified rating or clinical claims.',
-				effort: '2–4 hours: schema mapping, fact confirmation and validation'
-			}
-		)
+					],
+					impact:
+						'Broken structured data is ignored; structured data that contradicts the visible page is treated as spam. Either way Google trusts the site less.',
+					fix: 'Fix the JSON syntax (validate with the Rich Results Test) and make the schema name identical to the visible business name.',
+					effort: '30–90 minutes'
+				}
+			)
+		);
+	const noViewport = pages.filter((p) => !/width=device-width/i.test(p.viewport));
+	pageCheck(
+		'tech-viewport',
+		'Mobile viewport declaration',
+		noViewport,
+		(p) => `meta viewport: ${p.viewport || '(missing)'}.`,
+		'Without a viewport meta tag, phones render the desktop layout shrunk to fit; text becomes unreadable and buttons untappable. Most dental traffic is mobile.',
+		'Add <meta name="viewport" content="width=device-width, initial-scale=1"> to the document head template.',
+		'15 minutes',
+		noViewport.includes(pages[0]!) ? 'high' : 'moderate'
 	);
-	out.push(
-		finding(
-			'tech-location',
-			'technical',
-			'Location and service page coverage',
-			practice.resolution === 'ambiguous'
-				? 'needs_confirmation'
-				: practice.locations.length &&
-					  pages.some((p) => /services|implant|crown|root.canal/.test(p.url))
+	pageCheck(
+		'tech-lang',
+		'Document language attribute',
+		pages.filter((p) => !p.lang),
+		() => 'The <html> element has no lang attribute.',
+		'Screen readers pick a voice from the lang attribute; without it, English copy can be read with the wrong pronunciation rules. It is also a WCAG requirement.',
+		'Add lang="en" (or the page language) to the <html> element in the template.',
+		'15 minutes',
+		'low'
+	);
+	const year = new Date().getUTCFullYear();
+	const stale = pages.filter(
+		(p) => p.copyrightYears.length && Math.max(...p.copyrightYears) < year - 1
+	);
+	if (pages.some((p) => p.copyrightYears.length))
+		out.push(
+			finding(
+				'tech-copyright',
+				'technical',
+				'Footer copyright year',
+				stale.length ? 'failed' : 'passed',
+				{
+					scope: 'general',
+					priority: stale.length ? 'polish' : 'none',
+					severity: stale.length ? 'low' : 'info',
+					evidence: (stale.length ? stale : pages)
+						.slice(0, 1)
+						.map((p) =>
+							evidence(
+								p.url,
+								`Footer copyright year(s): ${p.copyrightYears.join(', ')}; current year ${year}.`,
+								'Footer text',
+								p.fetchedAt
+							)
+						),
+					impact: stale.length
+						? 'A footer that says © two years ago is the quickest way to make a visitor wonder whether the office is still open. It is also the most common defect on dental websites.'
+						: 'The footer year is current.',
+					fix: stale.length
+						? 'Output the year dynamically in the footer template.'
+						: 'No change required.',
+					effort: stale.length ? '15 minutes' : 'No change required'
+				}
+			)
+		);
+	const locality = practice.locations[0]?.split(',')[1]?.trim();
+	if (locality && pages[0])
+		out.push(
+			finding(
+				'tech-title-city',
+				'technical',
+				'Homepage title names the city',
+				new RegExp(locality.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(pages[0].title)
 					? 'passed'
-					: pages.length
-						? 'needs_confirmation'
-						: 'not_tested',
-			{
-				evidence: pages.slice(0, 2).map((p) => p.excerpt),
-				impact:
-					'Patients need a clear office and relevant information about the care they are researching.',
-				fix: 'Confirm whether this is a single-office practice; create distinct location pages only for real offices and useful pages only for services actually offered.',
-				effort: '4–12 hours per approved page, depending on content and design'
-			}
-		)
-	);
+					: 'failed',
+				{
+					scope: 'general',
+					priority: 'polish',
+					severity: 'low',
+					evidence: [
+						evidence(
+							pages[0].url,
+							`Title: “${pages[0].title}”; visible locality: ${locality}.`,
+							'Title tag vs structured address',
+							pages[0].fetchedAt
+						)
+					],
+					impact:
+						'People search “dentist in [city]”. A title tag that is just the practice name wastes the strongest local relevance signal the page has.',
+					fix: `Use a title like “[Practice] | Dentist in ${locality}” on the homepage, and “[Service] in ${locality} | [Practice]” on service pages.`,
+					effort: '30 minutes'
+				}
+			)
+		);
+	const vendors = new Map<string, Set<string>>();
+	for (const p of pages)
+		for (const h of p.thirdPartyHosts) vendors.set(h, (vendors.get(h) ?? new Set()).add(p.url));
+	if (vendors.size)
+		out.push(
+			finding(
+				'tech-third-parties',
+				'technical',
+				'Third-party services loaded by the site',
+				'passed',
+				{
+					scope: 'general',
+					priority: 'none',
+					severity: 'info',
+					evidence: [
+						evidence(
+							pages[0]!.url,
+							`${vendors.size} external hosts: ${[...vendors.entries()]
+								.sort((a, b) => b[1].size - a[1].size)
+								.slice(0, 25)
+								.map(([h, urls]) => `${h} (${urls.size} page${urls.size === 1 ? '' : 's'})`)
+								.join(', ')}.`,
+							'Script, frame and stylesheet hosts'
+						)
+					],
+					impact:
+						'An inventory for the developer: every external host is a performance cost, a privacy question and a thing that can break. Dental sites accumulate chat widgets, review feeds and pixels from successive agencies.',
+					fix: 'Confirm each vendor is still paid for and wanted; remove the rest. Check the privacy section for pixels on form pages.',
+					effort: 'No change required'
+				}
+			)
+		);
 	return out;
 }
 function validCanonical(page: Page): boolean {

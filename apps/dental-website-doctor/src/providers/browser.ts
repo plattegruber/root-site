@@ -9,6 +9,16 @@ const axeSource = readFileSync(
 	createRequire(import.meta.url).resolve('axe-core/axe.min.js'),
 	'utf8'
 );
+// Browser errors never carry provider credentials, so the error class and first line are
+// safe to keep; a generic "provider failed" hides exactly the detail a developer needs.
+function describeBrowserError(e: unknown): string {
+	if (e instanceof Error && /Timeout/.test(e.name)) return 'browser timeout';
+	if (e instanceof Error) {
+		const firstLine = e.message.split('\n')[0] ?? '';
+		return `${e.name}: ${firstLine.slice(0, 200)}`;
+	}
+	return safeError(e);
+}
 export type BrowserResult = {
 	browser: Report['browser'];
 	findings: Finding[];
@@ -51,6 +61,10 @@ export async function inspectBrowser(
 			]
 		});
 		const context = await instance.newContext({ serviceWorkers: 'block', acceptDownloads: false });
+		// tsx/esbuild (keepNames) rewrites the functions passed to page.evaluate so that they
+		// call a `__name` helper. That helper exists only in the Node bundle, so without this
+		// shim every rendered check fails with "__name is not defined" under `pnpm dev`/tests.
+		await context.addInitScript('globalThis.__name = globalThis.__name || ((fn) => fn);');
 		await context.routeWebSocket(/.*/, (ws) => ws.close());
 		let totalRequests = 0;
 		let totalBytes = 0;
@@ -156,7 +170,39 @@ export async function inspectBrowser(
 					const navigation = performance.getEntriesByType('navigation')[0] as
 						| PerformanceNavigationTiming
 						| undefined;
+					const inFirstViewport = (el: Element) => {
+						const r = el.getBoundingClientRect();
+						const style = getComputedStyle(el);
+						return (
+							r.width > 0 &&
+							r.height > 0 &&
+							r.bottom > 0 &&
+							r.top < innerHeight &&
+							style.visibility !== 'hidden' &&
+							style.opacity !== '0'
+						);
+					};
+					const isSticky = (el: Element) => {
+						let node: Element | null = el;
+						while (node && node !== document.body) {
+							const pos = getComputedStyle(node).position;
+							if (pos === 'fixed' || pos === 'sticky') return true;
+							node = node.parentElement;
+						}
+						return false;
+					};
+					const callLinks = Array.from(document.querySelectorAll('a[href^="tel:"]'));
+					const bookLinks = Array.from(document.querySelectorAll('a[href],button')).filter((el) =>
+						/book|schedule|appointment|request a visit/i.test(
+							`${el.textContent ?? ''} ${el.getAttribute('aria-label') ?? ''} ${el.getAttribute('href') ?? ''}`
+						)
+					);
 					return {
+						callAboveFold: callLinks.some(inFirstViewport),
+						bookAboveFold: bookLinks.some(inFirstViewport),
+						stickyActions: [...callLinks, ...bookLinks].some(
+							(el) => inFirstViewport(el) && isSticky(el)
+						),
 						horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 2,
 						smallTapTargets: small,
 						axeViolations: scan.violations.map((v) => ({
@@ -248,9 +294,7 @@ export async function inspectBrowser(
 							'Synthetic browser navigation timings only. Intercepted resources and the audit network affect timings. This is neither Lighthouse nor real-user Core Web Vitals.'
 					});
 			} catch (e) {
-				browser.errors.push(
-					`${spec.url} at ${spec.width}px: ${e instanceof Error && /Timeout/.test(e.name) ? 'browser timeout' : safeError(e)}`
-				);
+				browser.errors.push(`${spec.url} at ${spec.width}px: ${describeBrowserError(e)}`);
 			} finally {
 				await tab.close();
 			}
@@ -261,10 +305,10 @@ export async function inspectBrowser(
 				? 'partial'
 				: 'completed'
 			: 'failed';
-	} catch {
+	} catch (e) {
 		browser.status = 'not_tested';
 		browser.errors.push(
-			'Chromium could not launch. Install with pnpm exec playwright install chromium (Linux dependencies may also be required).'
+			`Chromium could not launch (${describeBrowserError(e)}). Install with pnpm exec playwright install chromium (Linux dependencies may also be required).`
 		);
 	} finally {
 		await instance?.close();
@@ -310,6 +354,38 @@ export async function inspectBrowser(
 		'Fix fixed-width components and responsive spacing; retest at 360px and 390px.',
 		'2–6 hours: responsive template diagnosis'
 	);
+	const mobileViews = checked.filter((v) => v.width < 800);
+	if (mobileViews.length)
+		result.findings.push(
+			finding(
+				'browser-mobile-actions',
+				'experience',
+				'Call and book buttons visible on a phone without scrolling',
+				mobileViews.some((v) => v.callAboveFold || v.bookAboveFold) ? 'passed' : 'failed',
+				{
+					scope: 'dental',
+					section: 'contact',
+					priority: mobileViews.some((v) => v.callAboveFold || v.bookAboveFold)
+						? 'none'
+						: 'improvement',
+					severity: mobileViews.some((v) => v.callAboveFold || v.bookAboveFold)
+						? 'info'
+						: 'moderate',
+					evidence: mobileViews.map((v) =>
+						evidence(
+							v.url,
+							`${v.width}×${v.height}: tel: link in first viewport ${v.callAboveFold}; book/schedule control in first viewport ${v.bookAboveFold}; sticky/fixed action bar ${v.stickyActions}.`,
+							'Guarded Chromium inspection',
+							v.measuredAt
+						)
+					),
+					impact:
+						'On a phone, the first screen is the whole site for most visitors. If “call” and “book” are not on it, the patient has to open a menu or scroll to the footer, and a share of them will not.',
+					fix: 'Keep a tappable phone number and a “Book” button in the mobile header, or add a fixed bottom bar with Call / Book / Directions.',
+					effort: '1–3 hours: mobile header or sticky bar'
+				}
+			)
+		);
 	check(
 		'browser-taps',
 		'Tap-target geometry',

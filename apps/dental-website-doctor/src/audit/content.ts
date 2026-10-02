@@ -32,8 +32,10 @@ export function improveContent(
 		.filter((f) => f.section && ['failed', 'needs_confirmation'].includes(f.status))
 		.sort((a, b) => order[a.priority] - order[b.priority]);
 	const sections: Array<keyof typeof sectionTitles> = [];
+	const draftable = (s: string): s is keyof typeof sectionTitles => s in sectionTitles;
 	for (const f of candidates)
-		if (f.section && !sections.includes(f.section)) sections.push(f.section);
+		if (f.section && draftable(f.section) && !sections.includes(f.section))
+			sections.push(f.section);
 	for (const s of ['homepage', 'new_patient', 'contact'] as const)
 		if (!sections.includes(s)) sections.push(s);
 	const name = practice.facts.find((f) => f.key === 'practice_name');
@@ -158,15 +160,26 @@ export function improveContent(
 	return {
 		rewrites,
 		findings: rewrites.map((r, i) =>
-			finding(`content-rewrite-${i + 1}`, 'content', r.proposedHeading, 'needs_confirmation', {
-				section: r.section as Finding['section'],
-				priority: 'improvement',
-				severity: 'info',
-				evidence: [evidence(r.sourceUrl, r.before, 'Source excerpt used for proposed copy')],
-				impact: r.reason,
-				fix: r.proposedCopy,
-				effort: '1–3 hours: owner/clinical fact approval, voice edit and CMS placement'
-			})
+			finding(
+				`content-rewrite-${i + 1}`,
+				'content',
+				`Draft copy: ${r.proposedHeading}`,
+				'needs_confirmation',
+				{
+					section: r.section as Finding['section'],
+					scope: 'dental',
+					basis: 'subjective',
+					confidence: 'medium',
+					rationale:
+						'A starting draft built only from facts observed on the site; the owner supplies everything in brackets.',
+					priority: 'improvement',
+					severity: 'info',
+					evidence: [evidence(r.sourceUrl, r.before, 'Source excerpt used for proposed copy')],
+					impact: r.reason,
+					fix: r.proposedCopy,
+					effort: '1–3 hours: owner/clinical fact approval, voice edit and CMS placement'
+				}
+			)
 		)
 	};
 }

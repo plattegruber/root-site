@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import http from 'node:http';
 import { chromium } from 'playwright';
 import { createApp } from '../src/server.js';
 import { createMcpServer, REPORT_URI } from '../src/mcp.js';
@@ -99,8 +100,14 @@ test('standalone UI works on desktop/mobile, renders text safely, and the HTTP M
 		await page.getByRole('button', { name: 'Explore the fictional sample' }).click();
 		await page
 			.locator('#report')
-			.getByRole('heading', { name: 'Maple Grove Dental', exact: true })
+			.getByRole('heading', { name: 'Bright Smiles Family Dentistry', exact: true })
 			.waitFor();
+		await page.locator('#report').getByRole('heading', { name: 'Start here' }).waitFor();
+		assert.ok(
+			(await page.locator('#report .badge.subjective').count()) > 0,
+			'opinion badges render'
+		);
+		assert.ok((await page.locator('#report .badge.dental').count()) > 0, 'dental badges render');
 		assert.ok(
 			await page
 				.locator('#report')
@@ -141,10 +148,16 @@ test('standalone UI works on desktop/mobile, renders text safely, and the HTTP M
 			).status,
 			403
 		);
-		assert.equal(
-			(await fetch(origin + '/health', { headers: { Host: 'evil.example' } })).status,
-			403
+		// fetch() silently drops a forbidden Host header, so use http.request to send one.
+		const hostStatus = await new Promise<number>((resolve, reject) =>
+			http
+				.get(origin + '/health', { headers: { Host: 'evil.example' } }, (res) => {
+					res.resume();
+					resolve(res.statusCode ?? 0);
+				})
+				.on('error', reject)
 		);
+		assert.equal(hostStatus, 403);
 		const client = new Client({ name: 'http-test', version: '1.0' });
 		await client.connect(new StreamableHTTPClientTransport(new URL(origin + '/mcp')));
 		const tools = await client.listTools();

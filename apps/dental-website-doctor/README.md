@@ -52,21 +52,35 @@ pnpm audit https://your-practice.example 'https://www.google.com/maps/…'
 # Output: gitignored artifacts/audit.{json,md}
 ```
 
-## Scope
+## What it checks
 
-| Area               | Working V0 behavior                                                                                                                                                                                                                                                                                |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Patient experience | First impression, dentist/credential wording, services, insurance/payment, first-visit guidance, urgent contact, phone/directions and booking destinations. Three page-specific journeys; conservative static signals and confirmation states.                                                     |
-| Google             | Website name/address/phone/hours and directions readiness without account connection; bounded public Maps request; optional Places search and unique domain/street/locality/phone match. Ambiguity withholds listing facts. Owner-only categories/replies/actions/private metrics remain explicit. |
-| Technical          | HTTP status, HTTPS/mixed references, headings/titles/descriptions/canonicals, robots/sitemap, bounded links, static alt/label checks, schema consistency, image/script/font signals. Guarded Chromium inspects mobile/desktop overflow, tap geometry, axe and a limited keyboard sample.           |
-| Performance        | Optional PageSpeed mobile/desktop Lighthouse and separate URL/origin CrUX field data. Browser navigation timings are separately labeled, unthrottled and never called Lighthouse or real-user data.                                                                                                |
-| Content            | Three prioritized conservative drafts using observed facts and source evidence. Owner/clinical review required. Missing facts become confirmation instructions, never invented services, insurance, credentials, reviews or clinical claims.                                                       |
+Every finding carries four labels so a reader knows how to weigh it:
 
-Booking links are HTTP-tested and their context explained. Appointment submission,
-conditional form behavior, slot selection and live calls are **not automated**;
-the report includes the manual verification task. A positive static signal does
-not prove an entire journey works. Crawl and anti-bot limits are reported;
-unavailable Google fields are never called missing.
+- **basis** — `objective` (something measured or directly observed: a 404, a missing
+  page, an ad pixel on a form page) or `subjective` (an editorial judgement with a
+  `rationale` and a `confidence`; the owner can disagree).
+- **scope** — `dental` (would not appear in a generic website audit) or `general`.
+- **impact** is written for the practice owner; **fix** is written for the developer.
+- `report.topFindings` lists the three to five things to talk about first.
+
+| Area                          | What a patient needs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Patient experience (dental)   | Tap-to-call in the header; a working booking route and whether it is real-time scheduling or a request form (vendor detection); new-patient page with accepting-new-patients, forms, what to bring, visit length; insurance clarity (named plans, in-network wording vs “we accept all insurance”, financing, membership plan, uninsured path); emergency page with after-hours routing and triage; a named dentist with a real biography; per-service pages that lead to a next step; hours in the footer; address, map, parking; verifiable reviews; one phone number; call/book visible on a phone without scrolling (browser). |
+| Compliance and trust (dental) | Health/insurance fields in forms next to advertising or analytics trackers (HHS tracking bulletin); mailto/GET/http form transport; privacy policy and HIPAA Notice of Privacy Practices; advertising claims boards police (“painless”, “guaranteed”, “best”, “#1”); “specialist” wording for non-recognised specialties; testimonials and before/after photos needing authorization and disclaimers; self-serving review schema; Dentist schema completeness and phone/hours agreement.                                                                                                                                           |
+| Copy and photos (opinion)     | Reading grade, template-filler phrase density, clinical jargon with patient-friendly replacements, practice-vs-patient pronoun balance, headline specificity, call-to-action clarity, homepage length, stock-photo filenames, stale dated content. Each quotes what it saw and states its confidence.                                                                                                                                                                                                                                                                                                                              |
+| Technical (general)           | Status codes, HTTPS/mixed content, titles/descriptions/headings/canonicals, indexability, robots/sitemap, broken links, alt text, form labels, viewport, lang, copyright year, city in the homepage title, third-party inventory, script counts; guarded Chromium checks for overflow, tap targets, axe, keyboard, oversized images.                                                                                                                                                                                                                                                                                               |
+| Google                        | Website NAP/hours readiness; bounded public Maps request; optional Places search with strict domain/street/locality/phone matching. Ambiguity withholds listing facts; owner-only fields stay explicit.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Performance                   | Optional PageSpeed mobile/desktop Lighthouse plus separate CrUX field data; browser navigation timings labelled as such.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Content drafts                | Three conservative drafts using only observed facts; bracketed placeholders need owner confirmation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+
+The crawl fetches up to 12 pages, seeded from the sitemap in patient-priority order
+(contact, new patients, emergency, insurance, team, services), then follows links. A
+“not found” finding means not found in those pages; the evidence names any sitemap URL
+that suggests the page exists elsewhere. Booking links are HTTP-tested; appointment
+submission, conditional forms and live calls are **not** automated.
+
+Compliance findings are patterns regulators and state dental boards have acted on; they
+are not legal advice and rules vary by state.
 
 ## Integration and remaining setup
 
@@ -81,8 +95,8 @@ PageSpeed/Places keys are listed in `.env.example`; **none were available**.
 Owner-authorized Business Profile/OAuth is a documented extension path, not a
 working account connector in V0.
 
-Three MCP tools at `/mcp`: `audit_dental_website`, `sample_dental_report`, and
-`render_dental_report`. The render tool supplies a self-contained MCP Apps
+Three MCP tools at `/mcp`: `audit_dental_website`, `sample_dental_report` (the fictional
+Bright Smiles template-heavy practice), and `render_dental_report`. The render tool supplies a self-contained MCP Apps
 resource with expandable detail. All return structured results usable without
 UI. MCP audits compute synchronously; local UI jobs use ephemeral process memory.
 

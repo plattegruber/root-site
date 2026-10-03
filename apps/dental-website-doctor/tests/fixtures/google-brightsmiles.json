@@ -1,0 +1,27 @@
+{
+	"id": "ChIJfictionalBrightSmiles000",
+	"displayName": { "text": "Bright Smiles Family Dentistry" },
+	"formattedAddress": "400 Commerce Drive, Suite 210, Fairview, TX 75000, USA",
+	"websiteUri": "https://brightsmiles.example/",
+	"googleMapsUri": "https://www.google.com/maps/place/?q=place_id:ChIJfictionalBrightSmiles000",
+	"nationalPhoneNumber": "(555) 020-0456",
+	"internationalPhoneNumber": "+1 555-020-0456",
+	"primaryType": "dentist",
+	"types": ["dentist", "health", "point_of_interest", "establishment"],
+	"regularOpeningHours": {
+		"weekdayDescriptions": [
+			"Monday: 8:00 AM – 5:00 PM",
+			"Tuesday: 8:00 AM – 5:00 PM",
+			"Wednesday: 8:00 AM – 5:00 PM",
+			"Thursday: 8:00 AM – 5:00 PM",
+			"Friday: Closed",
+			"Saturday: Closed",
+			"Sunday: Closed"
+		]
+	},
+	"businessStatus": "OPERATIONAL",
+	"rating": 4.6,
+	"userRatingCount": 212,
+	"reviews": [{ "rating": 5, "publishTime": "2026-05-01T00:00:00Z" }],
+	"photos": [{}, {}, {}]
+}

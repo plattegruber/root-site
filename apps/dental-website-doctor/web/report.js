@@ -70,14 +70,28 @@ function findingCard(f) {
 	const card = el('article', undefined, 'finding-card');
 	const badges = el('div', undefined, 'badges');
 	badges.append(badge(f.status, f.status), badge(f.area), badge(`Severity: ${f.severity}`));
-	card.append(badges, el('h3', f.title), el('p', f.impact, 'impact'));
+	if (f.basis)
+		badges.append(
+			badge(
+				f.basis === 'objective' ? 'Measured' : `Opinion · ${f.confidence ?? 'medium'} confidence`,
+				f.basis
+			),
+			badge(f.scope === 'dental' ? 'Dental-specific' : 'Any website', f.scope)
+		);
+	card.append(badges, el('h3', f.title));
+	card.append(paragraph('For the practice:', f.impact));
 	const fix = el('div', undefined, 'fix');
-	fix.append(paragraph('Recommended fix:', f.fix), paragraph('Estimated effort:', f.effort));
+	fix.append(paragraph('For the developer:', f.fix), paragraph('Estimated effort:', f.effort));
+	if (f.rationale) fix.append(paragraph('Why we think so:', f.rationale));
 	card.append(fix, details('Page evidence & technical detail', ...evidenceNodes(f.evidence)));
 	return card;
 }
 export function renderReport(report, target) {
-	if (!report || report.schemaVersion !== '1.0' || !Array.isArray(report.findings)) {
+	if (
+		!report ||
+		!['1.0', '1.1'].includes(report.schemaVersion) ||
+		!Array.isArray(report.findings)
+	) {
 		target.replaceChildren(el('p', 'This report format could not be displayed.'));
 		return;
 	}
@@ -114,6 +128,30 @@ export function renderReport(report, target) {
 		overview.append(box);
 	}
 	fragment.append(overview);
+	if (Array.isArray(report.topFindings) && report.topFindings.length) {
+		const start = el('section', undefined, 'report-section');
+		start.append(
+			el('h2', 'Start here'),
+			el(
+				'p',
+				'Measured findings describe something the tool observed. Opinion findings are editorial judgements with their reasoning shown. Dental-specific findings would not appear in a generic website audit.',
+				'help'
+			)
+		);
+		const list = el('ol');
+		for (const t of report.topFindings) {
+			const li = el('li');
+			li.append(
+				el('strong', t.title + ' '),
+				badge(t.basis === 'objective' ? 'Measured' : 'Opinion', t.basis),
+				badge(t.scope === 'dental' ? 'Dental-specific' : 'Any website', t.scope),
+				el('p', t.why)
+			);
+			list.append(li);
+		}
+		start.append(list);
+		fragment.append(start);
+	}
 	const identity = el('section', undefined, 'report-section');
 	identity.append(
 		el('h2', 'Confirm the practice and office'),
@@ -132,15 +170,15 @@ export function renderReport(report, target) {
 	for (const [priority, title, description] of [
 		[
 			'urgent',
-			'Urgent defects',
-			'Observed failures that block an important patient route or expose a clear trust problem.'
+			'Urgent: fix this week',
+			'Broken patient routes and legal exposure (for example health details in a form next to an ad pixel).'
 		],
 		[
 			'improvement',
-			'Worthwhile improvements',
-			'Practical fixes and confirmation work, prioritized around patient contact and accurate information.'
+			'Worth doing: the next month',
+			'Missing or vague answers to the questions patients arrive with: cost, emergencies, the dentist, the first visit.'
 		],
-		['polish', 'Optional polish', 'Useful refinements after the core journeys work.']
+		['polish', 'Polish: when the above is done', 'Copy, photos and local-search refinements.']
 	]) {
 		const section = el('section', undefined, 'report-section');
 		section.append(el('h2', title), el('p', description, 'help'));

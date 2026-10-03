@@ -48,3 +48,22 @@ The endpoint at `http://127.0.0.1:3000/mcp` works with local MCP clients. Actual
 ChatGPT testing needs an approved HTTPS staging endpoint or supported secure MCP
 tunnel; no ChatGPT installation/publication has been performed. The draft plugin
 URLs are placeholders. Use `openai-integration.md` for that later setup.
+
+## Fixture sites (added 2026-10-02)
+
+`tests/fixtures/brightsmiles/` is a fictional template-heavy practice: plain-text phone,
+no booking, no new-patient or emergency page, “we accept all insurance”, Meta pixel +
+GTM + Hotjar on a `mailto:` contact form that asks for DOB/insurance/reason, “painless”,
+“guarantee”, “cosmetic dentistry specialist”, aggregateRating schema, stock-photo
+filenames, © 2021, a 2022 blog, PDF-only forms, an Elfsight review widget and a
+before/after gallery. It is also the `pnpm sample` report.
+
+`tests/fixtures/riverbend/` is a fictional well-run practice assembled from
+`_shell.html` + `pages.json`: header tel: and NexHealth booking links, new-patient page
+with online forms and visit length, in-network plan names, CareCredit, a membership plan,
+an emergency page with after-hours routing and triage, a real biography, service pages
+with next steps and prices, footer hours/address/privacy/HIPAA links, complete Dentist
+schema, no trackers. `tests/dental.test.ts` asserts the first trips the dental checks
+and the second passes them with zero dental-scope failures.
+
+Use these two as the regression baseline when tuning any threshold.

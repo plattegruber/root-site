@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>{{TITLE}}</title>
+		<meta name="description" content="{{DESCRIPTION}}" />
+		<link rel="canonical" href="https://riverbend.example{{PATH}}" />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Dentist",
+				"name": "Riverbend Dental",
+				"url": "https://riverbend.example/",
+				"image": "https://riverbend.example/images/riverbend-front-door.jpg",
+				"telephone": "+15550300789",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "88 River Road",
+					"addressLocality": "Milford",
+					"addressRegion": "OH",
+					"postalCode": "45000"
+				},
+				"geo": { "@type": "GeoCoordinates", "latitude": 39.17, "longitude": -84.29 },
+				"openingHoursSpecification": [
+					{
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+						"opens": "07:30",
+						"closes": "17:00"
+					},
+					{
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": "Friday",
+						"opens": "07:30",
+						"closes": "13:00"
+					}
+				],
+				"sameAs": ["https://www.google.com/maps/place/?q=place_id:FAKE_PLACE_ID"]
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<a href="/"
+				><img src="/images/riverbend-logo.svg" alt="Riverbend Dental" width="160" height="40"
+			/></a>
+			<nav aria-label="Main">
+				<a href="/">Home</a>
+				<a href="/new-patients">New patients</a>
+				<a href="/services/dental-implants">Dental implants</a>
+				<a href="/services/invisalign">Invisalign</a>
+				<a href="/insurance-and-payment">Insurance &amp; payment</a>
+				<a href="/emergency-dentist">Emergency</a>
+				<a href="/meet-dr-patel">Meet Dr. Patel</a>
+				<a href="/contact">Contact</a>
+			</nav>
+			<a href="tel:+15550300789">Call (555) 030-0789</a>
+			<a href="https://app.nexhealth.com/appt/riverbend-dental">Book online</a>
+		</header>
+		<main>{{MAIN}}</main>
+		<footer>
+			<p>
+				Riverbend Dental · 88 River Road, Milford, OH 45000 ·
+				<a href="tel:+15550300789">(555) 030-0789</a>
+			</p>
+			<p>Monday–Thursday 7:30 am–5:00 pm · Friday 7:30 am–1:00 pm · Closed Saturday and Sunday</p>
+			<p>
+				<a href="https://www.google.com/maps/dir/?api=1&destination=88+River+Road+Milford+OH"
+					>Get directions</a
+				>
+				·
+				<a href="https://search.google.com/local/writereview?placeid=FAKE_PLACE_ID"
+					>Read our Google reviews</a
+				>
+			</p>
+			<p>
+				<a href="/privacy-policy">Privacy policy</a> ·
+				<a href="/notice-of-privacy-practices">HIPAA Notice of Privacy Practices</a> ·
+				<a href="/accessibility">Accessibility</a>
+			</p>
+			<p>&copy; 2026 Riverbend Dental</p>
+		</footer>
+	</body>
+</html>

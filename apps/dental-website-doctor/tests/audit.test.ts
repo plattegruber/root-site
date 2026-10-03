@@ -23,7 +23,7 @@ test('end-to-end fixture covers four areas, evidence, urgent broken booking and 
 	assert.equal(report.google.match, 'matched');
 	assert.deepEqual(
 		new Set(report.findings.map((f) => f.area)),
-		new Set(['experience', 'google', 'technical', 'content'])
+		new Set(['experience', 'compliance', 'google', 'technical', 'content'])
 	);
 	assert.ok(
 		report.findings.some(
@@ -100,10 +100,10 @@ test('crawl failures preserve completed pages and limits remain bounded', async 
 		'https://maple-grove.example/',
 		fetcher,
 		AbortSignal.timeout(10_000),
-		3,
+		5,
 		2
 	);
-	assert.ok(crawl.pages.length > 0 && crawl.pages.length <= 3);
+	assert.ok(crawl.pages.length > 0 && crawl.pages.length <= 5);
 	assert.ok(crawl.errors.some((s) => s.includes('/team')));
 	assert.ok(crawl.linkChecks.length <= 2);
 });

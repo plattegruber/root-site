@@ -1,6 +1,12 @@
 import { z } from 'zod';
 
-export const areaSchema = z.enum(['experience', 'google', 'technical', 'content']);
+export const areaSchema = z.enum(['experience', 'compliance', 'google', 'technical', 'content']);
+export const areas = areaSchema.options;
+/** objective = measured or directly observed; subjective = an editorial judgement with stated reasoning. */
+export const basisSchema = z.enum(['objective', 'subjective']);
+/** dental = specific to dental practices; general = applies to any small-business website. */
+export const scopeSchema = z.enum(['dental', 'general']);
+export const confidenceSchema = z.enum(['high', 'medium', 'low']);
 export const evidenceSchema = z.object({
 	url: z.string().max(2048),
 	observedAt: z.string(),
@@ -14,14 +20,33 @@ export const findingSchema = z.object({
 	status: z.enum(['passed', 'failed', 'not_tested', 'needs_confirmation']),
 	priority: z.enum(['urgent', 'improvement', 'polish', 'none']),
 	severity: z.enum(['high', 'moderate', 'low', 'info']),
+	basis: basisSchema,
+	scope: scopeSchema,
+	confidence: confidenceSchema,
 	evidence: z.array(evidenceSchema),
+	/** Plain-language consequence for the practice owner. */
 	impact: z.string(),
+	/** Concrete instruction for the developer or content editor. */
 	fix: z.string(),
 	effort: z.string(),
+	/** Why the tool reached this judgement; required for subjective findings. */
+	rationale: z.string().optional(),
 	section: z
-		.enum(['homepage', 'new_patient', 'emergency', 'service', 'insurance', 'contact', 'team'])
+		.enum([
+			'homepage',
+			'new_patient',
+			'emergency',
+			'service',
+			'insurance',
+			'contact',
+			'team',
+			'reviews',
+			'privacy'
+		])
 		.optional()
 });
+export type Basis = z.infer<typeof basisSchema>;
+export type Scope = z.infer<typeof scopeSchema>;
 export type Finding = z.infer<typeof findingSchema>;
 export type Evidence = z.infer<typeof evidenceSchema>;
 export type Area = z.infer<typeof areaSchema>;
@@ -41,7 +66,7 @@ export const inputSchema = z
 export type AuditInput = z.infer<typeof inputSchema>;
 
 export const reportSchema = z.object({
-	schemaVersion: z.literal('1.0'),
+	schemaVersion: z.literal('1.1'),
 	publisher: z.literal('root.site'),
 	fixture: z.boolean(),
 	startedAt: z.string(),
@@ -56,6 +81,16 @@ export const reportSchema = z.object({
 		locations: z.array(z.string())
 	}),
 	summary: z.string(),
+	/** The few findings a dentist should hear about first, in order. */
+	topFindings: z.array(
+		z.object({
+			id: z.string(),
+			title: z.string(),
+			basis: basisSchema,
+			scope: scopeSchema,
+			why: z.string()
+		})
+	),
 	findings: z.array(findingSchema),
 	journeys: z.array(
 		z.object({
@@ -120,6 +155,9 @@ export const reportSchema = z.object({
 				height: z.number(),
 				measuredAt: z.string(),
 				horizontalOverflow: z.boolean(),
+				callAboveFold: z.boolean(),
+				bookAboveFold: z.boolean(),
+				stickyActions: z.boolean(),
 				smallTapTargets: z.number(),
 				axeViolations: z.array(
 					z.object({
@@ -221,6 +259,9 @@ export function finding(
 		status,
 		priority: status === 'failed' ? 'improvement' : 'none',
 		severity: status === 'failed' ? 'moderate' : 'info',
+		basis: 'objective',
+		scope: 'general',
+		confidence: 'high',
 		evidence: [],
 		impact: '',
 		fix: '',

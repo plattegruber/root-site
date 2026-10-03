@@ -1,0 +1,57 @@
+{
+	"/": {
+		"title": "Riverbend Dental | Dentist in Milford, OH",
+		"description": "Family and implant dentistry in Milford, Ohio. Early mornings, same-week new-patient visits, online booking.",
+		"main": "<h1>Calm, early-morning dentistry in Milford, Ohio</h1><p>Your first visit with Dr. Anita Patel, DDS takes about 75 minutes and starts with a conversation, not a drill. You will leave knowing exactly what your teeth need, what it costs, and what can wait.</p><p>We are now accepting new patients. Most new patients are seen within a week, and we open at 7:30 am so you can come before work.</p><p><a href=\"https://app.nexhealth.com/appt/riverbend-dental\">Book an appointment</a> or <a href=\"tel:+15550300789\">call (555) 030-0789</a>.</p><img src=\"/images/dr-patel-with-patient.jpg\" alt=\"Dr. Anita Patel explaining an x-ray to a patient in operatory two\" width=\"1200\" height=\"800\" /><h2>What we focus on</h2><ul><li><a href=\"/services/dental-implants\">Dental implants</a> for one missing tooth or a full arch</li><li><a href=\"/services/invisalign\">Invisalign</a> for adults who skipped braces</li><li>Cleanings, fillings and crowns for the whole family</li><li>Nitrous oxide if you are nervous; just ask</li></ul><h2>What it costs</h2><p>A new-patient exam, x-rays and cleaning is $189 without insurance. We are in network with Delta Dental, Cigna and MetLife, and our in-house membership plan covers two cleanings a year for $29 a month. <a href=\"/insurance-and-payment\">Insurance and payment details</a>.</p><h2>Se habla español</h2><p>Maria at the front desk and our hygienist Luz both speak Spanish.</p><iframe src=\"https://www.google.com/maps/embed?pb=FAKE\" title=\"Map to Riverbend Dental\" loading=\"lazy\"></iframe>"
+	},
+	"/new-patients": {
+		"title": "New patients | Riverbend Dental, Milford OH",
+		"description": "What your first visit at Riverbend Dental involves, how long it takes, what to bring and how to fill out forms online.",
+		"main": "<h1>Your first visit</h1><p>We are accepting new patients and can usually see you within a week.</p><h2>What happens</h2><p>Plan on about 75 minutes. Dr. Patel will talk with you first, then take digital x-rays and photos, check your gums and every tooth, and go through what she sees on the screen with you. If you are due, the hygienist will clean your teeth the same day.</p><h2>Before you arrive</h2><p>Complete your forms online in about ten minutes: <a href=\"https://intakeq.com/new/riverbend\">Fill out new-patient forms online</a>. Bring your photo ID, your insurance card if you have one, and a list of current medications.</p><h2>Cost</h2><p>Exam, x-rays and cleaning are $189 without insurance. We will check your benefits before you arrive and tell you your estimated share.</p><p><a href=\"https://app.nexhealth.com/appt/riverbend-dental\">Book your first visit</a> or <a href=\"tel:+15550300789\">call (555) 030-0789</a>.</p>"
+	},
+	"/insurance-and-payment": {
+		"title": "Insurance and payment | Riverbend Dental",
+		"description": "Plans we are in network with, how out-of-network billing works, CareCredit financing and our in-house membership plan.",
+		"main": "<h1>Insurance and payment, in plain English</h1><h2>In network</h2><p>We are a participating provider (in network) with Delta Dental PPO, Cigna DPPO and MetLife PDP. We also accept Aetna and Guardian plans out of network; we file the claim for you and you pay the difference.</p><h2>No insurance?</h2><p>Our Riverbend Membership Plan is $29 a month: two cleanings, exams and x-rays a year, plus 15% off other treatment. There is no deductible and no waiting period.</p><h2>Paying over time</h2><p>We offer CareCredit financing with 0% for 12 months on treatment over $300, subject to approval.</p><h2>What things cost</h2><p>New-patient exam, x-rays and cleaning: $189. A single crown is typically $1,100–$1,400 before insurance. We give you a written estimate before any treatment.</p><p>Questions? <a href=\"tel:+15550300789\">Call (555) 030-0789</a>; Maria handles benefits and will call your plan for you.</p>"
+	},
+	"/emergency-dentist": {
+		"title": "Emergency dentist in Milford, OH | Riverbend Dental",
+		"description": "Tooth pain, a broken tooth or a knocked-out tooth: what to do now and how to reach Dr. Patel after hours.",
+		"main": "<h1>Dental emergency? Here is what to do</h1><p><strong>During office hours</strong>: <a href=\"tel:+15550300789\">call (555) 030-0789</a>. We keep two slots open each day for emergencies and will usually see you the same day.</p><p><strong>After hours and weekends</strong>: call the same number; our answering service pages the on-call dentist, who calls you back within 30 minutes.</p><h2>Is it an emergency?</h2><ul><li>Knocked-out adult tooth: keep it moist in milk and call now; the first hour matters.</li><li>Swelling of the face or jaw, fever, or trouble swallowing: go to the emergency room first, then call us.</li><li>Broken tooth or lost crown without severe pain: call in the morning; cover sharp edges with wax.</li><li>Toothache: ibuprofen as directed and call; do not put aspirin on the gum.</li></ul><p>You do not need to be an existing patient. Bring your ID and insurance card if you have one.</p>"
+	},
+	"/meet-dr-patel": {
+		"title": "Meet Dr. Anita Patel, DDS | Riverbend Dental",
+		"description": "Dr. Anita Patel, DDS has practised in Milford since 2012. Ohio State College of Dentistry graduate, ADA and AGD member.",
+		"main": "<h1>Dr. Anita Patel, DDS</h1><img src=\"/images/dr-anita-patel-portrait.jpg\" alt=\"Portrait of Dr. Anita Patel in the Riverbend Dental reception\" width=\"800\" height=\"1000\" /><p>Dr. Patel graduated from The Ohio State University College of Dentistry in 2010 and has practised in Milford since 2012. She is a member of the American Dental Association, the Ohio Dental Association and the Academy of General Dentistry, and completes about 60 hours of continuing education a year, mostly in implant dentistry.</p><p>If you are nervous about the dentist, say so when you book. Dr. Patel will go through everything on the screen first, use nitrous oxide if you would like it, and stop whenever you raise a hand.</p><p>Outside the office she coaches her daughter's soccer team and is slowly restoring a 1972 canoe.</p><p><a href=\"https://app.nexhealth.com/appt/riverbend-dental\">Book with Dr. Patel</a> or <a href=\"tel:+15550300789\">call (555) 030-0789</a>.</p>"
+	},
+	"/services/dental-implants": {
+		"title": "Dental implants in Milford, OH | Riverbend Dental",
+		"description": "What a dental implant visit involves at Riverbend Dental, how long it takes, and what it costs before insurance.",
+		"main": "<h1>Dental implants</h1><p>An implant replaces the root of a missing tooth with a small titanium post, and a crown on top replaces the tooth. Dr. Patel places and restores implants here in Milford; she refers out when a case needs a specialist.</p><h2>What the visits look like</h2><p>First a 3D scan and a conversation about options, including a bridge or a partial denture if an implant is not the right fit. Placement takes about an hour under local anesthetic, with nitrous oxide if you want it. The implant heals for three to four months, then the crown is made.</p><h2>Cost</h2><p>A single implant with crown is typically $3,800–$4,500 before insurance. Most dental plans cover part of the crown. CareCredit financing is available.</p><p><a href=\"https://app.nexhealth.com/appt/riverbend-dental\">Book an implant consultation</a> or <a href=\"tel:+15550300789\">call (555) 030-0789</a>.</p><h2>Aftercare</h2><p>Expect mild soreness for two or three days; most people are back at work the next morning. You brush and floss an implant like a natural tooth, and we check it at each cleaning. With normal care an implant should last decades.</p>"
+	},
+	"/services/invisalign": {
+		"title": "Invisalign in Milford, OH | Riverbend Dental",
+		"description": "Invisalign clear aligners for adults and teens at Riverbend Dental: how it works, how long, what it costs.",
+		"main": "<h1>Invisalign clear aligners</h1><p>Clear aligners straighten teeth with a series of removable trays you change every week or two. Most adult cases at Riverbend take 9 to 15 months. Dr. Patel is an Invisalign provider and will tell you plainly if your case needs an orthodontist instead.</p><h2>What to expect</h2><p>A scan at your first visit, a preview of your result, then trays every six weeks. You wear them 22 hours a day and take them out to eat.</p><h2>Cost</h2><p>Comprehensive Invisalign is $4,200–$5,500 at our office; many plans with orthodontic benefits cover part of it.</p><p><a href=\"https://app.nexhealth.com/appt/riverbend-dental\">Book an Invisalign consultation</a> or <a href=\"tel:+15550300789\">call (555) 030-0789</a>.</p><h2>Is Invisalign right for you?</h2><p>Aligners work well for crowding, gaps and mild bite problems. They are not the best choice for every case, and we will say so. Teens need to be disciplined about wearing them; parents get a weekly compliance check through the app. Retainers at the end are included, because teeth drift back without them.</p>"
+	},
+	"/contact": {
+		"title": "Contact Riverbend Dental | Milford, OH",
+		"description": "Address, hours, parking and directions for Riverbend Dental at 88 River Road, Milford, Ohio.",
+		"main": "<h1>Contact and directions</h1><p>88 River Road, Milford, OH 45000. Free parking in the lot behind the building; the entrance is on the ground floor and wheelchair accessible.</p><p><a href=\"tel:+15550300789\">Call (555) 030-0789</a> · <a href=\"sms:+15550300789\">Text us</a> · <a href=\"https://www.google.com/maps/dir/?api=1&destination=88+River+Road+Milford+OH\">Get directions</a></p><p>Monday–Thursday 7:30 am–5:00 pm · Friday 7:30 am–1:00 pm</p><form action=\"/contact\" method=\"post\"><label for=\"name\">Your name</label><input id=\"name\" name=\"name\" /><label for=\"phone\">Phone</label><input id=\"phone\" name=\"phone\" type=\"tel\" /><label for=\"q\">Question (please do not include health details here; call us for those)</label><textarea id=\"q\" name=\"question\"></textarea><button type=\"submit\">Send</button></form>"
+	},
+	"/privacy-policy": {
+		"title": "Privacy policy | Riverbend Dental",
+		"description": "How Riverbend Dental's website handles information.",
+		"main": "<h1>Privacy policy</h1><p>This website does not use advertising trackers. Forms are sent over HTTPS to our office email system. Our HIPAA Notice of Privacy Practices is <a href=\"/notice-of-privacy-practices\">available here</a>.</p>"
+	},
+	"/notice-of-privacy-practices": {
+		"title": "Notice of Privacy Practices | Riverbend Dental",
+		"description": "How Riverbend Dental uses and protects your health information under HIPAA.",
+		"main": "<h1>Notice of Privacy Practices</h1><p>This notice describes how medical information about you may be used and disclosed and how you can get access to this information. Please review it carefully.</p>"
+	},
+	"/accessibility": {
+		"title": "Accessibility | Riverbend Dental",
+		"description": "Our commitment to an accessible website and office.",
+		"main": "<h1>Accessibility</h1><p>We aim to meet WCAG 2.1 AA on this site. If anything is hard to use, call (555) 030-0789 and we will help.</p>"
+	}
+}

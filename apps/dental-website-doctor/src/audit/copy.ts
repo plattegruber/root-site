@@ -141,7 +141,9 @@ export function copyReview(crawl: Crawl, practice: Report['practice']): Finding[
 
 	// 2. Template filler.
 	const homeLower = home.mainText.toLowerCase();
-	const found = cliches.filter((c) => homeLower.includes(c));
+	const matched = cliches.filter((c) => homeLower.includes(c));
+	// Count "all of your dental needs" once, not again as "dental needs".
+	const found = matched.filter((c) => !matched.some((o) => o !== c && o.includes(c)));
 	out.push(
 		check(
 			'content-template-filler',

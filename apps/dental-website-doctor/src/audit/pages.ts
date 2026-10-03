@@ -201,7 +201,19 @@ export function parsePage(result: FetchResult): Page {
 				$(n).find('img').attr('alt') ||
 				''
 		);
-		const inHeader = $(n).closest('header,nav,[role="banner"],[role="navigation"]').length > 0;
+		// Themes often put the phone in a "top-bar"/"masthead" div (Divi, Elementor, Wix
+		// #SITE_HEADER) rather than a <header> element, so ancestor class/id names count too.
+		const inHeader =
+			$(n).closest('footer,[role="contentinfo"]').length === 0 &&
+			($(n).closest('header,nav,[role="banner"],[role="navigation"]').length > 0 ||
+				$(n)
+					.parents()
+					.toArray()
+					.some((el) =>
+						/header|top-?bar|masthead|navbar|site-?head|utility-?bar|sticky-?bar|call-?bar/i.test(
+							`${$(el).attr('class') ?? ''} ${$(el).attr('id') ?? ''}`
+						)
+					));
 		if (raw.startsWith('tel:')) {
 			links.push({ url: raw, label, kind: 'phone', inHeader });
 			return;

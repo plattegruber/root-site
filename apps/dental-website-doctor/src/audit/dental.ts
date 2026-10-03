@@ -12,11 +12,19 @@ import { check, pageEvidence, patterns, quoteAll, usablePages } from './signals.
 /** Script/frame hosts that sell or retarget on behaviour; the HHS tracking bulletin's main concern. */
 const advertisingHosts =
 	/connect\.facebook\.net|facebook\.com\/tr|analytics\.tiktok\.com|snap\.licdn\.com|bat\.bing\.com|ads\.linkedin|doubleclick\.net|googleadservices\.com|googlesyndication|pinimg\.com|ct\.pinterest\.com|sc-static\.net|adsrvr\.org|criteo|taboola|outbrain|adroll|quantserve|scorecardresearch/i;
+/** Tools that record keystrokes or sessions; they capture what a patient types even without a submit. */
+const recorderHosts =
+	/hotjar|clarity\.ms|fullstory|mouseflow|luckyorange|crazyegg|smartlook|logrocket|inspectlet|quantummetric/i;
 const analyticsHosts =
-	/google-analytics\.com|googletagmanager\.com|hotjar|clarity\.ms|fullstory|mouseflow|luckyorange|crazyegg|heap\.io|segment\.(?:com|io)|mixpanel|amplitude|plausible|matomo|statcounter/i;
-/** Form fields that would carry protected health information if submitted. */
-const phiField =
-	/insurance|member.?id|group.?(?:number|id)|subscriber|reason|concern|symptom|pain|tooth|teeth|dental (?:history|problem|issue)|medical|health|condition|medication|allerg|pregnan|date.?of.?birth|\bdob\b|birth|ssn|social.?security|treatment|procedure|appointment.?type|new.?patient|existing.?patient|how can we help|describe|comments?|message|notes?/i;
+	/google-analytics\.com|googletagmanager\.com|heap\.io|segment\.(?:com|io)|mixpanel|amplitude|plausible|matomo|statcounter/i;
+/** Fields that ask for health, insurance or identity details outright. */
+const strongPhiField =
+	/insurance|member.?id|group.?(?:number|id)|subscriber|symptom|pain|tooth|teeth|dental (?:history|problem|issue|concern)|medical|health|condition|medication|allerg|pregnan|date.?of.?birth|\bdob\b|birth.?date|\bssn\b|social.?security|treatment|procedure|reason|concern|appointment.?type|new.?patient|existing.?patient/i;
+/** Free-text boxes where patients often volunteer health details unprompted. */
+const freeTextField = /message|comments?|notes?|describe|how can we help|question/i;
+/** Labels that explicitly tell the patient not to enter health details. */
+const phiDisclaimer =
+	/do not include|don'?t include|please do not|no (?:health|medical) (?:details|information)/i;
 const inlinePixel = /fbq\(|_fbq|ttq\.load|snaptr\(|pintrk\(|uetq|lintrk|gtag\('config',\s*'AW-/;
 
 /** Wording most US state dental boards treat as false, misleading or unverifiable advertising. */
@@ -59,25 +67,32 @@ export function dentalCompliance(crawl: Crawl): Finding[] {
 	const out: Finding[] = [];
 	if (!home) return out;
 
-	// 1. Forms that collect health information next to advertising or analytics trackers.
+	// 1. Forms that collect health information next to advertising, recording or analytics tools.
 	const formPages = pages.filter((p) => p.forms.some((f) => f.fields.length));
+	const fieldText = (x: { name: string; label: string; placeholder: string }) =>
+		`${x.name} ${x.label} ${x.placeholder}`;
+	const isStrong = (x: { name: string; label: string; placeholder: string }) =>
+		strongPhiField.test(fieldText(x)) && !phiDisclaimer.test(fieldText(x));
+	const isFreeText = (x: { name: string; label: string; placeholder: string; type: string }) =>
+		!isStrong(x) && (x.type === 'textarea' || freeTextField.test(fieldText(x)));
 	type Exposure = {
 		page: Page;
-		fields: string[];
+		strong: string[];
+		freeText: string[];
 		ad: string[];
+		recorders: string[];
 		analytics: string[];
 		transport: string[];
 	};
+	const name = (x: { name: string; label: string; placeholder: string; type: string }) =>
+		x.label || x.name || x.placeholder || x.type;
 	const exposures: Exposure[] = formPages
 		.map((page) => {
-			const phi = page.forms.flatMap((f) =>
-				f.fields.filter((x) => phiField.test(`${x.name} ${x.label} ${x.placeholder}`))
-			);
+			const fields = page.forms.flatMap((f) => f.fields);
 			const ad = page.thirdPartyHosts.filter((h) => advertisingHosts.test(h));
 			if (inlinePixel.test(page.inlineScriptText)) ad.push('inline pixel code');
-			const analytics = page.thirdPartyHosts.filter((h) => analyticsHosts.test(h));
 			const transport = page.forms
-				.filter((f) => f.fields.some((x) => phiField.test(`${x.name} ${x.label} ${x.placeholder}`)))
+				.filter((f) => f.fields.some((x) => isStrong(x) || isFreeText(x)))
 				.flatMap((f) => [
 					...(f.action.startsWith('mailto:') ? [`posts by mailto: (${f.action})`] : []),
 					...(f.method === 'get' && !/search/i.test(f.action + f.fields.map((x) => x.name).join())
@@ -87,42 +102,100 @@ export function dentalCompliance(crawl: Crawl): Finding[] {
 				]);
 			return {
 				page,
-				fields: [...new Set(phi.map((x) => x.label || x.name || x.placeholder || x.type))],
+				strong: [...new Set(fields.filter(isStrong).map(name))],
+				freeText: [...new Set(fields.filter(isFreeText).map(name))],
 				ad: [...new Set(ad)],
-				analytics: [...new Set(analytics)],
+				recorders: page.thirdPartyHosts.filter((h) => recorderHosts.test(h)),
+				analytics: page.thirdPartyHosts.filter((h) => analyticsHosts.test(h)),
 				transport
 			};
 		})
-		.filter((e) => e.fields.length);
-	const withAds = exposures.filter((e) => e.ad.length);
-	const withAnalytics = exposures.filter((e) => !e.ad.length && e.analytics.length);
-	const badTransport = exposures.filter((e) => e.transport.length);
+		.filter((e) => e.strong.length || e.freeText.length);
+	// Tiered so an ordinary contact form next to Google Analytics is not reported as urgent.
+	const adStrong = exposures.filter((e) => e.ad.length && e.strong.length);
+	const adFreeText = exposures.filter((e) => e.ad.length && !e.strong.length);
+	const recorded = exposures.filter((e) => !e.ad.length && e.recorders.length);
+	const analyticsStrong = exposures.filter(
+		(e) => !e.ad.length && !e.recorders.length && e.analytics.length && e.strong.length
+	);
+	const tier = adStrong.length
+		? 'ad-strong'
+		: adFreeText.length
+			? 'ad-free'
+			: recorded.length
+				? 'recorder'
+				: analyticsStrong.length
+					? 'analytics'
+					: 'clean';
+	const flagged = [...adStrong, ...adFreeText, ...recorded, ...analyticsStrong];
+	const impacts = {
+		'ad-strong':
+			'A dental practice is a HIPAA covered entity. Meta, TikTok and Google Ads pixels on a page where patients type “tooth pain, Delta Dental, DOB” have been the basis of class actions and OCR enforcement since the 2022 HHS tracking bulletin. This is a legal exposure, not a UX nit.',
+		'ad-free':
+			'An advertising pixel sits on a page whose form has an open message box. Patients routinely type “my crown fell off” or their insurer there, and the pixel reports the visit and submission to the ad network.',
+		recorder:
+			'Session-recording tools capture what patients type into a form, keystroke by keystroke. HHS treats that as PHI disclosure unless the vendor signs a BAA, and most of these vendors do not.',
+		analytics:
+			'The form asks for health or insurance details on a page with analytics or a tag manager. Google Analytics does not sign BAAs, and a tag manager can quietly load an ad pixel later. Confirm what the container fires on this page.',
+		clean:
+			'Health-related form fields are not sitting next to advertising pixels or session recorders in the fetched pages.'
+	} as const;
+	const fixes = {
+		'ad-strong':
+			'Remove advertising pixels from every page with a form (or from the whole site), or move intake to a HIPAA-compliant forms vendor with a signed BAA. Review the tag manager container; use server-side conversion tracking without PHI if ads must be measured.',
+		'ad-free':
+			'Remove the pixel from form pages, or add a line under the message box asking patients not to include health details and send conversions server-side without form content.',
+		recorder:
+			'Exclude form pages from session recording and mask all inputs, or remove the tool; confirm a BAA if it stays.',
+		analytics:
+			'Open the tag manager container and confirm no ad or recording tags fire on this page; disable form-field capture in analytics; prefer a HIPAA-compliant forms vendor for intake.',
+		clean: 'Keep it that way: no pixels on intake pages, and a BAA with the forms vendor.'
+	} as const;
 	out.push(
 		check(
 			'compliance-form-phi',
 			'compliance',
 			'Health information in forms next to tracking pixels',
-			!exposures.length
-				? formPages.length
+			!formPages.length
+				? 'not_tested'
+				: tier === 'clean'
 					? 'passed'
-					: 'not_tested'
-				: withAds.length
-					? 'failed'
-					: withAnalytics.length
-						? 'failed'
-						: 'passed',
+					: tier === 'analytics'
+						? 'needs_confirmation'
+						: 'failed',
 			{
 				scope: 'dental',
 				section: 'privacy',
-				severity: withAds.length ? 'high' : withAnalytics.length ? 'moderate' : 'info',
-				confidence: withAds.length ? 'high' : 'medium',
-				evidence: exposures.length
-					? exposures
+				severity:
+					tier === 'ad-strong'
+						? 'high'
+						: tier === 'ad-free' || tier === 'recorder'
+							? 'moderate'
+							: tier === 'analytics'
+								? 'low'
+								: 'info',
+				confidence: tier === 'ad-strong' ? 'high' : 'medium',
+				evidence: (flagged.length ? flagged : exposures).length
+					? (flagged.length ? flagged : exposures)
 							.slice(0, 4)
 							.map((e) =>
 								pageEvidence(
 									e.page,
-									`Form fields that would carry health or insurance details: ${e.fields.slice(0, 6).join(', ')}. ${e.ad.length ? `Advertising trackers on the same page: ${e.ad.join(', ')}.` : 'No advertising tracker on this page.'} ${e.analytics.length ? `Analytics/session tools: ${e.analytics.join(', ')}.` : ''}`,
+									[
+										e.strong.length
+											? `Fields asking for health, insurance or identity details: ${e.strong.slice(0, 6).join(', ')}.`
+											: '',
+										e.freeText.length
+											? `Free-text fields: ${e.freeText.slice(0, 3).join(', ')}.`
+											: '',
+										e.ad.length
+											? `Advertising trackers on the same page: ${e.ad.join(', ')}.`
+											: 'No advertising tracker on this page.',
+										e.recorders.length ? `Session recorders: ${e.recorders.join(', ')}.` : '',
+										e.analytics.length ? `Analytics/tag manager: ${e.analytics.join(', ')}.` : ''
+									]
+										.filter(Boolean)
+										.join(' '),
 									'Static HTML: form fields and third-party script hosts'
 								)
 							)
@@ -130,26 +203,19 @@ export function dentalCompliance(crawl: Crawl): Finding[] {
 							pageEvidence(
 								home,
 								formPages.length
-									? 'Forms were found but none of their fields ask for health or insurance details.'
+									? 'Forms were found but none of their fields ask for health details or free text.'
 									: 'No forms with fields were found in the fetched pages.'
 							)
 						],
-				impact: withAds.length
-					? 'A dental practice is a HIPAA covered entity. Meta, TikTok and Google Ads pixels on a page where patients type “tooth pain, Delta Dental, DOB” have been the basis of class actions and OCR enforcement since the 2022 HHS tracking bulletin. This is a legal exposure, not a UX nit.'
-					: withAnalytics.length
-						? 'Session-recording and analytics tools can capture what patients type into a form. HHS has said that is PHI disclosure unless the vendor signs a BAA.'
-						: 'Health-related form fields are not sitting next to known trackers in the fetched pages. Confirm the same for any tag manager containers.',
-				fix: withAds.length
-					? 'Remove advertising pixels from every page with a form (or from the whole site), or move intake to a HIPAA-compliant forms vendor with a signed BAA. Review the tag manager container; use server-side conversion tracking without PHI if ads must be measured.'
-					: withAnalytics.length
-						? 'Exclude form pages from session recording, mask inputs, and confirm a BAA with the analytics vendor; otherwise remove it from those pages.'
-						: 'Keep it that way: no pixels on intake pages, and a BAA with the forms vendor.',
+				impact: impacts[tier],
+				fix: fixes[tier],
 				rationale:
-					'Based on the HHS OCR bulletin on online tracking technologies (Dec 2022, updated Mar 2024). Parts were vacated for unauthenticated pages in June 2024, but a form that asks for symptoms or insurance is exactly the case the bulletin still covers.',
-				effort: withAds.length ? '2–4 hours plus marketing sign-off' : '1–2 hours'
+					'Based on the HHS OCR bulletin on online tracking technologies (Dec 2022, updated Mar 2024). Parts were vacated for unauthenticated pages in June 2024, so a plain contact form is a judgement call; a form that asks for symptoms, insurance or date of birth next to an ad pixel is the case the bulletin still squarely covers.',
+				effort: tier === 'ad-strong' ? '2–4 hours plus marketing sign-off' : '1–2 hours'
 			}
 		)
 	);
+	const badTransport = exposures.filter((e) => e.transport.length);
 	if (badTransport.length)
 		out.push(
 			check(

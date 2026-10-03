@@ -212,3 +212,94 @@ test('a form with health fields but no trackers passes, and GET transport is fla
 	assert.equal(byId(leaky, 'compliance-form-transport')?.status, 'failed');
 	assert.ok(byId(leaky, 'compliance-form-transport')?.evidence[0]?.detail.includes('GET'));
 });
+
+const singlePage = (body: string, head = '') => {
+	const html = `<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width"><title>Practice</title>${head}</head><body>${body}</body></html>`;
+	return async (url: string) =>
+		url.endsWith('/robots.txt')
+			? response(url, 'User-agent: *\nAllow: /', 200, { 'content-type': 'text/plain' })
+			: url === 'https://practice.example/'
+				? response(url, html)
+				: response(url, '<html><title>404</title></html>', 404);
+};
+const contactForm =
+	'<form method="post" action="/send"><label for="n">Name</label><input id="n" name="name"><label for="m">Message</label><textarea id="m" name="message"></textarea></form>';
+const strongForm =
+	'<form method="post" action="/send"><label for="d">Date of birth</label><input id="d" name="dob"><label for="i">Insurance provider</label><input id="i" name="insurance"></form>';
+const ga = '<script async src="https://www.googletagmanager.com/gtag/js?id=G-FAKE"></script>';
+const meta = '<script src="https://connect.facebook.net/en_US/fbevents.js"></script>';
+const hotjar = '<script src="https://static.hotjar.com/c/hotjar-1.js"></script>';
+
+test('form/tracker tiers: an ordinary contact form next to analytics is not urgent', async () => {
+	const run = async (body: string, head: string) =>
+		byId(
+			await auditWebsite(
+				{ websiteUrl: 'https://practice.example/' },
+				{ ...options, fetcher: singlePage(`<main><h1>Contact</h1>${body}</main>`, head) }
+			),
+			'compliance-form-phi'
+		)!;
+	const plain = await run(contactForm, ga);
+	assert.equal(plain.status, 'passed', plain.evidence[0]?.detail);
+	const strongGa = await run(strongForm, ga);
+	assert.equal(strongGa.status, 'needs_confirmation');
+	assert.equal(strongGa.severity, 'low');
+	const recorder = await run(contactForm, hotjar);
+	assert.equal(recorder.status, 'failed');
+	assert.equal(recorder.severity, 'moderate');
+	const adFree = await run(contactForm, meta);
+	assert.equal(adFree.status, 'failed');
+	assert.equal(adFree.priority, 'improvement');
+	const adStrong = await run(strongForm, meta);
+	assert.equal(adStrong.status, 'failed');
+	assert.equal(adStrong.priority, 'urgent');
+	const disclaimed = await run(
+		'<form method="post" action="/send"><label for="q">Question (please do not include health details)</label><textarea id="q" name="question"></textarea></form>',
+		meta
+	);
+	assert.equal(
+		disclaimed.priority,
+		'improvement',
+		'a disclaimer downgrades the field to free text'
+	);
+});
+
+test('a phone number in a theme top-bar div counts as being in the header', async () => {
+	const report = await auditWebsite(
+		{ websiteUrl: 'https://practice.example/' },
+		{
+			...options,
+			fetcher: singlePage(
+				'<div class="et_top-bar"><a href="tel:+15550001111">Call (555) 000-1111</a></div><main><h1>Practice</h1></main><footer><a href="tel:+15550001111">(555) 000-1111</a></footer>'
+			)
+		}
+	);
+	const contact = byId(report, 'experience-contact')!;
+	assert.equal(contact.status, 'passed', contact.evidence[0]?.detail);
+	const footerOnly = await auditWebsite(
+		{ websiteUrl: 'https://practice.example/' },
+		{
+			...options,
+			fetcher: singlePage(
+				'<main><h1>Practice</h1></main><footer class="site-footer"><div class="footer-header"><a href="tel:+15550001111">(555) 000-1111</a></div></footer>'
+			)
+		}
+	);
+	assert.equal(byId(footerOnly, 'experience-contact')?.status, 'failed');
+});
+
+test('overlapping stock phrases are counted once', async () => {
+	const report = await auditWebsite(
+		{ websiteUrl: 'https://practice.example/' },
+		{
+			...options,
+			fetcher: singlePage(
+				'<main><h1>Dentist in Town</h1><p>We meet all of your dental needs with a healthy, beautiful smile.</p></main>'
+			)
+		}
+	);
+	const detail = byId(report, 'content-template-filler')!.evidence[0]!.detail;
+	assert.ok(detail.includes('all of your dental needs'));
+	assert.ok(!detail.includes('“dental needs”'), detail);
+	assert.ok(!detail.includes('“beautiful smile”'), detail);
+});

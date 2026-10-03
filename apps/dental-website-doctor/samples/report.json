@@ -2,8 +2,8 @@
   "schemaVersion": "1.1",
   "publisher": "root.site",
   "fixture": true,
-  "startedAt": "2026-10-02T05:24:06.313Z",
-  "completedAt": "2026-10-02T05:24:06.364Z",
+  "startedAt": "2026-10-03T15:25:44.119Z",
+  "completedAt": "2026-10-03T15:25:44.171Z",
   "input": {
     "websiteUrl": "https://brightsmiles.example/"
   },
@@ -277,13 +277,13 @@
           "url": "https://brightsmiles.example/contact",
           "observedAt": "2026-10-01T12:00:00.000Z",
           "method": "Static HTML: form fields and third-party script hosts",
-          "detail": "Form fields that would carry health or insurance details: Date of Birth, Insurance Provider, Reason for Visit / Describe your dental concern, Are you a new patient?. Advertising trackers on the same page: connect.facebook.net. Analytics/session tools: www.googletagmanager.com, static.hotjar.com."
+          "detail": "Fields asking for health, insurance or identity details: Date of Birth, Insurance Provider, Reason for Visit / Describe your dental concern, Are you a new patient?. Advertising trackers on the same page: connect.facebook.net. Session recorders: static.hotjar.com. Analytics/tag manager: www.googletagmanager.com."
         }
       ],
       "impact": "A dental practice is a HIPAA covered entity. Meta, TikTok and Google Ads pixels on a page where patients type “tooth pain, Delta Dental, DOB” have been the basis of class actions and OCR enforcement since the 2022 HHS tracking bulletin. This is a legal exposure, not a UX nit.",
       "fix": "Remove advertising pixels from every page with a form (or from the whole site), or move intake to a HIPAA-compliant forms vendor with a signed BAA. Review the tag manager container; use server-side conversion tracking without PHI if ads must be measured.",
       "effort": "2–4 hours plus marketing sign-off",
-      "rationale": "Based on the HHS OCR bulletin on online tracking technologies (Dec 2022, updated Mar 2024). Parts were vacated for unauthenticated pages in June 2024, but a form that asks for symptoms or insurance is exactly the case the bulletin still covers.",
+      "rationale": "Based on the HHS OCR bulletin on online tracking technologies (Dec 2022, updated Mar 2024). Parts were vacated for unauthenticated pages in June 2024, so a plain contact form is a judgement call; a form that asks for symptoms, insurance or date of birth next to an ad pixel is the case the bulletin still squarely covers.",
       "section": "privacy"
     },
     {
@@ -758,7 +758,7 @@
       "evidence": [
         {
           "url": "https://brightsmiles.example/contact",
-          "observedAt": "2026-10-02T05:24:06.363Z",
+          "observedAt": "2026-10-03T15:25:44.171Z",
           "method": "Source excerpt used for proposed copy",
           "detail": "Home About Us Services Contact Us Contact Us We look forward to seeing you! Fill out the form below and we will get back to you. Name Email Phone Date of Birth Insurance Provider Reason for Visit / Describe your dental concern Are you a new patient? Yes No Submit Phone: (555) 020-0456 400 Commerce Drive, Suite 210, Fairview, TX 75000 Hours: Monday - Thursday 8:00am - 5:00pm New patient forms: Download Registration (PDF) and Medical History (PDF). Please print and bring them with you. © 2021 Bright Smiles Family Dentistry"
         }
@@ -782,7 +782,7 @@
       "evidence": [
         {
           "url": "https://brightsmiles.example/",
-          "observedAt": "2026-10-02T05:24:06.363Z",
+          "observedAt": "2026-10-03T15:25:44.171Z",
           "method": "Source excerpt used for proposed copy",
           "detail": "Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai"
         }
@@ -806,7 +806,7 @@
       "evidence": [
         {
           "url": "https://brightsmiles.example/",
-          "observedAt": "2026-10-02T05:24:06.363Z",
+          "observedAt": "2026-10-03T15:25:44.171Z",
           "method": "Source excerpt used for proposed copy",
           "detail": "Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai"
         }
@@ -1110,7 +1110,7 @@
           "url": "https://brightsmiles.example/",
           "observedAt": "2026-10-01T12:00:00.000Z",
           "method": "Phrase list comparison",
-          "detail": "Stock phrases on the homepage: “state-of-the-art”, “caring team”, “comprehensive dental care”, “smile of your dreams”, “treat you like family”, “committed to excellence”, “highest quality”, “comfortable environment”, “latest technology”, “personalized treatment”, “your dental home”, “dental needs”, “all of your dental needs”, “look no further”, “we are dedicated to”, “passionate about”, “optimal oral health”, “exceptional dental care”."
+          "detail": "Stock phrases on the homepage: “state-of-the-art”, “caring team”, “comprehensive dental care”, “smile of your dreams”, “treat you like family”, “committed to excellence”, “highest quality”, “comfortable environment”, “latest technology”, “personalized treatment”, “your dental home”, “all of your dental needs”, “look no further”, “we are dedicated to”, “passionate about”, “optimal oral health”, “exceptional dental care”."
         }
       ],
       "impact": "These phrases appear on most dental websites in any city. A patient comparing three practices in three tabs cannot tell them apart, so they pick on price or proximity.",
@@ -1594,7 +1594,7 @@
       "evidence": [
         {
           "url": "https://brightsmiles.example/",
-          "observedAt": "2026-10-02T05:24:06.359Z",
+          "observedAt": "2026-10-03T15:25:44.166Z",
           "method": "Public HTML inspection",
           "detail": "2 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately."
         }
@@ -1682,7 +1682,7 @@
       "evidence": [
         {
           "url": "https://brightsmiles.example/",
-          "observedAt": "2026-10-02T05:24:06.359Z",
+          "observedAt": "2026-10-03T15:25:44.167Z",
           "method": "Script, frame and stylesheet hosts",
           "detail": "6 external hosts: connect.facebook.net (4 pages), www.googletagmanager.com (2 pages), cdn.callrail.com (1 page), static.elfsight.com (1 page), fonts.googleapis.com (1 page), static.hotjar.com (1 page)."
         }
@@ -2362,7 +2362,7 @@
       "url": "https://brightsmiles.example/contact",
       "observedAt": "2026-10-01T12:00:00.000Z",
       "method": "Static HTML: form fields and third-party script hosts",
-      "detail": "Form fields that would carry health or insurance details: Date of Birth, Insurance Provider, Reason for Visit / Describe your dental concern, Are you a new patient?. Advertising trackers on the same page: connect.facebook.net. Analytics/session tools: www.googletagmanager.com, static.hotjar.com."
+      "detail": "Fields asking for health, insurance or identity details: Date of Birth, Insurance Provider, Reason for Visit / Describe your dental concern, Are you a new patient?. Advertising trackers on the same page: connect.facebook.net. Session recorders: static.hotjar.com. Analytics/tag manager: www.googletagmanager.com."
     },
     {
       "url": "https://brightsmiles.example/contact",
@@ -2534,13 +2534,13 @@
     },
     {
       "url": "https://brightsmiles.example/contact",
-      "observedAt": "2026-10-02T05:24:06.363Z",
+      "observedAt": "2026-10-03T15:25:44.171Z",
       "method": "Source excerpt used for proposed copy",
       "detail": "Home About Us Services Contact Us Contact Us We look forward to seeing you! Fill out the form below and we will get back to you. Name Email Phone Date of Birth Insurance Provider Reason for Visit / Describe your dental concern Are you a new patient? Yes No Submit Phone: (555) 020-0456 400 Commerce Drive, Suite 210, Fairview, TX 75000 Hours: Monday - Thursday 8:00am - 5:00pm New patient forms: Download Registration (PDF) and Medical History (PDF). Please print and bring them with you. © 2021 Bright Smiles Family Dentistry"
     },
     {
       "url": "https://brightsmiles.example/",
-      "observedAt": "2026-10-02T05:24:06.363Z",
+      "observedAt": "2026-10-03T15:25:44.171Z",
       "method": "Source excerpt used for proposed copy",
       "detail": "Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai"
     },
@@ -2662,7 +2662,7 @@
       "url": "https://brightsmiles.example/",
       "observedAt": "2026-10-01T12:00:00.000Z",
       "method": "Phrase list comparison",
-      "detail": "Stock phrases on the homepage: “state-of-the-art”, “caring team”, “comprehensive dental care”, “smile of your dreams”, “treat you like family”, “committed to excellence”, “highest quality”, “comfortable environment”, “latest technology”, “personalized treatment”, “your dental home”, “dental needs”, “all of your dental needs”, “look no further”, “we are dedicated to”, “passionate about”, “optimal oral health”, “exceptional dental care”."
+      "detail": "Stock phrases on the homepage: “state-of-the-art”, “caring team”, “comprehensive dental care”, “smile of your dreams”, “treat you like family”, “committed to excellence”, “highest quality”, “comfortable environment”, “latest technology”, “personalized treatment”, “your dental home”, “all of your dental needs”, “look no further”, “we are dedicated to”, “passionate about”, “optimal oral health”, “exceptional dental care”."
     },
     {
       "url": "https://brightsmiles.example/",
@@ -2756,7 +2756,7 @@
     },
     {
       "url": "https://brightsmiles.example/",
-      "observedAt": "2026-10-02T05:24:06.359Z",
+      "observedAt": "2026-10-03T15:25:44.166Z",
       "method": "Public HTML inspection",
       "detail": "2 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately."
     },
@@ -2780,7 +2780,7 @@
     },
     {
       "url": "https://brightsmiles.example/",
-      "observedAt": "2026-10-02T05:24:06.359Z",
+      "observedAt": "2026-10-03T15:25:44.167Z",
       "method": "Script, frame and stylesheet hosts",
       "detail": "6 external hosts: connect.facebook.net (4 pages), www.googletagmanager.com (2 pages), cdn.callrail.com (1 page), static.elfsight.com (1 page), fonts.googleapis.com (1 page), static.hotjar.com (1 page)."
     },

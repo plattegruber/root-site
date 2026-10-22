@@ -1,8 +1,8 @@
 {
 	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 	"name": "dental-website-doctor",
-	"version": "0.1.0",
-	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. Measured findings and labelled opinions, each with a line for the practice and a line for the developer.",
+	"version": "0.2.0",
+	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. Collects evidence from the public site and a real phone browser, then judges it against root.site’s dental rubric, with a line for the practice and a line for the developer.",
 	"author": {
 		"name": "root.site",
 		"email": "platte@root.site",
@@ -16,13 +16,13 @@
 			"interface": {
 				"displayName": "Dental Website Doctor",
 				"shortDescription": "Dental website assessment for dentists and their developers",
-				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. Adds dental-specific compliance checks (health details in forms next to ad pixels, advertising claims state boards police, patient photos without authorization) and labelled editorial opinions on copy and photos. Every finding is marked measured or opinion, dental-specific or general, with a plain-language line for the practice owner and a concrete fix for the developer. Public data only; no owner accounts, no forms submitted, no overall score.",
+				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. The tools collect evidence (page text, links, forms and where they submit, advertising and session-replay trackers, structured data, and phone-width browser measurements); the assessment applies root.site’s published rubric of what a dental website must get right, including privacy risks like ad pixels on appointment forms and advertising claims state boards police. Each finding says what was observed and whether it is a judgement, with a plain-language line for the practice owner and a concrete fix for the developer. Public pages only; no forms submitted, no accounts, no score.",
 				"developerName": "root.site",
 				"category": "Productivity",
 				"capabilities": [
-					"Assess public dental websites as a patient would",
-					"Flag HIPAA tracking and advertising-claim risks",
-					"Separate measured defects from editorial opinion",
+					"Collect evidence from public dental websites",
+					"Check the phone experience in a real browser",
+					"Flag ad trackers on patient forms and risky advertising claims",
 					"Explain fixes to dentists and to developers"
 				],
 				"websiteURL": "https://root.site/dental-website-doctor",

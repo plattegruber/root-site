@@ -1,0 +1,269 @@
+/* Assessment view inside ChatGPT. Colours are tokens so the host's dark theme works. */
+:root {
+	color-scheme: light;
+	--bg: #fbfaf6;
+	--surface: #ffffff;
+	--ink: #26352d;
+	--muted: #5b655e;
+	--line: #d8dcd2;
+	--accent: #2e513e;
+	--fix-first: #9d3529;
+	--next: #845413;
+	--polish: #4d6a58;
+	--tag-observed-bg: #e3ecf7;
+	--tag-observed-ink: #1f3a5f;
+	--tag-judgement-bg: #f6ecd9;
+	--tag-judgement-ink: #6b4a12;
+	--tag-dental-bg: #e2f1e8;
+	--tag-dental-ink: #1f4d33;
+	--fixture-bg: #fff1cc;
+	--fixture-ink: #5c4210;
+	--works: #2e6b45;
+	--friction: #8a5a12;
+	--blocked: #a3362a;
+	--na: #6b736d;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		color-scheme: dark;
+		--bg: #1c211e;
+		--surface: #242a26;
+		--ink: #e6ebe7;
+		--muted: #a9b3ac;
+		--line: #3a433d;
+		--accent: #8fc2a3;
+		--fix-first: #f19a8c;
+		--next: #e4bd73;
+		--polish: #9cc3aa;
+		--tag-observed-bg: #22344a;
+		--tag-observed-ink: #b9d3f2;
+		--tag-judgement-bg: #42351c;
+		--tag-judgement-ink: #ecd29e;
+		--tag-dental-bg: #1f3a2b;
+		--tag-dental-ink: #b3e0c4;
+		--fixture-bg: #47391a;
+		--fixture-ink: #f2dca4;
+		--works: #8fd0a8;
+		--friction: #e8c27a;
+		--blocked: #f4a294;
+		--na: #9aa39d;
+	}
+}
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--bg: #1c211e;
+	--surface: #242a26;
+	--ink: #e6ebe7;
+	--muted: #a9b3ac;
+	--line: #3a433d;
+	--accent: #8fc2a3;
+	--fix-first: #f19a8c;
+	--next: #e4bd73;
+	--polish: #9cc3aa;
+	--tag-observed-bg: #22344a;
+	--tag-observed-ink: #b9d3f2;
+	--tag-judgement-bg: #42351c;
+	--tag-judgement-ink: #ecd29e;
+	--tag-dental-bg: #1f3a2b;
+	--tag-dental-ink: #b3e0c4;
+	--fixture-bg: #47391a;
+	--fixture-ink: #f2dca4;
+	--works: #8fd0a8;
+	--friction: #e8c27a;
+	--blocked: #f4a294;
+	--na: #9aa39d;
+}
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font:
+		15px/1.5 system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Arial,
+		sans-serif;
+}
+.widget {
+	padding: 16px;
+}
+a {
+	color: var(--accent);
+	overflow-wrap: anywhere;
+	text-underline-offset: 3px;
+}
+h1,
+h2,
+h3 {
+	line-height: 1.25;
+	margin: 0;
+}
+h1 {
+	font-size: 22px;
+}
+h2 {
+	font-size: 16px;
+	margin: 22px 0 10px;
+}
+h3 {
+	font-size: 15px;
+}
+.eyebrow {
+	margin: 0 0 4px;
+	color: var(--muted);
+	font-size: 12px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.fixture {
+	display: inline-block;
+	margin: 6px 0;
+	padding: 2px 8px;
+	border-radius: 4px;
+	background: var(--fixture-bg);
+	color: var(--fixture-ink);
+	font-size: 13px;
+}
+.headline {
+	margin: 10px 0 0;
+	font-size: 16px;
+}
+h4 {
+	font-size: 15px;
+	margin: 0;
+}
+.journey {
+	border-top: 1px solid var(--line);
+	padding-top: 12px;
+	margin-top: 12px;
+}
+.journey > header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 10px;
+	align-items: baseline;
+	justify-content: space-between;
+	margin-bottom: 6px;
+}
+.walkthrough {
+	margin: 6px 0 10px;
+}
+.do-first ol {
+	margin: 0;
+	padding-left: 22px;
+}
+.tag.verdict {
+	border: 1px solid currentColor;
+	background: transparent;
+	font-weight: 600;
+}
+.tag.verdict.works,
+.tag.verdict.assessed {
+	color: var(--works);
+}
+.tag.verdict.friction,
+.tag.verdict.partial {
+	color: var(--friction);
+}
+.tag.verdict.blocked,
+.tag.verdict.not_found {
+	color: var(--blocked);
+}
+.tag.verdict.not_applicable,
+.tag.verdict.not_checked {
+	color: var(--na);
+}
+.tag.priority {
+	color: var(--surface);
+	font-weight: 600;
+}
+.tag.priority.fix_first {
+	background: var(--fix-first);
+}
+.tag.priority.next {
+	background: var(--next);
+}
+.tag.priority.polish {
+	background: var(--polish);
+}
+.finding {
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 12px 14px;
+	margin: 0 0 10px;
+}
+.finding header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 10px;
+	align-items: baseline;
+	justify-content: space-between;
+}
+.tags {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+.tag {
+	font-size: 12px;
+	padding: 1px 7px;
+	border-radius: 999px;
+	white-space: nowrap;
+}
+.tag.observed {
+	background: var(--tag-observed-bg);
+	color: var(--tag-observed-ink);
+}
+.tag.judgement {
+	background: var(--tag-judgement-bg);
+	color: var(--tag-judgement-ink);
+}
+.tag.dental {
+	background: var(--tag-dental-bg);
+	color: var(--tag-dental-ink);
+}
+.observation {
+	margin: 8px 0;
+}
+.line {
+	margin: 6px 0;
+}
+details {
+	margin-top: 8px;
+	color: var(--muted);
+}
+summary {
+	cursor: pointer;
+}
+details ul {
+	margin: 6px 0 0;
+	padding-left: 18px;
+}
+.journeys > h2 + .journey {
+	border-top: 0;
+	margin-top: 0;
+	padding-top: 0;
+}
+.strengths ul,
+.not-checked ul {
+	margin: 0;
+	padding-left: 20px;
+}
+.not-checked {
+	color: var(--muted);
+}
+.footnote {
+	margin: 22px 0 0;
+	color: var(--muted);
+	font-size: 12px;
+}
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}

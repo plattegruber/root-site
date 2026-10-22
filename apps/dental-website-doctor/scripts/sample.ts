@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { auditWebsite, reportMarkdown } from '../src/audit/engine.js';
+import { collectSiteEvidence } from '../src/evidence/collect.js';
 import { fixture, root, siteFetcher } from '../tests/helpers.js';
 import type { Place } from '../src/providers/google.js';
 // The sample is the fictional "Bright Smiles" template-heavy practice: it exercises most
@@ -26,3 +27,9 @@ writeFileSync(resolve(root, 'samples/report.md'), reportMarkdown(report) + '\n')
 console.log(
 	`Fictional report generated: ${report.findings.length} checks; ${report.rewrites.length} drafts. ${browser ? 'Browser observations, if completed, measure the fixture.' : 'Browser checks not run.'}`
 );
+const evidence = await collectSiteEvidence('https://brightsmiles.example/', {
+	fixture: true,
+	fetcher: siteFetcher('brightsmiles')
+});
+writeFileSync(resolve(root, 'samples/evidence.json'), JSON.stringify(evidence, null, 2) + '\n');
+console.log(`Fictional evidence generated: ${evidence.pages.length} pages.`);

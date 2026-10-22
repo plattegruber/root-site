@@ -95,10 +95,26 @@ PageSpeed/Places keys are listed in `.env.example`; **none were available**.
 Owner-authorized Business Profile/OAuth is a documented extension path, not a
 working account connector in V0.
 
-Three MCP tools at `/mcp`: `audit_dental_website`, `sample_dental_report` (the fictional
-Bright Smiles template-heavy practice), and `render_dental_report`. The render tool supplies a self-contained MCP Apps
-resource with expandable detail. All return structured results usable without
-UI. MCP audits compute synchronously; local UI jobs use ephemeral process memory.
+## ChatGPT plugin: evidence tools plus a rubric
+
+The MCP server at `/mcp` gathers evidence; ChatGPT judges it. The judgement lives in
+the `audit-practice` skill: `plugin/skills/audit-practice/references/rubric.md` is
+root.site’s opinion of what a dental website must get right, and
+`reading-evidence.md` lists the false positives to avoid. Edit those files to change
+how assessments are weighed.
+
+| Tool                     | What it returns                                                                                                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `collect_site_evidence`  | Up to 12 pages: header/main/footer text, contact and booking links, forms and where they submit, trackers by kind, structured data, broken links, unfetched sitemap URLs. |
+| `read_page`              | One page in full (15,000 characters of text).                                                                                                                             |
+| `inspect_rendered_pages` | Chromium at 360/390/1440px: call/book on the first screen, overflow, tap targets, axe results, JavaScript-rendered form fields, every third-party host requested.         |
+| `measure_performance`    | PageSpeed lab and CrUX field data, when configured.                                                                                                                       |
+| `get_assessment_guide`   | The skill and its references, for clients that connect the server without the skill.                                                                                      |
+| `sample_site_evidence`   | Evidence from the fictional Bright Smiles practice.                                                                                                                       |
+| `render_assessment`      | Displays ChatGPT’s written assessment (light and dark themes).                                                                                                            |
+
+The standalone page and `pnpm audit` still use the older rule-based report engine
+(`src/audit/engine.ts`); the ChatGPT plugin no longer does.
 
 `pnpm package:plugin` creates a **DRAFT** ZIP. All manifest/MCP URLs are **planned**,
 not live. Before submission: separately authorize hosting, configure HTTPS,

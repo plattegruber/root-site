@@ -74,3 +74,32 @@ test('a well-run practice shows booking, tap-to-call and no trackers', async () 
 	}
 	assert.ok(home.structuredData.nodes.some((n) => n.types.includes('Dentist') && n.telephone));
 });
+
+test('external links keep their query (minus tracking) so schedulers needing an id are not reported broken', async () => {
+	const home = page(
+		'Home',
+		`${long('welcome')}<a href="https://sched.vendor.example/schedule/anon.do?id&#x3D;abc123&amp;utm_source=site&amp;gclid=x">Schedule Online</a>`
+	);
+	const fetched: string[] = [];
+	const fetcher: SafeFetcher = async (url, options) => {
+		fetched.push(url);
+		const u = new URL(url);
+		if (u.pathname === '/robots.txt')
+			return response(url, 'User-agent: *\nAllow: /', 200, { 'content-type': 'text/plain' });
+		if (u.hostname === 'sched.vendor.example')
+			return response(
+				url,
+				'scheduler',
+				options?.preserveQuery && u.searchParams.get('id') === 'abc123' ? 200 : 500
+			);
+		if (u.pathname === '/') return response(url, home);
+		return response(url, page('Not found', 'Not found'), 404);
+	};
+	const evidence = await collectSiteEvidence('https://q.example/', { fetcher });
+	assert.deepEqual(evidence.brokenLinks, []);
+	assert.deepEqual(
+		evidence.pages[0]!.bookingLinks.map((b) => b.url),
+		['https://sched.vendor.example/schedule/anon.do?id=abc123']
+	);
+	assert.ok(!fetched.some((u) => /utm_|gclid/.test(u)), 'tracking parameters are never sent');
+});

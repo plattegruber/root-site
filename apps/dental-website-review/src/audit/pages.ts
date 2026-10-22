@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
 import { createRequire } from 'node:module';
 import { evidence, type Evidence } from '../model.js';
-import { FetchError, normalizeUrl } from '../security/url.js';
+import { FetchError, linkQuery, normalizeUrl } from '../security/url.js';
 import { safeError, type FetchResult, type SafeFetcher } from '../security/fetch.js';
 const robotsParser = createRequire(import.meta.url)('robots-parser') as (
 	url: string,
@@ -215,8 +215,10 @@ export function parsePage(result: FetchResult): Page {
 			return;
 		}
 		try {
-			const u = normalizeUrl(new URL(raw, result.url).href);
+			const absolute = new URL(raw, result.url).href;
+			const u = normalizeUrl(absolute);
 			const internal = u.origin === origin;
+			if (!internal) u.search = linkQuery(absolute);
 			const kind = /google\.com\/maps|maps\.app\.goo\.gl|maps\.google\.com|goo\.gl\/maps/.test(
 				u.href
 			)
@@ -447,7 +449,7 @@ export async function crawlWebsite(
 		};
 		if (r.status === 200) {
 			const rules = robotsParser(robotsUrl, r.body.toString());
-			output.robotsAllows = (url) => rules.isAllowed(url, 'DentalWebsiteDoctor') ?? true;
+			output.robotsAllows = (url) => rules.isAllowed(url, 'DentalWebsiteReview') ?? true;
 		} else if (r.status === 404 || r.status === 410) output.robotsAllows = () => true;
 		else
 			output.errors.push(
@@ -519,7 +521,7 @@ export async function crawlWebsite(
 					});
 					if (rr.status === 200) {
 						const parser = robotsParser(rr.url, rr.body.toString());
-						output.robotsAllows = (u) => parser.isAllowed(u, 'DentalWebsiteDoctor') ?? true;
+						output.robotsAllows = (u) => parser.isAllowed(u, 'DentalWebsiteReview') ?? true;
 					} else if (rr.status === 404 || rr.status === 410) output.robotsAllows = () => true;
 					else throw new Error('redirect_robots');
 					output.robots = {
@@ -604,7 +606,7 @@ export async function crawlWebsite(
 							(robot.status !== 200 ||
 								robotsParser(robot.url, robot.body.toString()).isAllowed(
 									l.url,
-									'DentalWebsiteDoctor'
+									'DentalWebsiteReview'
 								) === false)
 						)
 							throw new FetchError(
@@ -616,9 +618,11 @@ export async function crawlWebsite(
 							'robots',
 							'robots.txt disallows automated checks of this link; not tested.'
 						);
-					let r = await fetcher(l.url, { method: 'HEAD', maxBytes: 100_000, signal });
-					if ([403, 405, 501].includes(r.status))
-						r = await fetcher(l.url, { maxBytes: 1_000_000, signal });
+					const query = { preserveQuery: true, signal };
+					let r = await fetcher(l.url, { method: 'HEAD', maxBytes: 100_000, ...query });
+					// Schedulers often reject HEAD or a missing session with a 4xx/5xx that a
+					// browser's GET would not get; only a failed GET counts.
+					if (r.status >= 400) r = await fetcher(l.url, { maxBytes: 1_000_000, ...query });
 					output.linkChecks.push({
 						from: l.from,
 						url: l.url,

@@ -12,8 +12,10 @@ everything by that, not by generic SEO or design taste.
 
 - **Fix first** — something blocks a patient or creates real exposure:
   - no tappable phone number (`tel:` link) on the first screen at phone width;
-  - booking is broken (a dead link, an error page, a request page with no working form),
-    or the only way to reach the practice is by phone during office hours;
+  - booking is broken on the practice’s own site (a dead internal link, an error page, a
+    request page with no working form), or the only way to reach the practice is by
+    phone during office hours. An external scheduler that only failed an automated check
+    is not confirmed broken; see the evidence guide;
   - advertising or retargeting tags (Meta Pixel, Google Ads, TikTok, LinkedIn, Pinterest,
     Snap) or session-replay tools (Hotjar, Clarity, FullStory) on a page where patients
     enter health or insurance details, describe a problem, or pick a reason for the visit
@@ -46,6 +48,14 @@ screen, or emergencies are advertised with no instructions for what to do.
 A journey that works for a phone call but nothing else is friction, not works. If every
 journey gets the same verdict, look again: some are almost always stronger than others,
 and the reader needs to know which.
+
+A good site deserves to be called good. When the journeys mostly work, lead with that,
+and say plainly that the remaining items are refinements. Fix first can be empty. Don’t
+promote a polish item to the top of the report just so it has a headline.
+
+Content that looks out of place is often explained by how the practice is run: a careers
+page listing other towns usually means a parent group hiring across offices. Ask the
+practice to confirm instead of calling it a mistake.
 
 ### 1. “I’m looking for a new dentist”
 

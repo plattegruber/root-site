@@ -62,7 +62,7 @@ export const nativeTransport: Transport = async (url, pin, options) => {
 			? (process.env.HTTPS_PROXY ?? process.env.https_proxy)
 			: (process.env.HTTP_PROXY ?? process.env.http_proxy);
 	const headers = {
-		'User-Agent': 'DentalWebsiteDoctor/0.1 (+public, bounded website assessment; root.site)',
+		'User-Agent': 'DentalWebsiteReview/0.2 (+public, bounded website assessment; root.site)',
 		Accept:
 			'text/html,application/xhtml+xml,application/xml,text/xml,text/plain,application/json,image/*;q=0.5,*/*;q=0.1',
 		Host: url.host,

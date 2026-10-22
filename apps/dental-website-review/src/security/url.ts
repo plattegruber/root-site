@@ -57,6 +57,20 @@ export function normalizeUrl(raw: string): URL {
 	url.hostname = host;
 	return url;
 }
+const trackingParam =
+	/^(utm_|mc_|_hs|hsa_)|^(gclid|gbraid|wbraid|dclid|fbclid|msclkid|yclid|twclid|ttclid|li_fat_id|igshid|srsltid|_ga|_gl)$/i;
+
+/**
+ * A link's own query string without tracking parameters. Third-party schedulers and forms
+ * often need theirs (`anon.do?id=…`); dropping it makes a working link look broken.
+ */
+export function linkQuery(raw: string) {
+	const params = new URL(raw).searchParams;
+	for (const key of [...params.keys()]) if (trackingParam.test(key)) params.delete(key);
+	const query = params.toString();
+	return query ? `?${query}` : '';
+}
+
 export async function resolvePublic(url: URL, lookup: Lookup = lookupAll) {
 	const host = url.hostname.replace(/^\[|\]$/g, '');
 	let addresses: { address: string; family: number }[];

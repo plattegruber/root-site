@@ -27,6 +27,11 @@ are known for. Each one comes from a real mistake.
 - `linksNotChecked` were skipped because the target’s robots.txt forbids automated checks
   (common for patient-form vendors). They are not broken. `brokenLinks` are links that
   returned an error status or failed to connect.
+- A broken link to a third-party scheduler or form is weak evidence on its own: vendors
+  often reject automated requests that a patient’s browser would pass. Say “an automated
+  check of the Schedule Online link got an error; open it on a phone to confirm”, rate it
+  **next**, and don’t let it make the booking journey blocked. Don’t try to confirm it by
+  fetching the vendor yourself: you’ll hit the same wall.
 
 ## Contact and booking
 

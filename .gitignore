@@ -28,7 +28,7 @@ worker-configuration.d.ts
 # Local-only deployment artifacts
 .dev.vars
 
-# Dental Website Doctor — generated/local artifacts
+# Dental Website Review — generated/local artifacts
 apps/**/dist/
 apps/**/artifacts/
 apps/**/coverage/

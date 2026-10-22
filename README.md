@@ -41,19 +41,19 @@ the zone lives on the same account. The Worker handles every request
 `src/hooks.server.ts`, and falls through to the static asset binding
 for everything else.
 
-## Dental Website Doctor (local V0)
+## Dental Website Review (local V0)
 
 The dental-specific ChatGPT plugin, audit API and report UI live in
-[`apps/dental-website-doctor`](apps/dental-website-doctor/README.md). The audit
+[`apps/dental-website-review`](apps/dental-website-review/README.md). The audit
 service runs in Node because Chromium and DNS-pinned outbound fetching require a
 server runtime. It is separate from the existing Cloudflare marketing Worker.
 
 ```sh
 pnpm install
-pnpm doctor:build
-pnpm doctor:sample     # explicitly fictional, simulated provider evidence
-pnpm doctor:test
-pnpm doctor:dev       # http://127.0.0.1:3000; MCP at /mcp
+pnpm review:build
+pnpm review:sample     # explicitly fictional, simulated provider evidence
+pnpm review:test
+pnpm review:dev       # http://127.0.0.1:3000; MCP at /mcp
 ```
 
 See the service README for Chromium setup, optional Google providers, costs,

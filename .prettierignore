@@ -10,4 +10,4 @@ bun.lockb
 apps/**/dist/
 apps/**/artifacts/
 apps/**/coverage/
-apps/dental-website-doctor/samples
+apps/dental-website-review/samples

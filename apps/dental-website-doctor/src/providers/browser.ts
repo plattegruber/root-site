@@ -28,7 +28,9 @@ export async function inspectBrowser(
 	pages: Page[],
 	fetcher: SafeFetcher,
 	signal: AbortSignal,
-	enabled: boolean
+	enabled: boolean,
+	/** Explicit pages and viewports; by default the homepage plus a contact and a service page. */
+	targets?: { url: string; width: number; height: number }[]
 ): Promise<BrowserResult> {
 	const browser: Report['browser'] = {
 		status: 'not_tested',
@@ -66,14 +68,22 @@ export async function inspectBrowser(
 		// shim every rendered check fails with "__name is not defined" under `pnpm dev`/tests.
 		await context.addInitScript('globalThis.__name = globalThis.__name || ((fn) => fn);');
 		await context.routeWebSocket(/.*/, (ws) => ws.close());
+		// Budgets apply per page view: one heavy CMS homepage must not starve the next view.
 		let totalRequests = 0;
 		let totalBytes = 0;
+		// Every host the page tried to contact, including beacons this browser then blocked.
+		let requestedHosts = new Set<string>();
 		await context.route('**/*', async (route) => {
 			const request = route.request();
+			try {
+				requestedHosts.add(new URL(request.url()).hostname);
+			} catch {
+				/* data: and blob: URLs have no host. */
+			}
 			if (
 				signal.aborted ||
-				++totalRequests > 160 ||
-				totalBytes > 25_000_000 ||
+				++totalRequests > 250 ||
+				totalBytes > 30_000_000 ||
 				!['GET', 'HEAD'].includes(request.method())
 			) {
 				await route.abort().catch(() => {});
@@ -103,7 +113,7 @@ export async function inspectBrowser(
 				await route.abort().catch(() => {});
 			}
 		});
-		const specs = [
+		const specs = targets ?? [
 			{ url: home.url, width: 360, height: 800 },
 			{ url: home.url, width: 390, height: 844 },
 			{ url: home.url, width: 1440, height: 900 }
@@ -112,15 +122,20 @@ export async function inspectBrowser(
 		const service = pages.find(
 			(p) => p !== home && p !== contact && /implant|crown|service|emergency/i.test(p.url)
 		);
-		if (contact) specs.push({ url: contact.url, width: 390, height: 844 });
-		if (service) specs.push({ url: service.url, width: 390, height: 844 });
+		if (!targets && contact) specs.push({ url: contact.url, width: 390, height: 844 });
+		if (!targets && service) specs.push({ url: service.url, width: 390, height: 844 });
 		for (const spec of specs) {
+			totalRequests = 0;
+			totalBytes = 0;
+			requestedHosts = new Set();
 			if (signal.aborted) break;
 			const tab = await context.newPage();
 			await tab.setViewportSize({ width: spec.width, height: spec.height });
 			const started = Date.now();
 			try {
 				await tab.goto(spec.url, { waitUntil: 'domcontentloaded', timeout: 18_000 });
+				// CMS form and booking widgets render after load; give them a short, bounded settle.
+				await tab.waitForLoadState('networkidle', { timeout: 4_000 }).catch(() => {});
 				await tab.evaluate(() =>
 					Promise.race([document.fonts.ready, new Promise((resolve) => setTimeout(resolve, 700))])
 				);
@@ -213,6 +228,30 @@ export async function inspectBrowser(
 							selectors: v.nodes.slice(0, 5).flatMap((n) => n.target.map(String))
 						})),
 						formCount: document.forms.length,
+						// Forms built by JavaScript (Squarespace, Wix) exist only in the rendered DOM.
+						forms: Array.from(document.forms)
+							.slice(0, 5)
+							.map((form) => ({
+								action: form.getAttribute('action') ?? '',
+								fields: Array.from(
+									form.querySelectorAll(
+										'input:not([type="hidden"]):not([type="submit"]):not([type="button"]),select,textarea'
+									)
+								)
+									.slice(0, 25)
+									.map((field) =>
+										(
+											(field as HTMLInputElement).labels?.[0]?.textContent ||
+											field.getAttribute('aria-label') ||
+											field.getAttribute('placeholder') ||
+											field.getAttribute('name') ||
+											field.tagName
+										)
+											.replace(/\s+/g, ' ')
+											.trim()
+											.slice(0, 120)
+									)
+							})),
 						phoneLinks: Array.from(document.querySelectorAll('a[href^="tel:"]')).map(
 							(a) => a.getAttribute('href') ?? ''
 						),
@@ -274,6 +313,13 @@ export async function inspectBrowser(
 					height: spec.height,
 					measuredAt: new Date().toISOString(),
 					...data,
+					thirdPartyRequests: [...requestedHosts]
+						.filter(
+							(h) =>
+								h && h.replace(/^www\./, '') !== new URL(spec.url).hostname.replace(/^www\./, '')
+						)
+						.sort()
+						.slice(0, 40),
 					keyboard: {
 						tabbable: data.tabbable,
 						reached: focusSeen.size,

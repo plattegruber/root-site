@@ -175,6 +175,9 @@ export const reportSchema = z.object({
 					trapSuspected: z.boolean()
 				}),
 				formCount: z.number(),
+				forms: z.array(z.object({ action: z.string(), fields: z.array(z.string()) })).optional(),
+				/** Third-party hosts the rendered page tried to contact, including runtime tag-manager loads. */
+				thirdPartyRequests: z.array(z.string()).optional(),
 				phoneLinks: z.array(z.string()),
 				navigationLinks: z.number(),
 				resourceBytes: z.number(),

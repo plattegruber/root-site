@@ -1,5 +1,5 @@
 import express from 'express';
-import { timingSafeEqual, randomUUID } from 'node:crypto';
+import { randomUUID } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,6 +8,8 @@ import { createMcpServer } from './mcp.js';
 import { inputSchema, reportSchema, type Report } from './model.js';
 import { auditWebsite, type AuditOptions } from './audit/engine.js';
 import { safeError } from './security/fetch.js';
+import { Allowlist, RateLimiter, equalSecret } from './access.js';
+import { hashSubject } from './telemetry.js';
 
 type Job = {
 	created: number;
@@ -22,12 +24,24 @@ export type ServerOptions = {
 	token?: string;
 	maxConcurrent?: number;
 	auditOptions?: AuditOptions;
+	/** Public mode: /mcp is open to ChatGPT's published IP ranges without a token. */
+	publicMcp?: boolean;
+	allowlist?: Allowlist;
+	/** Additional accepted Host headers, e.g. the platform hostname. */
+	extraHosts?: string[];
+	/** Header carrying the client IP set by the platform proxy (Fly: fly-client-ip). */
+	clientIpHeader?: string;
+	limiter?: RateLimiter;
+	/** OpenAI domain-verification token served at /.well-known/openai-apps-challenge. */
+	challenge?: string;
 };
-function equalSecret(a: string, b: string) {
-	const aa = Buffer.from(a),
-		bb = Buffer.from(b);
-	return aa.length === bb.length && timingSafeEqual(aa, bb);
-}
+const env = process.env;
+// A tool error in JSON-RPC form, so ChatGPT shows the reason instead of a transport failure.
+const toolRefusal = (id: unknown, text: string) => ({
+	jsonrpc: '2.0',
+	id: id ?? null,
+	result: { isError: true, content: [{ type: 'text', text }] }
+});
 export function createApp(options: ServerOptions = {}) {
 	const app = express();
 	app.disable('x-powered-by');
@@ -35,7 +49,26 @@ export function createApp(options: ServerOptions = {}) {
 	const root = options.root ?? fileURLToPath(new URL('../', import.meta.url));
 	const publicOrigin = options.origin ?? process.env.PUBLIC_ORIGIN ?? 'http://127.0.0.1:3000';
 	const origin = new URL(publicOrigin);
-	const token = options.token ?? process.env.AUDIT_API_TOKEN;
+	const token = options.token ?? env.AUDIT_API_TOKEN;
+	const local = ['127.0.0.1', 'localhost', '[::1]'].includes(origin.hostname);
+	const publicMcp = options.publicMcp ?? env.PUBLIC_MCP === 'true';
+	const allowlist = options.allowlist ?? (publicMcp ? new Allowlist().start() : undefined);
+	const extraHosts =
+		options.extraHosts ??
+		(env.EXTRA_HOSTS ?? '')
+			.split(',')
+			.map((h) => h.trim())
+			.filter(Boolean);
+	const ipHeader = options.clientIpHeader ?? env.CLIENT_IP_HEADER;
+	const clientIp = (req: express.Request) =>
+		(ipHeader && req.get(ipHeader)) || req.socket.remoteAddress || '';
+	const limiter =
+		options.limiter ??
+		new RateLimiter(
+			{ limit: Number(env.CALLER_LIMIT ?? 40), windowMs: 10 * 60 * 1000 },
+			Number(env.DAILY_TOOL_CALL_LIMIT ?? 1500)
+		);
+	const challenge = options.challenge ?? env.OPENAI_APPS_CHALLENGE;
 	const jobs = new Map<string, Job>();
 	let running = 0;
 	const max = Math.max(
@@ -52,11 +85,11 @@ export function createApp(options: ServerOptions = {}) {
 		});
 		const allowed = new Set([
 			origin.host,
-			...(origin.hostname === '127.0.0.1' || origin.hostname === 'localhost'
-				? [`localhost:${origin.port}`, `127.0.0.1:${origin.port}`]
-				: [])
+			...extraHosts,
+			...(local ? [`localhost:${origin.port}`, `127.0.0.1:${origin.port}`] : [])
 		]);
-		if (!allowed.has(req.get('host') ?? '')) {
+		// Platform health checks reach the machine by address, not by public hostname.
+		if (!allowed.has(req.get('host') ?? '') && req.path !== '/health') {
 			res.status(403).json({ error: 'Unexpected Host header.' });
 			return;
 		}
@@ -64,24 +97,36 @@ export function createApp(options: ServerOptions = {}) {
 			res.status(403).json({ error: 'Cross-origin requests are not accepted.' });
 			return;
 		}
-		if (req.path.startsWith('/api/') || req.path === '/mcp') {
-			if (token && !equalSecret(req.get('authorization')?.replace(/^Bearer /, '') ?? '', token)) {
-				res.status(401).json({ error: 'Staging API token required.' });
-				return;
-			}
-			if (!token && !['127.0.0.1', 'localhost', '[::1]'].includes(origin.hostname)) {
-				res.status(503).json({
-					error:
-						'Remote staging requires an authenticated gateway or AUDIT_API_TOKEN; public deployment is not enabled.'
-				});
-				return;
-			}
+		const hasToken = Boolean(
+			token && equalSecret(req.get('authorization')?.replace(/^Bearer /, '') ?? '', token)
+		);
+		if (req.path === '/mcp') {
+			if (hasToken || (!publicMcp && !token && local)) return next();
+			if (publicMcp && allowlist?.allows(clientIp(req))) return next();
+			res
+				.status(publicMcp ? 403 : token ? 401 : 503)
+				.json({ error: publicMcp ? 'Not an allowed client.' : 'Staging API token required.' });
+			return;
+		}
+		if (req.path.startsWith('/api/')) {
+			if (hasToken || (!token && local && !publicMcp)) return next();
+			res
+				.status(token ? 401 : 503)
+				.json({ error: 'The assessment API requires a token on this deployment.' });
+			return;
 		}
 		next();
 	});
 	app.use(express.json({ limit: '768kb' }));
+	app.get('/.well-known/openai-apps-challenge', (_req, res) => {
+		if (!challenge) {
+			res.status(404).type('text/plain').send('Not configured.');
+			return;
+		}
+		res.type('text/plain').send(challenge);
+	});
 	app.get('/health', (_req, res) =>
-		res.json({ ok: true, service: 'dental-website-doctor', version: '0.1.0' })
+		res.json({ ok: true, service: 'dental-website-doctor', version: '0.2.0' })
 	);
 	app.get('/api/sample', (_req, res) => {
 		try {
@@ -149,11 +194,33 @@ export function createApp(options: ServerOptions = {}) {
 		res.status(204).end();
 	});
 	app.post('/mcp', async (req, res) => {
-		if (running >= max) {
-			res.status(429).json({ error: 'Audit capacity is busy.' });
-			return;
+		// Only tool calls do network work; discovery and initialization must never queue behind them.
+		const body = req.body as
+			| { id?: unknown; method?: unknown; params?: { _meta?: Record<string, unknown> } }
+			| undefined;
+		const costly = body?.method === 'tools/call';
+		if (costly) {
+			const caller = hashSubject(body?.params?._meta?.['openai/subject']) ?? clientIp(req);
+			const verdict = limiter.take(caller);
+			if (verdict !== 'ok') {
+				res.json(
+					toolRefusal(
+						body?.id,
+						verdict === 'daily'
+							? 'Dental Website Doctor has reached its daily assessment limit. Please try again tomorrow.'
+							: 'Too many requests in a short time. Please wait a few minutes and try again.'
+					)
+				);
+				return;
+			}
+			if (running >= max) {
+				res.json(
+					toolRefusal(body?.id, 'All assessment slots are busy. Please try again in a minute.')
+				);
+				return;
+			}
 		}
-		running++;
+		if (costly) running++;
 		const server = createMcpServer(root, options.auditOptions);
 		const transport = new StreamableHTTPServerTransport({
 			sessionIdGenerator: undefined,
@@ -169,11 +236,18 @@ export function createApp(options: ServerOptions = {}) {
 		} catch {
 			if (!res.headersSent) res.status(500).json({ error: 'MCP request could not be completed.' });
 		} finally {
-			running--;
+			if (costly) running--;
 		}
 	});
 	app.all('/mcp', (_req, res) => res.status(405).set('Allow', 'POST').end());
-	app.use(express.static(resolve(root, 'web'), { index: 'index.html' }));
+	// The standalone page needs the token-gated API, so a public deployment serves only MCP.
+	if (publicMcp)
+		app.get('/', (_req, res) =>
+			res
+				.type('text/plain')
+				.send('Dental Website Doctor by root.site. MCP endpoint for ChatGPT: /mcp')
+		);
+	else app.use(express.static(resolve(root, 'web'), { index: 'index.html' }));
 	app.use((_req, res) => res.status(404).json({ error: 'Not found.' }));
 	app.use(
 		(error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
@@ -187,7 +261,17 @@ export function createApp(options: ServerOptions = {}) {
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
 	const port = Number(process.env.PORT ?? 3000),
 		host = process.env.HOST ?? '127.0.0.1';
-	createApp().listen(port, host, () =>
-		console.log(`Dental Website Doctor by root.site: http://${host}:${port} (local V0)`)
+	const publicMcp = process.env.PUBLIC_MCP === 'true';
+	// A cold start must not answer ChatGPT before the allowlist has loaded.
+	const allowlist = publicMcp ? new Allowlist() : undefined;
+	if (allowlist) {
+		await Promise.race([allowlist.refresh(), new Promise((r) => setTimeout(r, 10_000))]);
+		allowlist.start();
+		console.log(JSON.stringify({ type: 'allowlist_loaded', ranges: allowlist.size }));
+	}
+	createApp({ allowlist }).listen(port, host, () =>
+		console.log(
+			`Dental Website Doctor by root.site: http://${host}:${port} (${publicMcp ? 'public MCP' : 'local'})`
+		)
 	);
 }

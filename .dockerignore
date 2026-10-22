@@ -1,0 +1,13 @@
+# Only apps/dental-website-doctor is containerised; keep the build context small.
+.git
+node_modules
+**/node_modules
+.svelte-kit
+.wrangler
+build
+src
+static
+scripts
+apps/*/dist
+apps/*/artifacts
+apps/*/.env

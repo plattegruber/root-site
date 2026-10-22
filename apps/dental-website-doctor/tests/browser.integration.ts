@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import http from 'node:http';
 import { chromium } from 'playwright';
 import { createApp } from '../src/server.js';
-import { createMcpServer, REPORT_URI } from '../src/mcp.js';
+import { createMcpServer } from '../src/mcp.js';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
@@ -40,37 +40,32 @@ test('actual Chromium fixture audit finds mobile overflow, contrast/label issues
 		report.performance.some((m) => m.source === 'browser_navigation' && m.status === 'completed')
 	);
 });
-test('MCP tools expose truthful annotations, typed report, and a self-contained MCP Apps resource', async () => {
+test('inspect_rendered_pages over MCP measures phone views, rendered forms and requested hosts', async () => {
 	const server = createMcpServer(root, {
 		fixture: true,
 		fetcher: fixtureFetcher(),
-		places: fixturePlaces,
-		browserEnabled: false,
-		pagespeedEnabled: true
+		browserEnabled: true
 	});
 	const client = new Client({ name: 'doctor-test', version: '1.0' });
 	const [a, b] = InMemoryTransport.createLinkedPair();
 	await server.connect(a);
 	await client.connect(b);
 	try {
-		const listed = await client.listTools();
-		assert.equal(listed.tools.length, 3);
-		const audit = listed.tools.find((t) => t.name === 'audit_dental_website')!;
-		assert.equal(audit.annotations?.openWorldHint, true);
-		assert.equal(audit.annotations?.readOnlyHint, true);
+		// Listing first makes the client validate results against the declared output schemas.
+		await client.listTools();
 		const result = await client.callTool({
-			name: 'audit_dental_website',
-			arguments: { websiteUrl: 'https://maple-grove.example/' }
+			name: 'inspect_rendered_pages',
+			arguments: { urls: ['https://maple-grove.example/', 'https://maple-grove.example/contact'] }
 		});
-		const report = (result.structuredContent as { report: Report }).report;
-		assert.equal(report.rewrites.length, 3);
-		const render = await client.callTool({ name: 'render_dental_report', arguments: { report } });
-		assert.equal((render.structuredContent as { report: Report }).report.fixture, true);
-		const resource = await client.readResource({ uri: REPORT_URI });
-		assert.equal(resource.contents[0]?.mimeType, 'text/html;profile=mcp-app');
-		assert.ok(
-			'text' in resource.contents[0]! && resource.contents[0].text.includes('Dental assessment')
+		const { rendered } = result.structuredContent as { rendered: Report['browser'] };
+		assert.equal(rendered.status, 'completed', JSON.stringify(rendered.errors));
+		assert.deepEqual(
+			rendered.views.map((v) => `${new URL(v.url).pathname}@${v.width}`),
+			['/@360', '/@390', '/@1440', '/contact@390']
 		);
+		const contact = rendered.views.find((v) => v.url.endsWith('/contact'))!;
+		assert.ok(contact.forms?.[0]?.fields.length, 'rendered form fields are captured');
+		assert.ok(rendered.views.every((v) => Array.isArray(v.thirdPartyRequests)));
 	} finally {
 		await client.close();
 		await server.close();
@@ -138,6 +133,68 @@ test('standalone UI works on desktop/mobile, renders text safely, and the HTTP M
 			undefined
 		);
 		assert.equal(await page.locator('#report img').count(), 0);
+		// The ChatGPT assessment view: untrusted strings stay text, and dark theme is readable.
+		await page.evaluate(async () => {
+			document.querySelectorAll('link[rel="stylesheet"],style').forEach((n) => n.remove());
+			const css = document.createElement('link');
+			css.rel = 'stylesheet';
+			css.href = '/widget.css';
+			document.head.append(css);
+			await new Promise((r) => css.addEventListener('load', r));
+			document.documentElement.dataset.theme = 'dark';
+			const { renderAssessment } = await import('/assessment.js');
+			renderAssessment(
+				{
+					practiceName: '<img src=x onerror="window.owned=true">',
+					websiteUrl: 'javascript:alert(1)',
+					fixture: true,
+					verdict: 'Verdict',
+					doFirst: ['One'],
+					journeys: [
+						{
+							name: '<script>window.owned=true</script>',
+							verdict: 'friction',
+							walkthrough: 'Walk',
+							findings: [
+								{
+									title: 'Finding',
+									priority: 'fix_first',
+									basis: 'observed',
+									observation: '<b>bold</b>',
+									forPractice: 'p',
+									forDeveloper: 'd',
+									evidence: [{ url: 'https://example.com/', detail: 'quote' }]
+								}
+							]
+						}
+					],
+					technical: [],
+					googleProfile: {
+						status: 'partial',
+						summary: 'Summary',
+						source: 'javascript:alert(2)',
+						findings: []
+					},
+					strengths: ['Works'],
+					notChecked: []
+				},
+				document.querySelector('#report')
+			);
+		});
+		assert.equal(
+			await page.evaluate(() => (window as unknown as { owned?: boolean }).owned),
+			undefined
+		);
+		assert.equal(await page.locator('#report img, #report b, #report script').count(), 0);
+		assert.equal(await page.locator('#report a[href^="javascript"]').count(), 0);
+		const colors = await page.evaluate(() => {
+			const card = getComputedStyle(document.querySelector('.finding')!);
+			return { bg: card.backgroundColor, ink: card.color };
+		});
+		const luminance = (rgb: string) =>
+			(rgb.match(/\d+/g) ?? []).slice(0, 3).reduce((n, v) => n + Number(v), 0) / 3;
+		assert.ok(luminance(colors.bg) < 80, `dark card background, got ${colors.bg}`);
+		assert.ok(luminance(colors.ink) > 180, `light text on dark, got ${colors.ink}`);
 		assert.equal(
 			(
 				await fetch(origin + '/api/audits', {
@@ -151,7 +208,7 @@ test('standalone UI works on desktop/mobile, renders text safely, and the HTTP M
 		// fetch() silently drops a forbidden Host header, so use http.request to send one.
 		const hostStatus = await new Promise<number>((resolve, reject) =>
 			http
-				.get(origin + '/health', { headers: { Host: 'evil.example' } }, (res) => {
+				.get(origin + '/', { headers: { Host: 'evil.example' } }, (res) => {
 					res.resume();
 					resolve(res.statusCode ?? 0);
 				})
@@ -161,7 +218,7 @@ test('standalone UI works on desktop/mobile, renders text safely, and the HTTP M
 		const client = new Client({ name: 'http-test', version: '1.0' });
 		await client.connect(new StreamableHTTPClientTransport(new URL(origin + '/mcp')));
 		const tools = await client.listTools();
-		assert.equal(tools.tools.length, 3);
+		assert.equal(tools.tools.length, 7);
 		await client.close();
 	} finally {
 		await browser.close();

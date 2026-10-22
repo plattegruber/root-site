@@ -64,7 +64,7 @@ export const nativeTransport: Transport = async (url, pin, options) => {
 	const headers = {
 		'User-Agent': 'DentalWebsiteDoctor/0.1 (+public, bounded website assessment; root.site)',
 		Accept:
-			'text/html,application/xhtml+xml,application/xml,text/plain,application/json,image/*;q=0.5',
+			'text/html,application/xhtml+xml,application/xml,text/xml,text/plain,application/json,image/*;q=0.5,*/*;q=0.1',
 		Host: url.host,
 		...options.headers
 	};
@@ -72,7 +72,11 @@ export const nativeTransport: Transport = async (url, pin, options) => {
 	const requestOptions: https.RequestOptions = {
 		method: options.method ?? 'GET',
 		headers,
-		lookup: (_hostname, _opts, cb) => cb(null, pin.address, pin.family),
+		// Node's autoSelectFamily calls lookup with { all: true } and expects an array.
+		lookup: ((_hostname: string, opts: { all?: boolean }, cb: (...args: unknown[]) => void) =>
+			opts?.all
+				? cb(null, [{ address: pin.address, family: pin.family }])
+				: cb(null, pin.address, pin.family)) as https.RequestOptions['lookup'],
 		servername: host,
 		rejectUnauthorized: true
 	};

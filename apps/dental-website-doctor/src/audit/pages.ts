@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
 import { createRequire } from 'node:module';
 import { evidence, type Evidence } from '../model.js';
-import { normalizeUrl } from '../security/url.js';
+import { FetchError, normalizeUrl } from '../security/url.js';
 import { safeError, type FetchResult, type SafeFetcher } from '../security/fetch.js';
 const robotsParser = createRequire(import.meta.url)('robots-parser') as (
 	url: string,
@@ -347,6 +347,8 @@ export function bookingVendor(hostname: string): string | undefined {
 }
 export type Crawl = {
 	pages: Page[];
+	/** URLs that served a page already fetched (same canonical or same main text). */
+	duplicates: { url: string; sameAs: string }[];
 	errors: string[];
 	robots: { url: string; status: number; body: string; observedAt: string } | undefined;
 	sitemap: { url: string; status: number; locations: string[]; observedAt: string } | undefined;
@@ -375,6 +377,10 @@ const priorityPatterns: RegExp[] = [
 	/review|testimonial|smile.?gallery|before.and.after/i,
 	/faq|privacy|hipaa|accessib|blog|news/i
 ];
+/** Commerce, account and utility paths that never carry practice content. */
+const nonContentPath =
+	/^\/(?:cart|checkout|basket|account|login|log-in|signin|sign-in|register|search|wp-admin|wp-login|cdn-cgi|feed|tag|author)(?:\/|$)|\.(?:pdf|jpe?g|png|gif|svg|zip|xml|mp4|webp)$/i;
+export const isContentPath = (url: string) => !nonContentPath.test(new URL(url).pathname);
 export function pageRank(url: string, label = ''): number {
 	const haystack = `${url} ${label}`;
 	const index = priorityPatterns.findIndex((re) => re.test(haystack));
@@ -421,6 +427,7 @@ export async function crawlWebsite(
 	const entry = normalizeUrl(raw);
 	const output: Crawl = {
 		pages: [],
+		duplicates: [],
 		errors: [],
 		robots: undefined,
 		sitemap: undefined,
@@ -484,7 +491,7 @@ export async function crawlWebsite(
 				(u) =>
 					u &&
 					new URL(u).origin === origin &&
-					!/\.(pdf|jpe?g|png|gif|svg|zip|xml|mp4|webp)$/i.test(new URL(u).pathname) &&
+					isContentPath(u) &&
 					pageRank(u) < priorityPatterns.length
 			)
 			.sort((a, b) => pageRank(a) - pageRank(b));
@@ -530,6 +537,11 @@ export async function crawlWebsite(
 				continue;
 			}
 			const page = parsePage(r);
+			const original = duplicateOf(page, output.pages);
+			if (original) {
+				output.duplicates.push({ url, sameAs: original.url });
+				continue;
+			}
 			output.pages.push(page);
 			if (output.pages.length === 1) {
 				// The sitemap is read after the homepage so the final origin is known; its
@@ -543,7 +555,7 @@ export async function crawlWebsite(
 					(link) =>
 						['internal', 'booking'].includes(link.kind) &&
 						new URL(link.url).origin === origin &&
-						!/\.(pdf|jpe?g|png|gif|svg|zip|xml|mp4|webp)$/i.test(new URL(link.url).pathname) &&
+						isContentPath(link.url) &&
 						!seen.has(link.url) &&
 						!pending.includes(link.url)
 				)
@@ -556,10 +568,15 @@ export async function crawlWebsite(
 		}
 	}
 	if (!output.sitemap && !output.errors.some((e) => e.startsWith('sitemap:'))) await loadSitemap();
-	const checked = new Set(output.pages.map((x) => x.url));
+	const checked = new Set([
+		...output.pages.map((x) => x.url),
+		...output.duplicates.map((x) => x.url)
+	]);
 	const links = output.pages
 		.flatMap((page) => page.links.map((link) => ({ from: page.url, ...link })))
-		.filter((l) => ['internal', 'booking'].includes(l.kind) && !checked.has(l.url));
+		.filter(
+			(l) => ['internal', 'booking'].includes(l.kind) && !checked.has(l.url) && isContentPath(l.url)
+		);
 	const unique = links
 		.filter((l) => {
 			if (checked.has(l.url)) return false;
@@ -590,8 +607,15 @@ export async function crawlWebsite(
 									'DentalWebsiteDoctor'
 								) === false)
 						)
-							throw new Error('robots');
-					} else if (output.robotsAllows(l.url) !== true) throw new Error('robots');
+							throw new FetchError(
+								'robots',
+								'robots.txt disallows automated checks of this link; not tested.'
+							);
+					} else if (output.robotsAllows(l.url) !== true)
+						throw new FetchError(
+							'robots',
+							'robots.txt disallows automated checks of this link; not tested.'
+						);
 					let r = await fetcher(l.url, { method: 'HEAD', maxBytes: 100_000, signal });
 					if ([403, 405, 501].includes(r.status))
 						r = await fetcher(l.url, { maxBytes: 1_000_000, signal });
@@ -618,6 +642,24 @@ export async function crawlWebsite(
 		);
 	}
 	return output;
+}
+
+/**
+ * A page already fetched under another URL: the canonical points at it, or the page's own
+ * content is identical (CMSs commonly serve the homepage at both / and /home/).
+ */
+function duplicateOf(page: Page, pages: Page[]): Page | undefined {
+	let canonical = '';
+	try {
+		canonical = page.canonical ? normalizeUrl(new URL(page.canonical, page.url).href).href : '';
+	} catch {
+		/* An unparseable canonical is ignored. */
+	}
+	return pages.find(
+		(p) =>
+			(canonical && canonical !== page.url && canonical === p.url) ||
+			(page.mainText.length > 200 && p.mainText === page.mainText)
+	);
 }
 
 export function schemaNodes(value: unknown): Record<string, unknown>[] {

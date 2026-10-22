@@ -3,7 +3,7 @@
 	"mcpServers": {
 		"dental-website-review": {
 			"type": "streamable-http",
-			"url": "https://review.root.site/mcp"
+			"url": "https://website-review.root.site/mcp"
 		}
 	}
 }

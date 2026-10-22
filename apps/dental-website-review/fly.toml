@@ -10,7 +10,7 @@ primary_region = "ord"
 
 [env]
   PUBLIC_MCP = "true"
-  PUBLIC_ORIGIN = "https://review.root.site"
+  PUBLIC_ORIGIN = "https://website-review.root.site"
   EXTRA_HOSTS = "root-dental-website-review.fly.dev"
   CLIENT_IP_HEADER = "fly-client-ip"
   BROWSER_ENABLED = "true"

@@ -1,0 +1,9 @@
+{
+	"$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+	"mcpServers": {
+		"dental-website-review": {
+			"type": "streamable-http",
+			"url": "https://review.root.site/mcp"
+		}
+	}
+}

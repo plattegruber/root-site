@@ -1,0 +1,44 @@
+{
+	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+	"name": "dental-website-review",
+	"version": "0.2.0",
+	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. Collects evidence from the public site and a real phone browser, then judges it against root.site’s dental rubric, with a line for the practice and a line for the developer.",
+	"author": {
+		"name": "root.site",
+		"email": "platte@root.site",
+		"url": "https://root.site"
+	},
+	"homepage": "https://root.site/dental-website-review",
+	"repository": "https://github.com/plattegruber/root-site",
+	"keywords": ["dental", "website", "accessibility", "online-presence"],
+	"extensions": {
+		"com.openai": {
+			"interface": {
+				"displayName": "Dental Website Review",
+				"shortDescription": "Dental website assessment for dentists and their developers",
+				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. The tools collect evidence (page text, links, forms and where they submit, advertising and session-replay trackers, structured data, and phone-width browser measurements); the assessment applies root.site’s published rubric of what a dental website must get right, including privacy risks like ad pixels on appointment forms and advertising claims state boards police. Each finding says what was observed and whether it is a judgement, with a plain-language line for the practice owner and a concrete fix for the developer. Public pages only; no forms submitted, no accounts, no score.",
+				"developerName": "root.site",
+				"category": "Productivity",
+				"capabilities": [
+					"Collect evidence from public dental websites",
+					"Check the phone experience in a real browser",
+					"Flag ad trackers on patient forms and risky advertising claims",
+					"Explain fixes to dentists and to developers"
+				],
+				"websiteURL": "https://root.site/dental-website-review",
+				"supportURL": "https://root.site/dental-website-review/support",
+				"privacyPolicyURL": "https://root.site/dental-website-review/privacy",
+				"termsOfServiceURL": "https://root.site/dental-website-review/terms",
+				"defaultPrompt": [
+					"Assess my dental practice website.",
+					"What should my web developer fix first on my dental site?",
+					"Show me a fictional example assessment."
+				],
+				"brandColor": "#2E513E",
+				"composerIcon": "./assets/icon.png",
+				"logo": "./assets/logo.png"
+			},
+			"onboardingSkill": "./skills/audit-practice/SKILL.md"
+		}
+	}
+}

@@ -1,4 +1,4 @@
-# Only apps/dental-website-doctor is containerised; keep the build context small.
+# Only apps/dental-website-review is containerised; keep the build context small.
 .git
 node_modules
 **/node_modules

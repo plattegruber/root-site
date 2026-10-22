@@ -41,6 +41,6 @@
 	// MX). Once verified, switch this to `root. <hello@root.site>`.
 	"vars": {
 		"CONTACT_TO": "platte@root.site",
-		"CONTACT_FROM": "onboarding@resend.dev"
+		"CONTACT_FROM": "root. <hello@root.site>"
 	}
 }

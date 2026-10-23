@@ -11,7 +11,9 @@ everything by that, not by generic SEO or design taste.
 ## Priority
 
 - **Fix first** — something blocks a patient or creates real exposure:
-  - no tappable phone number (`tel:` link) on the first screen at phone width;
+  - no way to act from the first screen at phone width: neither a tappable phone number
+    (`tel:` link) nor a book or request button. If a book button is there but the phone
+    number is not, that is **next**: worth fixing, not the headline;
   - booking is broken on the practice’s own site (a dead internal link, an error page, a
     request page with no working form), or the only way to reach the practice is by
     phone during office hours. An external scheduler that only failed an automated check
@@ -43,8 +45,10 @@ call), **blocked** (a patient on this journey would likely give up or go elsewhe
 Calibrate honestly. “Have to call to find out” is friction for a routine question but
 **blocked** for someone choosing between practices tonight. For the in-pain journey: a
 tappable phone number on the first phone screen with visible hours is **friction** even
-with no emergency guidance; it is **blocked** when there is no tappable number on that
-screen, or emergencies are advertised with no instructions for what to do.
+with no emergency guidance. No call button on that screen, but a tappable number one
+scroll or one menu tap away (or on the emergency page), is also **friction**. It is
+**blocked** only when a patient can’t find a tappable number at all, or emergencies are
+advertised with no instructions for what to do.
 A journey that works for a phone call but nothing else is friction, not works. If every
 journey gets the same verdict, look again: some are almost always stronger than others,
 and the reader needs to know which.

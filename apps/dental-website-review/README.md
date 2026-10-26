@@ -95,23 +95,25 @@ PageSpeed/Places keys are listed in `.env.example`; **none were available**.
 Owner-authorized Business Profile/OAuth is a documented extension path, not a
 working account connector in V0.
 
-## ChatGPT plugin: evidence tools plus a rubric
+## ChatGPT plugin: tools plus guidance, ChatGPT decides
 
-The MCP server at `/mcp` gathers evidence; ChatGPT judges it. The judgement lives in
-the `audit-practice` skill: `plugin/skills/audit-practice/references/rubric.md` is
-root.site’s opinion of what a dental website must get right, and
-`reading-evidence.md` lists the false positives to avoid. Edit those files to change
-how assessments are weighed.
+The MCP server at `/mcp` fetches and measures; ChatGPT decides what to look at and
+what it means, like a web developer who works with dental practices. The guidance lives
+in the `audit-practice` skill: `SKILL.md` (role, tools, approach, boundaries) and
+`references/dental-website-guide.md` (root.site’s eight patient personas and what makes a
+good dental website). Edit those files to change how reviews are written. Nothing is
+ranked or capped: ChatGPT maps the site, then reads the pages it chooses.
 
-| Tool                     | What it returns                                                                                                                                                           |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `collect_site_evidence`  | Up to 12 pages: header/main/footer text, contact and booking links, forms and where they submit, trackers by kind, structured data, broken links, unfetched sitemap URLs. |
-| `read_page`              | One page in full (15,000 characters of text).                                                                                                                             |
-| `inspect_rendered_pages` | Chromium at 360/390/1440px: call/book on the first screen, overflow, tap targets, axe results, JavaScript-rendered form fields, every third-party host requested.         |
-| `measure_performance`    | PageSpeed lab and CrUX field data, when configured.                                                                                                                       |
-| `get_assessment_guide`   | The skill and its references, for clients that connect the server without the skill.                                                                                      |
-| `sample_site_evidence`   | Evidence from the fictional Bright Smiles practice.                                                                                                                       |
-| `render_assessment`      | Displays ChatGPT’s written assessment (light and dark themes).                                                                                                            |
+| Tool                     | What it returns                                                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map_site`               | The menu in order, footer links, every sitemap URL, robots.txt rules, and the homepage.                                                     |
+| `read_pages`             | Up to 8 chosen pages per call: text, headings, meta tags, contact/booking links, forms and where they submit, trackers, structured data.    |
+| `check_links`            | Status of chosen links, requested as a browser would (own query string, GET after a failed HEAD); robots-blocked links come back unchecked. |
+| `inspect_rendered_pages` | Chromium at 360/390/1440px: call/book on the first screen, overflow, tap targets, axe results, JavaScript-rendered forms, hosts requested.  |
+| `measure_performance`    | PageSpeed lab and CrUX field data, when configured.                                                                                         |
+| `get_assessment_guide`   | The skill and the guide, for clients that connect the server without the skill.                                                             |
+| `sample_site`            | `map_site` and `read_pages` output for the fictional Bright Smiles practice.                                                                |
+| `render_assessment`      | Displays ChatGPT’s written review (light and dark themes).                                                                                  |
 
 The standalone page and `pnpm audit` still use the older rule-based report engine
 (`src/audit/engine.ts`); the ChatGPT plugin no longer does.

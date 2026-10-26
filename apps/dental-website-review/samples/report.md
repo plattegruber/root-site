@@ -1,6 +1,6 @@
 # Dental Website Review — Bright Smiles Family Dentistry
 
-Publisher: root.site · FICTIONAL FIXTURE / SIMULATED PROVIDER RESULTS · 2026-10-02T05:24:06.364Z
+Publisher: root.site · FICTIONAL FIXTURE / SIMULATED PROVIDER RESULTS · 2026-10-26T14:39:18.611Z
 
 Bright Smiles Family Dentistry: 32 of 63 checks found a problem (19 specific to dental practices, 24 measured, 8 editorial). 3 urgent. Start with: Click-to-call phone number; Health information in forms next to tracking pixels; Patient form submits insecurely. 8 items need the owner to confirm a fact. 8 checks did not run (see limitations). No overall score is assigned.
 
@@ -347,7 +347,7 @@ Measured · Any website · status: failed · severity: low
 **For the developer:** Either commit to one useful post a quarter (new-patient FAQs, insurance changes, a new hygienist) or remove the dates and the “blog” label.
 **Effort:** 30 minutes to remove dates; ongoing otherwise
 
-- Evidence: https://brightsmiles.example/blog · time[datetime] and article metadata — Most recent dated item: 2022-03-14 (about 55 months ago).
+- Evidence: https://brightsmiles.example/blog · time[datetime] and article metadata — Most recent dated item: 2022-03-14 (about 56 months ago).
 
 ### Patient forms are PDF only
 
@@ -470,7 +470,7 @@ Opinion · Any website · confidence medium · status: needs confirmation · sev
   Allow: /
   Sitemap: https://brightsmiles.example/sitemap.xml; homepage crawl allowed: true.
 - Sitemap discovery — HTTP 200; 5 URL or child-sitemap entries found. Child sitemap recursion is outside V0.
-- Bounded broken-link check — 2 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately.
+- Bounded broken-link check — 0 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately.
 - Form labels — 0 fields lack an associated visible or ARIA label in static HTML. Dynamic form labels are checked in the browser.
 - Script and render-blocking review — 4 external scripts, 4 potentially blocking stylesheet/script references, 1 font link/preload references. These counts do not establish whether a script is unnec
 - Mobile viewport declaration — meta viewport: width=device-width,initial-scale=1.
@@ -664,8 +664,8 @@ Private performance metrics: owner_access_required
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Bounded public page review: Visible street address matching structured data on 1 pages. No Google Maps directions link. Parking is not mentioned.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Website fact observed; owner verification still required: Visible name also in structured data: Bright Smiles Family Dentistry
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Website fact observed; owner verification still required: Visible street and locality match schema; verify region/postcode: 400 Commerce Drive, Suite 210, Fairview, TX, 75000
-- https://brightsmiles.example/contact · 2026-10-02T05:24:06.363Z · Source excerpt used for proposed copy: Home About Us Services Contact Us Contact Us We look forward to seeing you! Fill out the form below and we will get back to you. Name Email Phone Date of Birth Insurance Provider Reason for Visit / Describe your dental concern Are you a new patient? Yes No Submit Phone: (555) 020-0456 400 Commerce Drive, Suite 210, Fairview, TX 75000 Hours: Monday - Thursday 8:00am - 5:00pm New patient forms: Download Registration (PDF) and Medical History (PDF). Please print and bring them with you. © 2021 Bright Smiles Family Dentistry
-- https://brightsmiles.example/ · 2026-10-02T05:24:06.363Z · Source excerpt used for proposed copy: Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai
+- https://brightsmiles.example/contact · 2026-10-26T14:39:18.611Z · Source excerpt used for proposed copy: Home About Us Services Contact Us Contact Us We look forward to seeing you! Fill out the form below and we will get back to you. Name Email Phone Date of Birth Insurance Provider Reason for Visit / Describe your dental concern Are you a new patient? Yes No Submit Phone: (555) 020-0456 400 Commerce Drive, Suite 210, Fairview, TX 75000 Hours: Monday - Thursday 8:00am - 5:00pm New patient forms: Download Registration (PDF) and Medical History (PDF). Please print and bring them with you. © 2021 Bright Smiles Family Dentistry
+- https://brightsmiles.example/ · 2026-10-26T14:39:18.611Z · Source excerpt used for proposed copy: Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · JSON-LD inspection: "LocalBusiness" node: telephone, address, url present; missing geo, hours, image; type is not Dentist/DentalClinic.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · JSON-LD inspection: "LocalBusiness" node carries aggregateRating.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Public HTML/HTTP inspection: Description: Bright Smiles Family Dentistry - Home. Search engines may choose different snippets.
@@ -682,7 +682,7 @@ Private performance metrics: owner_access_required
 - https://brightsmiles.example/blog · 2026-10-01T12:00:00.000Z · Public HTML/HTTP inspection: The <html> element has no lang attribute.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Footer text: Footer copyright year(s): 2021; current year 2026.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Title tag vs structured address: Title: “Bright Smiles Family Dentistry”; visible locality: Suite 210.
-- https://brightsmiles.example/blog · 2026-10-01T12:00:00.000Z · time[datetime] and article metadata: Most recent dated item: 2022-03-14 (about 55 months ago).
+- https://brightsmiles.example/blog · 2026-10-01T12:00:00.000Z · time[datetime] and article metadata: Most recent dated item: 2022-03-14 (about 56 months ago).
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Bounded public page review: PDF form links: https://brightsmiles.example/forms/new-patient-registration.pdf, https://brightsmiles.example/forms/medical-history.pdf; no online intake vendor link observed.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Bounded public page review: Insurance text exists but no financing partner, in-house membership plan or self-pay guidance was found.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Phrase list comparison: Stock phrases on the homepage: “state-of-the-art”, “caring team”, “comprehensive dental care”, “smile of your dreams”, “treat you like family”, “committed to excellence”, “highest quality”, “comfortable environment”, “latest technology”, “personalized treatment”, “your dental home”, “dental needs”, “all of your dental needs”, “look no further”, “we are dedicated to”, “passionate about”, “optimal oral health”, “exceptional dental care”.
@@ -703,9 +703,9 @@ Private performance metrics: owner_access_required
   Allow: /
   Sitemap: https://brightsmiles.example/sitemap.xml; homepage crawl allowed: true.
 - https://brightsmiles.example/sitemap.xml · 2026-10-01T12:00:00.000Z · Bounded XML sitemap inspection: HTTP 200; 5 URL or child-sitemap entries found. Child sitemap recursion is outside V0.
-- https://brightsmiles.example/ · 2026-10-02T05:24:06.359Z · Public HTML inspection: 2 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately.
+- https://brightsmiles.example/ · 2026-10-26T14:39:18.607Z · Public HTML inspection: 0 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Public HTML/HTTP inspection: 0 fields lack an associated visible or ARIA label in static HTML. Dynamic form labels are checked in the browser.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Public HTML/HTTP inspection: 4 external scripts, 4 potentially blocking stylesheet/script references, 1 font link/preload references. These counts do not establish whether a script is unnecessary.
 - https://brightsmiles.example/ · 2026-10-01T12:00:00.000Z · Public HTML/HTTP inspection: meta viewport: width=device-width,initial-scale=1.
-- https://brightsmiles.example/ · 2026-10-02T05:24:06.359Z · Script, frame and stylesheet hosts: 6 external hosts: connect.facebook.net (4 pages), www.googletagmanager.com (2 pages), cdn.callrail.com (1 page), static.elfsight.com (1 page), fonts.googleapis.com (1 page), static.hotjar.com (1 page).
+- https://brightsmiles.example/ · 2026-10-26T14:39:18.607Z · Script, frame and stylesheet hosts: 6 external hosts: connect.facebook.net (4 pages), www.googletagmanager.com (2 pages), cdn.callrail.com (1 page), static.elfsight.com (1 page), fonts.googleapis.com (1 page), static.hotjar.com (1 page).
 - https://maple-grove.example/ · 2026-10-01T12:00:00.000Z · Google CrUX via PageSpeed: origin-level real-user p75 data: {"LARGEST_CONTENTFUL_PAINT_MS":{"percentile":3100,"category":"AVERAGE","unit":"ms"},"CUMULATIVE_LAYOUT_SHIFT_SCORE":{"percentile":0.08,"category":"FAST","unit":"unitless"},"INTERACTION_TO_NEXT_PAINT":{"percentile":220,"category":"AVERAGE","unit":"ms"}}. CrUX origin data: 75th-percentile values from eligible real Chrome visits over a rolling 28-day period. PageSpeed response does not expose exact collection dates. Origin data is not specific to this page.

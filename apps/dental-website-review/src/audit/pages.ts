@@ -14,6 +14,8 @@ export type Link = {
 	kind: 'internal' | 'external' | 'phone' | 'email' | 'booking' | 'maps' | 'sms';
 	/** True when the link sits inside <header> or a <nav> element. */
 	inHeader: boolean;
+	/** True when the link sits inside <footer>. */
+	inFooter: boolean;
 };
 export type FormField = {
 	label: string;
@@ -202,16 +204,17 @@ export function parsePage(result: FetchResult): Page {
 				''
 		);
 		const inHeader = $(n).closest('header,nav,[role="banner"],[role="navigation"]').length > 0;
+		const inFooter = !inHeader && $(n).closest('footer,[role="contentinfo"]').length > 0;
 		if (raw.startsWith('tel:')) {
-			links.push({ url: raw, label, kind: 'phone', inHeader });
+			links.push({ url: raw, label, kind: 'phone', inHeader, inFooter });
 			return;
 		}
 		if (raw.startsWith('sms:')) {
-			links.push({ url: raw, label, kind: 'sms', inHeader });
+			links.push({ url: raw, label, kind: 'sms', inHeader, inFooter });
 			return;
 		}
 		if (raw.startsWith('mailto:')) {
-			links.push({ url: raw.split('?')[0]!, label, kind: 'email', inHeader });
+			links.push({ url: raw.split('?')[0]!, label, kind: 'email', inHeader, inFooter });
 			return;
 		}
 		try {
@@ -229,7 +232,7 @@ export function parsePage(result: FetchResult): Page {
 					: internal
 						? 'internal'
 						: 'external';
-			links.push({ url: u.href, label, kind, inHeader });
+			links.push({ url: u.href, label, kind, inHeader, inFooter });
 		} catch {
 			/* Non-web actions are outside the crawl. */
 		}
@@ -424,7 +427,12 @@ export async function crawlWebsite(
 	fetcher: SafeFetcher,
 	signal: AbortSignal,
 	maxPages = 12,
-	maxLinks = 16
+	maxLinks = 16,
+	/**
+	 * `seeds` are fetched after the entry URL, in order. `discover: false` fetches only the
+	 * entry and seeds; `sitemap: false` skips reading the sitemap.
+	 */
+	options: { seeds?: string[]; discover?: boolean; sitemap?: boolean } = {}
 ): Promise<Crawl> {
 	const entry = normalizeUrl(raw);
 	const output: Crawl = {
@@ -467,6 +475,13 @@ export async function crawlWebsite(
 		return output;
 	}
 	const pending = [entry.href];
+	for (const seed of options.seeds ?? [])
+		try {
+			const u = normalizeUrl(seed).href;
+			if (!pending.includes(u)) pending.push(u);
+		} catch (e) {
+			output.errors.push(`${seed}: ${safeError(e)}`);
+		}
 	const seen = new Set<string>();
 	let origin = entry.origin;
 	const loadSitemap = async () => {
@@ -548,10 +563,12 @@ export async function crawlWebsite(
 			if (output.pages.length === 1) {
 				// The sitemap is read after the homepage so the final origin is known; its
 				// high-value URLs are queued ahead of whatever the homepage happens to link.
-				await loadSitemap();
-				seedFromSitemap();
+				if (options.sitemap !== false) {
+					await loadSitemap();
+					if (options.discover !== false) seedFromSitemap();
+				}
 			}
-			if (page.status >= 400) continue;
+			if (page.status >= 400 || options.discover === false) continue;
 			const discovered = [...page.links]
 				.filter(
 					(link) =>
@@ -569,7 +586,12 @@ export async function crawlWebsite(
 			output.errors.push(`${url}: ${safeError(e)}`);
 		}
 	}
-	if (!output.sitemap && !output.errors.some((e) => e.startsWith('sitemap:'))) await loadSitemap();
+	if (
+		options.sitemap !== false &&
+		!output.sitemap &&
+		!output.errors.some((e) => e.startsWith('sitemap:'))
+	)
+		await loadSitemap();
 	const checked = new Set([
 		...output.pages.map((x) => x.url),
 		...output.duplicates.map((x) => x.url)

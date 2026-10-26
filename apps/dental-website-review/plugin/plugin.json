@@ -1,8 +1,8 @@
 {
 	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 	"name": "dental-website-review",
-	"version": "0.2.0",
-	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. Collects evidence from the public site and a real phone browser, then judges it against root.site’s dental rubric, with a line for the practice and a line for the developer.",
+	"version": "0.3.0",
+	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. ChatGPT explores the public site and a real phone browser like a dental-practice web developer, then reviews it through root.site’s eight patient personas, with a line for the practice and a line for the developer.",
 	"author": {
 		"name": "root.site",
 		"email": "platte@root.site",
@@ -16,7 +16,7 @@
 			"interface": {
 				"displayName": "Dental Website Review",
 				"shortDescription": "Dental website assessment for dentists and their developers",
-				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. The tools collect evidence (page text, links, forms and where they submit, advertising and session-replay trackers, structured data, and phone-width browser measurements); the assessment applies root.site’s published rubric of what a dental website must get right, including privacy risks like ad pixels on appointment forms and advertising claims state boards police. Each finding says what was observed and whether it is a judgement, with a plain-language line for the practice owner and a concrete fix for the developer. Public pages only; no forms submitted, no accounts, no score.",
+				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. ChatGPT maps the site, reads the pages it judges relevant, and checks the phone experience (page text, links, forms and where they submit, advertising and session-replay trackers, structured data, and phone-width browser measurements); the review follows root.site’s guide to the eight patient personas and what makes a good dental website, including privacy risks like ad pixels on appointment forms. Each finding says what was observed and whether it is a judgement, with a plain-language line for the practice owner and a concrete fix for the developer. Public pages only; no forms submitted, no accounts, no score.",
 				"developerName": "root.site",
 				"category": "Productivity",
 				"capabilities": [

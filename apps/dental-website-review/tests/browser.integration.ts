@@ -218,7 +218,7 @@ test('standalone UI works on desktop/mobile, renders text safely, and the HTTP M
 		const client = new Client({ name: 'http-test', version: '1.0' });
 		await client.connect(new StreamableHTTPClientTransport(new URL(origin + '/mcp')));
 		const tools = await client.listTools();
-		assert.equal(tools.tools.length, 7);
+		assert.equal(tools.tools.length, 8);
 		await client.close();
 	} finally {
 		await browser.close();

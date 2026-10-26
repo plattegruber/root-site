@@ -17,9 +17,9 @@ export const pageEvidenceSchema = z.object({
 	lang: z.string(),
 	hasViewportMeta: z.boolean(),
 	headings: z.array(z.object({ level: z.number(), text: z.string() })),
-	/** Visible text inside <header>/<nav>; usually repeated on every page. */
+	/** Visible text inside <header>/<nav>. Empty when identical to the first page in the batch. */
 	headerText: z.string(),
-	/** Visible text inside <footer>; hours and address often live here. */
+	/** Visible text inside <footer>; hours and address often live here. Empty when identical to the first page in the batch. */
 	footerText: z.string(),
 	/** Visible text of the page's own content, excluding header, nav and footer. */
 	mainText: z.string(),
@@ -34,6 +34,7 @@ export const pageEvidenceSchema = z.object({
 	}),
 	bookingLinks: z.array(link.extend({ vendor: z.string().optional() })),
 	mapsLinks: z.array(link),
+	/** Links in the page's own content (menu and footer links are listed by map_site). */
 	internalLinks: z.array(link),
 	externalLinks: z.array(link),
 	buttons: z.array(z.string()),
@@ -87,38 +88,51 @@ export const pageEvidenceSchema = z.object({
 });
 export type PageEvidence = z.infer<typeof pageEvidenceSchema>;
 
-export const siteEvidenceSchema = z.object({
+const navLink = z.object({ url: z.string(), label: z.string() });
+export const siteMapSchema = z.object({
 	fixture: z.boolean(),
-	input: z.object({ websiteUrl: z.string() }),
+	websiteUrl: z.string(),
+	/** Where the homepage ended up after redirects. */
+	finalUrl: z.string(),
 	collectedAt: z.string(),
-	robots: z.object({ status: z.number().optional(), crawlAllowed: z.boolean() }),
+	robots: z.object({
+		status: z.number().optional(),
+		crawlAllowed: z.boolean(),
+		/** Disallow rules that apply to every crawler or to this one. */
+		disallow: z.array(z.string())
+	}),
+	/** Links in the header and navigation, in page order: the menu as delivered in HTML. */
+	menu: z.array(navLink),
+	footerLinks: z.array(navLink),
 	sitemap: z.object({
+		url: z.string().optional(),
 		status: z.number().optional(),
 		urlCount: z.number(),
-		/** Sitemap URLs that were not fetched; candidates for read_page. */
-		unfetchedUrls: z.array(z.string())
+		urls: z.array(z.string())
 	}),
-	crawl: z.object({
-		maxPages: z.number(),
-		pagesFetched: z.number(),
-		duplicatesSkipped: z.array(z.object({ url: z.string(), sameAs: z.string() })),
-		errors: z.array(z.string())
-	}),
-	brokenLinks: z.array(
-		z.object({
-			from: z.string(),
-			url: z.string(),
-			label: z.string(),
-			status: z.number().optional(),
-			error: z.string().optional()
-		})
-	),
-	/** Links that were not checked, usually because the target's robots.txt disallows it. Not broken. */
-	linksNotChecked: z.array(z.object({ url: z.string(), label: z.string(), reason: z.string() })),
-	pages: z.array(pageEvidenceSchema),
+	homepage: pageEvidenceSchema.optional(),
+	errors: z.array(z.string()),
 	notes: z.array(z.string())
 });
-export type SiteEvidence = z.infer<typeof siteEvidenceSchema>;
+export type SiteMap = z.infer<typeof siteMapSchema>;
+
+export const pagesSchema = z.object({
+	pages: z.array(pageEvidenceSchema),
+	/** URLs that served a page already in this batch (for example / and /home/). */
+	duplicates: z.array(z.object({ url: z.string(), sameAs: z.string() })),
+	errors: z.array(z.string())
+});
+
+export const linkCheckSchema = z.object({
+	url: z.string(),
+	status: z.number().optional(),
+	finalUrl: z.string().optional(),
+	/** Set when the link could not be fetched, or was not checked (robots.txt). */
+	error: z.string().optional(),
+	checked: z.boolean()
+});
+
+export const sampleSchema = z.object({ site: siteMapSchema, pages: z.array(pageEvidenceSchema) });
 
 export const renderedEvidenceSchema = reportSchema.shape.browser;
 export const performanceEvidenceSchema = reportSchema.shape.performance;

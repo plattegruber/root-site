@@ -22,7 +22,9 @@ export async function inspectRenderedPages(
 		AbortSignal.timeout(options.budgetMs ?? 100_000),
 		...(options.signal ? [options.signal] : [])
 	]);
-	const crawls = await Promise.all(urls.map((u) => crawlWebsite(u, fetcher, signal, 1, 0)));
+	const crawls = await Promise.all(
+		urls.map((u) => crawlWebsite(u, fetcher, signal, 1, 0, { discover: false, sitemap: false }))
+	);
 	const pages = crawls.flatMap((c) => c.pages).filter((p) => p.status >= 200 && p.status < 300);
 	const blocked = crawls.flatMap((c, i) =>
 		c.pages.length ? [] : [`${urls[i]}: ${c.errors.join(' ')}`]

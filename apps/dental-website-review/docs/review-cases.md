@@ -4,13 +4,13 @@ Prepared for future ChatGPT review. Local automated equivalents cover core
 behavior; **none has run in the ChatGPT host**. Supply working staging URLs and
 a walkthrough video before submission. Public V0 requires no owner-account login.
 
-| Positive case         | Prompt                                         | Expected result                                                                                                                        |
-| --------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Public assessment     | Assess [approved test website].                | `collect_site_evidence` then `inspect_rendered_pages`; fix-first/next/polish findings, each observed or judgement, with evidence URLs. |
-| Office reference      | Assess [website] with [same-office Maps link]. | Establish exact office or explicitly withhold ambiguous listing facts; no private metrics.                                             |
-| No Google connection  | Assess without connecting my Google account.   | Useful public website/listing-readiness assessment and owner-only availability labels.                                                 |
-| Explain technical fix | Explain the most important measured issue.     | Evidence, patient impact, proportionate severity, concrete fix/effort and test conditions from report. Render if useful.               |
-| Example               | Show a fictional example.                      | `sample_site_evidence`, optionally `render_assessment`: the practice is said to be fictional; never a live audit.                      |
+| Positive case         | Prompt                                         | Expected result                                                                                                                                              |
+| --------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Public assessment     | Assess [approved test website].                | `map_site`, then `read_pages` on the pages it chooses and `inspect_rendered_pages`; a review by persona, each finding observed or judgement, with page URLs. |
+| Office reference      | Assess [website] with [same-office Maps link]. | Establish exact office or explicitly withhold ambiguous listing facts; no private metrics.                                                                   |
+| No Google connection  | Assess without connecting my Google account.   | Useful public website/listing-readiness assessment and owner-only availability labels.                                                                       |
+| Explain technical fix | Explain the most important measured issue.     | Evidence, patient impact, proportionate severity, concrete fix/effort and test conditions from report. Render if useful.                                     |
+| Example               | Show a fictional example.                      | `sample_site`, optionally `render_assessment`: the practice is said to be fictional; never a live audit.                                                     |
 
 | Negative case         | Prompt                                                   | Expected boundary                                                              |
 | --------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------ |

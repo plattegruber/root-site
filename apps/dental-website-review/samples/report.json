@@ -2,8 +2,8 @@
 	"schemaVersion": "1.1",
 	"publisher": "root.site",
 	"fixture": true,
-	"startedAt": "2026-10-02T05:24:06.313Z",
-	"completedAt": "2026-10-02T05:24:06.364Z",
+	"startedAt": "2026-10-26T14:39:18.574Z",
+	"completedAt": "2026-10-26T14:39:18.611Z",
 	"input": {
 		"websiteUrl": "https://brightsmiles.example/"
 	},
@@ -756,7 +756,7 @@
 			"evidence": [
 				{
 					"url": "https://brightsmiles.example/contact",
-					"observedAt": "2026-10-02T05:24:06.363Z",
+					"observedAt": "2026-10-26T14:39:18.611Z",
 					"method": "Source excerpt used for proposed copy",
 					"detail": "Home About Us Services Contact Us Contact Us We look forward to seeing you! Fill out the form below and we will get back to you. Name Email Phone Date of Birth Insurance Provider Reason for Visit / Describe your dental concern Are you a new patient? Yes No Submit Phone: (555) 020-0456 400 Commerce Drive, Suite 210, Fairview, TX 75000 Hours: Monday - Thursday 8:00am - 5:00pm New patient forms: Download Registration (PDF) and Medical History (PDF). Please print and bring them with you. © 2021 Bright Smiles Family Dentistry"
 				}
@@ -780,7 +780,7 @@
 			"evidence": [
 				{
 					"url": "https://brightsmiles.example/",
-					"observedAt": "2026-10-02T05:24:06.363Z",
+					"observedAt": "2026-10-26T14:39:18.611Z",
 					"method": "Source excerpt used for proposed copy",
 					"detail": "Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai"
 				}
@@ -804,7 +804,7 @@
 			"evidence": [
 				{
 					"url": "https://brightsmiles.example/",
-					"observedAt": "2026-10-02T05:24:06.363Z",
+					"observedAt": "2026-10-26T14:39:18.611Z",
 					"method": "Source excerpt used for proposed copy",
 					"detail": "Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai"
 				}
@@ -1038,7 +1038,7 @@
 					"url": "https://brightsmiles.example/blog",
 					"observedAt": "2026-10-01T12:00:00.000Z",
 					"method": "time[datetime] and article metadata",
-					"detail": "Most recent dated item: 2022-03-14 (about 55 months ago)."
+					"detail": "Most recent dated item: 2022-03-14 (about 56 months ago)."
 				}
 			],
 			"impact": "A blog whose last post is years old makes a visitor wonder whether the practice is still open. It is better to have no dates than old ones.",
@@ -1592,9 +1592,9 @@
 			"evidence": [
 				{
 					"url": "https://brightsmiles.example/",
-					"observedAt": "2026-10-02T05:24:06.359Z",
+					"observedAt": "2026-10-26T14:39:18.607Z",
 					"method": "Public HTML inspection",
-					"detail": "2 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately."
+					"detail": "0 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately."
 				}
 			],
 			"impact": "Broken links interrupt service research and contact journeys.",
@@ -1680,7 +1680,7 @@
 			"evidence": [
 				{
 					"url": "https://brightsmiles.example/",
-					"observedAt": "2026-10-02T05:24:06.359Z",
+					"observedAt": "2026-10-26T14:39:18.607Z",
 					"method": "Script, frame and stylesheet hosts",
 					"detail": "6 external hosts: connect.facebook.net (4 pages), www.googletagmanager.com (2 pages), cdn.callrail.com (1 page), static.elfsight.com (1 page), fonts.googleapis.com (1 page), static.hotjar.com (1 page)."
 				}
@@ -2515,13 +2515,13 @@
 		},
 		{
 			"url": "https://brightsmiles.example/contact",
-			"observedAt": "2026-10-02T05:24:06.363Z",
+			"observedAt": "2026-10-26T14:39:18.611Z",
 			"method": "Source excerpt used for proposed copy",
 			"detail": "Home About Us Services Contact Us Contact Us We look forward to seeing you! Fill out the form below and we will get back to you. Name Email Phone Date of Birth Insurance Provider Reason for Visit / Describe your dental concern Are you a new patient? Yes No Submit Phone: (555) 020-0456 400 Commerce Drive, Suite 210, Fairview, TX 75000 Hours: Monday - Thursday 8:00am - 5:00pm New patient forms: Download Registration (PDF) and Medical History (PDF). Please print and bring them with you. © 2021 Bright Smiles Family Dentistry"
 		},
 		{
 			"url": "https://brightsmiles.example/",
-			"observedAt": "2026-10-02T05:24:06.363Z",
+			"observedAt": "2026-10-26T14:39:18.611Z",
 			"method": "Source excerpt used for proposed copy",
 			"detail": "Home About Us Services Blog Contact Us Welcome to Our Practice Bright Smiles Family Dentistry Welcome to Bright Smiles Family Dentistry, your dental home for comprehensive dental care in a comfortable environment. We are dedicated to providing the highest quality care using the latest technology and state-of-the-art equipment. Our caring team is passionate about helping you achieve the smile of your dreams. We treat you like family and we are committed to excellence in everything we do. Look no further for all of your dental needs. We offer pai"
 		},
@@ -2625,7 +2625,7 @@
 			"url": "https://brightsmiles.example/blog",
 			"observedAt": "2026-10-01T12:00:00.000Z",
 			"method": "time[datetime] and article metadata",
-			"detail": "Most recent dated item: 2022-03-14 (about 55 months ago)."
+			"detail": "Most recent dated item: 2022-03-14 (about 56 months ago)."
 		},
 		{
 			"url": "https://brightsmiles.example/",
@@ -2737,9 +2737,9 @@
 		},
 		{
 			"url": "https://brightsmiles.example/",
-			"observedAt": "2026-10-02T05:24:06.359Z",
+			"observedAt": "2026-10-26T14:39:18.607Z",
 			"method": "Public HTML inspection",
-			"detail": "2 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately."
+			"detail": "0 additional unique internal/booking links checked; 0 could not be completed. Fetched page status codes are checked separately."
 		},
 		{
 			"url": "https://brightsmiles.example/",
@@ -2761,7 +2761,7 @@
 		},
 		{
 			"url": "https://brightsmiles.example/",
-			"observedAt": "2026-10-02T05:24:06.359Z",
+			"observedAt": "2026-10-26T14:39:18.607Z",
 			"method": "Script, frame and stylesheet hosts",
 			"detail": "6 external hosts: connect.facebook.net (4 pages), www.googletagmanager.com (2 pages), cdn.callrail.com (1 page), static.elfsight.com (1 page), fonts.googleapis.com (1 page), static.hotjar.com (1 page)."
 		},
@@ -2786,7 +2786,7 @@
 	],
 	"crawl": {
 		"pagesFetched": 5,
-		"linksChecked": 2,
+		"linksChecked": 0,
 		"maxPages": 12,
 		"maxLinks": 16,
 		"errors": []

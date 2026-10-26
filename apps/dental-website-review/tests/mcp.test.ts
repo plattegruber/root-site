@@ -4,7 +4,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { createMcpServer, REPORT_URI, type McpOptions } from '../src/mcp.js';
 import { fixtureFetcher, root, siteFetcher } from './helpers.js';
-import type { Assessment, PageEvidence, SiteEvidence } from '../src/evidence/model.js';
+import type { Assessment, PageEvidence, SiteMap } from '../src/evidence/model.js';
 import type { Report } from '../src/model.js';
 
 async function connect(options: McpOptions) {
@@ -27,13 +27,14 @@ test('MCP exposes evidence tools with truthful annotations and no verdict tools'
 	try {
 		const { tools } = await client.listTools();
 		assert.deepEqual(tools.map((t) => t.name).sort(), [
-			'collect_site_evidence',
+			'check_links',
 			'get_assessment_guide',
 			'inspect_rendered_pages',
+			'map_site',
 			'measure_performance',
-			'read_page',
+			'read_pages',
 			'render_assessment',
-			'sample_site_evidence'
+			'sample_site'
 		]);
 		for (const t of tools) {
 			assert.equal(t.annotations?.readOnlyHint, true, t.name);
@@ -41,8 +42,9 @@ test('MCP exposes evidence tools with truthful annotations and no verdict tools'
 			assert.ok(t.outputSchema, t.name);
 		}
 		const network = [
-			'collect_site_evidence',
-			'read_page',
+			'map_site',
+			'read_pages',
+			'check_links',
 			'inspect_rendered_pages',
 			'measure_performance'
 		];
@@ -53,35 +55,42 @@ test('MCP exposes evidence tools with truthful annotations and no verdict tools'
 	}
 });
 
-test('collect_site_evidence returns observations a model can judge, not findings', async () => {
+test('map_site and read_pages return observations a model can judge, not findings', async () => {
 	const { client, close } = await connect({ fixture: true, fetcher: siteFetcher('brightsmiles') });
 	try {
 		await client.listTools();
-		const result = await client.callTool({
-			name: 'collect_site_evidence',
+		const mapped = await client.callTool({
+			name: 'map_site',
 			arguments: { websiteUrl: 'https://brightsmiles.example/' }
 		});
-		assert.equal(result.isError ?? false, false);
-		const { evidence } = result.structuredContent as { evidence: SiteEvidence };
-		assert.equal(evidence.pages.length, 5);
-		assert.ok(!('findings' in evidence));
-		const contact = evidence.pages.find((p) => p.url.endsWith('/contact'))!;
-		const form = contact.forms[0]!;
-		assert.equal(form.submitsTo, 'mailto');
-		assert.ok(form.fields.some((f) => /date of birth/i.test(f.label)));
-		assert.ok(contact.thirdParty.advertising.includes('connect.facebook.net'));
-		assert.ok(contact.thirdParty.sessionReplay.some((h) => h.includes('hotjar')));
-		const home = evidence.pages[0]!;
+		assert.equal(mapped.isError ?? false, false);
+		const { site } = mapped.structuredContent as { site: SiteMap };
+		assert.ok(!('findings' in site));
+		assert.deepEqual(
+			site.menu.map((l) => l.label),
+			['Home', 'About Us', 'Services', 'Blog', 'Contact Us']
+		);
+		const home = site.homepage!;
 		assert.equal(home.contact.phoneLinks.length, 0);
 		assert.ok(home.contact.phoneNumbersInText.length > 0);
 		assert.ok(home.thirdParty.inlineTags.includes('Meta Pixel'));
 
-		const page = await client.callTool({
-			name: 'read_page',
-			arguments: { url: 'https://brightsmiles.example/about' }
+		const read = await client.callTool({
+			name: 'read_pages',
+			arguments: {
+				urls: ['https://brightsmiles.example/contact', 'https://brightsmiles.example/about']
+			}
 		});
-		const read = page.structuredContent as { page: PageEvidence; errors: string[] };
-		assert.equal(read.page.url, 'https://brightsmiles.example/about');
+		const { pages } = read.structuredContent as { pages: PageEvidence[] };
+		assert.deepEqual(
+			pages.map((p) => p.url),
+			['https://brightsmiles.example/contact', 'https://brightsmiles.example/about']
+		);
+		const form = pages[0]!.forms[0]!;
+		assert.equal(form.submitsTo, 'mailto');
+		assert.ok(form.fields.some((f) => /date of birth/i.test(f.label)));
+		assert.ok(pages[0]!.thirdParty.advertising.includes('connect.facebook.net'));
+		assert.ok(pages[0]!.thirdParty.sessionReplay.some((h) => h.includes('hotjar')));
 	} finally {
 		await close();
 	}
@@ -96,16 +105,17 @@ test('sample, guide, rendered fallback, performance and render tools round-trip'
 	});
 	try {
 		await client.listTools();
-		const sample = await client.callTool({ name: 'sample_site_evidence', arguments: {} });
-		const { evidence } = sample.structuredContent as { evidence: SiteEvidence };
-		assert.equal(evidence.fixture, true);
-		assert.match(evidence.notes[0]!, /FICTIONAL/);
+		const sample = await client.callTool({ name: 'sample_site', arguments: {} });
+		const data = sample.structuredContent as { sample: { site: SiteMap; pages: PageEvidence[] } };
+		assert.equal(data.sample.site.fixture, true);
+		assert.match(data.sample.site.notes[0]!, /FICTIONAL/);
+		assert.ok(data.sample.pages.length > 0);
 
 		const guide = await client.callTool({ name: 'get_assessment_guide', arguments: {} });
 		const text = (guide.structuredContent as { guide: string }).guide;
-		assert.match(text, /## The eight patient journeys/);
-		assert.match(text, /## Google Business Profile/);
-		assert.match(text, /Reading the evidence/);
+		assert.match(text, /## Your role/);
+		assert.match(text, /## Patient Personas & Use-Cases/);
+		assert.match(text, /Core Web Vitals/);
 		assert.doesNotMatch(text, /^---/);
 
 		const rendered = await client.callTool({

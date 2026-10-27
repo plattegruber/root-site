@@ -114,7 +114,7 @@ test('sample, guide, rendered fallback, performance and render tools round-trip'
 		const guide = await client.callTool({ name: 'get_assessment_guide', arguments: {} });
 		const text = (guide.structuredContent as { guide: string }).guide;
 		assert.match(text, /## Your role/);
-		assert.match(text, /## Patient Personas & Use-Cases/);
+		assert.match(text, /## Patient Personas & Use Cases/);
 		assert.match(text, /Core Web Vitals/);
 		assert.doesNotMatch(text, /^---/);
 

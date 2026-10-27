@@ -2,7 +2,7 @@
 
 **Executive Summary:** A high-quality dental office website combines _patient-centric design_ with solid technical SEO and performance. Key components include clear navigation, visible contact info, and specialized content for various patient **personas** (e.g. urgent care seekers, anxious patients, cosmetic dentistry clients, parents of children, seniors, insurance shoppers, etc.). Technically, the site must follow Google’s SEO and Core Web Vitals guidelines: unique, descriptive title tags; optimized local schema/Google Business Profile; fast load times (LCP ≤2.5s, INP ≤200ms, CLS ≤0.1); mobile responsiveness; strong security (HTTPS/HSTS); regular backups; and analytics that respect patient privacy. Accessibility (WCAG 2.1 AA) is also crucial for legal compliance and usability – for example, **all images need alt text** and **keyboard operability**.
 
-A structured way to prioritize fixes (impact vs. effort vs. detectability) is described below, along with common failures versus best practices, templates for title tags and JSON-LD `Dentist` schema, and a 30/60/90-day improvement roadmap. This guide is written for technical readers (developers/SEO specialists for dental practices) and provides numerical thresholds and clear action items.
+A structured way to prioritize fixes (impact vs. effort vs. detectability) is described below, along with common failures, best practices, and templates for title tags and JSON-LD `Dentist` schema. This guide is written for technical readers (developers/SEO specialists for dental practices) and provides numerical thresholds and clear action items.
 
 ## Patient Personas & Use Cases
 
@@ -155,15 +155,5 @@ Follow WCAG 2.1 AA guidelines. Key actions:
 - **Accessibility statement:** If required by law (ADA), include a page or footer note about your accessibility policy.
 
 Use automated tools (Lighthouse, WAVE, axe) and manual checks to verify. The W3C notes “WCAG is an international standard” for accessibility, and compliance both aids disabled users and can improve SEO.
-
-### 30/60/90-Day Roadmap (Example)
-
-A sample timeline for phasing in improvements. Adjust to the practice’s capacity.
-
-- **First 30 days – audit and quick wins:** full site audit (SEO, speed, UX); fix high-priority issues (titles, Google Business Profile, phone and booking visible on mobile).
-- **Days 31–60 – SEO and content:** add missing titles/meta and schema; publish updated service pages and patient content.
-- **Days 61–90 – UX and refinements:** accessibility fixes (alt text, labels); improve mobile design and the booking flow; promote Google reviews.
-
-Overall, start with high-impact/low-effort tasks (titles, contact visibility, performance tweaks) and then address medium-term enhancements (content expansion, patient education pages) and finally invest in broader marketing and analytics (e.g. remarketing, monthly performance review).
 
 **Sources:** Guidelines are drawn from Google’s SEO/UX standards and W3C accessibility guidance. For instance, Google recommends LCP ≤2.5s, INP ≤200ms and CLS ≤0.1 for good user experience. Google’s Search Central advises that a good title is unique, clear and concise, and accurately describes the contents of the page. W3C emphasizes alt text and keyboard access to meet WCAG standards. Google notes that local results are mainly based on relevance, distance, and prominence, underscoring the need for a complete Google Business Profile and schema.

@@ -58,7 +58,6 @@ export function identifyLead(lead: {
 	name?: string;
 	practice?: string;
 	website?: string;
-	location?: string;
 }): void {
 	if (!analyticsEnabled) return;
 	const email = lead.email.trim().toLowerCase();
@@ -67,7 +66,6 @@ export function identifyLead(lead: {
 	if (lead.name?.trim()) set.name = lead.name.trim();
 	if (lead.practice?.trim()) set.practice = lead.practice.trim();
 	if (lead.website?.trim()) set.website = lead.website.trim();
-	if (lead.location?.trim()) set.location = lead.location.trim();
 	posthog.identify(email, set);
 }
 

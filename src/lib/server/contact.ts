@@ -17,7 +17,6 @@ export type ContactSubmission = {
 	/** Optional qualification fields from the homepage form. */
 	practice: string;
 	website: string;
-	location: string;
 	message: string;
 };
 
@@ -38,7 +37,6 @@ export function validate(input: Partial<Record<string, unknown>>): ValidationRes
 	const email = String(input.email ?? '').trim();
 	const practice = String(input.practice ?? '').trim();
 	const website = String(input.website ?? '').trim();
-	const location = String(input.location ?? '').trim();
 	const message = String(input.message ?? '').trim();
 
 	if (!name) errors.name = 'Name is required';
@@ -51,11 +49,10 @@ export function validate(input: Partial<Record<string, unknown>>): ValidationRes
 
 	if (practice.length > MAX_SHORT) errors.practice = 'Practice name is too long';
 	if (website.length > MAX_SHORT) errors.website = 'Website is too long';
-	if (location.length > MAX_SHORT) errors.location = 'Location is too long';
 	if (message.length > MAX_MESSAGE) errors.message = 'Message is too long';
 
 	if (Object.keys(errors).length > 0) return { ok: false, errors };
-	return { ok: true, value: { name, email, practice, website, location, message } };
+	return { ok: true, value: { name, email, practice, website, message } };
 }
 
 /**
@@ -90,8 +87,7 @@ export type ContactEnv = {
 export function practiceDetails(submission: ContactSubmission): string {
 	return [
 		['Practice', submission.practice],
-		['Website', submission.website],
-		['Location', submission.location]
+		['Website', submission.website]
 	]
 		.filter(([, v]) => v)
 		.map(([k, v]) => `${k}: ${v}`)

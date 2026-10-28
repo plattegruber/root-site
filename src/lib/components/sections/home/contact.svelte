@@ -9,8 +9,8 @@ behavior matches whether JS is available or not, so the lights stay on
 for the audience that's most likely to disable scripts (older browsers,
 content blockers, hospital networks).
 
-Fields: name and email are required; practice name, current website,
-location, and a free-text note are optional so the form stays low-friction.
+Fields: name and email are required; practice name, current website and
+a free-text note are optional so the form stays low-friction.
 The intro asks for the website address because the reply includes a
 hand-done look at it (see final-cta.svelte).
 -->
@@ -25,7 +25,6 @@ hand-done look at it (see final-cta.svelte).
 	let name = $state('');
 	let practice = $state('');
 	let website = $state('');
-	let location = $state('');
 	let email = $state('');
 	let message = $state('');
 	let errors = $state<{ name?: string; email?: string; form?: string }>({});
@@ -68,7 +67,7 @@ hand-done look at it (see final-cta.svelte).
 					Accept: 'application/json',
 					...tracingHeaders()
 				},
-				body: JSON.stringify({ name, practice, website, location, email, message })
+				body: JSON.stringify({ name, practice, website, email, message })
 			});
 
 			if (!res.ok) {
@@ -81,12 +80,11 @@ hand-done look at it (see final-cta.svelte).
 			}
 
 			submitted = true;
-			identifyLead({ email, name, practice, website, location });
+			identifyLead({ email, name, practice, website });
 			track('contact_form_submitted', {
 				form: FORM,
 				has_practice: practice.trim().length > 0,
 				has_website: website.trim().length > 0,
-				has_location: location.trim().length > 0,
 				has_message: message.trim().length > 0
 			});
 		} catch {
@@ -169,13 +167,6 @@ hand-done look at it (see final-cta.svelte).
 						autocomplete="url"
 						placeholder="Optional — if you have one"
 						bind:value={website}
-					/>
-					<FormField
-						dark
-						name="location"
-						label="City and state"
-						autocomplete="address-level2"
-						bind:value={location}
 					/>
 					<FormField
 						dark

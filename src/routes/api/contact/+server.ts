@@ -75,7 +75,6 @@ export const POST: RequestHandler = async (event) => {
 		path,
 		has_practice: submission.practice.length > 0,
 		has_website: submission.website.length > 0,
-		has_location: submission.location.length > 0,
 		has_message: submission.message.length > 0
 	};
 

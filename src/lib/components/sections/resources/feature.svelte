@@ -67,8 +67,10 @@ today.
 				<h2
 					class="m-0 font-serif text-[36px] leading-[1.1] font-normal tracking-[-0.015em] text-ink"
 				>
-					{tool.name}{#if tool.nameSuffix}{' '}<span class="text-drift">{tool.nameSuffix}</span
-						>{/if}
+					{tool.name}
+					{#if tool.nameSuffix}
+						<span class="block text-drift">{tool.nameSuffix}</span>
+					{/if}
 				</h2>
 				<p
 					class="mt-3 mb-0 max-w-[440px] font-sans text-[19px] leading-[1.45] text-pretty text-ink"

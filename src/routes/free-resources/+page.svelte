@@ -5,11 +5,12 @@ Free resources — a small catalogue of root's own tooling, released.
 Hero (headline, framing, contents), then one feature section per tool,
 alternating cream and linen. The eight-patients grid hangs off the Dental
 Website Review feature, so it is rendered only when that tool is on the
-page. A short closing says why these are free and points at the service.
+page. The page ends on the ask: send us your site and we write back with
+what we'd do, on the same ink band the homepage ends on.
 -->
 <script lang="ts">
 	import { Header, Footer } from '$lib/components/layout';
-	import { Hero, Feature, Patients, Closing } from '$lib/components/sections/resources';
+	import { Hero, Feature, Patients, Pitch } from '$lib/components/sections/resources';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -25,7 +26,7 @@ page. A short closing says why these are free and points at the service.
 			<Patients />
 		{/if}
 	{/each}
-	<Closing />
+	<Pitch />
 </main>
 
 <Footer />

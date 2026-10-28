@@ -18,6 +18,7 @@ const STATIC = [
 	'/demos',
 	'/about',
 	'/whats-included',
+	'/free-resources',
 	'/writing',
 	'/dental-website-review',
 	'/dental-website-review/support',

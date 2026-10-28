@@ -8,7 +8,8 @@
  *   - a sitewide `Organization` + `WebSite` pair (emitted by the root
  *     layout on every page),
  *   - an `Article` per blog post,
- *   - a `BreadcrumbList` for inner pages.
+ *   - a `BreadcrumbList` for inner pages,
+ *   - a `SoftwareApplication` per free tool.
  *
  * Nodes are linked by `@id` so the graph stays normalized — the Article's
  * author/publisher point at the same Organization node the layout emits,
@@ -18,6 +19,7 @@
  * location would be invalid structured data.
  */
 import { site } from '$lib/config/site';
+import type { Resource } from '$lib/config/resources';
 
 /** Stable @id anchors for the sitewide nodes, referenced across the graph. */
 export const ORG_ID = `${site.url}/#organization`;
@@ -182,6 +184,29 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]): JsonL
 			name: item.name,
 			item: `${site.url}${item.path}`
 		}))
+	};
+}
+
+/**
+ * SoftwareApplication schema for one of the free tools. Names root. as the
+ * author so search and AI assistants attribute ProofQL and the ChatGPT
+ * plugin to the same organization as the rest of the site, and marks the
+ * tool free so "free dental website tools" queries can match it.
+ */
+export function softwareSchema(tool: Resource): JsonLdNode {
+	const url = tool.href.startsWith('http') ? tool.href : `${site.url}${tool.href}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: tool.name,
+		description: tool.blurb,
+		url,
+		applicationCategory: tool.category,
+		operatingSystem: 'Web',
+		isAccessibleForFree: true,
+		offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+		author: { '@id': ORG_ID },
+		creator: { '@id': PERSON_ID }
 	};
 }
 

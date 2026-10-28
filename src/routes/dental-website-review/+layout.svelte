@@ -20,7 +20,7 @@ each of these, so they share a small section nav back to one another.
 	];
 </script>
 
-<Header />
+<Header currentPage="resources" />
 
 <main id="main">
 	<article class="section-py">

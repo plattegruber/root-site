@@ -91,6 +91,7 @@ export const nav = [
 	{ label: 'Demos', href: '/demos', id: 'demos' },
 	{ label: 'About', href: '/about', id: 'about' },
 	{ label: 'What’s included', href: '/whats-included', id: 'included' },
+	{ label: 'Free resources', href: '/free-resources', id: 'resources' },
 	{ label: 'Writing', href: '/writing', id: 'writing' }
 ] as const;
 

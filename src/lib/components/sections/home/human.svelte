@@ -2,9 +2,9 @@
 @component
 Human — there is an actual person on the other end.
 
-Short by design: a portrait, two paragraphs, a link to About. It's here to
-make root feel like a small studio rather than a SaaS product, not to tell a
-founder story.
+Short by design: a portrait, two paragraphs, a link to About. The hero
+already said "I'm Platte"; this is where the visitor sees him and hears what
+that means day to day. Not a founder story.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -38,9 +38,9 @@ founder story.
 						</h2>
 						<div class="flex flex-col gap-4">
 							<p class={para}>
-								root is intentionally small. If you need something changed, you contact us, and the
-								person responsible for your website is the one who answers. They already know your
-								practice.
+								root is intentionally small: it’s me, {site.person.name}, working from
+								{site.person.location}. If you need something changed, you email me, and the person
+								who built your website is the one who answers. I already know your practice.
 							</p>
 							<p class={para}>
 								No ticket queue. No support portal. When something needs changing, email a person.

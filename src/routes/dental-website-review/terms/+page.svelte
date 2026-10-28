@@ -9,8 +9,8 @@
 <Prose>
 	<p>
 		These terms apply to Dental Website Review, a ChatGPT plugin made by root., which is operated by
-		Ook Studio LLC (“we”). By using the plugin you agree to them. Your use of ChatGPT itself is
-		covered by OpenAI’s terms.
+		{site.legal.entity} (“we”). By using the plugin you agree to them. Your use of ChatGPT itself is covered
+		by OpenAI’s terms.
 	</p>
 
 	<h2>What the service is</h2>
@@ -80,10 +80,10 @@
 	</p>
 
 	<h2>Governing law</h2>
-	<p>These terms are governed by the laws of the State of Nebraska, USA.</p>
+	<p>These terms are governed by the laws of the State of {site.legal.state}, USA.</p>
 
 	<h2>Contact</h2>
 	<p>
-		Ook Studio LLC, operating root. — <a href="mailto:{site.email}">{site.emailDisplay}</a>
+		{site.legal.entity}, operating root. — <a href="mailto:{site.email}">{site.emailDisplay}</a>
 	</p>
 </Prose>

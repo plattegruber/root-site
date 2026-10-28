@@ -24,8 +24,8 @@ photography, so this is the one visual the homepage spends space on.
 					What one looks like.
 				</h2>
 				<p class="m-0 max-w-[520px] font-sans text-[17px] leading-[1.65] text-clay">
-					An example practice site you can click through, built top to bottom. Yours would be
-					designed around your practice, not this one.
+					An example practice site you can click through, built top to bottom. It’s a demo, not a
+					client. Yours would be designed around your practice, not this one.
 				</p>
 			</MarginRow>
 		</Reveal>

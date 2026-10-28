@@ -27,6 +27,14 @@ export const buyingFaq: FaqItem[] = [
 		a: 'We keep your Google Business Profile accurate and complete: business information, hours, holiday hours, services, categories, photos, and the fixes when Google changes or “suggests” something wrong. We check it routinely, post updates where they make sense, and make changes the same way as on the site — you email, we do it. Replying to reviews stays with you, because replies land better in your own voice; we’ll show you how if you want.'
 	},
 	{
+		q: 'Do you write blog posts?',
+		a: 'If you want them. Articles that answer the questions patients search for, written in plain language in your practice’s voice. Each one is drafted with AI assistance, read by a practicing dentist for accuracy, and then sent to you for approval before it goes up. It is optional and included in the monthly price; there is no content add-on.'
+	},
+	{
+		q: 'Can I get a free review of my current website?',
+		a: 'Yes, two ways. Dental Website Review is root’s diagnostic framework as a free ChatGPT plugin: give it your website address and it walks through the site as eight kinds of patient and says what to fix first, with no sign-up and no follow-up from us. Or tell us about your practice through the contact form, include the website, and we go through it by hand the same way and reply with what we’d fix or build. Neither obliges you to anything.'
+	},
+	{
 		q: 'What happens when I cancel?',
 		a: 'You email us and stop paying. There is no notice period, no termination fee, and no remaining term to pay out. The domain is already registered in your name, so nothing has to be transferred. We hand over the site files and help move everything wherever you are going, and the site stays live while you do.'
 	},

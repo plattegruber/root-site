@@ -8,8 +8,10 @@
 
 <Prose>
 	<p>
-		Dental Website Review is a ChatGPT plugin from root. It reviews a dental practice’s website the
-		way patients actually use it, and tells the dentist and their web developer what to fix first.
+		Dental Website Review is a free ChatGPT plugin from root. It reviews a dental practice’s website
+		the way patients actually use it, and tells the dentist and their web developer what to fix
+		first. It’s the same framework root uses when building and reviewing sites, and it costs nothing
+		to run.
 	</p>
 
 	<h2>How to use it</h2>
@@ -49,10 +51,18 @@
 		</li>
 	</ul>
 
+	<h2>If you’d rather a person went through it</h2>
+	<p>
+		The plugin is a self-serve version of the review. If you’d like a human to go through your site
+		the same way and tell you what they’d fix or build,
+		<a href="/#contact">tell root about your practice</a> and include the website. That’s free too, and
+		it doesn’t oblige you to anything.
+	</p>
+
 	<h2>Who makes it</h2>
 	<p>
 		Dental Website Review is made by root., a web studio that builds websites for independent dental
-		practices. root. is operated by Ook Studio LLC. Questions go to
+		practices. root. is operated by {site.legal.entity}. Questions go to
 		<a href="mailto:{site.email}">{site.emailDisplay}</a>.
 	</p>
 	<p>

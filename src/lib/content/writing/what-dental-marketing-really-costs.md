@@ -1,7 +1,7 @@
 ---
 title: "What Dental Marketing Really Costs — and What It's Worth"
 date: 2026-06-22
-updated: 2026-09-16
+updated: 2026-10-27
 excerpt: What does dental marketing actually cost in 2026? Honest budget ranges, cost per new patient, agency fees, and how to tell if the spend is worth it.
 faq:
   - q: 'How much should a dental practice spend on marketing?'
@@ -52,7 +52,7 @@ That budget gets split across a handful of channels. Here's what each tends to r
 </table>
 </div>
 
-A quick word on that website line, since it's mine: practices regularly pay agencies $3,000–$4,000 a month for a bundle where the website is an afterthought built on a template. I build [custom sites by hand](/writing/dental-website-design-complete-guide) for a flat $149 a month — hosting, speed, security, edits, and Google Business Profile management included, no setup fee, no contract. ([The full breakdown of the number is here.](/writing/what-root-costs)) I mention it not to pitch you mid-article, but because the website is the cheapest line on that table to get right and the most expensive one to get wrong. Every ad click and every search result lands there.
+A quick word on that website line, since it's mine: practices regularly pay agencies $3,000–$4,000 a month for a bundle where the website is an afterthought built on a template. I build [custom sites by hand](/writing/dental-website-design-complete-guide) for a flat $249 a month — hosting, speed, security, edits, Google Business Profile management, and dentist-reviewed articles included, no setup fee, no contract. ([The full breakdown of the number is here.](/writing/what-root-costs)) I mention it not to pitch you mid-article, but because the website is the cheapest line on that table to get right and the most expensive one to get wrong. Every ad click and every search result lands there.
 
 ## How much does it cost to get one new patient?
 

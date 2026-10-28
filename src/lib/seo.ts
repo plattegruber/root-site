@@ -47,8 +47,27 @@ export function siteGraph(): JsonLdNode {
 					'@type': 'ImageObject',
 					url: `${site.url}/favicon.svg`
 				},
+				legalName: site.legal.entity,
 				founder: { '@id': PERSON_ID },
+				// root. is a service of the LLC; naming the parent keeps the entity
+				// in the footer, the plugin terms and the schema consistent.
+				parentOrganization: {
+					'@type': 'Organization',
+					name: site.legal.entity,
+					url: site.legal.url
+				},
 				areaServed: { '@type': 'Country', name: 'United States' },
+				// Where the studio is run from, as structured data as well as prose,
+				// so assistants don't have to infer it from an image caption.
+				location: {
+					'@type': 'Place',
+					name: `${site.person.location}, United States`,
+					address: {
+						'@type': 'PostalAddress',
+						addressRegion: site.person.region,
+						addressCountry: 'US'
+					}
+				},
 				knowsAbout: [
 					'Dental practice websites',
 					'Google Business Profile management',
@@ -66,7 +85,15 @@ export function siteGraph(): JsonLdNode {
 				worksFor: { '@id': ORG_ID },
 				url: `${site.url}/about`,
 				...(site.about.photo.src ? { image: `${site.url}${site.about.photo.src}` } : {}),
-				homeLocation: { '@type': 'Place', name: `${site.person.location}, United States` },
+				homeLocation: {
+					'@type': 'Place',
+					name: `${site.person.location}, United States`,
+					address: {
+						'@type': 'PostalAddress',
+						addressRegion: site.person.region,
+						addressCountry: 'US'
+					}
+				},
 				...(site.person.sameAs.length ? { sameAs: [...site.person.sameAs] } : {})
 			},
 			{

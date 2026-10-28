@@ -28,10 +28,10 @@ stay simple. Sits on cream between the linen Included band and How it works.
 					<p class={para}>
 						A solo practice doesn’t need a platform, a strategy deck, or a monthly reporting call.
 						It needs a good website that stays current and a Google listing that’s right. That’s a
-						narrow job, and we only do that job.
+						narrow job, and I only do that job.
 					</p>
 					<p class={para}>
-						Staying that narrow is what lets us keep the service straightforward: one practice, one
+						Staying that narrow is what lets me keep the service straightforward: one practice, one
 						website, one relationship, one monthly price.
 					</p>
 				</div>

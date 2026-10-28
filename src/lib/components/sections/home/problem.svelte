@@ -45,7 +45,7 @@ takes care of.
 				<p
 					class="mt-6 mb-0 max-w-[520px] font-sans text-[17px] leading-[1.65] font-medium text-charcoal"
 				>
-					root sits in between. We build it, host it, keep it current, and handle your presence on
+					root sits in between. I build it, host it, keep it current, and handle your presence on
 					Google.
 				</p>
 			</MarginRow>

@@ -47,6 +47,14 @@ rankings or a response-time SLA; it describes what gets done.
 						'You don’t have to write anything. We interview you, then write the pages in plain English a patient can read on a phone in a parking lot.',
 						'You review it and tell us what’s off. We fix it. Nothing goes live without your okay.'
 					]
+				},
+				{
+					term: 'Articles, if you want them',
+					jargon: '“content marketing”',
+					paras: [
+						'Patients search for things like “does whitening hurt” and “what to do about a chipped tooth” before they ever search for a dentist. If you want your site to answer those questions, we write the articles: plain language, your practice’s voice, a few a month.',
+						'Every one is drafted with AI assistance and then read by a practicing dentist for accuracy before it reaches you. You approve it or you don’t. Optional, included, and nothing goes up that you haven’t seen.'
+					]
 				}
 			]
 		},

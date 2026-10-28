@@ -1,8 +1,8 @@
 <!--
 @component
-Included — the service, made concrete in four rows.
+Included — the service, made concrete in five rows.
 
-Deliberately not a checklist of 25 features: four things a dentist can
+Deliberately not a checklist of 25 features: five things a dentist can
 repeat back. The full spec sheet lives on /whats-included.
 -->
 <script lang="ts">
@@ -16,11 +16,15 @@ repeat back. The full spec sheet lives on /whats-included.
 		},
 		{
 			term: 'Updates handled for you',
-			text: 'Need something changed? Send us a message. There’s no CMS to learn and no dashboard to log into.'
+			text: 'Need something changed? Send me a message. There’s no CMS to learn and no dashboard to log into.'
 		},
 		{
 			term: 'Your Google presence managed',
-			text: 'We keep your Google Business Profile accurate, complete, and current: hours, services, photos, categories.'
+			text: 'I keep your Google Business Profile accurate, complete, and current: hours, services, photos, categories.'
+		},
+		{
+			term: 'Articles, if you want them',
+			text: 'Plain-language answers to the questions patients search for, read by a practicing dentist before they go up. Optional, and included.'
 		},
 		{
 			term: 'The fundamentals covered',
@@ -36,7 +40,7 @@ repeat back. The full spec sheet lives on /whats-included.
 				<h2
 					class="mb-8 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 				>
-					What we take care of.
+					What I take care of.
 				</h2>
 
 				<TermList {items} />

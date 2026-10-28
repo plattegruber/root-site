@@ -1,7 +1,7 @@
 ---
 title: 'How Much Does a Dental Website Cost in 2026? An Honest, Itemized Breakdown'
 date: 2026-06-29
-updated: 2026-09-16
+updated: 2026-10-27
 excerpt: What a dental website really costs in 2026 — real published prices, what each line item costs wholesale, and why the three biggest vendors won't tell you their number.
 faq:
   - q: 'How much should a dental website cost?'
@@ -18,7 +18,7 @@ faq:
 
 There is no single number, and anyone who gives you one without asking about your practice is selling something. But here are the real ranges: the ADA puts a basic customized dental site at about $6,000, and up to $25,000 for a high-end build. Meanwhile, actual published vendor prices start far lower — $1,999 plus $89 a month at one dental vendor, $97 a month flat at another. The spread is roughly sevenfold for something everyone calls "a professional dental website."
 
-I build dental websites for a living and charge $149 a month with no setup fee, so I have an obvious stake in this question. I'll show you my sources so you can check my arithmetic.
+I build dental websites for a living and charge $249 a month with no setup fee, so I have an obvious stake in this question. I'll show you my sources so you can check my arithmetic.
 
 ## TL;DR
 
@@ -49,7 +49,7 @@ Now the market. Here is what dental vendors who publish prices actually charge:
 <tr><td>Local designer (typical)</td><td>$2,000–$15,000</td><td>$10–$20</td><td>Hosting only</td></tr>
 <tr><td>Discount dental-only providers</td><td>$300–$600</td><td>$100–$300</td><td>Varies</td></tr>
 <tr><td>Dental service providers</td><td>$400–$2,000</td><td>$150–$800</td><td>Varies</td></tr>
-<tr><td>root.</td><td>none</td><td>$149</td><td>Everything, including edits and Google Business Profile management</td></tr>
+<tr><td>root.</td><td>none</td><td>$249</td><td>Everything, including edits and Google Business Profile management</td></tr>
 </tbody>
 </table>
 </div>
@@ -95,9 +95,9 @@ The pattern is straightforward once you see it: **the infrastructure is nearly f
 
 That's not a criticism. Time is the expensive part and it should be. But it does mean that when a vendor itemizes "hosting and security" at $89 a month, they are describing labor and calling it infrastructure. Ask what the hours actually buy.
 
-For reference, US web design firms most commonly bill $100–$149 an hour. At that rate, a $149 monthly fee buys about an hour to an hour and a half of professional time. I'd rather you think of my price that way than as "cheap," because the honest argument for it isn't that it's cheap — it's that a small practice needs about that much attention a month, spread across the site and the Google listing, and shouldn't have to buy it in four-figure blocks. ([The full breakdown of what that hour goes to is here.](/writing/what-root-costs))
+For reference, US web design firms most commonly bill $100–$149 an hour. At that rate, a $249 monthly fee buys about two hours of professional time. I'd rather you think of my price that way than as "cheap," because the honest argument for it isn't that it's cheap — it's that a small practice needs about that much attention a month, spread across the site and the Google listing, and shouldn't have to buy it in four-figure blocks. ([The full breakdown of what that hour goes to is here.](/writing/what-root-costs))
 
-> If you want to know what your current setup is actually costing you, I do a [free visibility audit](https://root.site/#contact) — I look at your site, your hosting, your Google Business Profile, and your reviews, and send you a plain list of what's working and what isn't. No pitch attached. Take the list to your current vendor if you like.
+> If you want to know what your current setup is actually costing you, there are two free ways to find out. [Dental Website Review](https://root.site/dental-website-review) is my diagnostic framework as a ChatGPT plugin: give it your address and it tells you what to fix first, no sign-up. Or [tell me about your practice](https://root.site/#contact) and I'll go through your site, your hosting, your Google Business Profile, and your reviews by hand and send you a plain list of what's working and what isn't. No pitch attached. Take the list to your current vendor if you like.
 
 ## What about the monthly fee?
 

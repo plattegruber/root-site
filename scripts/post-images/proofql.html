@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			@font-face {
+				font-family: 'Instrument Serif';
+				src: url('../../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2')
+					format('woff2');
+			}
+			@font-face {
+				font-family: 'Instrument Serif';
+				font-style: italic;
+				src: url('../../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2')
+					format('woff2');
+			}
+			@font-face {
+				font-family: 'IBM Plex Mono';
+				src: url('../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2')
+					format('woff2');
+			}
+			@font-face {
+				font-family: 'Karla';
+				src: url('../../node_modules/@fontsource-variable/karla/files/karla-latin-wght-normal.woff2')
+					format('woff2');
+				font-weight: 200 800;
+			}
+			html,
+			body {
+				margin: 0;
+			}
+			body {
+				width: 1200px;
+				height: 630px;
+				background: #f7f4ef;
+				color: #1a1715;
+				font-family: 'Karla', system-ui, sans-serif;
+				position: relative;
+				overflow: hidden;
+			}
+			.accent {
+				position: absolute;
+				inset: 0 0 auto 0;
+				height: 6px;
+				background: #a68b70;
+				opacity: 0.45;
+			}
+			.stack {
+				position: absolute;
+				left: 96px;
+				right: 96px;
+				top: 70px;
+				display: flex;
+				flex-direction: column;
+				gap: 22px;
+			}
+			.row {
+				display: grid;
+				grid-template-columns: 40px 1fr;
+				align-items: baseline;
+				gap: 20px;
+				font-size: 21px;
+				line-height: 1.35;
+				color: #a09a92;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.row .n {
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 13px;
+				letter-spacing: 0.04em;
+				color: #d4cfc7;
+			}
+			.row.hit {
+				grid-template-columns: 40px 1fr;
+				white-space: normal;
+				color: #1a1715;
+				font-family: 'Instrument Serif', Georgia, serif;
+				font-size: 46px;
+				line-height: 1.12;
+				letter-spacing: -0.01em;
+				padding: 18px 0;
+			}
+			.row.hit .n {
+				color: #a68b70;
+				font-size: 14px;
+				position: relative;
+				top: -16px;
+			}
+			.row.hit q {
+				quotes: '“' '”';
+			}
+			.foot {
+				position: absolute;
+				left: 96px;
+				right: 96px;
+				bottom: 54px;
+				display: flex;
+				justify-content: space-between;
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 20px;
+				letter-spacing: 0.02em;
+				color: #6b6560;
+			}
+			.foot .q {
+				color: #7c5e44;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="accent"></div>
+		<div class="stack">
+			<div class="row">
+				<span class="n">071</span><span>Great staff, wonderful office, highly recommend!</span>
+			</div>
+			<div class="row">
+				<span class="n">072</span><span>Easy parking and the front desk was friendly.</span>
+			</div>
+			<div class="row">
+				<span class="n">073</span><span>Five stars. Clean, modern, on time.</span>
+			</div>
+			<div class="row hit">
+				<span class="n">074</span>
+				<span
+					><q
+						>I’ve always hated going to the dentist, but they explained everything and never made me
+						feel rushed.</q
+					></span
+				>
+			</div>
+			<div class="row">
+				<span class="n">075</span><span>My kids actually look forward to their visits now.</span>
+			</div>
+			<div class="row">
+				<span class="n">076</span><span>Quick cleaning, no upsell. Will be back.</span>
+			</div>
+		</div>
+		<div class="foot">
+			<span><span class="q">search:</span> nervous about a root canal</span>
+			<span>proofql.dev · root.site</span>
+		</div>
+	</body>
+</html>

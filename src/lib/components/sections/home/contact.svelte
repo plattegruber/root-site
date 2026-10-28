@@ -78,14 +78,14 @@ hand-done look at it (see final-cta.svelte).
 			{#if submitted}
 				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Got it.</h2>
 				<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
-					I’ll be in touch within a day, usually sooner.
+					We’ll be in touch within a day, usually sooner.
 				</p>
 			{:else}
 				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">
-					Tell me about your practice.
+					Tell us about your practice.
 				</h2>
 				<p class="mb-8 max-w-[440px] font-sans text-[17px] leading-[1.6] text-drift">
-					A name and an email is enough. Add your website and I’ll go through it before I write
+					A name and an email is enough. Add your website and we’ll go through it before we write
 					back.
 				</p>
 
@@ -153,7 +153,7 @@ hand-done look at it (see final-cta.svelte).
 					<FormField
 						dark
 						name="message"
-						label="Anything you want me to know"
+						label="Anything you want us to know"
 						multiline
 						rows={4}
 						placeholder="Optional"
@@ -173,7 +173,7 @@ hand-done look at it (see final-cta.svelte).
 
 				<div class="mt-10 border-t border-cream/8 pt-6">
 					<p class="m-0 font-sans text-[15px] leading-[1.55] text-drift">
-						Or just email me:
+						Or just email us:
 						<a
 							href="mailto:{site.email}"
 							class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
@@ -182,7 +182,7 @@ hand-done look at it (see final-cta.svelte).
 						</a>
 					</p>
 					<p class="mt-2 font-sans text-[15px] leading-[1.55] text-drift">
-						I’ll get back to you within a day, usually sooner.
+						We’ll get back to you within a day, usually sooner.
 					</p>
 				</div>
 			{/if}

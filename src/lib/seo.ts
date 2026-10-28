@@ -118,6 +118,8 @@ type ArticleInput = {
 	/** ISO day of the last substantive edit. */
 	updated: string;
 	slug: string;
+	/** Header image path under static/, when the post has one. */
+	image?: string;
 };
 
 /**
@@ -137,7 +139,7 @@ export function articleSchema(post: ArticleInput): JsonLdNode {
 		dateModified: post.updated,
 		author: { '@id': PERSON_ID },
 		publisher: { '@id': ORG_ID },
-		image: `${site.url}/og.png`,
+		image: `${site.url}${post.image ?? '/og.png'}`,
 		mainEntityOfPage: url,
 		url,
 		inLanguage: 'en-US'

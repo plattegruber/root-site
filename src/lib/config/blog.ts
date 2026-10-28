@@ -34,6 +34,14 @@ export type PostMetadata = {
 	updated?: string | Date;
 	draft?: boolean;
 	/**
+	 * Optional header image, as a path under static/ (e.g.
+	 * `/writing/proofql.png`), 1200×630 so it doubles as the post's
+	 * og:image. Rendered above the body by the [slug] page. `imageAlt`
+	 * describes it for screen readers and social cards.
+	 */
+	image?: string;
+	imageAlt?: string;
+	/**
 	 * Optional Q&A pairs. When present, the [slug] page emits FAQPage
 	 * JSON-LD alongside the Article schema. Read from the lazily-imported
 	 * post module on the detail route, so it isn't bundled into the index.

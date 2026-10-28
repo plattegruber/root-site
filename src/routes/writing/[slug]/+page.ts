@@ -26,7 +26,9 @@ export const load: PageLoad = async ({ params }) => {
 		ogType: 'article',
 		publishedTime: post.date,
 		modifiedTime: post.updated,
-		ogImageAlt: post.title,
+		// A post with a header image uses it as the social card too.
+		...(post.image ? { ogImage: post.image } : {}),
+		ogImageAlt: post.imageAlt ?? post.title,
 		jsonld: [
 			articleSchema(post),
 			breadcrumbSchema([

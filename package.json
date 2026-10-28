@@ -17,7 +17,8 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"gen": "wrangler types",
-		"gen:og": "node scripts/generate-og.mjs"
+		"gen:og": "node scripts/generate-og.mjs",
+		"gen:post-images": "node scripts/generate-post-images.mjs"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.4",

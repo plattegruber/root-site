@@ -95,7 +95,7 @@ deal, not a discount brand.
 
 						<div class="flex flex-col gap-4">
 							<p class={para}>
-								I’m rebuilding root around independent solo practices. The first {founding.limit}
+								We’re rebuilding root around independent solo practices. The first {founding.limit}
 								practices get the complete service for ${founding.monthly} a month, locked in for as long
 								as they remain customers.
 							</p>

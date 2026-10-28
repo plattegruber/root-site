@@ -78,18 +78,6 @@ export const site = {
 	 * (1.2× the rendered 200×240 frame for retina); keep file under 80 KB
 	 * via mozjpeg/squoosh.
 	 */
-	/**
-	 * Optional hero portrait: a small, casual photo beside the first-person
-	 * intro on the homepage. Leave `src` undefined and the hero renders text
-	 * only. Use a different photo from the About page; a square crop of at
-	 * least 160×160, under 20 KB, is plenty for the 72px frame.
-	 */
-	hero: {
-		photo: {
-			src: undefined as string | undefined,
-			alt: 'Platte Gruber'
-		}
-	},
 	about: {
 		photo: {
 			src: '/about-photo.jpg' as string | undefined,

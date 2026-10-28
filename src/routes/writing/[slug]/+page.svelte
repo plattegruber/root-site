@@ -47,6 +47,19 @@ section having to know about heading levels in advance.
 				</p>
 			</header>
 
+			{#if post.image}
+				<figure class="m-0 mb-10 overflow-hidden rounded-md border border-stone bg-linen">
+					<img
+						src={post.image}
+						alt={post.imageAlt ?? ''}
+						width="1200"
+						height="630"
+						decoding="async"
+						class="block h-auto w-full"
+					/>
+				</figure>
+			{/if}
+
 			<Prose>
 				<Body />
 			</Prose>

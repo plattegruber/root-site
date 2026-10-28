@@ -142,3 +142,4 @@ The website can explain how to complete them and link to your practice's approve
 
 - [American Dental Association — Patient Registration and Forms](https://www.ada.org/resources/practice/practice-management/patient-registration-and-forms)
 - [American Dental Association — The Patient's First Visit](https://www.ada.org/resources/practice/practice-management/patients-first-visit)
+- [U.S. Department of Health and Human Services — HIPAA complaint process](https://www.hhs.gov/hipaa/filing-a-complaint/complaint-process/index.html)

@@ -16,11 +16,11 @@ repeat back. The full spec sheet lives on /whats-included.
 		},
 		{
 			term: 'Updates handled for you',
-			text: 'Need something changed? Send me a message. There’s no CMS to learn and no dashboard to log into.'
+			text: 'Need something changed? Send us a message. There’s no CMS to learn and no dashboard to log into.'
 		},
 		{
 			term: 'Your Google presence managed',
-			text: 'I keep your Google Business Profile accurate, complete, and current: hours, services, photos, categories.'
+			text: 'We keep your Google Business Profile accurate, complete, and current: hours, services, photos, categories.'
 		},
 		{
 			term: 'Articles, if you want them',
@@ -40,7 +40,7 @@ repeat back. The full spec sheet lives on /whats-included.
 				<h2
 					class="mb-8 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 				>
-					What I take care of.
+					What we take care of.
 				</h2>
 
 				<TermList {items} />

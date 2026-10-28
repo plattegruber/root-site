@@ -15,7 +15,7 @@ places. Visible top border separates it from the page above.
 	>
 		<a href="/" class="font-serif text-[20px] tracking-[-0.5px] text-ink no-underline"> root. </a>
 
-		<nav class="flex items-center gap-6" aria-label="Footer">
+		<nav class="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Footer">
 			{#each nav as link (link.id)}
 				<a
 					href={link.href}

@@ -1,10 +1,12 @@
 <!--
 @component
-Human — there is an actual person on the other end.
+Meet Platte — there is one actual person on the other end, and he builds
+the sites.
 
-Short by design: a portrait, two paragraphs, a link to About. It's here to
-make root feel like a small studio rather than a SaaS product, not to tell a
-founder story.
+Short by design: the portrait, a name, two paragraphs, a link to About.
+It establishes who is accountable before the visitor reaches the price,
+so the price reads as "that person, for that much" rather than as the
+headline. The longer background stays on /about.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -14,10 +16,10 @@ founder story.
 	const para = 'm-0 max-w-[480px] font-sans text-[17px] leading-[1.65] text-pretty text-clay';
 </script>
 
-<section class="section-py">
+<section class="bg-linen section-py">
 	<EdWrap>
 		<Reveal>
-			<MarginRow icon="user-round" label="who you'll talk to">
+			<MarginRow icon="user-round" label="who does the work">
 				<div class="flex flex-wrap items-start gap-10">
 					{#if photo.src}
 						<img
@@ -34,16 +36,16 @@ founder story.
 						<h2
 							class="mb-5 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 						>
-							You won’t get handed off to an account manager.
+							One person who knows your website.
 						</h2>
 						<div class="flex flex-col gap-4">
 							<p class={para}>
-								root is intentionally small. If you need something changed, you contact us, and the
-								person responsible for your website is the one who answers. They already know your
-								practice.
+								I’m {site.person.givenName}. I build the websites, write the code, and take care of
+								them after launch.
 							</p>
 							<p class={para}>
-								No ticket queue. No support portal. When something needs changing, email a person.
+								No account managers or support queues. When you need something, you email the person
+								who built your site, and that person already knows your practice.
 							</p>
 						</div>
 						<p class="mt-6 mb-0">

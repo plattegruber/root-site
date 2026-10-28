@@ -1,31 +1,52 @@
 <!--
 @component
-Demos teaser — a short pointer from the homepage to the full /demos page.
+The work — the strongest demo, right after the hero, before any claims.
 
-Leads with a screengrab of the featured (first live) demo, presented like a
-plate in a book: framed image, then a hairline, then the practice name and a
-"Visit" link. Then a pointer onward to the rest. Real work beats generic
-photography, so this is the one visual the homepage spends space on.
+A desktop plate with the phone's first screen overlaid on its corner, so
+the two things a dentist should notice (it looks like a real practice; the
+book button is where a thumb lands) are both visible at once. Then the
+practice name, a "Visit" link, and three short observations about the
+decisions behind it. Each observation describes something that is actually
+on the demo site; check the demo before changing them.
+
+The demo is a demo, not a client, and the copy says so. The detailed
+walk-through belongs on /demos, not here.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
 	import { demos } from '$lib/config/demos';
+	import TermList from './term-list.svelte';
 
 	const featured = demos.find((d) => d.url && !d.comingSoon);
+
+	const decisions = [
+		{
+			term: 'Booking on the first screen',
+			text: 'On a phone, “Book your first visit” sits right under the headline, and the phone number is a tap-to-call link.'
+		},
+		{
+			term: 'The first visit, explained',
+			text: 'A page for new patients: what to bring, where to park, which bus stops nearby. The things someone actually wonders before they come in.'
+		},
+		{
+			term: 'Answers, not slogans',
+			text: 'The questions page covers insurance, sedation and nerves in plain words, written for the patient who has been putting it off.'
+		}
+	];
 </script>
 
 <section id="demos" class="section-py">
 	<EdWrap>
 		<Reveal>
-			<MarginRow icon="eye" label="see it live">
+			<MarginRow icon="eye" label="the work">
 				<h2
 					class="mb-5 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 				>
-					What one looks like.
+					Here’s one we built.
 				</h2>
-				<p class="m-0 max-w-[520px] font-sans text-[17px] leading-[1.65] text-clay">
-					An example practice site you can click through, built top to bottom. It’s a demo, not a
-					client. Yours would be designed around your practice, not this one.
+				<p class="m-0 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay">
+					An example practice, built top to bottom. Click around it the way a patient would. It’s a
+					demo, not a client; yours would be designed around your practice, not this one.
 				</p>
 			</MarginRow>
 		</Reveal>
@@ -34,15 +55,31 @@ photography, so this is the one visual the homepage spends space on.
 			<Reveal delay={100} class="mt-12">
 				<figure class="m-0">
 					{#if featured.image}
-						<div class="overflow-hidden rounded-md border border-stone bg-linen">
-							<img
-								src={featured.image}
-								alt={`Screenshot of the ${featured.name} demo site`}
-								width="1440"
-								height="900"
-								loading="lazy"
-								class="block h-auto w-full"
-							/>
+						<div class="relative md:pr-16 md:pb-14">
+							<div class="overflow-hidden rounded-md border border-stone bg-linen">
+								<img
+									src={featured.image}
+									alt={`Screenshot of the ${featured.name} demo site on a desktop`}
+									width="1440"
+									height="900"
+									loading="lazy"
+									class="block h-auto w-full"
+								/>
+							</div>
+							{#if featured.phoneImage}
+								<div
+									class="absolute right-0 bottom-0 hidden w-[176px] overflow-hidden rounded-[18px] border-[5px] border-ink bg-ink shadow-[0_24px_48px_-20px_rgba(26,23,21,0.45)] md:block"
+								>
+									<img
+										src={featured.phoneImage}
+										alt="The same site on a phone: the book button is on the first screen"
+										width="780"
+										height="1688"
+										loading="lazy"
+										class="block h-auto w-full"
+									/>
+								</div>
+							{/if}
 						</div>
 					{/if}
 
@@ -54,7 +91,7 @@ photography, so this is the one visual the homepage spends space on.
 								{featured.name}
 							</div>
 							<div class="mt-1.5 font-mono text-[12px] tracking-[0.02em] text-drift">
-								{featured.category}
+								{featured.category} · demo
 							</div>
 						</div>
 						<a
@@ -63,20 +100,25 @@ photography, so this is the one visual the homepage spends space on.
 							rel="noopener noreferrer"
 							class="shrink-0 font-sans text-[15px] font-medium whitespace-nowrap text-root no-underline transition-colors hover:text-root-dark"
 						>
-							Visit ↗
+							Visit the site ↗
 						</a>
 					</div>
 				</figure>
 			</Reveal>
 		{/if}
 
-		<div class="mt-7">
-			<a
-				href="/demos"
-				class="font-sans text-[15px] font-medium text-root underline decoration-root/30 underline-offset-2 transition-colors hover:text-root-dark"
-			>
-				See all demos →
-			</a>
-		</div>
+		<Reveal delay={120} class="mt-12">
+			<MarginRow label="a few of the decisions">
+				<TermList items={decisions} compact />
+				<p class="mt-6 mb-0">
+					<a
+						href="/demos"
+						class="font-sans text-[15px] font-medium text-root underline decoration-root/30 underline-offset-2 transition-colors hover:text-root-dark"
+					>
+						See all demos →
+					</a>
+				</p>
+			</MarginRow>
+		</Reveal>
 	</EdWrap>
 </section>

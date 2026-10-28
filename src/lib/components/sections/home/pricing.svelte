@@ -17,15 +17,14 @@ deal, not a discount brand.
 	const { monthly, founding } = pricing;
 
 	const included = [
-		'Custom website',
-		'Hosting',
-		'Maintenance',
-		'Website updates',
+		'Custom website, designed and built for your practice',
+		'Copywriting',
+		'Hosting, backups and maintenance',
+		'Updates whenever you need them',
 		'Google Business Profile management',
-		'Articles reviewed by a dentist (optional)',
 		'Local SEO fundamentals',
-		'Analytics',
-		'Human support'
+		'Articles reviewed by a dentist (optional)',
+		'A person who answers'
 	];
 
 	const heading =
@@ -51,7 +50,7 @@ deal, not a discount brand.
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="tag" label="pricing">
-				<h2 class={heading}>Everything root does.</h2>
+				<h2 class={heading}>One price. Everything included.</h2>
 
 				<div class={priceGrid}>
 					{@render priceBlock(`$${monthly}`, '/month', 'No setup fee. No contract.')}
@@ -95,13 +94,13 @@ deal, not a discount brand.
 
 						<div class="flex flex-col gap-4">
 							<p class={para}>
-								We’re rebuilding root around independent solo practices. The first {founding.limit}
-								practices get the complete service for ${founding.monthly} a month, locked in for as long
-								as they remain customers.
+								We’re building our first group of independent practices, and those first
+								relationships matter to us. So the first {founding.limit} practices get the complete service
+								for ${founding.monthly} a month, for as long as they stay.
 							</p>
 							<p class={para}>
-								Everything above is included. The price is the only thing that’s different, and it
-								doesn’t go up later.
+								Everything above is included. No setup fee, no contract. The price is the only thing
+								that’s different, and it doesn’t go up later.
 							</p>
 							<div class="mt-2">
 								<Button href="#contact">

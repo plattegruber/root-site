@@ -3,7 +3,8 @@
 Hero — full-bleed ink section that names the niche in the first breath.
 
 A mono eyebrow, then the positioning sentence as the display line, then the
-one-sentence version of the offer. A single CTA (no competing buttons; cream
+one-sentence version of the offer, then a line on who does the work and
+what that means for the dentist (it stays handled). A single CTA (no competing buttons; cream
 on the ink band so it doesn't melt into the background), then
 a hairline and the price. When the founding offer is active it sits directly
 under the price so the visitor sees both numbers before a scroll.
@@ -30,8 +31,8 @@ under the price so the visitor sees both numbers before a scroll.
 			Your website and Google presence, taken care of.
 		</p>
 		<p class="mt-3 mb-0 max-w-[560px] font-sans text-hero-sub text-pretty text-drift">
-			Custom website, ongoing updates, and Google Business Profile management for one simple monthly
-			price.
+			A website built specifically for your practice, by the person who will keep looking after it.
+			Kept current, cared for, and off your plate.
 		</p>
 
 		<div class="mt-10">

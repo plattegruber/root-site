@@ -1,9 +1,11 @@
 <!--
 @component
-Included — the service, made concrete in five rows.
+Everything handled — the scope of the service, then how it goes.
 
-Deliberately not a checklist of 25 features: five things a dentist can
-repeat back. The full spec sheet lives on /whats-included.
+Six rows a dentist can repeat back, written as what stops being their
+job. Then the process in one compact row of three steps, because building
+the site is not a six-week engagement and shouldn't read like one. The
+full spec sheet lives on /whats-included.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -11,39 +13,65 @@ repeat back. The full spec sheet lives on /whats-included.
 
 	const items = [
 		{
-			term: 'A website built for your practice',
-			text: 'Designed around your practice, your team, and your patients. Not a generic dental template with your logo swapped in.'
+			term: 'Design and build',
+			text: 'A custom site, designed and coded around your practice. Not a template with your logo swapped in.'
 		},
 		{
-			term: 'Updates handled for you',
-			text: 'Need something changed? Send us a message. There’s no CMS to learn and no dashboard to log into.'
+			term: 'The words',
+			text: 'We interview you and write every page in plain English. You approve it before anything goes live.'
 		},
 		{
-			term: 'Your Google presence managed',
-			text: 'We keep your Google Business Profile accurate, complete, and current: hours, services, photos, categories.'
+			term: 'Hosting and upkeep',
+			text: 'Fast hosting, daily backups, security, and the updates that keep it that way.'
 		},
 		{
-			term: 'Articles, if you want them',
-			text: 'Plain-language answers to the questions patients search for, read by a practicing dentist before they go up. Optional, and included.'
+			term: 'Changes, whenever',
+			text: 'New hours, a new associate, a new service: email us and it’s done, usually the same day.'
 		},
 		{
-			term: 'The fundamentals covered',
-			text: 'Hosting, maintenance, security, analytics, Search Console, and local search basics are all included.'
+			term: 'Your Google Business Profile',
+			text: 'Kept accurate and complete: hours, services, categories, photos, and the fixes when Google gets something wrong.'
+		},
+		{
+			term: 'Local search fundamentals',
+			text: 'Page titles, structured data, Search Console, and a site that agrees with your Google listing. The groundwork, not a ranking campaign.'
 		}
+	];
+
+	const steps = [
+		'Show us your practice',
+		'We build it, you approve it',
+		'We keep taking care of it'
 	];
 </script>
 
-<section class="bg-linen section-py">
+<section class="section-py">
 	<EdWrap>
 		<Reveal>
-			<MarginRow icon="layers" label="what's included">
+			<MarginRow icon="layers" label="what's handled">
 				<h2
-					class="mb-8 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
+					class="mb-6 font-serif text-[28px] leading-[1.25] font-normal tracking-[-0.01em] text-ink"
 				>
-					What we take care of.
+					Everything handled.
 				</h2>
+				<p class="mb-8 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay">
+					One monthly price covers the website and everything around it, so none of it is your job.
+				</p>
 
 				<TermList {items} />
+
+				<ol
+					class="mt-8 mb-0 flex list-none flex-wrap gap-x-8 gap-y-3 border-t border-stone p-0 pt-6"
+				>
+					{#each steps as step, i (step)}
+						<li class="flex items-baseline gap-3 font-sans text-[15px] text-charcoal">
+							<span class="font-mono text-[12px] text-root-light" aria-hidden="true"
+								>{String(i + 1).padStart(2, '0')}</span
+							>
+							{step}
+						</li>
+					{/each}
+				</ol>
 
 				<p class="mt-7 mb-0 max-w-[520px] font-sans text-[15px] leading-[1.6] text-clay">
 					The detailed version lives on

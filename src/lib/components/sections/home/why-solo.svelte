@@ -2,8 +2,11 @@
 @component
 Why solo — the niche, explained rather than just stated.
 
-Specialization is part of the value: one kind of customer lets the service
-stay simple. Sits on cream between the linen Included band and How it works.
+Small by design, not by limitation. One kind of customer lets the service
+stay simple, and the simple business is what makes the price possible:
+no account layer, no bundle, no reporting call. The other ways to get a
+site get one sentence between them, as what they hand back to the dentist,
+not as an attack. Sits on cream between the linen Care band and Meet Platte.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -31,8 +34,14 @@ stay simple. Sits on cream between the linen Included band and How it works.
 						narrow job, and we only do that job.
 					</p>
 					<p class={para}>
-						Staying that narrow is what lets us keep the service straightforward: one practice, one
-						website, one relationship, one monthly price.
+						Most other ways to get a site leave you holding something: a big firm’s bundle and
+						contract, a freelancer’s silence after launch, or a DIY tool’s hosting, plugins and
+						updates. We’re built so none of that lands on your desk.
+					</p>
+					<p class={para}>
+						Staying narrow is also what keeps the price where it is. There’s no account layer
+						between you and the person building the site, and nothing in the bundle built for a
+						practice ten times your size. The service is simple on purpose. The work isn’t.
 					</p>
 				</div>
 			</MarginRow>

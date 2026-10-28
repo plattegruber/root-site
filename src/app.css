@@ -161,6 +161,12 @@
 	padding-block: var(--section-sm-v-padding);
 }
 
+/* Full top padding, short bottom: for a section with a follow-on block. */
+@utility section-tight-py {
+	padding-top: var(--section-v-padding);
+	padding-bottom: var(--section-sm-v-padding);
+}
+
 @utility hero-py {
 	padding-top: var(--hero-top-padding);
 	padding-bottom: var(--hero-bottom-padding);

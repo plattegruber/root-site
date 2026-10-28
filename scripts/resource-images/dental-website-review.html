@@ -1,0 +1,173 @@
+<!doctype html>
+<!-- Dental Website Review mockup: the ask in ChatGPT, then the top of the
+     reply. Three findings, each tagged with the patient it affects. -->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="_fonts.css" />
+		<style>
+			.ask {
+				position: absolute;
+				right: 44px;
+				top: 28px;
+				background: #ede9e3;
+				color: #1a1715;
+				font-size: 21px;
+				line-height: 1.4;
+				padding: 16px 26px;
+				border-radius: 20px 20px 6px 20px;
+				max-width: 560px;
+			}
+			.ask .url {
+				color: #7c5e44;
+			}
+			.reply {
+				position: absolute;
+				left: 44px;
+				right: 44px;
+				top: 112px;
+				bottom: 28px;
+				overflow: hidden;
+				background: #fff;
+				border: 1px solid #d4cfc7;
+				border-radius: 12px;
+				box-shadow: 0 24px 48px -24px rgba(26, 23, 21, 0.18);
+				padding: 30px 44px 0;
+				box-sizing: border-box;
+			}
+			.head {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				font-size: 13px;
+				letter-spacing: 0.03em;
+				color: #a09a92;
+				padding-bottom: 14px;
+				border-bottom: 1px solid #ede9e3;
+			}
+			.head .name {
+				color: #7c5e44;
+				font-weight: 500;
+			}
+			h2 {
+				margin: 20px 0 4px;
+				font-weight: 400;
+				font-size: 38px;
+				line-height: 1.1;
+				letter-spacing: -0.01em;
+			}
+			.sub {
+				font-size: 16px;
+				color: #6b6560;
+				margin: 0 0 2px;
+			}
+			ol {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				display: grid;
+				grid-template-columns: 36px 1fr;
+				gap: 16px;
+				padding: 18px 0;
+				border-top: 1px solid #ede9e3;
+			}
+			li:first-child {
+				border-top: 0;
+			}
+			li .n {
+				font-size: 13px;
+				color: #a68b70;
+				padding-top: 6px;
+			}
+			.chip {
+				display: inline-block;
+				font-size: 12px;
+				letter-spacing: 0.03em;
+				color: #6b6560;
+				background: #f7f4ef;
+				border: 1px solid #d4cfc7;
+				border-radius: 999px;
+				padding: 4px 11px;
+				margin-bottom: 8px;
+			}
+			.finding {
+				font-size: 21px;
+				line-height: 1.38;
+				color: #1a1715;
+				max-width: 960px;
+			}
+			.meta {
+				margin-top: 6px;
+				font-size: 13px;
+				color: #a09a92;
+				letter-spacing: 0.02em;
+			}
+			.meta .obj {
+				color: #5a7c52;
+			}
+			.meta .op {
+				color: #a68b70;
+			}
+			.more {
+				position: absolute;
+				left: 44px;
+				right: 44px;
+				bottom: 18px;
+				font-size: 13px;
+				color: #a09a92;
+				letter-spacing: 0.03em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ask">
+			Review my dental practice website: <span class="url">brightsmiles.example</span>
+		</div>
+		<div class="reply">
+			<div class="head mono">
+				<span><span class="name">Dental Website Review</span> · root.</span>
+				<span>11 pages read · 8 patients · phone and desktop</span>
+			</div>
+			<h2 class="serif">Fix these first.</h2>
+			<p class="sub">Three things that turn patients away today. The rest is further down.</p>
+			<ol>
+				<li>
+					<span class="n mono">01</span>
+					<div>
+						<span class="chip mono">Someone in pain, on a phone</span>
+						<div class="finding">
+							The emergency page shows the phone number as plain text. There is nothing to tap, and
+							no “call us tonight” line above the fold.
+						</div>
+						<div class="meta mono"><span class="obj">measured</span> · /emergency-dentist</div>
+					</div>
+				</li>
+				<li>
+					<span class="n mono">02</span>
+					<div>
+						<span class="chip mono">Someone checking insurance</span>
+						<div class="finding">
+							“We accept all insurance” and no plan names. Patients with Delta or Blue Cross can’t
+							tell, so they call, or they pick the practice that lists it.
+						</div>
+						<div class="meta mono"><span class="obj">measured</span> · /insurance</div>
+					</div>
+				</li>
+				<li>
+					<span class="n mono">03</span>
+					<div>
+						<span class="chip mono">A nervous patient</span>
+						<div class="finding">
+							No photo of Dr. Patel anywhere, and the “gentle care” line is the only mention of
+							anxiety. Nothing describes what the first visit is like.
+						</div>
+						<div class="meta mono"><span class="op">judgment</span> · /about-us, /services</div>
+					</div>
+				</li>
+			</ol>
+			<div class="more mono">+ 9 more findings, then three content drafts</div>
+		</div>
+	</body>
+</html>

@@ -18,7 +18,8 @@
 		"format": "prettier --write .",
 		"gen": "wrangler types",
 		"gen:og": "node scripts/generate-og.mjs",
-		"gen:post-images": "node scripts/generate-post-images.mjs"
+		"gen:post-images": "node scripts/generate-post-images.mjs",
+		"gen:resource-images": "node scripts/generate-resource-images.mjs"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.4",

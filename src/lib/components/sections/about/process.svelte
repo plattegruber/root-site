@@ -15,7 +15,7 @@ so the copy can stay conversational.
 		},
 		{
 			title: 'I do the homework',
-			text: 'I look at your current site, your Google Business Profile, your reviews, your area. I come back with a plan: what I’d build, what it’d look like, and why.'
+			text: 'I go through your current site the way a patient would, with the same framework behind Dental Website Review, plus your Google Business Profile, your reviews, and your area. I come back with what I’d fix or build, what it’d look like, and why.'
 		},
 		{
 			title: 'I build it',

@@ -1,6 +1,6 @@
 <!--
 @component
-Footer — brand, secondary nav, copyright.
+Footer — brand, secondary nav, copyright (in the name of the LLC that runs root.).
 
 Uses the same nav source as the header so a route added once shows in both
 places. Visible top border separates it from the page above.

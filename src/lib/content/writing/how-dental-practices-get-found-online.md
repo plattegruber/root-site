@@ -8,7 +8,7 @@ faq:
   - q: 'Do I need to pay for Google Ads to get found?'
     a: 'No. Ads can put you above the map pack, but they cost money for every click and stop the moment you stop paying. The map pack, your reviews, and your website are earned and keep working without a meter running. For most practices, get the free fundamentals right first and only consider ads if you need to fill a new operatory fast.'
   - q: "What's more important, my website or my Google Business Profile?"
-    a: 'For getting found, the Google Business Profile, by a wide margin — it''s what puts you in the map pack where most clicks happen. For converting the patient once they''ve found you, the website. They do different jobs. If you have to fix one first, fix the profile, then make sure the website doesn''t lose the patient it sends you.'
+    a: "For getting found, the Google Business Profile, by a wide margin — it's what puts you in the map pack where most clicks happen. For converting the patient once they've found you, the website. They do different jobs. If you have to fix one first, fix the profile, then make sure the website doesn't lose the patient it sends you."
   - q: 'How many Google reviews does a dental practice need?'
     a: "There's no magic number. Recency and a steady flow matter more than total count — a practice getting a few new reviews most weeks generally looks healthier to both Google and patients than one with a big old pile and nothing lately. Aim for a small consistent habit rather than a one-time push."
   - q: 'Should I worry about AI Overviews and ChatGPT hurting my traffic?'
@@ -22,7 +22,7 @@ That's the short version. The rest of this page is the detail — what each piec
 ## TL;DR — what actually gets a dental practice found
 
 - **The map pack is the prize.** Three local listings show up for nearly every "dentist near me" search, and they soak up a big chunk of the clicks — somewhere around 44% of all clicks on a local results page, more than the ads or the regular blue links. Your Google Business Profile is what gets you in there.
-- **Reviews do double duty.** They help you rank in the map pack *and* they're the thing patients read before they call. Recent reviews beat a big pile of old ones now.
+- **Reviews do double duty.** They help you rank in the map pack _and_ they're the thing patients read before they call. Recent reviews beat a big pile of old ones now.
 - **Your website is the closer, not the opener.** It rarely wins the search by itself, but it's where the patient decides whether to book. Slow, confusing, or mute about insurance, and you lose them.
 - **AI search is real but early.** AI Overviews and ChatGPT are starting to answer "find me a dentist" without a click. The good news: they mostly pull from the same Google Business Profile and reviews you'd be fixing anyway.
 - **You don't need ten channels.** Get the boring fundamentals right before anyone sells you on the eleventh thing.
@@ -80,7 +80,7 @@ Reviews are the rare thing that helps you twice. They're a ranking signal for th
 
 On the patient side, the numbers are lopsided. The large majority of patients read online reviews before choosing a dentist, and the average person reads roughly 10 of them before they feel settled. A growing share won't even consider a business below a certain star rating — a meaningful chunk now filters for 4.5 stars and up. A patient with a toothache is nervous and is using your reviews to decide whether you're safe. That's the job reviews are doing.
 
-On the ranking side, the thing that changed recently is *recency*. Google has shifted toward rewarding a steady flow of recent reviews over a big static total. A practice with 80 reviews and a new one most weeks now tends to outrank a practice with 200 reviews and nothing in the last six months. Reviews are treated a bit like freshness — a pile from 2022 says you were good in 2022.
+On the ranking side, the thing that changed recently is _recency_. Google has shifted toward rewarding a steady flow of recent reviews over a big static total. A practice with 80 reviews and a new one most weeks now tends to outrank a practice with 200 reviews and nothing in the last six months. Reviews are treated a bit like freshness — a pile from 2022 says you were good in 2022.
 
 What this means for you is unglamorous but simple: **ask, consistently.** Not a campaign, not a contest. A habit. The front desk asks a happy patient at checkout, or a short text goes out after the appointment with a direct link to your Google profile. Five a month, every month, beats forty in a burst and then silence.
 
@@ -90,7 +90,7 @@ A few honest don'ts: don't buy reviews, don't gate them (only asking happy patie
 
 ## Where does my website actually fit in all this?
 
-Here's the part that surprises people, given what I do for a living: your website usually doesn't win the search. The map pack and the reviews do. Your website is what closes the patient *after* they've found you.
+Here's the part that surprises people, given what I do for a living: your website usually doesn't win the search. The map pack and the reviews do. Your website is what closes the patient _after_ they've found you.
 
 Think of the path. Patient searches, sees the map pack, reads reviews, and then — to decide — clicks through to a website or two. That click is the moment your site earns its keep. And it's the moment a lot of dental sites quietly lose the patient.
 
@@ -110,7 +110,7 @@ You've probably noticed Google now writes its own answer at the top of some resu
 
 Here's the part that should get your attention. When an AI Overview appears, fewer people click anything at all. Across the web, a large share of searches now end without a click to any outside site — and that share jumps when an Overview is present. The Overview answered the question, so the patient never scrolls to the links. For an informational query, that's the patient getting their answer and moving on.
 
-So is it stealing patients? Mostly it's eating *informational* traffic — the "is a root canal painful" reader who was never going to book today anyway. The "dentist near me, I need an appointment" searcher still goes to the map pack, because the Overview can't book them an appointment. The map pack can.
+So is it stealing patients? Mostly it's eating _informational_ traffic — the "is a root canal painful" reader who was never going to book today anyway. The "dentist near me, I need an appointment" searcher still goes to the map pack, because the Overview can't book them an appointment. The map pack can.
 
 What you can do about it is less exotic than the vendors will tell you. AI Overviews assemble their answers from the same places that already matter: well-structured pages that clearly answer a specific question, your Google Business Profile, and your reviews. If your site has a plain page that genuinely answers "how much does a crown cost in [your town]," you have a shot at being one of the cited sources. If it has a vague "Services" page with a stock photo, you don't. The fundamentals and the AI strategy turn out to be the same fundamentals. That's a recurring theme here, and it's good news — it means you're not chasing two separate things.
 
@@ -152,7 +152,7 @@ No. Ads can put you above the map pack, but they cost money for every click and 
 
 **What's more important, my website or my Google Business Profile?**
 
-For getting *found*, the Business Profile, by a wide margin — it's what puts you in the map pack where most clicks happen. For *converting* the patient once they've found you, the website. They do different jobs. If you have to fix one first, fix the profile, then make sure the website doesn't lose the patient it sends you.
+For getting _found_, the Business Profile, by a wide margin — it's what puts you in the map pack where most clicks happen. For _converting_ the patient once they've found you, the website. They do different jobs. If you have to fix one first, fix the profile, then make sure the website doesn't lose the patient it sends you.
 
 **How many Google reviews does a dental practice need?**
 

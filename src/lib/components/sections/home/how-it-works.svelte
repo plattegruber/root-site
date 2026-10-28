@@ -3,7 +3,7 @@
 How it works — three steps, deliberately short.
 
 Building the site is not a six-week agency engagement, so it doesn't read
-like one. "We keep taking care of it" lands last because it's the product.
+like one. "I keep taking care of it" lands last because it's the product.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -11,16 +11,16 @@ like one. "We keep taking care of it" lands last because it's the product.
 
 	const steps = [
 		{
-			term: 'Show us your practice',
-			text: 'We learn about the practice, the team, your patients, and what makes the place different. You don’t need a brief.'
+			term: 'Show me your practice',
+			text: 'I learn about the practice, the team, your patients, and what makes the place different. You don’t need a brief.'
 		},
 		{
-			term: 'We build the site',
+			term: 'I build the site',
 			text: 'Design, copy, development, launch, and Google setup. You see drafts along the way, and nothing goes live without your okay.'
 		},
 		{
-			term: 'We keep taking care of it',
-			text: 'When hours change, a new hygienist joins, you add a service, or something needs updating, tell us. We handle it.'
+			term: 'I keep taking care of it',
+			text: 'When hours change, a new hygienist joins, you add a service, or something needs updating, tell me. I handle it.'
 		}
 	];
 </script>

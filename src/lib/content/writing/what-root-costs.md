@@ -1,30 +1,30 @@
 ---
 title: "What root Costs, and What's Included"
 date: 2026-08-17
-updated: 2026-09-16
+updated: 2026-10-27
 excerpt: A straight breakdown of the number — what it covers, what it costs me, why there's no setup fee or contract, the founding offer, and who it's the wrong choice for.
 faq:
   - q: 'What does root cost?'
-    a: '$149 a month, flat. No setup fee, no contract, no per-page or per-edit charges. While the founding offer is open, the first ten practices get the same service for $100 a month, locked in for as long as they stay.'
-  - q: 'What does the $149 a month include?'
-    a: 'The custom build, hosting, SSL, speed and security, every edit you ask for, and ongoing management of your Google Business Profile. If your hours change or a provider leaves or you drop an insurance plan, you email me and I change it — usually the same day — on the site and on Google.'
+    a: '$249 a month, flat. No setup fee, no contract, no per-page or per-edit charges. While the founding offer is open, the first ten practices get the same service for $100 a month, locked in for as long as they stay.'
+  - q: 'What does the $249 a month include?'
+    a: 'The custom build, hosting, SSL, speed and security, every edit you ask for, ongoing management of your Google Business Profile, and, if you want them, articles for your site that a practicing dentist reads for accuracy before you approve them. If your hours change or a provider leaves or you drop an insurance plan, you email me and I change it — usually the same day — on the site and on Google.'
   - q: 'What is the founding offer?'
-    a: 'The first ten practices to sign on get everything root does for $100 a month instead of $149, and that price never goes up for as long as they remain customers. It is the same service, not a reduced tier.'
+    a: 'The first ten practices to sign on get everything root does for $100 a month instead of $249, and that price never goes up for as long as they remain customers. It is the same service, not a reduced tier.'
   - q: 'Why is there no setup fee?'
     a: "Because a setup fee makes leaving expensive, and I'd rather it be cheap. If you pay four thousand dollars up front, you're going to stay with me whether I'm doing good work or not. A flat monthly with no contract means I have to keep earning it. That's the arrangement I want to be in."
-  - q: 'Is $149 a month cheap for a dental website?'
-    a: "It's low for the monthly and very low for the total. Published dental vendor prices run from $89 to $800 a month, but the lower ones carry setup fees of $2,000–$4,000, cap your edits, and don't touch your Google Business Profile. What's genuinely unusual isn't the price — it's that there's no contract and no setup fee, so the total cost of trying it is one month."
+  - q: 'Is $249 a month cheap for a dental website?'
+    a: "It's mid-range for the monthly and low for the total. Published dental vendor prices run from $89 to $800 a month, but the lower ones carry setup fees of $2,000–$4,000, cap your edits, and don't touch your Google Business Profile. What's genuinely unusual isn't the price — it's that there's no contract and no setup fee, so the total cost of trying it is one month."
   - q: 'What happens if I want to leave?'
     a: "You email me and stop paying. The domain is already in your account under your name. I hand over the files and help move things wherever you're going. There's no notice period, no termination fee, and nothing you owe for the remainder of a term, because there isn't a term."
-  - q: 'What is not included in the $149?'
+  - q: 'What is not included in the $249?'
     a: "Paid advertising and the ad spend behind it, professional photography, video production, and printed materials. Replying to your Google reviews also stays with you — they land better in your voice — though I'll show you how. I'll advise on all of it, but I don't run ad campaigns and I'd be suspicious of a web person who did both."
 ---
 
-$149 a month covers the build, the hosting, the security, every edit you ever ask for, and the upkeep of your Google Business Profile. No setup fee, no contract, no per-page charges. You can cancel any month and take the site with you.
+$249 a month covers the build, the hosting, the security, every edit you ever ask for, the upkeep of your Google Business Profile, and articles for the site if you want them. No setup fee, no contract, no per-page charges. You can cancel any month and take the site with you.
 
 While the founding offer is open, the first ten practices get all of that for $100 a month, and the price stays there for as long as they remain customers. Same service, not a reduced tier.
 
-The honest arithmetic behind the number: hosting and security for a small dental site cost me somewhere between nothing and twenty dollars a month. Everything else is my time. At the rate US web design firms typically bill — $100 to $149 an hour — $149 buys about an hour to an hour and a half of professional attention a month. That's an awkward amount to sell, which is why most of the industry doesn't. It's also about what a single-location practice actually needs, because most months are a handful of edits and a check on the Google listing, and I've built the process so those take minutes rather than hours.
+The honest arithmetic behind the number: hosting and security for a small dental site cost me somewhere between nothing and twenty dollars a month. Everything else is my time. At the rate US web design firms typically bill — $100 to $149 an hour — $249 buys about two hours of professional attention a month. That's an awkward amount to sell, which is why most of the industry doesn't. It's also about what a single-location practice actually needs: most months are a handful of edits, a check on the Google listing, and an article or two, and I've built the process so the edits take minutes rather than hours and the hours go to the work that needs a person.
 
 ## What the number covers
 
@@ -32,6 +32,7 @@ The honest arithmetic behind the number: hosting and security for a small dental
 - **Hosting, SSL, speed, security.** Handled. You never see it.
 - **Every edit.** Hours, staff changes, insurance list, a new service, a typo you noticed. You email me, I do it.
 - **Your Google Business Profile.** Kept accurate and complete — hours, services, categories, photos, and the fixes when Google gets something wrong — with the same email-me arrangement as the site.
+- **Articles, if you want them.** Plain-language answers to what patients search for, drafted with AI assistance, read by a practicing dentist for accuracy, approved by you. Optional. No content add-on.
 - **No setup fee.** Nothing up front.
 - **No contract.** Month to month, cancel whenever.
 
@@ -58,7 +59,7 @@ I'd rather show you than assert it.
 
 There's no clever margin hiding in the infrastructure, because there's no margin available in it. Static hosting is close to free now and SSL has been free for years. When a vendor itemizes "hosting and security" at $89 a month, they're describing labor and calling it a utility.
 
-I'd rather just say it's labor. The website and the Google listing together are a small ongoing job — a few changes a month, an eye on speed, a look at what Google has quietly altered, occasional restructuring when the practice changes — and $149 is what that job is worth to do properly and unhurriedly. I built the pricing around the work, not around what the market would bear.
+I'd rather just say it's labor. The website and the Google listing together are a small ongoing job — a few changes a month, an eye on speed, a look at what Google has quietly altered, occasional restructuring when the practice changes, an article when there's something worth answering — and $249 is what that job is worth to do properly and unhurriedly. I built the pricing around the work, not around what the market would bear.
 
 ## Why flat, and why no setup fee
 
@@ -66,7 +67,7 @@ Most dental website companies charge $2,000 to $4,000 up front and then $89 to $
 
 The problem is what it does to the relationship afterward. Once you've paid four thousand dollars, you are going to stay, because leaving means writing off four thousand dollars. The vendor knows this. It's why edit requests start taking a week around month eighteen.
 
-A setup fee is a switching cost, and switching costs are how mediocre service survives. So I don't charge one. If I stop being worth $149 a month, you should leave, and the only thing that should make that hard is that you'd rather I didn't.
+A setup fee is a switching cost, and switching costs are how mediocre service survives. So I don't charge one. If I stop being worth $249 a month, you should leave, and the only thing that should make that hard is that you'd rather I didn't.
 
 The flat part matters for a smaller reason: I don't want you hesitating before you email me. Vendors who charge per edit — one publishes $99 per additional content page and $50 per page migration — have created a system where you think twice about fixing your own website. Then the hours on the site are wrong for four months. That costs you more than the $99 would have.
 
@@ -116,7 +117,7 @@ That's the honest scope of what I'm selling. It's a real job and it matters, but
 - **Anyone who wants a big agency's process.** There are no account managers, no strategy decks, no quarterly reviews. There's me and an email address. Some people want the process, and that's a legitimate thing to want.
 - **Practices needing complex integrations.** If you need deep custom work with your practice management software, you may need a developer on retainer rather than a flat monthly.
 
-If you own and run your own practice and your website is a thing you'd like handled rather than a project you want to run, that's who this is built for. [What dental marketing really costs](https://root.site/writing/what-dental-marketing-really-costs) puts the $149 in context against everything else you might spend on.
+If you own and run your own practice and your website is a thing you'd like handled rather than a project you want to run, that's who this is built for. [What dental marketing really costs](https://root.site/writing/what-dental-marketing-really-costs) puts the $249 in context against everything else you might spend on.
 
 Happy to walk you through it if you're curious. [Get in touch](https://root.site/#contact) — no pressure either way.
 

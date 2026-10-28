@@ -1,14 +1,14 @@
 ---
 title: 'Why I Only Build Websites for Dental Practices'
 date: 2026-07-06
-updated: 2026-09-16
+updated: 2026-10-27
 excerpt: "I'm Platte, and I build websites for one kind of business: dental practices. Here's why I turned down every other industry — and what focus buys you."
 faq:
   - q: 'Do you really only build websites for dentists?'
     a: 'Yes. Independent dental practices only — general and specialty, owned and run by the dentist. No other industries, and no multi-location groups or DSOs. Turning down everything else is what lets me be good at this one thing.'
   - q: 'Are you a big agency or a marketing company?'
     a: "Neither. root. is one person: me, Platte. You'll always talk to the person who builds and maintains your site. No account managers, no ticket queue."
-  - q: 'Why is it a flat $149/month instead of a big one-time fee?'
+  - q: 'Why is it a flat $249/month instead of a big one-time fee?'
     a: 'Because a website isn''t "done" the day it launches. Providers change, hours change, Google changes its mind about speed. The monthly covers hosting, security, updates, edits, and keeping your Google Business Profile current, so nothing goes stale and there are no surprise invoices. No setup fee, no contract, cancel anytime.'
   - q: 'What if I already have a website?'
     a: 'Then reply and tell me the URL. I''ll look at it and tell you honestly whether it needs a rebuild or just a few fixes. Sometimes the answer is "keep what you have," and I''ll say so.'
@@ -24,7 +24,7 @@ I'm Platte. I run root. by myself. Below is the honest version of why I picked t
 
 - **I build websites for dental practices, and nothing else.** No restaurants, no gyms, no "we also do logos."
 - **Focus compounds.** After enough dental sites, I already know the insurance page, the new-patient form, the emergency section, and the local SEO that actual patients use.
-- **You get a specialist for the price of a generalist.** Flat $149/month, custom build, no setup fee, no contract, edits and Google Business Profile management included.
+- **You get a specialist for the price of a generalist.** Flat $249/month, custom build, no setup fee, no contract, edits and Google Business Profile management included.
 - **This isn't a bigger agency in disguise.** It's one person who answers his own email.
 
 ## Why focus on one industry at all?
@@ -50,7 +50,7 @@ A generalist can learn all of this. They just learn it on your dime, once. I lea
 
 Usually, yes. Specialists tend to charge more precisely because they know the field ([about:insider](https://aboutinsider.com/why-you-should-choose-a-niche-web-design-agency-over-a-generalist/)). That's the normal trade-off, and it's the one I decided not to make.
 
-root. is a flat **$149 a month**. Custom design, built by hand, no setup fee, no contract, cancel anytime. Hosting, speed, security, edits, and the upkeep of your Google Business Profile are included. You email me when something needs to change, and I change it. That's the entire arrangement. ([Here's the full breakdown of the number.](/writing/what-root-costs))
+root. is a flat **$249 a month**. Custom design, built by hand, no setup fee, no contract, cancel anytime. Hosting, speed, security, edits, and the upkeep of your Google Business Profile are included. You email me when something needs to change, and I change it. That's the entire arrangement. ([Here's the full breakdown of the number.](/writing/what-root-costs))
 
 So you get the specialist part — someone who's built this exact thing many times — without the specialist invoice. The reason I can do that is the same reason this whole page exists: focus. I'm not spending my week context-switching between industries, learning new tools for a one-off client, or staffing a sales team. I build dental sites. The efficiency of doing one thing is what keeps the price flat.
 
@@ -73,7 +73,7 @@ Part of focus is saying no. So, plainly:
 - I don't do "patient acquisition strategies." I build a clear website. Clear websites acquire patients.
 - I don't sell you a chatbot, a purple bubble in the corner, or a dashboard you'll never open.
 - I don't build for other industries. If your cousin runs a bakery and needs a site, I'm genuinely not your person. I'll wish him well.
-- I don't lock you in. No contract means I keep earning the $149 every month or you leave. That keeps me honest.
+- I don't lock you in. No contract means I keep earning the $249 every month or you leave. That keeps me honest.
 
 ## How focus shows up in the actual work
 
@@ -93,7 +93,7 @@ Yes. Independent dental practices only — general and specialty, owned and run 
 
 Neither. root. is one person: me, Platte. You'll always talk to the person who builds and maintains your site. No account managers, no ticket queue.
 
-### Why is it a flat $149/month instead of a big one-time fee?
+### Why is it a flat $249/month instead of a big one-time fee?
 
 Because a website isn't "done" the day it launches. Providers change, hours change, Google changes its mind about speed. The monthly covers hosting, security, updates, edits, and keeping your Google Business Profile current, so nothing goes stale and there are no surprise invoices. No setup fee, no contract, cancel anytime.
 

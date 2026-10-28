@@ -1,6 +1,6 @@
 <!--
 @component
-Button — primary, secondary, secondaryDark, and ghost variants matching the
+Button — primary, primaryDark, secondary, secondaryDark, and ghost variants matching the
 root. design system. `secondaryDark` is the outline button for ink bands,
 where `secondary`'s charcoal-on-stone would disappear.
 
@@ -28,6 +28,9 @@ Examples:
 		variants: {
 			variant: {
 				primary: 'bg-root text-cream border-root hover:bg-root-dark hover:border-root-dark',
+				// The hero button: on the ink band the leather `primary` melts into the
+				// background, so the first ask on the page is cream with ink text.
+				primaryDark: 'bg-cream text-ink border-cream hover:bg-white hover:border-white',
 				secondary: 'bg-transparent text-charcoal border-stone hover:border-clay',
 				secondaryDark:
 					'bg-transparent text-drift border-drift/40 hover:text-cream hover:border-drift',

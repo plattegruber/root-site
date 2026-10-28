@@ -22,6 +22,7 @@ deal, not a discount brand.
 		'Maintenance',
 		'Website updates',
 		'Google Business Profile management',
+		'Articles reviewed by a dentist (optional)',
 		'Local SEO fundamentals',
 		'Analytics',
 		'Human support'
@@ -94,7 +95,7 @@ deal, not a discount brand.
 
 						<div class="flex flex-col gap-4">
 							<p class={para}>
-								We’re rebuilding root around independent solo practices. The first {founding.limit}
+								I’m rebuilding root around independent solo practices. The first {founding.limit}
 								practices get the complete service for ${founding.monthly} a month, locked in for as long
 								as they remain customers.
 							</p>

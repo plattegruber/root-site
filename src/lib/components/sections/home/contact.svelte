@@ -11,6 +11,8 @@ content blockers, hospital networks).
 
 Fields: name and email are required; practice name, current website,
 location, and a free-text note are optional so the form stays low-friction.
+The intro asks for the website address because the reply includes a
+hand-done look at it (see final-cta.svelte).
 -->
 <script lang="ts">
 	import { Button, FormField } from '$lib/components/ui';
@@ -76,14 +78,15 @@ location, and a free-text note are optional so the form stays low-friction.
 			{#if submitted}
 				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">Got it.</h2>
 				<p class="m-0 font-sans text-[17px] leading-[1.6] text-drift">
-					We’ll be in touch within a day, usually sooner.
+					I’ll be in touch within a day, usually sooner.
 				</p>
 			{:else}
 				<h2 class="mb-4 font-serif text-[28px] leading-[1.25] font-normal text-cream">
-					Tell us about your practice.
+					Tell me about your practice.
 				</h2>
 				<p class="mb-8 max-w-[440px] font-sans text-[17px] leading-[1.6] text-drift">
-					A name and an email is enough. The rest helps us come back with something specific.
+					A name and an email is enough. Add your website and I’ll go through it before I write
+					back.
 				</p>
 
 				<form
@@ -150,7 +153,7 @@ location, and a free-text note are optional so the form stays low-friction.
 					<FormField
 						dark
 						name="message"
-						label="Anything you want us to know"
+						label="Anything you want me to know"
 						multiline
 						rows={4}
 						placeholder="Optional"
@@ -170,7 +173,7 @@ location, and a free-text note are optional so the form stays low-friction.
 
 				<div class="mt-10 border-t border-cream/8 pt-6">
 					<p class="m-0 font-sans text-[15px] leading-[1.55] text-drift">
-						Or just email us:
+						Or just email me:
 						<a
 							href="mailto:{site.email}"
 							class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
@@ -179,7 +182,7 @@ location, and a free-text note are optional so the form stays low-friction.
 						</a>
 					</p>
 					<p class="mt-2 font-sans text-[15px] leading-[1.55] text-drift">
-						We’ll get back to you within a day, usually sooner.
+						I’ll get back to you within a day, usually sooner.
 					</p>
 				</div>
 			{/if}

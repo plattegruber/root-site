@@ -4,3 +4,4 @@ export { default as MarginRow } from './margin-row.svelte';
 export { default as Reveal } from './reveal.svelte';
 export { default as Icon } from './icon.svelte';
 export type { IconName } from './icon.svelte';
+export { default as Prose } from './prose.svelte';

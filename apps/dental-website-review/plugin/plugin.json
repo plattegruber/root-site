@@ -15,7 +15,7 @@
 		"com.openai": {
 			"interface": {
 				"displayName": "Dental Website Review",
-				"shortDescription": "Dental website assessment for dentists and their developers",
+				"shortDescription": "Review a dental practice site",
 				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. ChatGPT maps the site, reads the pages it judges relevant, and checks the phone experience (page text, links, forms and where they submit, advertising and session-replay trackers, structured data, and phone-width browser measurements); the review follows root.site’s guide to the eight patient personas and what makes a good dental website, including privacy risks like ad pixels on appointment forms. Each finding says what was observed and whether it is a judgement, with a plain-language line for the practice owner and a concrete fix for the developer. Public pages only; no forms submitted, no accounts, no score.",
 				"developerName": "root.site",
 				"category": "Productivity",

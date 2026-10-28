@@ -68,17 +68,16 @@ business/site assessment, not diagnosis/treatment. It requests no patient record
 adds no unverified clinical claims, and requires owner/clinical copy approval.
 No accessibility certification, rankings or patient/clinical outcomes are promised.
 
-## Remaining release setup (not authorized here)
+## Submission checklist
 
-1. Select an isolated staging host for Node/Chromium, egress, abuse limits, HTTPS
-   and staging authentication. Do not change the production Worker.
-2. Replace planned URLs with approved working publisher-controlled destinations;
-   publish accurate support/privacy/terms only after hosting authorization.
-3. Verify root.site’s publisher identity and endpoint domain in the OpenAI portal.
-4. Register in developer mode, run desktop/mobile and all review cases in actual
-   ChatGPT, and record a walkthrough.
-5. Upload a corrected ZIP, resolve scans and submit only when separately
-   authorized. Publishing requires separate authorization.
+Rechecked against the submission page on 2026-10-27.
 
-The user excludes public publishing/production changes. No deployment, DNS,
-directory submission or public legal-page write is part of this change.
+1. Verify the publisher identity (Ook Studio) in OpenAI Platform organization settings.
+2. Publish the four listing pages on root.site (`/dental-website-review`, `/support`,
+   `/privacy`, `/terms`); they must identify the same publisher.
+3. `pnpm package:plugin`, then upload the ZIP and connect the MCP server; resolve scan
+   findings.
+4. Set the portal's domain challenge as the `OPENAI_APPS_CHALLENGE` Fly secret; it is
+   served at `https://website-review.root.site/.well-known/openai-apps-challenge`.
+5. Run the [review cases](review-cases.md) in ChatGPT, record the walkthrough video,
+   add release notes, submit, then publish once approved.

@@ -1,7 +1,9 @@
 # Review cases
 
-Test cases for OpenAI's plugin review, in the format the dashboard asks for: a scenario, a
-prompt, the tools ChatGPT should call, and the expected result. Run each one in ChatGPT with
+Test cases for OpenAI's plugin review. The portal reads them from the ZIP, so the source of
+truth is `extensions.com.openai.review.test_cases` in `plugin/plugin.json`; this page is the
+readable copy, and the two must be kept in step. Each case has a scenario, a prompt, the
+tools ChatGPT should call, and the expected result. Run each one in ChatGPT with
 the plugin connected before submitting, and record them for the walkthrough video. The
 plugin needs no sign-in, so there are no reviewer credentials.
 

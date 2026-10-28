@@ -5,7 +5,8 @@ import { spawnSync } from 'node:child_process';
 // (https://developers.openai.com/plugins/deploy/submission), then zips plugin/.
 const manifest = JSON.parse(readFileSync('plugin/plugin.json', 'utf8'));
 const mcp = JSON.parse(readFileSync('plugin/mcp.json', 'utf8'));
-const ui = manifest.extensions['com.openai'].interface;
+const openai = manifest.extensions['com.openai'];
+const ui = openai.interface;
 const problems = [];
 
 for (const p of [
@@ -26,6 +27,14 @@ if (ui.shortDescription.length > 30) problems.push('shortDescription is over 30 
 if (ui.longDescription.length > 4000) problems.push('longDescription is over 4000 characters.');
 for (const key of ['websiteURL', 'supportURL', 'privacyPolicyURL', 'termsOfServiceURL'])
 	if (!String(ui[key] ?? '').startsWith('https://')) problems.push(`${key} must be an HTTPS URL.`);
+const cases = openai.review?.test_cases ?? {};
+if (cases.positive?.length !== 5) problems.push('Review needs exactly 5 positive test cases.');
+if (cases.negative?.length !== 3) problems.push('Review needs exactly 3 negative test cases.');
+for (const c of cases.positive ?? [])
+	if (!c.prompt || !c.tools_triggered || !c.expected_behavior)
+		problems.push(
+			`Positive case is missing prompt, tools_triggered or expected_behavior: ${c.description}`
+		);
 if (problems.length) {
 	console.error(problems.map((p) => `- ${p}`).join('\n'));
 	process.exit(1);
@@ -41,4 +50,8 @@ const result = spawnSync(
 	{ cwd: 'plugin', stdio: 'inherit' }
 );
 if (result.status !== 0) throw new Error('ZIP creation failed (install the zip command).');
+if (!openai.review?.demo_recording_url)
+	console.warn(
+		'No review.demo_recording_url yet: the portal needs a walkthrough video before submission.'
+	);
 console.log(`Created ${output}. Upload it in the OpenAI Platform plugin dashboard.`);

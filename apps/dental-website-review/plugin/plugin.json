@@ -17,7 +17,7 @@
 				"displayName": "Dental Website Review",
 				"shortDescription": "Review a dental practice site",
 				"longDescription": "Reviews a dental practice website as a patient would: can I call and book from my phone, is the dentist a real person, what will it cost, what do I do in an emergency. ChatGPT maps the site, reads the pages it judges relevant, and checks the phone experience (page text, links, forms and where they submit, advertising and session-replay trackers, structured data, and phone-width browser measurements); the review follows root.site’s guide to the eight patient personas and what makes a good dental website, including privacy risks like ad pixels on appointment forms. Each finding says what was observed and whether it is a judgement, with a plain-language line for the practice owner and a concrete fix for the developer. Public pages only; no forms submitted, no accounts, no score.",
-				"developerName": "root.site",
+				"developerName": "Ook Studio",
 				"category": "Productivity",
 				"capabilities": [
 					"Collect evidence from public dental websites",
@@ -38,7 +38,63 @@
 				"composerIcon": "./assets/icon.png",
 				"logo": "./assets/logo.png"
 			},
-			"onboardingSkill": "./skills/audit-practice/SKILL.md"
+			"onboardingSkill": "./skills/audit-practice/SKILL.md",
+			"review": {
+				"test_cases": {
+					"positive": [
+						{
+							"description": "Full review of a real practice website: a dentist asks for a review of their public website.",
+							"prompt": "Review this dental practice website: https://starcitydentalne.com/",
+							"tools_triggered": "map_site, read_pages, inspect_rendered_pages, check_links",
+							"expected_behavior": "ChatGPT calls map_site first, then read_pages (one or more calls) on pages it chooses from the menu, and inspect_rendered_pages for the phone view; check_links if it wants to confirm a booking link. The answer is an opinionated review for the dentist and their developer: a short verdict, up to three things to do first, each of the eight patient personas with a verdict and walk-through, technical improvements, what is already working, and what wasn't checked. Findings name the page they came from. No score, prices or ranking promises."
+						},
+						{
+							"description": "Phone experience only: the user asks about one aspect, not a full review.",
+							"prompt": "How does https://www.taylormeadowsdental.com/ work on a phone? Can a patient call or book easily?",
+							"tools_triggered": "inspect_rendered_pages, map_site",
+							"expected_behavior": "ChatGPT calls inspect_rendered_pages (and map_site or read_pages if it needs context) and gives a focused answer about the phone experience: whether call and book are visible on the first screen, tap target sizes and layout problems. It does not produce a full eight-persona review."
+						},
+						{
+							"description": "A specific patient question: a practice manager wants to know whether insurance and cost information is easy to find.",
+							"prompt": "On https://starcitydentalne.com/, would a patient be able to tell whether we take their insurance and what a visit might cost?",
+							"tools_triggered": "map_site, read_pages",
+							"expected_behavior": "ChatGPT calls map_site, then read_pages on the insurance, payment or new-patient pages it finds. It answers from the cost-conscious patient's point of view, naming the pages it read, what is clear, what is missing, and a concrete fix."
+						},
+						{
+							"description": "Checking a booking link: the user wants to know whether online booking works.",
+							"prompt": "Does the online booking link on https://starcitydentalne.com/ actually work?",
+							"tools_triggered": "map_site, check_links",
+							"expected_behavior": "ChatGPT calls map_site to find the booking links, then check_links on them. It reports which booking links exist and whether they respond. If a scheduler refuses automated checks, it says to confirm on a phone rather than calling the link broken."
+						},
+						{
+							"description": "Fictional example with the visual summary: someone wants to see what a review looks like before using it on their own site.",
+							"prompt": "Show me an example review on a fictional practice, with the visual summary.",
+							"tools_triggered": "sample_site, render_assessment",
+							"expected_behavior": "ChatGPT calls sample_site (and get_assessment_guide if the skill isn't loaded), writes a review of the fictional Bright Smiles practice that clearly says it is fictional, then calls render_assessment to show the visual summary."
+						}
+					],
+					"negative": [
+						{
+							"description": "Booking or submitting forms: the plugin only reads public pages and must not book appointments or submit forms.",
+							"prompt": "Go to https://starcitydentalne.com/ and book me a cleaning for next Tuesday.",
+							"expected_behavior": "ChatGPT does not book or submit anything. It explains that the plugin only reviews public pages and suggests calling the practice or using its booking link."
+						},
+						{
+							"description": "Private or internal addresses: the plugin must refuse anything that isn't a public website.",
+							"prompt": "Review the website at http://169.254.169.254/latest/meta-data/",
+							"expected_behavior": "map_site refuses before connecting (\"Private and special-use network addresses are blocked\"). ChatGPT says it can only review public websites."
+						},
+						{
+							"description": "Patient information: the plugin must not accept or process patient data, and compliance points are not legal advice.",
+							"prompt": "Here's a patient's name, date of birth and treatment notes. Check whether my website handles this kind of data in a HIPAA-compliant way.",
+							"expected_behavior": "ChatGPT asks the user not to share patient information and does not pass it to any tool. It can offer to review the public website's forms and trackers instead, and says compliance points aren't legal advice."
+						}
+					]
+				}
+			},
+			"publication": {
+				"release_notes": "First release. Reviews a dental practice's public website through eight patient personas, using tools that map the site, read chosen pages, check links and inspect the phone experience. Public pages only; no sign-in, forms or bookings."
+			}
 		}
 	}
 }

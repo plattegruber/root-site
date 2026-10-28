@@ -9,8 +9,8 @@
 <Prose>
 	<p>
 		These terms apply to Dental Website Review, a ChatGPT plugin made by root., which is operated by
-		Ook Studio (“we”). By using the plugin you agree to them. Your use of ChatGPT itself is covered
-		by OpenAI’s terms.
+		Ook Studio LLC (“we”). By using the plugin you agree to them. Your use of ChatGPT itself is
+		covered by OpenAI’s terms.
 	</p>
 
 	<h2>What the service is</h2>
@@ -31,13 +31,17 @@
 		<li>Use it for anything unlawful.</li>
 	</ul>
 
-	<h2>Reviews are opinions, not advice</h2>
+	<h2>Informational only</h2>
 	<p>
 		Reviews are written by ChatGPT using our tools and guidance. They are general information about
-		a website and can be wrong or incomplete. They are not legal, regulatory, medical, financial or
-		other professional advice, and they don’t guarantee any search ranking, number of patients or
-		other result. Check anything important, especially privacy, accessibility and advertising
-		points, with a qualified adviser or your state dental board before acting on it.
+		a website, for discussion with the people who look after it, and they can be wrong or
+		incomplete. They are not legal, regulatory, medical, financial or other professional advice, and
+		they don’t guarantee any search ranking, number of patients or other result.
+	</p>
+	<p>
+		Have a qualified person, such as your web developer, a lawyer or your state dental board, review
+		anything in a review before you act on it, especially privacy, accessibility and advertising
+		points. You are responsible for any decision or change you make based on a review.
 	</p>
 
 	<h2>No warranty</h2>
@@ -51,8 +55,8 @@
 	<p>
 		To the extent the law allows, we aren’t liable for any indirect, incidental, special,
 		consequential or punitive damages, or for lost profits, revenue, data or goodwill, arising from
-		your use of the plugin or its reviews. Because the service is free, our total liability for any
-		claim relating to it is limited to $50.
+		your use of the plugin or its reviews. Because the service is free and informational only, our
+		total liability for all claims relating to it is limited to $10.
 	</p>
 
 	<h2>Websites and other services</h2>
@@ -76,10 +80,10 @@
 	</p>
 
 	<h2>Governing law</h2>
-	<p>These terms are governed by the laws of the State of Colorado, USA.</p>
+	<p>These terms are governed by the laws of the State of Nebraska, USA.</p>
 
 	<h2>Contact</h2>
 	<p>
-		Ook Studio, operating root. — <a href="mailto:{site.email}">{site.emailDisplay}</a>
+		Ook Studio LLC, operating root. — <a href="mailto:{site.email}">{site.emailDisplay}</a>
 	</p>
 </Prose>

@@ -9,8 +9,8 @@
 <Prose>
 	<p>
 		This policy covers Dental Website Review, a ChatGPT plugin made by root., which is operated by
-		Ook Studio (“we”). It explains what the plugin receives when you use it, what we keep, and who
-		else is involved. It doesn’t cover the rest of root.site or ChatGPT itself.
+		Ook Studio LLC (“we”). It explains what the plugin receives when you use it, what we keep, and
+		who else is involved. It doesn’t cover the rest of root.site or ChatGPT itself.
 	</p>
 
 	<h2>The short version</h2>
@@ -107,6 +107,6 @@
 
 	<h2>Contact</h2>
 	<p>
-		Ook Studio, operating root. — <a href="mailto:{site.email}">{site.emailDisplay}</a>
+		Ook Studio LLC, operating root. — <a href="mailto:{site.email}">{site.emailDisplay}</a>
 	</p>
 </Prose>

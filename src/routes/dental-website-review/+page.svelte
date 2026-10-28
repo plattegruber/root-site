@@ -52,7 +52,7 @@
 	<h2>Who makes it</h2>
 	<p>
 		Dental Website Review is made by root., a web studio that builds websites for independent dental
-		practices. root. is operated by Ook Studio. Questions go to
+		practices. root. is operated by Ook Studio LLC. Questions go to
 		<a href="mailto:{site.email}">{site.emailDisplay}</a>.
 	</p>
 	<p>

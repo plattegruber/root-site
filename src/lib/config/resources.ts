@@ -77,7 +77,7 @@ export const resources: Resource[] = [
 		kind: 'Free ChatGPT plugin',
 		nameSuffix: 'for ChatGPT',
 		tagline:
-			'A free ChatGPT plugin that reads your website as eight kinds of patient, then says what to fix first.',
+			'Ask ChatGPT to read your website the way patients do, then tell you what to fix first.',
 		blurb:
 			'Ask ChatGPT to go through a dental practice’s website the way patients do, from someone in pain on a phone to someone checking insurance, and say what to fix first. It is the same framework we use on every site we build or review, and it costs nothing to run.',
 		details: [

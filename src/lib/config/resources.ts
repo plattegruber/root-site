@@ -19,8 +19,10 @@ export type Resource = {
 	id: string;
 	/** Name as it appears on the tool itself. */
 	name: string;
-	/** Short kicker line, e.g. "ChatGPT plugin". */
+	/** Short kicker line, e.g. "Free ChatGPT plugin". */
 	kind: string;
+	/** Optional qualifier shown after the name in the heading, in a lighter tone, e.g. "for ChatGPT". Not part of the tool's name. */
+	nameSuffix?: string;
 	/** One line under the name: the promise, in plain words. */
 	tagline: string;
 	/** Two or three sentences: what it does and where it came from. */
@@ -72,8 +74,10 @@ export const resources: Resource[] = [
 	{
 		id: 'dental-website-review',
 		name: 'Dental Website Review',
-		kind: 'ChatGPT plugin',
-		tagline: 'Your website, read by eight kinds of patient. Then: what to fix first.',
+		kind: 'Free ChatGPT plugin',
+		nameSuffix: 'for ChatGPT',
+		tagline:
+			'A free ChatGPT plugin that reads your website as eight kinds of patient, then says what to fix first.',
 		blurb:
 			'Ask ChatGPT to go through a dental practice’s website the way patients do, from someone in pain on a phone to someone checking insurance, and say what to fix first. It is the same framework we use on every site we build or review, and it costs nothing to run.',
 		details: [

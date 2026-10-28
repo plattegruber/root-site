@@ -17,6 +17,7 @@ today.
 <script lang="ts">
 	import { Button, Container } from '$lib/components/ui';
 	import type { Resource } from '$lib/config/resources';
+	import { track } from '$lib/analytics';
 	import { cn } from '$lib/utils';
 
 	type Props = { tool: Resource; index: number; flip?: boolean; tight?: boolean };
@@ -103,6 +104,7 @@ today.
 							href={tool.href}
 							target={external ? '_blank' : undefined}
 							rel={external ? 'noopener noreferrer' : undefined}
+							onclick={() => track('resource_opened', { resource: tool.id, external })}
 						>
 							{tool.cta}
 							<span aria-hidden="true">{external ? '↗' : '→'}</span>

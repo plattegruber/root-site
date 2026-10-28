@@ -15,6 +15,7 @@ walk-through belongs on /demos, not here.
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
 	import { demos } from '$lib/config/demos';
+	import { trackClick } from '$lib/analytics';
 	import TermList from './term-list.svelte';
 
 	const featured = demos.find((d) => d.url && !d.comingSoon);
@@ -98,6 +99,10 @@ walk-through belongs on /demos, not here.
 							href={featured.url}
 							target="_blank"
 							rel="noopener noreferrer"
+							use:trackClick={{
+								event: 'demo_opened',
+								properties: { demo: featured.name, from: 'homepage' }
+							}}
 							class="shrink-0 font-sans text-[15px] font-medium whitespace-nowrap text-root no-underline transition-colors hover:text-root-dark"
 						>
 							Visit the site ↗

@@ -39,8 +39,19 @@
 	// in the Resend dashboard (add the DKIM/SPF records they show into
 	// Cloudflare DNS — they coexist with the existing Google Workspace
 	// MX). Once verified, switch this to `root. <hello@root.site>`.
+	//
+	// PostHog: this is the one place the project key lives in production.
+	// SvelteKit serves PUBLIC_* vars to the prerendered pages at runtime
+	// (/_app/env.js, answered by this Worker), and the Worker itself uses
+	// the key for the events /api/contact captures and PUBLIC_POSTHOG_HOST
+	// for the /ingest proxy (src/hooks.server.ts). The key is public
+	// (write-only); until it is added, everything is a quiet no-op.
+	// `wrangler secret put PUBLIC_POSTHOG_KEY` works too and needs no
+	// redeploy. PUBLIC_POSTHOG_HOST defaults to US Cloud.
 	"vars": {
 		"CONTACT_TO": "platte@root.site",
 		"CONTACT_FROM": "root. <hello@root.site>"
+		// "PUBLIC_POSTHOG_KEY": "phc_...",
+		// "PUBLIC_POSTHOG_HOST": "https://us.i.posthog.com"
 	}
 }

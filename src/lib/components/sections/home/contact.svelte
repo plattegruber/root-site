@@ -18,6 +18,9 @@ hand-done look at it (see final-cta.svelte).
 	import { Button, FormField } from '$lib/components/ui';
 	import { EdWrap, MarginRow } from '$lib/components/editorial';
 	import { site } from '$lib/config/site';
+	import { identifyLead, track, trackClick, tracingHeaders } from '$lib/analytics';
+
+	const FORM = 'homepage';
 
 	let name = $state('');
 	let practice = $state('');
@@ -28,8 +31,17 @@ hand-done look at it (see final-cta.svelte).
 	let errors = $state<{ name?: string; email?: string; form?: string }>({});
 	let submitting = $state(false);
 	let submitted = $state(false);
+	let started = false;
 
 	const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	// First focus on any field. Started-but-not-submitted is the number
+	// that says whether the form itself is the problem.
+	function handleStart() {
+		if (started) return;
+		started = true;
+		track('contact_form_started', { form: FORM });
+	}
 
 	function validate(): boolean {
 		const next: typeof errors = {};
@@ -42,7 +54,10 @@ hand-done look at it (see final-cta.svelte).
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
-		if (!validate()) return;
+		if (!validate()) {
+			track('contact_form_failed', { form: FORM, reason: 'validation' });
+			return;
+		}
 
 		submitting = true;
 		try {
@@ -50,7 +65,8 @@ hand-done look at it (see final-cta.svelte).
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Accept: 'application/json'
+					Accept: 'application/json',
+					...tracingHeaders()
 				},
 				body: JSON.stringify({ name, practice, website, location, email, message })
 			});
@@ -60,12 +76,22 @@ hand-done look at it (see final-cta.svelte).
 					error?: string;
 				};
 				errors = { form: data.error ?? 'Something went wrong. Try again.' };
+				track('contact_form_failed', { form: FORM, reason: 'server', status: res.status });
 				return;
 			}
 
 			submitted = true;
+			identifyLead({ email, name, practice, website, location });
+			track('contact_form_submitted', {
+				form: FORM,
+				has_practice: practice.trim().length > 0,
+				has_website: website.trim().length > 0,
+				has_location: location.trim().length > 0,
+				has_message: message.trim().length > 0
+			});
 		} catch {
 			errors = { form: 'Network error. Please try again.' };
+			track('contact_form_failed', { form: FORM, reason: 'network' });
 		} finally {
 			submitting = false;
 		}
@@ -94,6 +120,7 @@ hand-done look at it (see final-cta.svelte).
 					method="POST"
 					novalidate
 					onsubmit={handleSubmit}
+					onfocusin={handleStart}
 					class="max-w-[440px]"
 				>
 					<!--
@@ -176,6 +203,7 @@ hand-done look at it (see final-cta.svelte).
 						Or just email us:
 						<a
 							href="mailto:{site.email}"
+							use:trackClick={{ event: 'email_link_clicked', properties: { form: FORM } }}
 							class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
 						>
 							{site.emailDisplay}

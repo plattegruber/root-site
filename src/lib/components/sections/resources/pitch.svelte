@@ -16,8 +16,10 @@ same dark note the homepage does.
 <script lang="ts">
 	import { Button, Container, FormField } from '$lib/components/ui';
 	import { site, price } from '$lib/config/site';
+	import { identifyLead, track, trackClick, tracingHeaders } from '$lib/analytics';
 
 	const SOURCE = 'Came from the free resources page.';
+	const FORM = 'free_resources';
 
 	let name = $state('');
 	let email = $state('');
@@ -25,8 +27,15 @@ same dark note the homepage does.
 	let errors = $state<{ name?: string; email?: string; form?: string }>({});
 	let submitting = $state(false);
 	let submitted = $state(false);
+	let started = false;
 
 	const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	function handleStart() {
+		if (started) return;
+		started = true;
+		track('contact_form_started', { form: FORM });
+	}
 
 	function validate(): boolean {
 		const next: typeof errors = {};
@@ -39,25 +48,36 @@ same dark note the homepage does.
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
-		if (!validate()) return;
+		if (!validate()) {
+			track('contact_form_failed', { form: FORM, reason: 'validation' });
+			return;
+		}
 
 		submitting = true;
 		try {
 			const res = await fetch('/api/contact', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json',
+					...tracingHeaders()
+				},
 				body: JSON.stringify({ name, email, website, message: SOURCE })
 			});
 
 			if (!res.ok) {
 				const data = (await res.json().catch(() => ({}))) as { error?: string };
 				errors = { form: data.error ?? 'Something went wrong. Try again.' };
+				track('contact_form_failed', { form: FORM, reason: 'server', status: res.status });
 				return;
 			}
 
 			submitted = true;
+			identifyLead({ email, name, website });
+			track('contact_form_submitted', { form: FORM, has_website: website.trim().length > 0 });
 		} catch {
 			errors = { form: 'Network error. Please try again.' };
+			track('contact_form_failed', { form: FORM, reason: 'network' });
 		} finally {
 			submitting = false;
 		}
@@ -98,7 +118,13 @@ same dark note the homepage does.
 						We’ll go through your site and write back within a day, usually sooner.
 					</p>
 				{:else}
-					<form action="/api/contact" method="POST" novalidate onsubmit={handleSubmit}>
+					<form
+						action="/api/contact"
+						method="POST"
+						novalidate
+						onsubmit={handleSubmit}
+						onfocusin={handleStart}
+					>
 						<!-- Honeypot: hidden from people, filled by bots; the server returns 200 and drops it. -->
 						<div class="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
 							<label>
@@ -154,6 +180,7 @@ same dark note the homepage does.
 						Or just email
 						<a
 							href="mailto:{site.email}"
+							use:trackClick={{ event: 'email_link_clicked', properties: { form: FORM } }}
 							class="text-root-light underline decoration-root-light/30 underline-offset-2 transition-colors hover:text-cream"
 							>{site.emailDisplay}</a
 						>. Everything on this page stays free either way.

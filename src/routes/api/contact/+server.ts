@@ -1,6 +1,7 @@
 import { json, redirect, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { deliver, validate, type ContactEnv } from '$lib/server/contact';
+import { captureServerEvent, requestDistinctId } from '$lib/server/posthog';
 
 /**
  * POST /api/contact
@@ -19,12 +20,21 @@ import { deliver, validate, type ContactEnv } from '$lib/server/contact';
  * add Cloudflare Rate Limiting Rules on the route in the Cloudflare
  * dashboard. That keeps the Worker zero-config and uses the platform's
  * built-in protection.
+ *
+ * Analytics: the Worker is the only place that knows the outcome, so it
+ * captures `contact_submission_received` (delivered), `contact_delivery_failed`
+ * and `contact_form_bot_blocked` to PostHog. The JS path tags the request
+ * with the browser's distinct ID so these land on the same person as the
+ * client-side `contact_form_*` events; the no-JS path falls back to the
+ * submitter's email, which is the same ID the browser identifies with.
  */
-export const POST: RequestHandler = async ({ request, platform }) => {
+export const POST: RequestHandler = async (event) => {
+	const { request, platform } = event;
 	const contentType = request.headers.get('content-type') ?? '';
 	const wantsJson =
 		(request.headers.get('accept') ?? '').includes('application/json') ||
 		contentType.includes('application/json');
+	const path = wantsJson ? 'js' : 'no_js';
 
 	let payload: Record<string, unknown>;
 	try {
@@ -40,6 +50,11 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 
 	// Honeypot: bots typically fill every field. Real users never see this one.
 	if (typeof payload.company === 'string' && payload.company.trim() !== '') {
+		await captureServerEvent(event, {
+			event: 'contact_form_bot_blocked',
+			properties: { path },
+			processPerson: false
+		});
 		return wantsJson ? json({ ok: true }) : redirect(303, '/thanks');
 	}
 
@@ -54,10 +69,25 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 		redirect(303, '/#contact');
 	}
 
+	const submission = result.value;
+	const distinctId = requestDistinctId(event) ?? submission.email.toLowerCase();
+	const submissionProps = {
+		path,
+		has_practice: submission.practice.length > 0,
+		has_website: submission.website.length > 0,
+		has_location: submission.location.length > 0,
+		has_message: submission.message.length > 0
+	};
+
 	try {
-		await deliver(result.value, (platform?.env ?? {}) as ContactEnv);
+		await deliver(submission, (platform?.env ?? {}) as ContactEnv);
 	} catch (err) {
 		console.error('[contact] delivery failed:', err);
+		await captureServerEvent(event, {
+			event: 'contact_delivery_failed',
+			distinctId,
+			properties: { ...submissionProps, error: err instanceof Error ? err.message : String(err) }
+		});
 		if (wantsJson) {
 			return json(
 				{ ok: false, error: 'Could not send your message. Please email me directly.' },
@@ -66,6 +96,12 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 		}
 		error(502, 'Could not send your message. Please email me directly.');
 	}
+
+	await captureServerEvent(event, {
+		event: 'contact_submission_received',
+		distinctId,
+		properties: submissionProps
+	});
 
 	return wantsJson ? json({ ok: true }) : redirect(303, '/thanks');
 };

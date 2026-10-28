@@ -20,12 +20,24 @@ const config = {
 		adapter: adapter(),
 		alias: { $config: 'src/lib/config', $server: 'src/lib/server' },
 		/*
+		 * Absolute asset URLs (/_app/...) instead of the relative default
+		 * (../_app/...). PostHog session replay records the DOM as served and
+		 * plays it back from posthog.com, where relative URLs resolve to
+		 * nothing; absolute ones still point at root.site. The site is only
+		 * ever served from the root of its domain, so nothing else changes.
+		 */
+		paths: { relative: false },
+		/*
 		 * Content-Security-Policy. Managed here rather than in `_headers`
 		 * because SvelteKit boots each page from an inline <script> and needs
 		 * to add that script's hash to script-src; a static header can't know
 		 * it. On prerendered pages (all of them) the policy is emitted as a
 		 * <meta> tag. `frame-ancestors` can't go in a <meta> tag, so it stays
 		 * in `_headers`.
+		 *
+		 * PostHog talks to our own /ingest path (covered by 'self'), but the
+		 * toolbar and heatmap overlay load from *.posthog.com, and session
+		 * replay runs its recorder in a blob: worker.
 		 */
 		csp: {
 			mode: 'auto',
@@ -38,9 +50,16 @@ const config = {
 					'self',
 					'https://static.cloudflareinsights.com',
 					'https://r2.leadsy.ai',
-					'https://*.leadsy.ai'
+					'https://*.leadsy.ai',
+					'https://*.posthog.com'
 				],
-				'connect-src': ['self', 'https://cloudflareinsights.com', 'https://*.leadsy.ai'],
+				'connect-src': [
+					'self',
+					'https://cloudflareinsights.com',
+					'https://*.leadsy.ai',
+					'https://*.posthog.com'
+				],
+				'worker-src': ['self', 'blob:'],
 				'form-action': ['self'],
 				'base-uri': ['self'],
 				'upgrade-insecure-requests': true

@@ -25,3 +25,12 @@ AIRTABLE_TABLE_NAME=Contacts
 # Paste the token from Cloudflare → Analytics → Web Analytics → Add a
 # site → JS snippet. Without this, the beacon script is omitted.
 PUBLIC_CF_ANALYTICS_TOKEN=
+
+# === PostHog ===
+# The project key (see .env.example). The Worker serves it to the browser
+# at runtime (/_app/env.js), uses it for the events /api/contact captures
+# (delivered, failed, bot blocked), and reads PUBLIC_POSTHOG_HOST to know
+# which region /ingest forwards to. In production, set it as a var in
+# wrangler.jsonc or with `wrangler secret put PUBLIC_POSTHOG_KEY`.
+PUBLIC_POSTHOG_KEY=
+PUBLIC_POSTHOG_HOST=https://us.i.posthog.com

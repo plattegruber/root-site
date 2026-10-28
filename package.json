@@ -51,6 +51,7 @@
 		"@fontsource/ibm-plex-mono": "^5.2.7",
 		"@fontsource/instrument-serif": "^5.2.8",
 		"clsx": "^2.1.1",
+		"posthog-js": "^1.439.2",
 		"tailwind-merge": "^3.6.0",
 		"tailwind-variants": "^3.2.2"
 	}

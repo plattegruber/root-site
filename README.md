@@ -77,6 +77,46 @@ dev and pre-secret deploys stay quiet. Configure secrets:
 See `src/lib/server/contact.ts` for the deliverers and the
 `chainStrict` / `chainSoft` helpers for alternative policies.
 
+## Analytics (PostHog)
+
+PostHog captures pageviews (including client-side navigations),
+autocaptured clicks, rage clicks, heatmaps, session replay and uncaught
+errors, plus a few named events:
+
+| Event                                                     | Where                         |
+| --------------------------------------------------------- | ----------------------------- |
+| `contact_form_started` / `_submitted` / `_failed`         | both contact forms (browser)  |
+| `contact_submission_received` / `contact_delivery_failed` | `/api/contact` (Worker)       |
+| `contact_form_bot_blocked`                                | `/api/contact`, honeypot hit  |
+| `email_link_clicked`                                      | the mailto links by the forms |
+| `demo_opened`                                             | links to `*.demo.root.site`   |
+| `resource_opened`                                         | free-resources CTA buttons    |
+| `server_error`                                            | SvelteKit `handleError`       |
+
+A successful form submit also identifies the visitor by email, so the
+person page in PostHog shows the enquiry fields and everything they did
+before sending it.
+
+Events travel through the same-origin `/ingest` path, which
+`src/hooks.server.ts` forwards to PostHog, so content blockers don't eat
+them. Session replay is switched on in the PostHog project settings, not
+in code.
+
+Configuration is one value, `PUBLIC_POSTHOG_KEY` (the public, write-only
+project key), plus `PUBLIC_POSTHOG_HOST` if the project is not on US Cloud:
+
+- Production: `vars` in `wrangler.jsonc`, or `wrangler secret put
+PUBLIC_POSTHOG_KEY` (takes effect without a redeploy). SvelteKit serves
+  `PUBLIC_*` vars to the prerendered pages at runtime through
+  `/_app/env.js`, which this Worker answers, so nothing is baked in at
+  build time.
+- `pnpm run preview`: `.dev.vars` (see `.dev.vars.example`).
+- `pnpm run dev`: `.env` (see `.env.example`).
+
+Without the key everything is a no-op; `pnpm run dev` logs one console
+error saying so. The browser-side helpers live in `src/lib/analytics.ts`,
+the Worker-side one in `src/lib/server/posthog.ts`.
+
 ## Cloudflare Web Analytics
 
 The beacon snippet is included only when `PUBLIC_CF_ANALYTICS_TOKEN`
@@ -90,7 +130,8 @@ src/
   app.css                Tailwind import + @theme design tokens
   app.html               Document shell
   app.d.ts               SvelteKit / Cloudflare ambient types
-  hooks.server.ts        www → apex redirect at the Worker layer
+  hooks.client.ts        PostHog init + client error capture
+  hooks.server.ts        /ingest → PostHog reverse proxy, server error capture
   routes/
     +layout.svelte       Shared <head>, OG/Twitter, beacon, skip link
     +page.svelte         Homepage
@@ -107,7 +148,8 @@ src/
       sections/          Page-specific composable sections
     config/              site.ts, blog.ts (Markdown glob)
     content/writing/     Post Markdown files
-    server/              Worker-only modules (contact backends)
+    server/              Worker-only modules (contact backends, PostHog capture)
+    analytics.ts         Browser-side PostHog helpers (track, identify, use:trackClick)
     utils.ts             cn() = clsx + tailwind-merge
 scripts/
   generate-og.mjs        SVG → PNG OG card builder

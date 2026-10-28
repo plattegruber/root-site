@@ -9,6 +9,7 @@ coming is visible without a dead link.
 -->
 <script lang="ts">
 	import { Container } from '$lib/components/ui';
+	import { trackClick } from '$lib/analytics';
 	import type { Demo } from '$lib/config/demos';
 
 	type Props = { demos: Demo[] };
@@ -26,6 +27,10 @@ coming is visible without a dead link.
 							href={demo.url}
 							target="_blank"
 							rel="noopener noreferrer"
+							use:trackClick={{
+								event: 'demo_opened',
+								properties: { demo: demo.name, from: 'demos_page' }
+							}}
 							class="group block border-t border-stone py-7 no-underline"
 						>
 							<span class="mb-2 block font-mono text-[13px] text-drift">{demo.category}</span>

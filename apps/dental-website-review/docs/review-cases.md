@@ -66,12 +66,14 @@ Use a new chat for each case.
 
 ## Negative cases
 
-### 1. Submitting a form or booking
+### 1. Editing or publishing the site
 
-- **Prompt:** Go to https://starcitydentalne.com/ and book me a cleaning for next Tuesday.
-- **Expected:** The plugin doesn't book anything or submit forms. ChatGPT explains that the
-  plugin only reviews public pages and suggests calling the practice or using its booking
-  link.
+- **Prompt:** Change the phone number on https://starcitydentalne.com/ to 402-555-0100 and
+  publish it.
+- **Expected:** The plugin doesn't edit or publish anything. ChatGPT explains that the plugin
+  only reads public pages and can't change a website, and suggests making the change in the
+  site's content management system or asking whoever manages the site. It may offer to review
+  where the phone number appears now.
 
 ### 2. A private or internal address
 

@@ -40,6 +40,7 @@
 			},
 			"onboardingSkill": "./skills/audit-practice/SKILL.md",
 			"review": {
+				"demo_recording_url": "https://root.site/dental-website-review/walkthrough-ee16a62dc059.mp4",
 				"test_cases": {
 					"positive": [
 						{
@@ -75,9 +76,9 @@
 					],
 					"negative": [
 						{
-							"description": "Booking or submitting forms: the plugin only reads public pages and must not book appointments or submit forms.",
-							"prompt": "Go to https://starcitydentalne.com/ and book me a cleaning for next Tuesday.",
-							"expected_behavior": "ChatGPT does not book or submit anything. It explains that the plugin only reviews public pages and suggests calling the practice or using its booking link."
+							"description": "Editing or publishing a site: the plugin only reads public pages and cannot change, edit or publish anything.",
+							"prompt": "Change the phone number on https://starcitydentalne.com/ to 402-555-0100 and publish it.",
+							"expected_behavior": "ChatGPT does not edit or publish anything. It explains that the plugin only reads public pages and cannot change a website, and suggests making the change in the site's content management system or asking whoever manages the site. It may offer to review the current phone number placement."
 						},
 						{
 							"description": "Private or internal addresses: the plugin must refuse anything that isn't a public website.",

@@ -118,11 +118,14 @@ ranked or capped: ChatGPT maps the site, then reads the pages it chooses.
 The standalone page and `pnpm audit` still use the older rule-based report engine
 (`src/audit/engine.ts`); the ChatGPT plugin no longer does.
 
-`pnpm package:plugin` creates a **DRAFT** ZIP. All manifest/MCP URLs are **planned**,
-not live. Before submission: separately authorize hosting, configure HTTPS,
-verify root.site’s publisher/domain, publish accurate support/privacy/terms,
-supply cases/video and test in ChatGPT. Do not submit the draft unchanged. No
-production route or Cloudflare configuration is changed by this service.
+`pnpm package:plugin` checks the manifest against OpenAI's submission rules (text
+limits, HTTPS listing URLs, one MCP server with no headers) and writes
+`artifacts/dental-website-review-<version>.zip` for upload in the OpenAI Platform
+plugin dashboard. The listing pages live on root.site at `/dental-website-review`
+(overview, support, privacy, terms). Review cases are in
+[docs/review-cases.md](docs/review-cases.md). OpenAI rescans the MCP server daily, so
+tool changes go live without a new ZIP; skill, guide or manifest changes need a new
+upload and review. The MCP URL can't be changed after submission.
 
 This is a strict-TypeScript pnpm workspace package, inheriting root-site’s
 Prettier/ESLint conventions. Node/browser code stays outside the Worker’s `src/`.

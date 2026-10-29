@@ -1,6 +1,7 @@
 <!--
 @component
-The work — the strongest demo, right after the hero, before any claims.
+The work — the strongest demo, shown once the claims have been made and
+just before the price, as proof.
 
 A desktop plate with the phone's first screen overlaid on its corner, so
 the two things a dentist should notice (it looks like a real practice; the
@@ -36,7 +37,7 @@ walk-through belongs on /demos, not here.
 	];
 </script>
 
-<section id="demos" class="section-py">
+<section id="demos" class="bg-linen section-py">
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="eye" label="the work">
@@ -57,7 +58,7 @@ walk-through belongs on /demos, not here.
 				<figure class="m-0">
 					{#if featured.image}
 						<div class="relative md:pr-16 md:pb-14">
-							<div class="overflow-hidden rounded-md border border-stone bg-linen">
+							<div class="overflow-hidden rounded-md border border-stone bg-cream">
 								<img
 									src={featured.image}
 									alt={`Screenshot of the ${featured.name} demo site on a desktop`}

@@ -18,7 +18,7 @@ so the eye lands on the button rather than on a color change.
 	const para = 'm-0 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay';
 </script>
 
-<section class="section-py">
+<section class="bg-linen section-py">
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="send" label="next step">

@@ -46,7 +46,7 @@ deal, not a discount brand.
 	</div>
 {/snippet}
 
-<section id="pricing" class="bg-linen section-py">
+<section id="pricing" class="section-py">
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="tag" label="pricing">

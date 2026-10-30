@@ -16,6 +16,7 @@ today.
 -->
 <script lang="ts">
 	import { Button, Container } from '$lib/components/ui';
+	import { GuideForm } from '$lib/components/guide';
 	import type { Resource } from '$lib/config/resources';
 	import { track } from '$lib/analytics';
 	import { cn } from '$lib/utils';
@@ -98,37 +99,52 @@ today.
 					{/each}
 				</ul>
 
-				<div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
-					{#if tool.status === 'live'}
-						<Button
-							href={tool.href}
-							target={external ? '_blank' : undefined}
-							rel={external ? 'noopener noreferrer' : undefined}
-							onclick={() => track('resource_opened', { resource: tool.id, external })}
-						>
-							{tool.cta}
-							<span aria-hidden="true">{external ? '↗' : '→'}</span>
-						</Button>
-					{:else}
-						<Button href={tool.href} variant="secondary">
-							{tool.cta}
-							<span aria-hidden="true">→</span>
-						</Button>
-						<span
-							class="inline-flex items-center gap-2 rounded-full border border-stone px-3 py-1.5 font-mono text-[12px] tracking-[0.02em] text-clay"
-						>
-							<span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-root-light"></span>
-							{tool.statusLabel ?? 'Coming soon'}
-						</span>
-					{/if}
-					{#if tool.more}
-						<a
-							href={tool.more.href}
-							class="font-sans text-[15px] font-medium text-root underline decoration-root/30 underline-offset-[3px] transition-colors duration-150 hover:text-root-dark"
-							>{tool.more.label} →</a
-						>
-					{/if}
-				</div>
+				{#if tool.form === 'guide'}
+					<div class="mt-8">
+						<GuideForm placement="free_resources" label={tool.cta} />
+						{#if tool.more}
+							<p class="mt-5 mb-0">
+								<a
+									href={tool.more.href}
+									class="font-sans text-[15px] font-medium text-root underline decoration-root/30 underline-offset-[3px] transition-colors duration-150 hover:text-root-dark"
+									>{tool.more.label} →</a
+								>
+							</p>
+						{/if}
+					</div>
+				{:else}
+					<div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
+						{#if tool.status === 'live'}
+							<Button
+								href={tool.href}
+								target={external ? '_blank' : undefined}
+								rel={external ? 'noopener noreferrer' : undefined}
+								onclick={() => track('resource_opened', { resource: tool.id, external })}
+							>
+								{tool.cta}
+								<span aria-hidden="true">{external ? '↗' : '→'}</span>
+							</Button>
+						{:else}
+							<Button href={tool.href} variant="secondary">
+								{tool.cta}
+								<span aria-hidden="true">→</span>
+							</Button>
+							<span
+								class="inline-flex items-center gap-2 rounded-full border border-stone px-3 py-1.5 font-mono text-[12px] tracking-[0.02em] text-clay"
+							>
+								<span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-root-light"></span>
+								{tool.statusLabel ?? 'Coming soon'}
+							</span>
+						{/if}
+						{#if tool.more}
+							<a
+								href={tool.more.href}
+								class="font-sans text-[15px] font-medium text-root underline decoration-root/30 underline-offset-[3px] transition-colors duration-150 hover:text-root-dark"
+								>{tool.more.label} →</a
+							>
+						{/if}
+					</div>
+				{/if}
 			</div>
 		</div>
 	</Container>

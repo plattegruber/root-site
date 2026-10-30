@@ -1,15 +1,15 @@
 import { resources } from '$lib/config/resources';
-import { breadcrumbSchema, softwareSchema } from '$lib/seo';
+import { breadcrumbSchema, documentSchema, softwareSchema } from '$lib/seo';
 
 export const prerender = true;
 
 export const load = () => ({
 	title: 'Free resources — root.',
 	description:
-		'Tools root built for its own dental clients and released for anyone to use: ProofQL, which finds the right customer review for each page, and Dental Website Review, a free ChatGPT plugin that reads a practice website the way patients do.',
+		'A free 21-page guide to telling whether your dental website is doing its job, plus the tools root built for its own dental clients and released for anyone to use: ProofQL, which finds the right customer review for each page, and Dental Website Review, a free ChatGPT plugin that reads a practice website the way patients do.',
 	jsonld: [
 		breadcrumbSchema([{ name: 'Free resources', path: '/free-resources' }]),
-		...resources.map(softwareSchema)
+		...resources.map((r) => (r.form === 'guide' ? documentSchema(r) : softwareSchema(r)))
 	],
 	resources
 });

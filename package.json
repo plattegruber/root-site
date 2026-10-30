@@ -18,6 +18,7 @@
 		"format": "prettier --write .",
 		"gen": "wrangler types",
 		"gen:og": "node scripts/generate-og.mjs",
+		"gen:guide-pages": "node scripts/generate-guide-pages.mjs",
 		"gen:post-images": "node scripts/generate-post-images.mjs",
 		"gen:resource-images": "node scripts/generate-resource-images.mjs"
 	},

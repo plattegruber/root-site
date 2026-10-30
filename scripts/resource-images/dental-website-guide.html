@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- Guide mockup: three real pages of the PDF fanned on the linen mat —
+     the cover in front, the five-check page and the Stillwater recheck
+     behind it. Page renders come from scripts/generate-guide-pages.mjs. -->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="_fonts.css" />
+		<style>
+			body {
+				background: #ede9e3;
+			}
+			.sheet {
+				position: absolute;
+				width: 470px;
+				height: 608px;
+				border-radius: 4px;
+				box-shadow:
+					0 40px 60px -30px rgba(26, 23, 21, 0.45),
+					0 0 0 1px rgba(26, 23, 21, 0.06);
+				overflow: hidden;
+				background: #fff;
+			}
+			.sheet img {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			.s1 {
+				left: 118px;
+				top: 96px;
+				transform: rotate(-4deg);
+				z-index: 3;
+			}
+			.s2 {
+				left: 410px;
+				top: 118px;
+				transform: rotate(2deg);
+				z-index: 2;
+			}
+			.s3 {
+				left: 690px;
+				top: 150px;
+				transform: rotate(6.5deg);
+				z-index: 1;
+			}
+			.tag {
+				position: absolute;
+				left: 60px;
+				bottom: 54px;
+				display: flex;
+				gap: 16px;
+				align-items: center;
+				background: #1a1715;
+				color: #f7f4ef;
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 14px;
+				letter-spacing: 0.02em;
+				padding: 12px 18px;
+				border-radius: 6px;
+				box-shadow: 0 12px 24px -12px rgba(26, 23, 21, 0.5);
+				z-index: 4;
+			}
+			.tag .dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: #a68b70;
+			}
+			.tag .dim {
+				color: #a09a92;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sheet s3">
+			<img src="../../static/guides/pages/stillwater-recheck.webp" alt="" />
+		</div>
+		<div class="sheet s2"><img src="../../static/guides/pages/quick-check.webp" alt="" /></div>
+		<div class="sheet s1"><img src="../../static/guides/pages/cover.webp" alt="" /></div>
+		<div class="tag">
+			<span class="dot"></span>
+			<span>PDF · 21 pages</span>
+			<span class="dim">free, by email</span>
+		</div>
+	</body>
+</html>

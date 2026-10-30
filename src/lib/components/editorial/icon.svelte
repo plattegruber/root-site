@@ -21,6 +21,7 @@ hand-inlined rather than pulled from a Lucide CDN. Decorative by default
 		| 'user-round'
 		| 'tag'
 		| 'layers'
+		| 'book-open'
 		| 'menu'
 		| 'x';
 
@@ -43,6 +44,8 @@ hand-inlined rather than pulled from a Lucide CDN. Decorative by default
 		tag: '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>',
 		layers:
 			'<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/>',
+		'book-open':
+			'<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
 		menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
 		x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>'
 	};

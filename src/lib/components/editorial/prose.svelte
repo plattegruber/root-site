@@ -20,7 +20,9 @@ site's editorial typography, without the page needing to know heading levels.
 	 * warm-leather links.
 	 *
 	 * Scoped to this component (Svelte's :global escape hatch) so the
-	 * tokens only apply inside <Prose>.
+	 * tokens only apply inside <Prose>. Anything under a `.not-prose`
+	 * element (the guide form card, figures) is left alone, so a
+	 * component dropped into a post keeps its own spacing.
 	 */
 	.prose {
 		font-family: var(--font-sans);
@@ -30,11 +32,11 @@ site's editorial typography, without the page needing to know heading levels.
 		max-width: 640px;
 	}
 
-	.prose :global(p) {
+	.prose :global(p:not(.not-prose *)) {
 		margin: 0 0 1.25rem;
 	}
 
-	.prose :global(h2) {
+	.prose :global(h2:not(.not-prose *)) {
 		margin: 2.5rem 0 1rem;
 		font-family: var(--font-serif);
 		font-size: 1.5rem;
@@ -44,7 +46,7 @@ site's editorial typography, without the page needing to know heading levels.
 		color: var(--color-ink);
 	}
 
-	.prose :global(h3) {
+	.prose :global(h3:not(.not-prose *)) {
 		margin: 2rem 0 0.75rem;
 		font-family: var(--font-serif);
 		font-size: 1.25rem;
@@ -62,7 +64,7 @@ site's editorial typography, without the page needing to know heading levels.
 		font-style: italic;
 	}
 
-	.prose :global(a) {
+	.prose :global(a:not(.not-prose *)) {
 		color: var(--color-root);
 		text-decoration: underline;
 		text-underline-offset: 2px;
@@ -72,22 +74,22 @@ site's editorial typography, without the page needing to know heading levels.
 			text-decoration-color 150ms ease;
 	}
 
-	.prose :global(a:hover) {
+	.prose :global(a:hover:not(.not-prose *)) {
 		color: var(--color-root-dark);
 		text-decoration-color: var(--color-root-dark);
 	}
 
-	.prose :global(ul),
-	.prose :global(ol) {
+	.prose :global(ul:not(.not-prose *)),
+	.prose :global(ol:not(.not-prose *)) {
 		margin: 0 0 1.25rem;
 		padding-left: 1.5rem;
 	}
 
-	.prose :global(li) {
+	.prose :global(li:not(.not-prose *)) {
 		margin-bottom: 0.5rem;
 	}
 
-	.prose :global(blockquote) {
+	.prose :global(blockquote:not(.not-prose *)) {
 		margin: 1.75rem 0;
 		padding-left: 1.25rem;
 		border-left: 2px solid var(--color-stone);
@@ -95,7 +97,7 @@ site's editorial typography, without the page needing to know heading levels.
 		font-style: italic;
 	}
 
-	.prose :global(code) {
+	.prose :global(code:not(.not-prose *)) {
 		background: var(--color-linen);
 		padding: 0.125rem 0.375rem;
 		border-radius: 4px;

@@ -1,7 +1,7 @@
 /**
- * Free resources — tools root built for its own dental clients and then
- * released on their own. Single source of truth for the /free-resources
- * page and its structured data.
+ * Free resources — the guide root hands new clients, and tools root built
+ * for its own dental clients and then released on their own. Single source
+ * of truth for the /free-resources page and its structured data.
  *
  * The pitch of that page is deliberate: each entry is a piece of how root
  * builds and reviews practice websites that turned out to stand on its
@@ -14,6 +14,8 @@
  * is one entry here plus one HTML card for its image. Flip `status` to
  * 'live' (and point `href` at the real thing) the day it ships.
  */
+import { guide } from './guide';
+
 export type Resource = {
 	/** URL-safe id, used for the in-page anchor and the image file name. */
 	id: string;
@@ -41,11 +43,43 @@ export type Resource = {
 	statusLabel?: string;
 	/** Optional second link under the buttons (an announcement, a guide). */
 	more?: { label: string; href: string };
-	/** Schema.org applicationCategory for the SoftwareApplication node. */
-	category: string;
+	/** Schema.org applicationCategory for the SoftwareApplication node. Absent for the guide. */
+	category?: string;
+	/**
+	 * 'guide' swaps the button for the email form that sends the guide PDF
+	 * (see $lib/components/guide), and swaps the SoftwareApplication schema
+	 * for a DigitalDocument one. `href` then only feeds the schema.
+	 */
+	form?: 'guide';
 };
 
 export const resources: Resource[] = [
+	{
+		id: guide.id,
+		name: guide.title,
+		kind: `Free PDF guide · ${guide.pages} pages`,
+		tagline:
+			'Five checks you can run on your phone tonight, and the deeper guide for when you want to go further.',
+		blurb:
+			'The test we run on every site we build or review, written down so you can run it yourself. It opens with a patient whose tooth hurts at 9 p.m., follows them through our own demo practice before and after a fix, and ends with a worksheet for the one finding you choose to act on.',
+		details: [
+			'The ten-minute version: five checks, phone in hand. Call, after hours, booking, first visit, cost.',
+			'A worked example on a real site: the finding, the fix, and the recheck at two phone sizes.',
+			'The questions to ask a website provider, and what a good answer has to show.',
+			'A fillable worksheet so one finding, one fix and one recheck stay together.'
+		],
+		image: {
+			src: '/resources/dental-website-guide.webp',
+			alt: 'Three pages of the guide fanned out: the dark cover reading “How to tell if your dental website is doing its job”, the five-check page, and the page that rechecks the Stillwater demo on a phone.',
+			width: 2400,
+			height: 1600
+		},
+		href: guide.post,
+		cta: 'Send me the guide',
+		status: 'live',
+		more: { label: 'The story behind the guide', href: guide.post },
+		form: 'guide'
+	},
 	{
 		id: 'proofql',
 		name: 'ProofQL',

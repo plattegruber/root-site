@@ -11,3 +11,4 @@ apps/**/dist/
 apps/**/artifacts/
 apps/**/coverage/
 apps/dental-website-review/samples
+scripts/guide/

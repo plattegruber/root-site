@@ -23,12 +23,13 @@ there so the page reads as a small catalogue rather than a lone list.
 			Free resources · from root’s own workbench
 		</div>
 		<h1 class="m-0 max-w-[760px] font-serif text-hero font-normal text-balance text-ink">
-			The tools we use on every dental site. Free for anyone.
+			The guide and the tools we use on every dental site. Free for anyone.
 		</h1>
 		<p class="mt-7 mb-0 max-w-[580px] font-sans text-hero-sub text-pretty text-clay">
 			Everything here began as something we built to do our own job better: making a practice’s
 			website work for the people who actually visit it. Each one turned out to stand on its own, so
-			we opened it up. Use them on your site, on a client’s, or just to see how we think.
+			we opened it up. Start with the guide if you want the thinking; use the tools on your site, on
+			a client’s, or just to see how we work.
 		</p>
 
 		<ol class="mt-12 flex max-w-[640px] list-none flex-col border-t border-stone p-0">

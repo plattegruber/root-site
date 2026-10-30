@@ -1,6 +1,7 @@
 export { default as Hero } from './hero.svelte';
 export { default as Demos } from './demos.svelte';
 export { default as Care } from './care.svelte';
+export { default as Guide } from './guide.svelte';
 export { default as WhySolo } from './why-solo.svelte';
 export { default as Human } from './human.svelte';
 export { default as Included } from './included.svelte';

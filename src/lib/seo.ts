@@ -211,6 +211,27 @@ export function softwareSchema(tool: Resource): JsonLdNode {
 }
 
 /**
+ * DigitalDocument schema for the free guide. Same author and publisher as
+ * everything else, marked free, pointing at the PDF and the post that
+ * offers it, so "free dental website guide" queries can match it.
+ */
+export function documentSchema(doc: Resource): JsonLdNode {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'DigitalDocument',
+		name: doc.name,
+		description: doc.blurb,
+		url: `${site.url}${doc.href}`,
+		encodingFormat: 'application/pdf',
+		isAccessibleForFree: true,
+		offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+		author: { '@id': PERSON_ID },
+		publisher: { '@id': ORG_ID },
+		inLanguage: 'en-US'
+	};
+}
+
+/**
  * Serialize a JSON-LD object into a ready-to-inject <script> tag. The `<`
  * escape prevents a `</script>` sequence inside string values from
  * breaking out of the tag — the one XSS/parse footgun of inline JSON-LD.

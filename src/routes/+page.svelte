@@ -5,7 +5,7 @@ hero envelops the Header so the dark band reads as a single piece of
 canvas rather than two stacked rectangles.
 
 The argument runs: who it's for and the relief of having it handled → how
-we think about a dental site → why root is small on purpose → the person
+we think about a dental site → the free guide that writes that thinking down → why root is small on purpose → the person
 who does the work → what's handled → the work itself, as proof → the price
 (which should land as a pleasant surprise by now) → the ask.
 Band colors alternate cream / linen so each beat reads as its own.
@@ -16,6 +16,7 @@ Band colors alternate cream / linen so each beat reads as its own.
 		Hero,
 		Demos,
 		Care,
+		Guide,
 		WhySolo,
 		Human,
 		Included,
@@ -32,6 +33,7 @@ Band colors alternate cream / linen so each beat reads as its own.
 
 <main id="main">
 	<Care />
+	<Guide />
 	<WhySolo />
 	<Human />
 	<Included />

@@ -9,7 +9,7 @@ every site as; the full set, and the tools built around it, live on
 /free-resources, which gets one quiet link. No branded framework name, no
 method count, nothing the visitor can't check.
 
-Linen band between the cream demo section and cream "Small on purpose".
+Cream band straight after the ink hero; the linen guide section follows it.
 -->
 <script lang="ts">
 	import { EdWrap, MarginRow, Reveal } from '$lib/components/editorial';
@@ -35,7 +35,7 @@ Linen band between the cream demo section and cream "Small on purpose".
 	];
 </script>
 
-<section class="bg-linen section-py">
+<section class="section-py">
 	<EdWrap>
 		<Reveal>
 			<MarginRow icon="route" label="how we think">

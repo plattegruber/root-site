@@ -15,7 +15,7 @@ faq:
     a: "They're mostly absorbing informational searches rather than appointment-ready patients, and they draw from the same Google Business Profile, reviews, and clear web pages you'd be improving anyway. Do the fundamentals well and you're covered across Google, AI Overviews, and the chat assistants at once."
 pillar: true
 image: /writing/how-dental-practices-get-found-online.png
-imageAlt: "Typographic card for the guide to how dental practices get found online, on cream with the title in serif type."
+imageAlt: 'Typographic card for the guide to how dental practices get found online, on cream with the title in serif type.'
 ---
 
 Most patients find a dentist by searching Google for something like "dentist near me," looking at the little map with three practices on it, reading a few reviews, and picking one. That's the whole funnel for the majority of people. So if you want to get found online in 2026, the work is mostly this: a complete Google Business Profile, a steady trickle of recent reviews, and a fast website that says who you are and how to book. Everything else is detail.

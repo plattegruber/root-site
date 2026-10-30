@@ -1,7 +1,7 @@
 ---
 title: "Changing Dental Website Companies? Don't Cancel the Old One Yet."
 date: 2026-10-28
-excerpt: "A practical handoff checklist for dental practices changing website companies: protect email, keep important links working, and test before canceling."
+excerpt: 'A practical handoff checklist for dental practices changing website companies: protect email, keep important links working, and test before canceling.'
 ---
 
 You found someone to build a better website. The price makes sense. The new design looks good. You’re ready to tell your current company you’re leaving.

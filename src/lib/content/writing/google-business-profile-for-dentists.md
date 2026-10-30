@@ -15,7 +15,7 @@ faq:
     a: "The most common cause practitioners report isn't spam — it's making many edits to important fields at once, which matches the pattern of a hijacked listing. Others: no verifiable physical presence at the address, duplicate listings, a keyword-stuffed business name, and an owner whose personal Google account gets suspended. Spread changes over several days rather than fixing everything in one sitting."
 pillar: true
 image: /writing/google-business-profile-for-dentists.png
-imageAlt: "Typographic card for the Google Business Profile setup guide, on cream with the title in serif type."
+imageAlt: 'Typographic card for the Google Business Profile setup guide, on cream with the title in serif type.'
 ---
 
 Your Google Business Profile matters more than your website for getting found — it's the largest single group of local ranking signals, and it's free. Setup is mostly straightforward. What isn't, and what this guide is really for, is the part where multi-dentist practices create listings for each dentist and quietly hand an associate the ability to walk off with the practice's reviews.

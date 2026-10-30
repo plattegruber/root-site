@@ -12,3 +12,6 @@ apps/**/artifacts/
 apps/**/coverage/
 apps/dental-website-review/samples
 scripts/guide/
+
+# Local Claude Code worktrees
+.claude/worktrees/

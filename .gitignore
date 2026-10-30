@@ -33,3 +33,6 @@ apps/**/dist/
 apps/**/artifacts/
 apps/**/coverage/
 apps/**/playwright-report/
+
+# Local Claude Code worktrees
+.claude/worktrees/

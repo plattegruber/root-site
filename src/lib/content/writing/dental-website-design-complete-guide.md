@@ -16,7 +16,7 @@ faq:
     a: "Usually no. Patients with a real question will email or call, and a chatbot typically can't answer specifics like whether you take their insurance. The money is better spent on a faster site and real photographs, which do more to win trust and bookings."
 pillar: true
 image: /writing/dental-website-design-complete-guide.png
-imageAlt: "Typographic card for the complete guide to dental website design, on cream with the title in serif type."
+imageAlt: 'Typographic card for the complete guide to dental website design, on cream with the title in serif type.'
 ---
 
 Dental website design is the work of building the site patients land on before they ever call you — the layout, the words, the photos, the speed, and the quiet technical decisions underneath. Good design isn't about looking fancy. It's about a nervous person on their phone finding your hours, trusting your face, and booking a cleaning in under a minute. That's the whole job. Everything else is decoration.

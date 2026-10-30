@@ -1,182 +1,315 @@
 ---
-title: 'How Dental Practices Get Found Online: SEO, Local & AI Search (2026)'
+title: 'Dental SEO: How Patients Find Your Practice Online'
 date: 2026-06-15
-excerpt: How patients actually find a dentist online in 2026 — the map pack, reviews, AI Overviews, and ChatGPT. What matters, what doesn't, and where to start.
+updated: 2026-10-30
+excerpt: A practical guide to dental SEO, Google Maps, reviews, and AI search. Learn how patients can find your practice, what to fix, and how to measure actual inquiries and appointments.
 faq:
-  - q: 'How long does it take to start getting more patients from Google?'
-    a: 'Profile fixes and review momentum tend to show up over weeks to a few months, not days. The Google Business Profile work is the fastest mover — a complete, correct profile can improve your map pack visibility fairly quickly. Reviews and website improvements compound more slowly. Anyone promising page-one results next week is guessing or lying.'
-  - q: 'Do I need to pay for Google Ads to get found?'
-    a: 'No. Ads can put you above the map pack, but they cost money for every click and stop the moment you stop paying. The map pack, your reviews, and your website are earned and keep working without a meter running. For most practices, get the free fundamentals right first and only consider ads if you need to fill a new operatory fast.'
-  - q: "What's more important, my website or my Google Business Profile?"
-    a: "For getting found, the Google Business Profile, by a wide margin — it's what puts you in the map pack where most clicks happen. For converting the patient once they've found you, the website. They do different jobs. If you have to fix one first, fix the profile, then make sure the website doesn't lose the patient it sends you."
-  - q: 'How many Google reviews does a dental practice need?'
-    a: "There's no magic number. Recency and a steady flow matter more than total count — a practice getting a few new reviews most weeks generally looks healthier to both Google and patients than one with a big old pile and nothing lately. Aim for a small consistent habit rather than a one-time push."
-  - q: 'Should I worry about AI Overviews and ChatGPT hurting my traffic?'
-    a: "They're mostly absorbing informational searches rather than appointment-ready patients, and they draw from the same Google Business Profile, reviews, and clear web pages you'd be improving anyway. Do the fundamentals well and you're covered across Google, AI Overviews, and the chat assistants at once."
+  - q: 'Is my website or Google Business Profile more important?'
+    a: 'Both can introduce someone to your practice and help them decide whether to contact you. Your profile supports local discovery in Google Search and Maps; individual website pages can appear in ordinary search results and provide more detail. Fix the part that is causing a demonstrated problem. A missing profile and a broken appointment form need different work.'
+  - q: 'Why do I show up for my practice name but not dentist near me?'
+    a: 'A name search identifies a particular practice; a nearby-dentist search compares options. Check the exact query, search location, and result type before judging visibility.'
+  - q: 'Does a dental practice need a blog for SEO?'
+    a: 'A blog is optional. Start with accurate, useful pages about your practice, actual services, locations, and becoming a patient. Add an article when it answers a worthwhile question that those pages do not cover. Clinical information needs qualified review, and published advice needs someone responsible for keeping it current.'
+  - q: 'How long does dental SEO take to work?'
+    a: 'There is no reliable timetable for a particular ranking or number of new patients. A corrected phone number can help once it is displayed, while search engines still need to discover and evaluate changed pages. Ask what will change, when implementation will be complete, what evidence will be checked, and how progress toward qualified inquiries will be assessed.'
+  - q: 'Can someone guarantee a top Google ranking or an AI recommendation?'
+    a: 'Treat those guarantees cautiously. Technical eligibility does not guarantee that Google will index or display a page, and meeting its AI-search requirements does not guarantee inclusion in an answer. A provider can commit to specific work and reporting. They cannot responsibly promise that a search engine or assistant will choose your practice for every relevant search.'
 pillar: true
 image: /writing/how-dental-practices-get-found-online.png
-imageAlt: 'Typographic card for the guide to how dental practices get found online, on cream with the title in serif type.'
+imageAlt: 'Cream typographic card reading Dental SEO: how patients find your practice online.'
+related:
+  - google-business-profile-for-dentists
+  - dental-practice-new-patient-page
+  - how-to-tell-if-your-dental-website-is-doing-its-job
 ---
 
-Most patients find a dentist by searching Google for something like "dentist near me," looking at the little map with three practices on it, reading a few reviews, and picking one. That's the whole funnel for the majority of people. So if you want to get found online in 2026, the work is mostly this: a complete Google Business Profile, a steady trickle of recent reviews, and a fast website that says who you are and how to book. Everything else is detail.
+A new patient might start with your name, a dental problem, an insurance directory, or a recommendation from a friend. They might compare practices in Google Maps, open a service page directly from search, or ask an AI assistant for help making a shortlist.
 
-That's the short version. The rest of this page is the detail — what each piece does, how much it actually matters, and where the new AI stuff (Overviews, ChatGPT, all of it) fits in. I build websites for dental practices for a living, so I spend a lot of time looking at how patients land on them. I'll tell you what I see.
+Each route leaves the patient with different questions. Someone referred by a neighbor needs to confirm they have found the right office. Someone searching for a dentist after moving needs to learn whether your practice fits. Someone looking for an appointment today needs a clear way to reach you and an honest answer about availability.
 
-## TL;DR — what actually gets a dental practice found
+**Dental SEO is the work of making your practice and its website easier to find in unpaid search results for relevant searches.** For a practice owner, it belongs alongside another question: once someone finds you, can they make a useful decision and take the next step?
 
-- **The map pack is the prize.** Three local listings show up for nearly every "dentist near me" search, and they soak up a big chunk of the clicks — somewhere around 44% of all clicks on a local results page, more than the ads or the regular blue links. Your Google Business Profile is what gets you in there.
-- **Reviews do double duty.** They help you rank in the map pack _and_ they're the thing patients read before they call. Recent reviews beat a big pile of old ones now.
-- **Your website is the closer, not the opener.** It rarely wins the search by itself, but it's where the patient decides whether to book. Slow, confusing, or mute about insurance, and you lose them.
-- **AI search is real but early.** AI Overviews and ChatGPT are starting to answer "find me a dentist" without a click. The good news: they mostly pull from the same Google Business Profile and reviews you'd be fixing anyway.
-- **You don't need ten channels.** Get the boring fundamentals right before anyone sells you on the eleventh thing.
+I build and maintain websites for independent dental practices. This guide explains how the pieces fit together, what I would check before recommending more work, and how to tell whether that work is helping. There is a separate [complete guide to Google Business Profile for dentists](/writing/google-business-profile-for-dentists) for the detailed profile instructions.
 
-<!-- PLACEHOLDER: original screenshot of a real "dentist near me" results page, annotated — ads / map pack / AI Overview / first blue link -->
+## What should a dental practice focus on first?
 
-## What does a patient actually see when they search for a dentist?
+Start by checking three things:
 
-Let's start with the thing everyone skips. When someone types "dentist near me" or "emergency dentist open now," they don't see your website. Not at first. They see a results page, and your website is pretty far down it.
+- **Can someone find accurate information about the practice?** Check your real location, phone number, hours, services, and the pages search engines can access.
+- **Can they tell whether you are a good fit?** Explain who you treat, what you offer, how payment works, and what becoming a patient involves.
+- **Can they reach the office successfully?** Test the phone link, appointment request, booking system, and what happens after someone uses them.
 
-Top to bottom, here's the usual order in 2026: a couple of paid ads, then increasingly an AI Overview (a paragraph Google writes itself), then the map pack — three local practices next to a map — and only then the regular organic "blue link" results. By the time a patient reaches the first normal link to a website, they've scrolled past four other things competing for the click.
+The order of repairs depends on what you find. An unverified profile, an inaccessible website, and unanswered appointment requests are different problems. More traffic does not resolve all three.
 
-This matters because it changes where you should spend effort. The single most valuable piece of real estate on that page is the map pack, and you don't get into it by having a beautiful website. You get into it through your Google Business Profile. So that's where we'll start.
+Choose work that addresses an observed problem. Keep a record of what changed and check the relevant outcome afterward. That is a more useful starting point than committing to a publishing quota or a particular number of directory listings.
 
-About 9 in 10 people search online before booking a dental appointment, so this page is, for practical purposes, your front door. The question is just which part of the page you're showing up in.
+## The different ways patients can find your practice
 
-## How does the Google map pack work, and how do I get in it?
+Your website is one part of a larger presence. Each route puts different information to work.
 
-The map pack (Google also calls it the "local pack" or "3-pack") is the boxed set of three businesses with star ratings and a map. It appears at or near the top of the results for the overwhelming majority of local searches — by most measures, north of 90% of searches that have local intent. And it pulls a disproportionate share of clicks: studies put the local pack at roughly 44% of clicks on a local results page, with the first of the three spots alone taking around a third of the pack's clicks.
-
-Translation: being one of those three is worth more than almost anything else you can do online.
-
-Google decides who shows up using three things, and it's worth knowing them by name because everything else is downstream of them:
-
-<div class="table-wrap">
-<table>
+<!-- svelte-ignore a11y_no_noninteractive_tabindex (This scrollable table region needs keyboard focus.) -->
+<div class="table-wrap" role="region" aria-label="Patient discovery routes" tabindex="0">
+<table style="min-width: 560px;">
 <thead>
-<tr><th>Factor</th><th>What it means</th><th>What you control</th></tr>
+<tr><th scope="col">Route</th><th scope="col">What someone may be trying to do</th><th scope="col">What to check</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Relevance</strong></td><td>How well your profile matches what was searched</td><td>Your primary category, services, and description</td></tr>
-<tr><td><strong>Distance</strong></td><td>How close you are to the searcher</td><td>Nothing — but it's why you can rank in your town and not the next one over</td></tr>
-<tr><td><strong>Prominence</strong></td><td>How well-known and trusted you appear</td><td>Reviews, your website, citations, overall footprint</td></tr>
+<tr><td>Google Search and Maps listings</td><td>Compare nearby practices, hours, reviews, and directions.</td><td>Your profile accurately represents the office and leads to working contact options.</td></tr>
+<tr><td>Ordinary website search results</td><td>Find a practice, a specific service, or an answer to a question.</td><td>The relevant page can be found, explains your actual service, and offers a sensible next step.</td></tr>
+<tr><td>A referral followed by a name search</td><td>Confirm which practice was recommended and learn about the team.</td><td>Your name, location, clinicians, and contact details are easy to recognize.</td></tr>
+<tr><td>Insurance and other provider directories</td><td>Check a provider listing or investigate an option.</td><td>Relevant listings have current details; your office can clarify exact plan participation.</td></tr>
+<tr><td>AI answers and assistants</td><td>Explore a question or assemble options using conversational requests.</td><td>Public information is accurate, relevant search systems can access it, and identifiable referrals are measured.</td></tr>
+<tr><td>Paid advertising</td><td>Respond to a sponsored result for a relevant need.</td><td>The promise, destination page, appointment capacity, and spending objective agree.</td></tr>
 </tbody>
 </table>
 </div>
 
-Your Google Business Profile is the lever for relevance and a big part of prominence. Industry estimates put Business Profile signals at roughly a third of what determines local pack ranking — the largest single bucket. A complete, accurate profile reportedly earns meaningfully more visits than a half-filled-out one, on the order of 70% more location visits in Google's own framing.
+These routes can overlap. Consider an illustrative patient who gets your name from a coworker, checks an insurer's directory, searches Google, reads your website, and calls. Calling that person simply a “Google patient” leaves out what started the relationship.
 
-So, concretely, the highest-value hour you can spend this week:
+Search results also do not have a dependable, universal layout. Avoid building a strategy around the assumption that every search shows an AI answer, exactly three local listings, and then website links in the same order. Even paid placements can appear within local results: Google documents [ads on Maps and in local search results](https://support.google.com/google-ads/answer/3246303?hl=en).
 
-- Claim and verify the profile if you haven't.
-- Set the **primary category** to "Dentist" (or your specialty — "Pediatric dentist," "Cosmetic dentist") and add accurate secondary categories.
-- Fill in **every** field: hours, phone, the exact website URL, services, insurance, payment options, a real description.
-- Add real photos of the actual office and team. Not stock.
-- Keep your name, address, and phone identical everywhere they appear online.
+The useful question is which routes are relevant to your practice and whether each one leads to accurate information.
 
-None of this costs money. Most of it costs an afternoon. It is, dollar for dollar, the best return available to a dental practice online, and it's the first thing I check when a practice asks why nobody's calling.
+## Google Maps and local SEO: make the real practice clear
 
-> Want to know where your practice stands right now? I do a [free visibility audit](https://root.site/#contact) — I look at your Google Business Profile, your reviews, and your site, and tell you plainly what's working and what's costing you patients. No pitch attached. You can take the list and fix it yourself if you want.
+Google describes local ranking through [relevance, distance, and prominence](https://support.google.com/business/answer/7091?hl=en): how well a business matches the search, how far it is from the searcher's location, and how well known it is. Google also says complete, accurate business information helps it understand a business.
 
-## Why do reviews matter so much, and how many do I need?
+That makes your Google Business Profile an important place to work. Check that the practice controls it, the address and contact details are correct, the categories reflect what you actually do, and the hours and website link are current. Use real photographs so someone can recognize the building and get a feel for the office.
 
-Reviews are the rare thing that helps you twice. They're a ranking signal for the map pack, and they're the deciding factor for the patient once they've found you. You're paying for the same work and getting two results.
+Distance is a practical limit to expectations. A result seen at your front desk is not a reliable picture of what someone across town sees. If a report claims that you “rank number one,” ask which search, which location, and whether it describes a local listing or a website page.
 
-On the patient side, the numbers are lopsided. The large majority of patients read online reviews before choosing a dentist, and the average person reads roughly 10 of them before they feel settled. A growing share won't even consider a business below a certain star rating — a meaningful chunk now filters for 4.5 stars and up. A patient with a toothache is nervous and is using your reviews to decide whether you're safe. That's the job reviews are doing.
+For a practice with multiple offices, inspect each real location separately. A wrong booking link at one location can be hidden by an otherwise healthy overall report.
 
-On the ranking side, the thing that changed recently is _recency_. Google has shifted toward rewarding a steady flow of recent reviews over a big static total. A practice with 80 reviews and a new one most weeks now tends to outrank a practice with 200 reviews and nothing in the last six months. Reviews are treated a bit like freshness — a pile from 2022 says you were good in 2022.
+The detailed work—ownership, verification, categories, practitioner profiles, review requests, and troubleshooting—is covered in the [Google Business Profile guide](/writing/google-business-profile-for-dentists). Here, the aim is to understand its role without expecting a listing to carry the whole patient experience.
 
-What this means for you is unglamorous but simple: **ask, consistently.** Not a campaign, not a contest. A habit. The front desk asks a happy patient at checkout, or a short text goes out after the appointment with a direct link to your Google profile. Five a month, every month, beats forty in a burst and then silence.
+## Your website can be where discovery begins
 
-A few honest don'ts: don't buy reviews, don't gate them (only asking happy patients to post while steering unhappy ones elsewhere), and don't offer anything in exchange. Google catches it and the regulators frown on it. The slow honest way is also the only one that holds up.
+Someone can reach an individual service page without seeing your home page or Google profile first. Google [discovers and indexes web pages, then selects results for a search](https://developers.google.com/search/docs/fundamentals/how-search-works). The page that answers the query may be several clicks away from your home page in the site's navigation.
 
-<!-- PLACEHOLDER: example of a clean review-request text + the Google review short-link, from a real root. client -->
+Design those pages as useful starting points. A visitor arriving on a page about dentures should be able to identify the practice, understand what the office offers, find its location, and contact it without having to start over.
 
-## Where does my website actually fit in all this?
+For an independent practice, I would usually begin with this core set of pages:
 
-Here's the part that surprises people, given what I do for a living: your website usually doesn't win the search. The map pack and the reviews do. Your website is what closes the patient _after_ they've found you.
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th scope="col">Page</th><th scope="col">The job it should do</th></tr>
+</thead>
+<tbody>
+<tr><td>Home</td><td>Identify the practice, its location, who it serves, and how to take the next step.</td></tr>
+<tr><td>Relevant services</td><td>Explain what is actually available, who provides it, what a consultation involves, and how to ask about it.</td></tr>
+<tr><td>New patients</td><td>Explain the first visit, scheduling, paperwork, payment, and how to check insurance details.</td></tr>
+<tr><td>Team or clinician pages</td><td>Introduce the real people providing care, with accurate credentials and useful background.</td></tr>
+<tr><td>Contact or real location pages</td><td>Provide the correct phone, address, hours, directions, access information, and appointment options for that office.</td></tr>
+</tbody>
+</table>
+</div>
 
-Think of the path. Patient searches, sees the map pack, reads reviews, and then — to decide — clicks through to a website or two. That click is the moment your site earns its keep. And it's the moment a lot of dental sites quietly lose the patient.
+This is a starting structure, not a requirement to create a separate page for every treatment or question. Combine closely related information when that makes the site easier to use. Give a service its own page when you have enough useful, distinct information to justify it.
 
-Three things lose them:
+The [new-patient page guide](/writing/dental-practice-new-patient-page) goes deeper on the questions to answer before someone calls. Use clear navigation and links between related pages so the next useful answer is easy to reach.
 
-**Speed.** If the page takes too long, a chunk of visitors leave before they've seen anything. Most dental sites I look at are on cheap shared hosting, loading enormous uncompressed photos and three analytics scripts nobody reads. The patient doesn't see "shared hosting." They see a blank screen and tap back. (I wrote a whole piece on this — [Why your dental website probably loads too slowly](/writing/why-your-dental-website-loads-too-slowly) — if you want the gory details.)
+## Check that search engines can actually access the site
 
-**Clarity.** The patient has two or three questions: Do you take my insurance? Are you accepting new patients? How do I book? If the answers aren't obvious in about ten seconds, they go back to the map pack and try the next practice. A clear insurance list and a phone number that reaches a human beat every clever feature.
+Before commissioning new content, make sure the existing pages are eligible to appear.
 
-**Mobile.** Most "dentist near me" searches happen on a phone. If your site is hard to use with a thumb, it doesn't matter how it looks on your desktop. The patient is standing in a parking lot.
+Google's [basic technical requirements](https://developers.google.com/search/docs/essentials/technical) include allowing its crawler to access the page, returning a successful response, and providing content it can index. Meeting those requirements does not guarantee indexing or a ranking.
 
-A site that's fast, says who you are, lists your insurance, and makes booking a two-tap affair will out-convert a gorgeous slow one every time. The website's job isn't to be impressive. It's to not lose the patient the map pack already handed you. If you want the deeper dive on the site itself, I wrote [the complete guide to dental website design](/writing/dental-website-design-complete-guide).
+Ask whoever maintains your website to show you the important pages in [Search Console's URL Inspection tool](https://support.google.com/webmasters/answer/9012289?hl=en). It can show Google's indexed information about a URL and test its current accessibility. A successful live test is not proof that the page is already indexed or will rank.
 
-## What is an AI Overview, and is it stealing my patients?
+The distinction matters after a launch. A temporary setting meant to keep a development site out of search can accidentally remain on the public site. Two common controls do different jobs: [robots.txt controls crawling](https://developers.google.com/search/docs/crawling-indexing/robots/intro), while [noindex tells Google not to index a page](https://developers.google.com/search/docs/crawling-indexing/block-indexing). Google needs access to the page to see a noindex instruction. Blocking crawling alone does not reliably remove a URL from search.
 
-You've probably noticed Google now writes its own answer at the top of some results — a few sentences, with a couple of links cited beside it. That's an AI Overview. For dental searches it shows up most on question-type queries: "how much do dental implants cost," "is a root canal painful," "what's an emergency dentist." Local queries trigger an Overview a majority of the time now.
+A [sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview) helps search engines discover URLs; submitting one is not evidence that every page has been indexed.
 
-Here's the part that should get your attention. When an AI Overview appears, fewer people click anything at all. Across the web, a large share of searches now end without a click to any outside site — and that share jumps when an Overview is present. The Overview answered the question, so the patient never scrolls to the links. For an informational query, that's the patient getting their answer and moving on.
+You do not need to become the person editing these files. Ask for a plain answer to four questions:
 
-So is it stealing patients? Mostly it's eating _informational_ traffic — the "is a root canal painful" reader who was never going to book today anyway. The "dentist near me, I need an appointment" searcher still goes to the map pack, because the Overview can't book them an appointment. The map pack can.
+1. Can Google access our main pages?
+2. Which of those pages are indexed, and which need investigation?
+3. Do important old links still lead to the right content after changes?
+4. Can someone use the site successfully on a phone?
 
-What you can do about it is less exotic than the vendors will tell you. AI Overviews assemble their answers from the same places that already matter: well-structured pages that clearly answer a specific question, your Google Business Profile, and your reviews. If your site has a plain page that genuinely answers "how much does a crown cost in [your town]," you have a shot at being one of the cited sources. If it has a vague "Services" page with a stock photo, you don't. The fundamentals and the AI strategy turn out to be the same fundamentals. That's a recurring theme here, and it's good news — it means you're not chasing two separate things.
+Check performance as part of that last question. A page that stalls or moves its buttons around deserves attention. Google's [page-experience guidance](https://developers.google.com/search/docs/appearance/page-experience) considers more than one speed score, and good scores do not guarantee a top position. For the practical causes of slow pages, see [why dental websites get slow](/writing/why-your-dental-website-is-slow).
 
-## Do patients really find dentists through ChatGPT now?
+## Write service and location pages that help someone choose
 
-Some do, and the number is climbing, so it's worth being honest about where it actually stands rather than either dismissing it or panicking.
+A useful service page answers questions your team can stand behind. Imagine a practice that actually provides dentures. Its page could explain who handles consultations, the options the practice offers, how it evaluates a patient's needs, what happens next, and how to ask about cost and payment.
 
-ChatGPT crossed somewhere around 900 million weekly users in early 2026, and by some surveys roughly a third of people now start at least some searches with an AI tool instead of Google. People genuinely do ask, "Can you recommend a good dentist in [town] who takes Delta Dental?" and the assistant answers with a few names.
+That example does not require a long explanation of the history of dentures or a paragraph repeating the town name. It requires specifics the practice can verify.
 
-Where do those names come from? The same raw material as everything else. AI assistants lean heavily on Google Business Profiles, reviews, and clearly written, factual web pages to decide who to name. There's no secret ChatGPT setting to flip. A practice with a complete profile, real recent reviews, and a site that plainly states its location, services, and insurance is the practice an assistant can confidently recommend. A practice that's a thin profile and a brochure site is invisible to it, for the same reason it's hard for a human to evaluate.
+Have the appropriate clinician review clinical explanations and claims. Make their involvement clear when relevant, and keep qualifications accurate. Google's [guidance on helpful content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) emphasizes reliability, relevant expertise, and honest authorship information. Name a clinician as the reviewer only when they have actually reviewed the page.
 
-My honest read for 2026: don't reorganize your life around AI chat search, but understand that the work that makes you findable there is identical to the work that makes you findable in the map pack. You do it once. Be specific, be accurate, be consistent across the web, and you've covered the AI engines as a byproduct. Anyone selling you a separate, expensive "AI optimization" package is mostly selling you the fundamentals with a 2026 sticker on the box.
+For each important page, work through a few practical questions:
 
-## So where should a practice actually start?
+- Is this service available at this office, and is the page clear about any referral elsewhere?
+- Does the page explain what a prospective patient needs to know before contacting us?
+- Are claims about credentials, availability, equipment, insurance, and payment accurate?
+- Is there an obvious next step that matches how the office handles these inquiries?
+- Who will tell the website maintainer when the information changes?
 
-If you only do a handful of things, do these, in this order. They're sorted by return, not by how interesting they are.
+Use ordinary language that matches the service and location. A descriptive page title and heading help a reader understand where they are. Google's [SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) explains that its systems can connect a page with different ways of expressing a topic; you do not need a separate page for every wording of the same question.
 
-1. **Fix your Google Business Profile.** Claim it, complete every field, correct category, real photos. Free, one afternoon, biggest single payoff.
-2. **Start asking for reviews, every week.** A small steady habit at the front desk or by text. Recent and real beats big and stale.
-3. **Make sure your website is fast, clear, and works on a phone.** Especially: insurance listed, "accepting new patients" obvious, booking two taps away.
-4. **Add plain pages that answer real patient questions.** Costs, procedures, what to expect. This is what feeds AI Overviews and AI assistants.
-5. **Keep your name, address, and phone identical everywhere.** Boring. Matters more than it should.
+### Be honest about geography
 
-Notice what's not on the list: chatbots, pop-ups, "patient acquisition funnels," and most of what an agency will quote you four grand a month for. ([You don't need a chatbot](/writing/you-dont-need-a-chatbot), for one.) Get these five right and you'll be ahead of nearly every practice in your area, because nearly every practice skips the boring fundamentals to chase the shiny thing.
+Give each actual office its own useful information when you have multiple locations. Explain differences that matter: clinicians, services, hours, access, and the correct booking route.
 
-That's the whole approach, honestly. The patient flow hasn't changed as much as the hype suggests. Search, map pack, reviews, a quick look at your site, a phone call. AI is rearranging the top of the page, but it's pulling from the same well. Fix the well.
+A single office can truthfully discuss nearby communities it serves. But replacing the town name across dozens of otherwise identical pages is a poor substitute for useful local information. Google's [spam policies](https://developers.google.com/search/docs/essentials/spam-policies) address doorway pages created for similar searches and large amounts of low-value content made primarily to manipulate rankings. That does not make every location page inappropriate; the purpose and usefulness matter.
 
-If you'd rather not sort out which of these your practice is missing, that's the [free visibility audit](https://root.site/#contact) — I look at all of it and send you a plain-English list. Fix it yourself or have me do it. No pressure either way.
+Keep one strong page when it answers the question well. Add another when it provides a different answer a prospective patient needs. There is no need to invent an office in the next town or promise a service your clinicians do not provide.
 
-## Frequently asked questions
+## Reviews, directories, and links should reflect real relationships
 
-**How long does it take to start getting more patients from Google?**
+Reviews can help someone understand experiences with an office. Google also identifies review volume and positive ratings as contributors to local prominence in its [local-ranking guidance](https://support.google.com/business/answer/7091?hl=en). That is not a formula for how many reviews you need or a guarantee that a particular posting schedule will outrank a competitor.
 
-Profile fixes and review momentum tend to show up over weeks to a few months, not days. The Google Business Profile work is the fastest mover — a complete, correct profile can improve your map pack visibility fairly quickly. Reviews and website improvements compound more slowly. Anyone promising you page-one results next week is guessing or lying.
+Build a consistent, neutral way to invite honest feedback. Google's [contribution policy](https://support.google.com/contributionpolicy/answer/7400114?hl=en) prohibits incentives and selectively soliciting positive reviews. Do not reserve the public review link for people who first report that they are happy.
 
-**Do I need to pay for Google Ads to get found?**
+Public replies also need care. The ADA's [guidance on online reviews](https://www.ada.org/resources/practice/legal-and-regulatory/managing-dental-practice-online-reviews) warns about revealing patient information, including confirming a reviewer is a patient. Establish a response policy with the person responsible for privacy at your practice. The profile guide covers this boundary in more detail.
 
-No. Ads can put you above the map pack, but they cost money for every click and stop the moment you stop paying. The map pack, your reviews, and your website are "earned" — they keep working without a meter running. For most practices I'd get the free fundamentals right first and only consider ads if you're trying to fill a brand-new operatory fast.
+For directories, start with entries someone has a reason to use: relevant insurer listings, professional profiles, and established local resources. Confirm the material facts. An old address or the wrong phone number deserves correction; slight differences in punctuation are a different priority.
 
-**What's more important, my website or my Google Business Profile?**
+Google says it [collects business information from several sources](https://support.google.com/business/answer/2721884?hl=en), including official websites, third parties, and contributions. That supports checking important public information. It does not establish that buying hundreds of listings will produce new patients.
 
-For getting _found_, the Business Profile, by a wide margin — it's what puts you in the map pack where most clicks happen. For _converting_ the patient once they've found you, the website. They do different jobs. If you have to fix one first, fix the profile, then make sure the website doesn't lose the patient it sends you.
+Treat links similarly. A legitimate local organization or professional relationship may provide a useful introduction to your practice. Pay attention to the audience and the accuracy of the mention. Google's spam policies also prohibit [links bought or arranged to manipulate rankings](https://developers.google.com/search/docs/essentials/spam-policies). A report counting acquired links tells you little without explaining where they came from and why they belong there.
 
-**How many Google reviews does a dental practice need?**
+## How AI search fits into dental SEO
 
-There's no magic number. What matters more is recency and a steady flow — a practice getting a few new reviews most weeks generally looks healthier to both Google and patients than one with a big old pile and nothing lately. Aim for a small consistent habit rather than a one-time push, and keep your rating honest.
+AI search adds ways for someone to ask questions and encounter a practice. It also introduces uncertainty: an answer might omit a practice, use outdated information, or summarize a source incorrectly. A useful approach is to check the relevant systems and your public information without treating one chatbot answer as a permanent ranking.
 
-**Should I worry about AI Overviews and ChatGPT hurting my traffic?**
+### Google's AI Overviews and AI Mode
 
-Worry is the wrong word. They're mostly absorbing informational searches — the "is a root canal painful" reader, not the "I need an appointment today" patient. And they draw from the same Google Business Profile, reviews, and clear web pages you'd be improving regardless. Do the fundamentals well and you're covered across Google, AI Overviews, and the chat assistants at once.
+Google says its [generative AI search features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) use its core search systems and index. To be eligible, a page must be indexed, eligible for a search snippet, and included under Google's AI-search controls. Eligibility does not guarantee a citation or recommendation.
 
-## Sources
+Ask your website provider to check the [Search generative AI setting in Search Console](https://support.google.com/webmasters/answer/16908024). Inclusion is the default, though a property can inherit a parent property's setting. This control affects participation in Google's generative search features; it is separate from controls for AI training and does not determine inclusion or ranking in ordinary search.
 
-- [How Dentists Can Get More Patients Online in 2026 — Harvee Healthcare](https://www.harveehealthcare.com/blog/how-can-dentists-get-more-patients-online/)
-- [Dentist Local SEO: The Complete Lead Generation Guide (2026) — LocalMighty](https://www.localmighty.com/blog/local-seo-for-dentists-best-strategies/)
-- [How Local SEO Decides Which Dentists Show Up in the Google Map Pack — Hibu](https://hibu.com/blog/industries/how-local-seo-decides-which-dentists-show-up-in-the-google-map-pack)
-- [Weighted Local SEO & Map Pack Ranking Factors (2026) — Emulent](https://emulent.com/resources/google-updates/local-seo-ranking-factors/)
-- [Local SEO Ranking Factors 2026 — ClickRank](https://www.clickrank.ai/local-seo-ranking-factors/)
-- [Local SEO Statistics 2026 — BizIQ](https://biziq.com/blog/local-seo-statistics-2026/)
-- [How to Get More Google Reviews for Your Dental Practice (2026) — AI Rankings Kool](https://www.airankingskool.com/post/google-reviews-dental-practice-guide)
-- [How Online Reviews Impact Dental Practices: The Statistics — ConnectTheDoc](https://connectthedoc.com/blog/how-online-reviews-impact-dental-practices-the-stats)
-- [Managing Dental Practice Online Reviews — American Dental Association](https://www.ada.org/resources/practice/legal-and-regulatory/managing-dental-practice-online-reviews)
-- [AI Search Statistics for Local Businesses 2026 — GrowthPro AI](https://growthproai.com/ai-search-statistics-local-businesses-2026)
-- [How AI Is Impacting Local Search — ALM Corp](https://almcorp.com/blog/how-ai-is-impacting-local-search/)
-- [AI Search Statistics (2025–2026) — Omnibound](https://www.omnibound.ai/blog/ai-search-statistics)
-- [Google Business Profile for Dentists: The Complete 2026 Setup Guide — First Stop Dental](https://firststopdental.com/blog/google-business-profile-for-dentists)
+Google's optimization guide also says there is no special AI schema requirement, and that `llms.txt` files do not improve Google Search visibility. Keep the useful, accurate pages and technical access in good order. A new label on an SEO package does not explain what work the practice needs.
+
+### ChatGPT and other assistants
+
+Different services have their own systems and access controls. Do not assume that a well-maintained Google Business Profile automatically supplies every assistant with everything it needs.
+
+OpenAI's [crawler documentation](https://developers.openai.com/api/docs/bots) distinguishes `OAI-SearchBot`, used for ChatGPT search discovery, from `GPTBot`, used for potential model-training collection. A site can allow the former while blocking the latter. Ask your provider to check both crawler rules and any firewall restrictions against your preferences. Allowing access is not a promise that an answer will mention you.
+
+If an assistant gives a wrong address or says you offer a service you do not provide, check the sources it cites. Correct inaccurate information on pages or profiles you control, request corrections elsewhere when appropriate, and use the product's feedback option. If the source is already correct, rewriting accurate copy may not fix an error introduced by the answer itself.
+
+Keep the scale of the work proportionate. Record actual inaccuracies and identifiable referrals. Avoid building dozens of speculative pages just to answer every variation of a prompt.
+
+## Where paid search belongs
+
+Advertising can be part of a practice's patient-acquisition plan, but it needs its own objective and measurement. Google explicitly says [advertising does not improve organic search placement](https://support.google.com/google-ads/answer/3097241?hl=en).
+
+Before paying for a campaign, define the appointment type, location, available capacity, spending limit, and what counts as success. Check the destination page and the office's response process. A campaign for a service at one location should lead to the right information and team for that location.
+
+Do not evaluate it solely by the number of clicks or forms submitted. Ask how many inquiries were relevant, how many became bookings, and how many of those appointments were attended. Use the same definitions when comparing periods or providers.
+
+Paid and unpaid discovery can operate together. The decision to buy ads should follow the practice's goals and evidence, rather than a claim that spending unlocks better organic rankings.
+
+## Help the patient make a decision and reach the office
+
+Visibility creates an opportunity. The page still needs to help someone decide what to do.
+
+Open your site on a phone and approach it as someone who has never visited. Can you find the address, clinicians, services, new-patient information, and appointment route without guessing? Are your descriptions of insurance and payment precise enough for the office to stand behind?
+
+For example, “we work with insurance” leaves important questions unanswered. Describe the practice's actual arrangements and explain how someone can check their specific plan. Have the person who handles benefits verify that wording. Do not turn an uncertain coverage question into a blanket promise.
+
+Then test the contact path. Tap the phone number. Follow the scheduling link. With the team's knowledge, send a clearly labeled test request and confirm it reaches the right place. Remove the test afterward. Check what happens outside office hours.
+
+If a form sends an appointment request, call it a request and explain the next step. If a booking system confirms an available appointment, make that confirmation clear. A person should know whether a time is reserved or whether they still need to hear from the office.
+
+An illustrative example: a practice offers denture consultations, but its inquiry form gives no acknowledgment or explanation of what happens next. I would add a clear confirmation message, explain how the office responds, and verify that a coordinated test request reaches the responsible staff member. Then I would check that requests are being handled. That gives the practice a specific change and outcome to evaluate.
+
+For a fuller review, use [how to tell if your dental website is doing its job](/writing/how-to-tell-if-your-dental-website-is-doing-its-job).
+
+## Measure discovery, inquiries, and appointments separately
+
+A useful report should let you trace progress without pretending every number represents a new patient.
+
+<!-- svelte-ignore a11y_no_noninteractive_tabindex (This scrollable table region needs keyboard focus.) -->
+<div class="table-wrap" role="region" aria-label="Discovery and appointment measures" tabindex="0">
+<table style="min-width: 560px;">
+<thead>
+<tr><th scope="col">Evidence</th><th scope="col">What it helps answer</th><th scope="col">What it does not establish</th></tr>
+</thead>
+<tbody>
+<tr><td>Search Console impressions and clicks</td><td>Is the website appearing in Google Search, and are people clicking through?</td><td>Whether a visitor became a qualified inquiry or patient.</td></tr>
+<tr><td>Google's generative AI impressions report</td><td>Are links to the website being shown in AI Overviews or AI Mode?</td><td>A complete record of AI prompts, referrals, or booked appointments.</td></tr>
+<tr><td>Business Profile interactions</td><td>Are people using the profile's call, website, or direction options?</td><td>Whether calls were answered or direction requests became arrivals.</td></tr>
+<tr><td>Website activity and recorded referral sources</td><td>Which pages and identifiable sources lead to useful actions?</td><td>Every influence on the person's decision or every visit from AI.</td></tr>
+<tr><td>Qualified inquiries and bookings</td><td>Are relevant prospective patients reaching the office and scheduling?</td><td>Whether each scheduled appointment was attended.</td></tr>
+<tr><td>Attended new-patient appointments</td><td>How many new patients actually came in?</td><td>Which single marketing touch caused the decision.</td></tr>
+</tbody>
+</table>
+</div>
+
+### Use each report for the question it can answer
+
+Google's [Search Console performance report](https://support.google.com/webmasters/answer/7576553) shows impressions, clicks, and breakdowns such as pages and queries. Compare searches containing the practice or clinician's name with relevant searches that do not. A rise in name searches and a rise in discovery for a service tell you different things. Do not assume either one, by itself, proves new-patient growth.
+
+As of this guide's October 2026 update, Google also provides a [Generative AI performance report](https://support.google.com/webmasters/answer/16984139) for AI Overviews and AI Mode impressions. It may not appear when a site has insufficient activity. Its data overlaps with the overall Web search report, so do not add the two together as separate audiences. It measures visibility, not a complete trail from an AI conversation to an appointment.
+
+[Business Profile performance](https://support.google.com/business/answer/9918094?hl=en) has different definitions. Its call metric counts clicks on the call button, not completed conversations. Its reporting can also include activity from both organic results and Google Ads. Label those figures accurately before comparing them with the office's actual calls.
+
+For AI referrals outside Google Search, look for recorded sources and campaign tags where available. Google Analytics, for example, documents an [AI Assistant channel](https://support.google.com/analytics/answer/9756891?hl=en) for recognized assistant referrals, while classifying Google's AI Overviews and AI Mode under Organic Search. [Missing source information](https://support.google.com/analytics/answer/15258820?hl=en) can leave visits unattributed. These reports identify some visits; they do not measure every recommendation someone saw or every patient who later searched your name.
+
+### Connect the evidence to what happens at the office
+
+Agree on a consistent definition of a qualified new-patient inquiry. Separate it from existing-patient requests, solicitations, and inquiries for services you do not offer. Keep booked appointments and attended first visits separate as well.
+
+Ask how someone first heard about the practice when it fits naturally into your intake process. Use that answer alongside the recorded source. In the coworker-referral example, the website may have helped someone decide without being the original introduction.
+
+Review trends over comparable periods, and note changes in staffing, appointment availability, services, campaigns, and the website. If bookings fall while the practice is unable to offer suitable appointments, search visibility may be only part of the explanation. A report should help you ask that question.
+
+## Match the fix to the problem you can observe
+
+“We need better SEO” is often the beginning of the conversation. Make the next step specific.
+
+<!-- svelte-ignore a11y_no_noninteractive_tabindex (This scrollable table region needs keyboard focus.) -->
+<div class="table-wrap" role="region" aria-label="Problems to investigate and actions to take" tabindex="0">
+<table style="min-width: 560px;">
+<thead>
+<tr><th scope="col">What you observe</th><th scope="col">What to investigate</th><th scope="col">A useful next action</th></tr>
+</thead>
+<tbody>
+<tr><td>People find the wrong address, hours, or phone number.</td><td>The website, business profiles, and relevant directories.</td><td>Correct the sources and verify the public information after updates.</td></tr>
+<tr><td>An important service page is absent from search.</td><td>Its indexing status, accessibility, content, and internal links.</td><td>Resolve the specific issue before producing more pages.</td></tr>
+<tr><td>The practice appears near the office but not farther away.</td><td>The search location, local competitors, and accuracy of the profile.</td><td>Set realistic geographic expectations and address demonstrated gaps.</td></tr>
+<tr><td>Visits arrive, but people keep asking basic questions.</td><td>What the entry page says about services, payment, location, and scheduling.</td><td>Answer the recurring questions where prospective patients need them.</td></tr>
+<tr><td>Inquiries arrive but few become bookings.</td><td>Relevance, response handling, availability, and appointment requirements.</td><td>Fix the documented obstacle and monitor that part of the process.</td></tr>
+<tr><td>Traffic drops after a website change.</td><td>The timing, affected URLs, indexing changes, and old links.</td><td>Investigate the change before assuming the cause is AI or a ranking update.</td></tr>
+</tbody>
+</table>
+</div>
+
+If you are considering an outside provider, ask them to connect their proposal to that evidence. Which page or listing will change? Why is that the right place to work? What will they deliver? What outcome will they check? Which accounts and reports will the practice retain access to?
+
+There is no universal order that fits a new office, an established practice changing its name, and a practice with plenty of inquiries but no available appointments. Each needs a different first conversation.
+
+Give routine maintenance an owner, too. When hours, clinicians, services, insurance arrangements, or scheduling tools change, someone needs to pass that information to whoever manages the public pages. A well-written page cannot stay accurate without that connection.
+
+## Common questions about dental SEO
+
+### Is my website or Google Business Profile more important?
+
+Both can introduce someone to your practice and help them decide whether to contact you. Your profile supports local discovery in Google Search and Maps; individual website pages can appear in ordinary search results and provide more detail. Fix the part that is causing a demonstrated problem. A missing profile and a broken appointment form need different work.
+
+### Why do I show up for my practice name but not dentist near me?
+
+A name search identifies a particular practice; a nearby-dentist search compares options. Check the exact query, search location, and result type before judging visibility.
+
+### Does a dental practice need a blog for SEO?
+
+A blog is optional. Start with accurate, useful pages about your practice, actual services, locations, and becoming a patient. Add an article when it answers a worthwhile question that those pages do not cover. Clinical information needs qualified review, and published advice needs someone responsible for keeping it current.
+
+### How long does dental SEO take to work?
+
+There is no reliable timetable for a particular ranking or number of new patients. A corrected phone number can help once it is displayed, while search engines still need to discover and evaluate changed pages. Ask what will change, when implementation will be complete, what evidence will be checked, and how progress toward qualified inquiries will be assessed.
+
+### Can someone guarantee a top Google ranking or an AI recommendation?
+
+Treat those guarantees cautiously. Technical eligibility does not guarantee that Google will index or display a page, and meeting its AI-search requirements does not guarantee inclusion in an answer. A provider can commit to specific work and reporting. They cannot responsibly promise that a search engine or assistant will choose your practice for every relevant search.
+
+## Where Root fits
+
+Root is for independent dental practices that want a clear, well-built website and someone responsible for keeping it useful. I personally build and maintain the site, including the copy, hosting, and ongoing changes, and take care of Google Business Profile and local-search fundamentals. Your team supplies the practice knowledge, verifies clinical and operational details, and handles patient relationships and reviews.
+
+You can see [what is included](/whats-included) or [tell me about your practice](/#contact). We can start with what is happening now and what needs attention.
+
+_This guide was substantially updated on October 30, 2026. Platform guidance is linked beside the relevant advice; features, controls, and reporting can change._

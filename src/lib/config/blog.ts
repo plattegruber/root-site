@@ -47,6 +47,18 @@ export type PostMetadata = {
 	 * post module on the detail route, so it isn't bundled into the index.
 	 */
 	faq?: FaqItem[];
+	/**
+	 * True for the long, kept-current guides. Pillar posts lead the
+	 * /writing index as cards, carry a "Pillar guide" badge, get a table
+	 * of contents, and are what other posts fall back to as related
+	 * reading. Three or four at a time is the right number.
+	 */
+	pillar?: boolean;
+	/**
+	 * Optional slugs of posts to show as "Keep reading" at the end. When
+	 * absent, the post page falls back to the other pillar guides.
+	 */
+	related?: string[];
 };
 
 export type PostModule = {
@@ -111,3 +123,12 @@ export const posts: PostSummary[] = Object.entries(modules)
 	.sort((a, b) => (a.date < b.date ? 1 : -1));
 
 export const postSlugs = posts.map((p) => p.slug);
+
+/** The pillar guides, newest first. */
+export const pillars = posts.filter((p) => p.pillar);
+
+/**
+ * A post as the index and the post page show it: the summary plus the
+ * build-time reading estimate from src/lib/server/reading-time.ts.
+ */
+export type PostCard = PostSummary & { minutes: number };

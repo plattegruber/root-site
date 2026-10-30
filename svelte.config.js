@@ -1,5 +1,25 @@
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-cloudflare';
+import { slugify } from './src/lib/slug.js';
+
+/**
+ * Rehype plugin: give every rendered h2 and h3 an id derived from its
+ * text, so a post's headings can be deep-linked and the "In this guide"
+ * contents on pillar posts (built from the same Markdown source with the
+ * same slugify) lands on them. No dependency on rehype-slug: the hast
+ * tree is small and the walk is ten lines.
+ */
+function headingIds() {
+	const text = (node) =>
+		node.type === 'text' ? node.value : (node.children ?? []).map(text).join('');
+	const walk = (node) => {
+		if (node.type === 'element' && /^h[23]$/.test(node.tagName) && !node.properties?.id) {
+			node.properties = { ...(node.properties ?? {}), id: slugify(text(node)) };
+		}
+		for (const child of node.children ?? []) walk(child);
+	};
+	return (tree) => walk(tree);
+}
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -66,7 +86,7 @@ const config = {
 			}
 		}
 	},
-	preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
+	preprocess: [mdsvex({ extensions: ['.svx', '.md'], rehypePlugins: [headingIds] })],
 	extensions: ['.svelte', '.svx', '.md']
 };
 

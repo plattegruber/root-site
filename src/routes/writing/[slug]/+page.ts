@@ -10,7 +10,7 @@ export const prerender = true;
 /** Tell the prerenderer every slug so each post page generates at build time. */
 export const entries = () => posts.map((p) => ({ slug: p.slug }));
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, data }) => {
 	const post = posts.find((p) => p.slug === params.slug);
 	if (!post) error(404, 'Post not found');
 
@@ -18,6 +18,7 @@ export const load: PageLoad = async ({ params }) => {
 	const { faq } = mod.metadata as PostMetadata;
 
 	return {
+		...data,
 		title: `${post.title} — root.`,
 		description: post.excerpt,
 		canonical: `${site.url}/writing/${post.slug}`,

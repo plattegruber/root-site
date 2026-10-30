@@ -15,6 +15,7 @@ faq:
     a: 'Start with whatever most affects the patient’s next decision. First, anything that blocks the step entirely: a wrong number, a dead booking link, a request that never reaches the office. Second, anything that creates the wrong expectation, such as “Book now” on a form that only sends a request. Third, a useful answer that exists but is hard to find. Fix one, then repeat the same patient task to confirm it.'
   - q: 'Is the guide really free?'
     a: 'Yes. Type your email on this page and the 21-page PDF arrives as an attachment, with a short note. There is no list and no follow-up sequence. If you want a second pair of eyes, you can reply with your website address and get three findings back within two business days, also free.'
+pillar: true
 ---
 
 <script>

@@ -3,7 +3,7 @@
 Guide — the free guide, offered in full on the homepage.
 
 Follows Care on purpose: that section says how we read a dental site,
-and this one says the whole method is written down, 21 pages, free, and
+and this one offers the starting point of it as a 21-page PDF, free, and
 asks only for an email to send it. The cover sits beside the copy so the
 offer reads as a real thing you'd hold, not a newsletter box. The form
 posts to /api/guide (see guide-form.svelte); the story behind the guide
@@ -40,19 +40,19 @@ Linen band between cream Care and cream "Small on purpose".
 
 					<div class="min-w-0">
 						<p class="m-0 font-mono text-[12px] tracking-[0.04em] text-root-light uppercase">
-							New · {guide.pages}-page PDF · free
+							Free guide · {guide.pages}-page PDF
 						</p>
 						<h2
 							class="mt-3 mb-5 font-serif text-[28px] leading-[1.2] font-normal tracking-[-0.01em] text-balance text-ink"
 						>
-							{guide.title}.
+							Check your own website in ten minutes. Free, as a PDF.
 						</h2>
 						<p
 							class="mb-4 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay"
 						>
-							Our whole way of reading a dental website, written down. Five checks you can run on
-							your phone in ten minutes, then the deeper questions behind them, worked through on a
-							real site, with a worksheet for the one fix you decide to make.
+							<em class="text-ink not-italic">{guide.title}</em> is the first thing we hand a new client.
+							Five checks you can run on your phone, then the deeper questions behind them, worked through
+							on a real site, with a worksheet for the one fix you decide to make.
 						</p>
 						<p
 							class="mb-7 max-w-[520px] font-sans text-[17px] leading-[1.65] text-pretty text-clay"

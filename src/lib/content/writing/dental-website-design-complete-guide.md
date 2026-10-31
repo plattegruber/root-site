@@ -1,196 +1,363 @@
 ---
-title: 'Dental Website Design: The Complete Guide for Practice Owners (2026)'
+title: 'Dental Website Design: A Practice Owner’s Guide'
 date: 2026-06-08
-updated: 2026-10-27
-excerpt: What dental website design actually involves in 2026 — what it should cost, what a site really needs, and how to avoid paying thousands for a template.
+updated: 2026-10-31
+excerpt: A practical guide to planning a dental website, comparing proposals, reviewing the design, protecting your accounts, and knowing what is ready to launch.
 faq:
-  - q: 'How much does a dental website cost in 2026?'
-    a: 'Most small practices pay between $4,000 and $8,000 for a custom build, with fully custom sites running $8,000–$20,000 or more, plus ongoing costs of roughly $300–$2,500 a month. The market overall spans about $3,500 to $30,000+. The wide range is mostly driven by company overhead and contract structure, not quality.'
-  - q: 'What makes a dental website good?'
-    a: "Four things: it loads fast, it builds trust quickly with real photos and real reviews, it answers the obvious questions like hours, location, and insurance, and it makes booking easy. A plain site that does all four beats a flashy one that doesn't."
-  - q: 'Why does website speed matter so much for a dental practice?'
-    a: 'Because most patients are on phones, and slow sites lose them. A one-second delay can cut conversions by about 7% — up to 20% on mobile — and mobile bounce rates reach roughly 53% once a page takes more than three seconds to load. Speed affects both Google ranking and whether visitors stay to book.'
-  - q: 'Do I really own my dental website?'
-    a: "Often, no. Many providers keep the domain, hosting, and content under their own accounts, so leaving means losing everything. Before signing, confirm in writing that you own your domain, your content, and the logins to your Google and analytics accounts, and ask whether there's a contract."
-  - q: 'Should my dental website have an AI chatbot?'
-    a: "Usually no. Patients with a real question will email or call, and a chatbot typically can't answer specifics like whether you take their insurance. The money is better spent on a faster site and real photographs, which do more to win trust and bookings."
+  - q: 'Do I need a new dental website or a smaller update?'
+    a: 'Start with the problem you can observe. Incorrect information, a broken link, or an unclear appointment process may need a focused repair. A rebuild becomes more useful when the structure, technology, or maintenance arrangement prevents the site from meeting the practice’s needs. Ask a provider to explain what can be kept and why the proposed work is necessary.'
+  - q: 'How should I compare dental website quotes?'
+    a: 'Compare proposals that include the same work: design, writing, photography, integrations, launch, hosting, updates, and support. Add setup charges and recurring fees over the same period, then check third-party costs and cancellation terms. A price alone does not tell you what the practice receives or how much work remains with your team.'
+  - q: 'Is a custom dental website better than a template?'
+    a: 'The label does not establish quality. A template can be adapted carefully, and a custom build can still be difficult to use or maintain. Evaluate the actual pages, patient tasks, performance, accessibility, editing process, and handoff. Ask what will be designed specifically for the practice and what comes from an existing system.'
+  - q: 'What should I receive if I leave my website company?'
+    a: 'Get a written handoff agreement covering the domain account, content, usable site files or exports, image and software licenses, relevant business accounts, and any data the provider holds for the practice. Clarify fees, timing, hosting continuity, and what requires rebuilding elsewhere. Ownership, account access, and the ability to move a working site are separate questions.'
+  - q: 'How long does a dental website take to build?'
+    a: 'The schedule depends on the agreed pages, writing, photography, integrations, migration, and approvals. Ask for a proposed launch date with clear dependencies and named responsibilities. Review content and working pages along the way, and allow for testing and a live recheck. A quick preview is only one part of a finished website.'
 pillar: true
 image: /writing/dental-website-design-complete-guide.png
-imageAlt: 'Typographic card for the complete guide to dental website design, on cream with the title in serif type.'
+imageAlt: 'Cream typographic card reading Dental website design: a practice owner’s guide.'
+related:
+  - how-to-tell-if-your-dental-website-is-doing-its-job
+  - how-dental-practices-get-found-online
+  - google-business-profile-for-dentists
 ---
 
-Dental website design is the work of building the site patients land on before they ever call you — the layout, the words, the photos, the speed, and the quiet technical decisions underneath. Good design isn't about looking fancy. It's about a nervous person on their phone finding your hours, trusting your face, and booking a cleaning in under a minute. That's the whole job. Everything else is decoration.
+A dental website has to represent a real place: the people providing care, the patients they see, the services they offer, and the way the office works.
 
-This is the long version — the guide I wish practice owners had before they signed a contract they didn't understand. I build these sites for a living, one at a time, so I'll tell you how I actually think about it.
+It also has to do useful work. A prospective patient may need to check insurance, learn about a dentist, or request a visit. An existing patient may be looking for the portal, directions, or the right number to call. The design should help each person understand where they are and what to do next.
 
-## TL;DR
+**Dental website design includes the structure, words, photography, layout, forms, and technology that make those tasks possible.** Buying a website means deciding who will build those pieces, who will verify them, and who will keep them working.
 
-- **A dental website's only job is to turn a stranger into a booked appointment.** Looks matter only insofar as they build trust and get out of the way.
-- **Custom dental sites run roughly $4,000–$8,000 for small practices and $8,000–$20,000+ for fully custom builds**, plus $300–$2,500/month in ongoing costs. The range is wide because the industry hides its pricing. ([Flamingo](https://www.flamingoagency.com/blog/dental-website-design-cost/), [Dentive](https://www.dentive.com/blog/dental-website-design-cost))
-- **Speed is the feature nobody sees and everybody feels.** A one-second delay can cut conversions by about 7% — and up to 20% on mobile. ([Huckabuy](https://huckabuy.com/20-important-page-speed-bounce-rate-and-conversion-rate-statistics/))
-- **Most of your patients are on a phone.** If booking takes more than 30 seconds on mobile, you're losing people who wanted to book.
-- **You should own your website, your domain, and your data.** A lot of dentists don't, and they find out the hard way when they try to leave.
+I build and maintain websites for independent dental practices. This guide is how I would approach the project as an owner: decide what needs changing, compare the actual scope, review the work, and approve a launch with evidence.
 
-## What does "good" dental website design actually mean?
+## First, decide whether you need a new website
 
-Most people answer this with adjectives. Modern. Clean. Professional. Those words don't mean anything, because everyone uses them and no site admits to being old, cluttered, and amateur.
+Start with a problem you can describe.
 
-Here's a more useful definition. A good dental website does four things, in order:
+“Patients cannot tell whether we see young children” points toward a content problem. “The appointment button sends people to our former scheduling provider” points toward a broken connection. “Nobody can update the site, and the software is no longer maintained” raises a broader question about the platform and the arrangement.
 
-1. **Loads fast**, before the patient gives up.
-2. **Earns trust quickly** — real photos, real reviews, a real human behind the practice.
-3. **Answers the obvious questions** — where you are, when you're open, whether you take their insurance, whether it'll hurt.
-4. **Makes booking effortless** — one obvious button, a short form, no maze.
+Those situations do not automatically call for the same project.
 
-If a site does those four things, it's good, even if it's plain. If it skips them, no amount of animation or stock photography saves it. I've seen $20,000 websites fail all four, and I've seen a one-page site nail all four.
+Before accepting a redesign proposal, ask the provider to identify what is worth keeping. That might include your domain, useful page addresses, accurate copy, photographs you have rights to use, and a booking system your team likes. Ask which problems require rebuilding and which can be repaired within the existing site.
 
-The trap is that design gets judged on the wrong screen. An owner looks at their new site on a 27-inch monitor in the office and thinks it looks great. The patient sees it on a cracked iPhone in a parking lot, on one bar of signal, at 9pm, deciding whether their tooth can wait until morning. Design for that person.
+Visual design matters, too. A layout can make a practice feel recognizable and information easier to understand. But “looks dated” needs to become a more specific conversation: what is difficult to read, find, understand, or use?
 
-## What should a dental website cost?
+If you need help evaluating the current site, start with [how to tell if your dental website is doing its job](/writing/how-to-tell-if-your-dental-website-is-doing-its-job). It walks through patient tasks and gives you a way to record a finding, make a change, and check the result.
 
-This is the question everyone wants answered first, and the one the industry works hardest to avoid. Search "dental website cost" and you'll get a lot of words and very few numbers.
+Bring that evidence into the proposal discussion. It gives both sides a clearer definition of the work.
 
-So here are the numbers, pulled from 2026 pricing data across the industry:
+## Write a short brief before discussing layouts
+
+A useful brief gives the builder enough information to make good decisions. You do not have to write the finished website yourself.
+
+I would ask the practice to establish six things:
+
+1. **Who the office serves.** The patients and age groups you see, the services you actually provide, and any limits a new patient should understand.
+2. **What needs to improve.** Specific problems with the current site or requirements for a new practice, such as making first-visit information easier to find.
+3. **How contact works.** Calling, requesting an appointment, or booking directly; who responds; and what happens outside office hours.
+4. **Which systems already exist.** Scheduling, patient intake, portal access, payments, email, domain registration, and any phone services tied to the current provider.
+5. **Who supplies and approves the facts.** The person confirming operational details, the clinician reviewing treatment information, and whoever approves photographs and publication.
+6. **Who handles changes later.** Whether your team wants editing access, a service that makes changes for you, or a combination.
+
+This is also where to settle what “content included” means. Does the provider interview the practice and write the pages, edit material you supply, or leave you with empty sections to fill?
+
+Put the proposed pages and integrations in writing. If you are replacing a site, include the migration work. If there are optional features, identify them separately so the main project has a clear boundary.
+
+A brief should reduce the number of things everyone is guessing about.
+
+## Choose pages around the questions people need answered
+
+A small practice does not need a large site to be useful. It needs a clear home for its important information.
+
+Here is a reasonable starting structure:
 
 <div class="table-wrap">
 <table>
 <thead>
-<tr><th>Type of build</th><th>Typical range</th></tr>
+<tr><th scope="col">Page or section</th><th scope="col">What it should help someone understand</th></tr>
 </thead>
 <tbody>
-<tr><td>Small-practice professional site</td><td>$4,000–$8,000 (<a href="https://www.flamingoagency.com/blog/dental-website-design-cost/">Flamingo</a>)</td></tr>
-<tr><td>Mid-range semi-custom</td><td>$6,000–$15,000</td></tr>
-<tr><td>Fully custom build</td><td>$8,000–$20,000+</td></tr>
-<tr><td>Premium custom (UI, advanced features)</td><td>$15,000–$40,000+</td></tr>
-<tr><td>Ongoing (hosting, maintenance, marketing)</td><td>$300–$2,500/month (<a href="https://www.dentive.com/blog/dental-website-design-cost">Dentive</a>)</td></tr>
+<tr><td>Home</td><td>Which practice this is, where it is, who it serves, and how to contact it.</td></tr>
+<tr><td>Dentists and team</td><td>Who provides care, their current roles and credentials, and useful background about the people a patient will meet.</td></tr>
+<tr><td>Services</td><td>What the office offers, what the next conversation or consultation involves, and how to ask about a particular need.</td></tr>
+<tr><td>New patients</td><td>Whether the practice is accepting patients, how scheduling works, what the first visit involves, and how to check insurance and payment details.</td></tr>
+<tr><td>Contact or real locations</td><td>The correct phone, address, hours, entrance, parking, and contact options for the office.</td></tr>
+<tr><td>Existing-patient resources</td><td>Where to find the approved portal, forms, payment system, or instructions already used by the practice.</td></tr>
 </tbody>
 </table>
 </div>
 
-The overall market runs from about $3,500 to $30,000+ depending on customization, content, and features. ([Rosemont Media](https://www.rosemontmedia.com/website-design/how-much-should-a-dental-website-cost/))
+These can be pages or well-organized sections, depending on how much there is to explain. Give a service its own page when it has a distinct question to answer and useful information to support it. Avoid creating pages simply to reach a page-count allowance.
 
-A few honest observations about these numbers.
+For multiple offices, make it clear which clinicians, services, hours, and booking options belong to each location. For a single office, make that location unmistakable.
 
-First, the spread is enormous, and most of it isn't about quality. A lot of the price difference is the size of the company selling it to you. Big agencies have account managers, sales teams, and offices to pay for, and that gets baked into your quote. You're partly buying their overhead.
+The [new-patient page guide](/writing/dental-practice-new-patient-page) covers that page in detail. The broader [guide to how dental practices get found online](/writing/how-dental-practices-get-found-online) explains how your pages fit into search and discovery.
 
-Second, watch the ongoing column. That $300–$2,500/month is where the real money lives. A $5,000 build that costs $500/month is a $11,000 website in year one and $6,000 every year after. The upfront number is the part they show you; the monthly number is the part that actually adds up.
+A blog is another content commitment. Add one when the practice has worthwhile questions to answer and a way to review and maintain the material.
 
-Third — and I'd say this even though it's my own model — there's a real difference between paying _for_ a website and _renting_ one. Some arrangements are a flat monthly fee where the site is built for you and maintained, with no contract. Others are a lease where you stop paying and the site goes dark. Those look identical on a pricing page and are completely different things. More on that below.
+## Make the design feel like the actual practice
 
-For the record: I charge $249 a month, flat, with no setup fee and no contract, and that includes managing your Google Business Profile. I'm not putting that here to sell you — I'm putting it here because almost nobody in this industry will give you a straight number, and you deserve at least one to compare against.
+Colors, type, spacing, photography, and navigation help organize the experience. They deserve a thoughtful review alongside the words.
 
-## What does a dental website actually need?
+On the first phone screen, I want enough information to recognize the practice and location, plus an obvious route to contact the office. As someone continues, headings should make the available answers easy to scan. A button should describe the action it starts.
 
-Strip away the sales decks and a dental website needs a fairly short list of things. Here's what genuinely moves the needle, roughly in order of importance.
+Use photographs that help people recognize the office and team: the entrance, reception area, treatment spaces, and current clinicians. Ask the designer which images are needed and how they will be cropped on different screens. A photograph can be attractive and still hide the person or entrance that matters when it is squeezed into a narrow layout.
 
-**A fast, mobile-first layout.** This is first because it's the foundation everything else sits on. Most dental traffic is mobile, so your phone experience _is_ your website. (More on speed in its own section, because it's that important.)
+Make image rights part of the project. Confirm what the practice may publish and reuse. Before including identifiable patient photographs, stories, or testimonials, have the practice verify the appropriate written permission for the intended use. The ADA's [guidance on publishing practice content](https://www.ada.org/resources/practice/practice-management/social-media-policies-for-dentists) specifically includes websites, photographs, and testimonials.
 
-**The boring information, easy to find.** Hours. Address with a map. Phone number you can tap. Insurance and payment info. New-patient details. This is unglamorous and it's most of what patients actually came for. A surprising number of expensive sites bury it.
+The copy should be equally specific. “We welcome patients ages five and older” answers a question that “care for the whole family” leaves open—if that age policy is true for the practice. Have the team verify statements about services, insurance, new-patient availability, and after-hours contact. Have a qualified clinician review clinical explanations.
 
-**Real photos of real people.** Not stock. Patients are trying to answer one question — "can I trust these people with my mouth?" — and a smiling fake family from a stock library answers it badly. Professional photos of your actual dentists, staff, and office do more for conversion than almost any feature. Industry data backs this up: people want to see who they'll be trusting. ([Dental Marketing Guy](https://dentalmarketingguy.co/blog/conversion-rate-optimization-dental-websites-2026/))
+You can approve the visual direction and still ask for changes to an unclear page. Review the design and the information together.
 
-**Reviews, on the page where the decision happens.** About 88% of consumers trust online reviews as much as a personal recommendation. ([Dental Marketing Guy](https://dentalmarketingguy.co/blog/conversion-rate-optimization-dental-websites-2026/)) Embed your best Google reviews on the homepage and service pages — not hidden on a separate "testimonials" tab nobody clicks.
+## Make appointment requests work from beginning to end
 
-**A short, obvious booking path.** Around 68% of patients prefer practices that let them book online instead of calling. ([Dental Marketing Guy](https://dentalmarketingguy.co/blog/conversion-rate-optimization-dental-websites-2026/)) And the length of your form matters more than you'd think — one practice cut their booking form from 12 fields to 6 and conversions jumped 89%. Every field you ask for is a small reason to give up. Ask for the minimum.
+Agree on what happens when someone uses the main appointment button.
 
-**Service pages that actually explain the service.** A page for implants, a page for Invisalign, a page for emergencies. This helps patients and it helps Google understand what you do. One thin "Services" page listing everything in a bulleted column does neither.
+A phone link should dial the correct number. A booking link should open the right practice and location. A form that sends a request should explain that the office still needs to confirm the appointment. If a system actually reserves a time, its confirmation should make that clear.
 
-**HIPAA-aware forms.** If a patient is typing health information into your site, that has to be handled properly. This is a legal and trust issue, not a design flourish.
+Keep the language consistent through the button, form, and confirmation. “Request an appointment” should lead to a message explaining how the office follows up. Set expectations the team can actually meet, including what happens when the office is closed.
 
-Now, the thing I'll tell you _not_ to bother with: an AI chatbot. The industry is pushing these hard right now. I've [written about this before](/writing/you-dont-need-a-chatbot), and I'll keep saying it — if a patient has a question at 2am, they'll email you. They don't want to talk to a purple bubble in the corner of your screen, and that bubble won't know whether you take their insurance anyway. Spend the money on a faster site and real photos instead.
+Ask only for information needed at that stage. W3C's [accessible forms guidance](https://www.w3.org/WAI/tutorials/forms/) recommends clear labels, instructions, useful error messages, and feedback when a task is complete. A short form can still be frustrating if it loses entered information, gives an unexplained error, or leaves someone unsure whether it sent.
 
-## Why speed is the part nobody sees
+Then check the office's side. Where does the request arrive? Who notices it? Who follows up if the usual staff member is away?
 
-Speed is the least glamorous thing on this list and probably the most important. It's also the easiest to ignore, because the owner's office has good wifi and a nice computer, so the site feels fine to the one person who looks at it most.
+Coordinate a clearly labeled test using fictional patient details and contact details controlled by the practice. Confirm both what the person submitting sees and what the intended staff member receives, then clear the test through the agreed process. For live appointment systems, use the vendor's test process or coordinate with the office so you do not reserve a real slot unnecessarily.
 
-Patients don't have your wifi. Here's what the data says happens when a site is slow:
+Include the external scheduler in the review. A good page can lead into a confusing booking tool.
 
-- A **one-second delay** in load time is associated with about **7% fewer conversions**, 11% fewer page views, and 16% lower satisfaction. ([Huckabuy](https://huckabuy.com/20-important-page-speed-bounce-rate-and-conversion-rate-statistics/))
-- On **mobile**, conversions can drop by **up to 20% for every additional second**. ([RoastWeb](https://www.roastweb.com/blog/mobile-conversion-rate-optimization-site-speed))
-- **47% of people** expect a site to load in two seconds or less, and **40% leave** if it takes more than three. ([Envisage](https://www.envisagedigital.co.uk/website-load-time-statistics/))
-- Mobile **bounce rates climb to about 53%** once load time passes three seconds. ([Kanuka Digital](https://www.kanukadigital.com/2025/09/website-load-time-statistics-in-2025/))
+A successful delivery test establishes that the tested path worked. The privacy and security of that path require their own review.
 
-Read that last one again. If your site takes longer than three seconds on a phone, roughly half the people who clicked are gone before they see anything. Your marketing did its job and your website undid it.
+## Treat mobile use and accessibility as part of the build
 
-Google measures this with something called Core Web Vitals. The 2026 "good" thresholds are a largest content paint under 2.5 seconds, an interaction-to-next-paint under 200 milliseconds, and a cumulative layout shift under 0.1. You don't need to memorize those. You need to know that slow sites get quietly penalized in search _and_ lose the patients who do show up. It's the rare problem that costs you on both ends.
+Ask to review working pages on a phone, not just desktop screenshots. Check menus, long headings, forms, and the external tools people reach from the site. Keep essential information available as the layout changes.
 
-[What makes dental sites slow](/writing/why-your-dental-website-loads-too-slowly) is almost always the same short list: shared budget hosting, enormous uncompressed photos, and a stack of third-party scripts — chat widgets, multiple analytics tools, booking embeds — each one phoning home before the page can finish. Fixing it isn't exotic. It's mostly restraint.
+For accessibility, put a technical target in the project scope. I would ask about [WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/), the work included to meet it, and the evidence the provider will supply. WCAG provides testable accessibility criteria; agreeing on a target is the start of the work.
 
-## Mobile isn't a version of your website. It is your website.
+Ask the builder to demonstrate a few important things:
 
-For a long time "mobile-friendly" meant the desktop site shrunk down so it technically worked on a phone. That's backwards now. Most of your patients will only ever see the phone version, so that's the real site and the desktop one is the afterthought.
+- Navigation and forms work with a keyboard, with a visible indication of which control is selected.
+- Text remains usable when enlarged, and narrow layouts do not clip instructions or cover buttons.
+- Text and backgrounds have sufficient contrast, including copy placed over photographs.
+- Form fields have meaningful labels, errors explain what to correct, and successful submissions are announced clearly.
+- Images have appropriate text alternatives, and any video has the accessibility support it needs.
+- Sticky headers, notices, and booking controls leave the page and focused controls usable.
 
-Practically, designing mobile-first means a few things. The tap targets are big enough for a thumb. The phone number dials when tapped. The "Book" button is visible without scrolling and stays reachable as you go. The booking form is short enough to finish at a red light. The photos are sized for a small screen so they load fast on cell signal.
+W3C's [Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) provide an approachable starting point. Those checks cover only part of accessibility. Ask for a knowledgeable review of the complete tasks, including relevant screen-reader testing.
 
-The 30-second test is a good one: can a new patient, on their phone, go from landing on your site to a booked or requested appointment in under thirty seconds? Time it on your own site right now. If you can't, that's your single highest-value fix.
+W3C also explains that [no automated tool alone can establish accessibility](https://www.w3.org/WAI/test-evaluate/). A clean scan or a widget added to the page does not replace that work.
 
-## Do you actually own your dental website?
+For a practice, the practical purchasing question is who will investigate and fix a barrier when someone reports one. The agreement should cover accessibility during the build and after changes. Have your legal adviser address the obligations that apply to your practice; a vendor's technical score is not a legal conclusion.
 
-This is the question almost nobody asks until it's too late, so ask it now: if you stopped paying your current provider tomorrow, what would you walk away with?
+## Ask for evidence of speed and stability
 
-For a lot of dentists, the answer is _nothing_. The site was built on a platform the agency controls. The domain is registered to the agency. The hosting is theirs. The Google Business Profile and analytics are under their account. You've been paying for years, and you own none of it. You were renting, and the lease was written in their favor.
+“Fast” should come with a report that identifies the page, device category, date, and type of measurement.
 
-This isn't a fringe horror story; it's a common business model. It's why "how do I leave my dental website company" is a question people type into Google in a mild panic.
+Google's [Core Web Vitals](https://web.dev/articles/vitals) describe loading, responsiveness, and unexpected movement:
 
-So when you evaluate any provider — me included — get plain answers to these:
+<!-- svelte-ignore a11y_no_noninteractive_tabindex (This scrollable table region needs keyboard focus.) -->
+<div class="table-wrap" role="region" aria-label="Website performance measures" tabindex="0">
+<table style="min-width: 520px;">
+<thead>
+<tr><th scope="col">Measure</th><th scope="col">What it describes</th><th scope="col">Good target</th></tr>
+</thead>
+<tbody>
+<tr><td>Largest Contentful Paint (LCP)</td><td>When the largest visible image or text block renders.</td><td>2.5 seconds or less</td></tr>
+<tr><td>Interaction to Next Paint (INP)</td><td>How quickly the page visually responds to interaction.</td><td>200 milliseconds or less</td></tr>
+<tr><td>Cumulative Layout Shift (CLS)</td><td>Unexpected visual movement.</td><td>0.1 or less</td></tr>
+</tbody>
+</table>
+</div>
 
-- Who owns the **domain name**? (It should be you.)
-- If you leave, do you keep the **site files and content**?
-- Who has the logins to your **Google Business Profile and analytics**?
-- Is there a **contract**, and what happens at the end of it?
+These targets are assessed at the 75th percentile of visits, with mobile and desktop considered separately. LCP does not mean every resource has finished loading, and CLS is a score rather than a duration.
 
-A fair arrangement doesn't trap you. The work should be good enough that you stay because you want to, not because leaving means starting over from zero. My own version of this is simple: no contract, cancel anytime, and your domain and data are yours. I'd rather earn next month than lock up this one.
+[PageSpeed Insights](https://developers.google.com/speed/docs/insights/v5/about) combines real-user data with a controlled lab test. Read those sections separately. Check whether the real-user figures describe the particular page or the website as a whole. New or lightly visited pages may lack enough field data; that does not itself mean they failed.
 
-## Custom or template — does it matter?
+Before launch, use lab testing and hands-on checks to find problems. After launch, review real-user evidence where available. Ask about representative pages, including a service page and the appointment entry point, rather than accepting one home-page screenshot.
 
-Templates exist for a reason. They're cheap and fast, and for some businesses they're fine. The honest case for a template is that a brand-new practice with no budget is better off with a clean template that loads fast than with no site at all.
+A good score does not promise a particular search position; Google's [page-experience guidance](https://developers.google.com/search/docs/appearance/page-experience) makes that distinction. It also does not tell you whether the insurance information is accurate or the office receives requests.
 
-The case against, for a dental practice that intends to be around for a while, is this: a template makes you look like everyone else, and "everyone else" is exactly who the patient is choosing between. When three nearby practices all bought the same template, the patient has nothing to go on but price and proximity. Custom design isn't about art for its own sake. It's about looking specifically like _you_ — your office, your team, your town — so the choice isn't a coin flip.
+If something is slow, ask what is causing it and what the proposed change addresses. The [guide to slow dental websites](/writing/why-your-dental-website-is-slow) goes further into that investigation.
 
-There's also a quieter problem. Templates accumulate weight. They're built to do everything for everyone, so they carry code and features you'll never use, and that shows up as — you guessed it — slower load times. A site built by hand for one practice only contains what that practice needs.
+## Know what information the website collects and where it goes
 
-My bias is obvious here, since building custom is what I do. So take the honest version: if you're choosing purely on price and you need something today, a good template beats waiting. If you're investing in a practice you plan to grow, custom pays for itself in not looking interchangeable.
+A website can connect several services: forms, scheduling, analytics, chat, payments, and patient intake. Before approving those connections, ask for a plain description of the information passing between them.
 
-## How long should a dental website take to build?
+Keep clinical history and detailed intake in a process selected and approved by the practice's privacy and security lead. The public website can direct people to that process.
 
-There's no universal answer, but there's a sane range. A focused custom build for a single practice should take a couple of weeks, not a couple of quarters. When a project drags on for months, it's usually not because the work is hard — it's because it's stuck in committee, waiting on content, or sitting in an agency queue behind bigger accounts.
+A short contact form still needs assessment. Under the [HIPAA Privacy Rule](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html), the health-care context and identifying information matter. Collecting only a name and phone number does not, by itself, establish that an appointment request contains no protected health information.
 
-For what it's worth, mine take about two weeks, and you see drafts along the way so there are no surprises at the end. That's not a brag about speed; it's what's possible when one person builds one site at a time instead of routing it through five departments.
+Ask these questions:
 
-## How I think about all of this
+1. What information is collected, and why is each field needed?
+2. Where is the full submission stored, and what goes into notification emails?
+3. Which people and vendors can access it?
+4. Which agreements, settings, and retention practices cover that use?
+5. What analytics, advertising, chat, or session-recording tools run on those pages, and what can they receive?
 
-If you've read this far, here's the short version of my whole philosophy, since I've been hinting at it the entire time.
+Review public information pages separately from appointment, intake, and patient-account workflows. HHS's [tracking-technology guidance](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/hipaa-online-tracking/index.html) discusses disclosures involving these tools. It also flags a court decision limiting part of its guidance about IP addresses and visits to public health-related pages. Avoid assuming that every public-page visit is protected health information, or that every analytics setup is acceptable.
 
-A dental website is not a brochure and it's not a billboard. It's the first room a patient walks into. It should be calm, fast, honest about who you are, and easy to leave — by booking. Most of what the industry sells on top of that is noise designed to justify a bigger invoice.
+HTTPS protects the connection; it does not answer all the questions above. For services handling electronic protected health information, HHS's [cloud-computing guidance](https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html) addresses risk assessment, safeguards, and applicable business associate arrangements.
 
-I build each site by hand, charge one flat monthly fee, host it, keep it fast, and change whatever you need changed when you email me. No contract, no setup fee, no account manager you've never met. One person doing one thing.
+Treat “HIPAA compliant” as a claim to examine: what service, configuration, and responsibilities does it cover? [HHS does not certify products as HIPAA compliant](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/be-aware-misleading-marketing-claims/index.html).
 
-**If you want, I'll take a look at your current site and tell you what I'd keep, what I'd change, and why — for free, no pressure either way.** You'll get an honest read whether or not you ever work with me. [Send me your practice name or your current site](/#contact) and I'll come back with a plan.
+You do not need the website designer to replace the practice's professional advisers. You need the designer, software vendors, and responsible person at the practice to agree on a specific, appropriate setup.
 
-## Frequently asked questions
+## Compare custom design, templates, and platforms by what they deliver
 
-**How much does a dental website cost in 2026?**
-Most small practices pay between $4,000 and $8,000 for a custom build, with fully custom sites running $8,000–$20,000 or more, plus ongoing costs of roughly $300–$2,500 a month. The market overall spans about $3,500 to $30,000+. The wide range is mostly driven by company overhead and contract structure, not quality. A flat monthly model (mine is $249/month, no setup fee, no contract) is one way to make the real, all-in cost easy to compare.
+“Custom” can describe several different things: a visual design, original code, a modified theme, or content written for the practice. Ask the provider what the word means in the proposal.
 
-**What makes a dental website "good"?**
-Four things: it loads fast, it builds trust quickly with real photos and real reviews, it answers the obvious questions (hours, location, insurance), and it makes booking easy. A plain site that does all four beats a flashy one that doesn't.
+An existing design system or template can provide a useful starting point. A custom build can offer more control over particular layouts and behavior. Either approach still needs accurate content, usable pages, performance work, accessibility, and someone able to maintain it.
 
-**Why does website speed matter so much for a dental practice?**
-Because most patients are on phones, and slow sites lose them. A one-second delay can cut conversions by about 7% — up to 20% on mobile — and mobile bounce rates hit roughly 53% once a page takes more than three seconds to load. Speed affects both your Google ranking and whether visitors stick around to book.
+Review an actual example and ask the provider to demonstrate a change you expect to need. How would you add a dentist, revise hours, change an insurance statement, or replace the scheduling link? Who does that work, and is it included?
 
-**Do I really own my dental website?**
-Often, no. Many providers keep the domain, hosting, and content under their own accounts, so leaving means losing everything. Before you sign anything, confirm in writing that you own your domain, your content, and the logins to your Google and analytics accounts, and ask whether there's a contract.
+A content-management system may suit a team that wants to edit directly. A managed service may suit a practice that wants to send a request and have someone handle it. Choose the arrangement your team will actually use.
 
-**Should my dental website have an AI chatbot?**
-In my view, no. Patients with a real question will email or call, and a chatbot usually can't answer the specifics — like whether you take their insurance — anyway. The money is better spent on a faster site and real photographs, which do more to win trust and bookings.
+Evaluate extra features in the same way. A chat tool, video background, review widget, or booking embed should have a clear purpose and an owner. Ask what question it solves, how its information stays accurate, how it affects accessibility and loading, and what data it receives.
 
-## Sources
+For an AI chat tool, also ask what happens when it cannot answer and how it reaches a person. Avoid adding a feature whose promises exceed the office's ability to support it.
 
-- [What Should a Dental Website Cost in 2026? — Rosemont Media](https://www.rosemontmedia.com/website-design/how-much-should-a-dental-website-cost/)
-- [Dental Website Design Cost (2026 Pricing Guide) — Flamingo Agency](https://www.flamingoagency.com/blog/dental-website-design-cost/)
-- [Dental Website Cost Breakdown: Custom vs. Template, Monthly Fees — Dentive](https://www.dentive.com/blog/dental-website-design-cost)
-- [Conversion Rate Optimization for Dental Websites (2026) — Dental Marketing Guy](https://dentalmarketingguy.co/blog/conversion-rate-optimization-dental-websites-2026/)
-- [20 Page Speed, Bounce Rate and Conversion Statistics — Huckabuy](https://huckabuy.com/20-important-page-speed-bounce-rate-and-conversion-rate-statistics/)
-- [Mobile CRO: How Site Speed Impacts Revenue (2025 Data) — RoastWeb](https://www.roastweb.com/blog/mobile-conversion-rate-optimization-site-speed)
-- [Website Load Time Statistics (2025) — Envisage Digital](https://www.envisagedigital.co.uk/website-load-time-statistics/)
-- [Website Load Time Statistics in 2025 — Kanuka Digital](https://www.kanukadigital.com/2025/09/website-load-time-statistics-in-2025/)
+## Compare the full cost and scope of each proposal
+
+A useful price comparison starts with the same definition of the work.
+
+Ask each provider to identify what is included, optional, and billed by another company. The main items are design and development, writing, clinical review, photography, integrations, migration, hosting, routine changes, support, and recovery if something breaks.
+
+Clarify what the practice still has to do. A lower quote that expects your team to write every page and manage software updates is a different arrangement from a service that handles those jobs.
+
+Then compare setup charges and recurring fees over the same period. Here is an illustrative calculation using two hypothetical proposals, with fees held constant and taxes and other charges excluded:
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th scope="col">Cost</th><th scope="col">Example A</th><th scope="col">Example B</th></tr>
+</thead>
+<tbody>
+<tr><td>Setup</td><td>$4,500</td><td>$0</td></tr>
+<tr><td>Monthly fee</td><td>$150</td><td>$300</td></tr>
+<tr><td>Total over 12 months</td><td>$6,300</td><td>$3,600</td></tr>
+<tr><td>Total over 36 months</td><td>$9,900</td><td>$10,800</td></tr>
+</tbody>
+</table>
+</div>
+
+The arithmetic shows why the period matters. It does not tell you which proposal is better. That depends on the work included, the service you receive, and the terms of the agreement.
+
+Ask about third-party subscription fees, renewal increases, extra-edit charges, minimum terms, cancellation fees, and migration assistance. If a proposal bundles advertising or search campaigns with the website, have those services identified so you can compare the website work clearly.
+
+For ongoing changes, distinguish acknowledgment from completion. “Support within one business day” could mean someone replies, investigates, or actually makes the change. Ask what routine requests look like and how urgent problems are handled.
+
+Get the answers into the proposal or agreement. They are part of what you are buying.
+
+## Separate ownership, access, and the ability to move
+
+“You own the website” needs a more specific explanation.
+
+ICANN's [domain-registration guidance](https://www.icann.org/resources/pages/faqs-84-2012-02-25-en) explains that paying for a domain does not necessarily make you its registered holder. Confirm the practice's registration details and its ability to recover access to the registrar account.
+
+Then work through the rest of the arrangement:
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th scope="col">Item</th><th scope="col">What to establish in writing</th></tr>
+</thead>
+<tbody>
+<tr><td>Domain and DNS</td><td>Who controls registration, renewal, account recovery, and the settings connecting the domain to website and email services.</td></tr>
+<tr><td>Copy, photographs, and design</td><td>What rights the practice receives and which licensed materials have restrictions on reuse or transfer.</td></tr>
+<tr><td>Website files or platform</td><td>What can be exported, what another provider can use, and what may need to be rebuilt.</td></tr>
+<tr><td>Business accounts and integrations</td><td>Who controls the Google profile, analytics, scheduling, portal, and other accounts; what access the practice retains.</td></tr>
+<tr><td>Practice information stored by the provider</td><td>Where applicable, available exports, formats, protected transfer, and agreed retention or deletion arrangements when the service ends.</td></tr>
+<tr><td>Hosting and handoff</td><td>What happens when the agreement ends, what assistance is included, and how the site stays available during the move.</td></tr>
+</tbody>
+</table>
+</div>
+
+Owning copy is different from having an export of it. Receiving files is different from receiving everything another provider needs to run the site. A proprietary platform may have a limited export even when the practice owns its content. Ask for the actual handoff process and its costs.
+
+Keep a current account inventory with a responsible person at the practice. The developer can handle technical administration while the practice retains appropriate control and recovery options.
+
+Also identify services hidden inside the current website bill. Email hosting, a tracking phone number, or an intake subscription may need a separate transition.
+
+For that detailed handoff, see [changing dental website companies](/writing/changing-dental-website-companies).
+
+## Approve working pages, then verify the live launch
+
+Agree on review responsibilities before the project begins. The provider should know who can approve the design, who verifies operational facts, and which clinician reviews treatment content.
+
+Review early enough that important corrections can shape the work. A polished home-page image does not show what happens when a form fails or someone opens a service page on a phone.
+
+An illustrative review task: a parent wants to know whether a fictional practice sees a child of a particular age. Ask the reviewer to find the age policy, identify the relevant office, and follow the appointment route. If the only answer is “family dentistry,” the task is unfinished. If the policy is explicit but the appointment button leads to the wrong location, a different part needs fixing.
+
+You can use the same approach for first-visit expectations, insurance questions, existing-patient portal access, and arrival instructions. Record what was checked and what still needs attention.
+
+### Before approving the switch
+
+Ask for evidence that the following are ready:
+
+- **Content:** Names, credentials, services, hours, insurance wording, photographs, and contact details have the appropriate approvals.
+- **Contact paths:** Phone links, requests, booking, portal, and payment destinations reach the right office or account.
+- **Usability:** Representative pages and complete tasks have been checked on mobile and reviewed for accessibility.
+- **Performance:** The provider has identified the pages tested, the type of measurements, and any unresolved problems.
+- **Existing links:** Important old page addresses remain useful or have an agreed destination.
+- **Operations:** Domain and email changes are understood, backups and a way to restore service are available, and someone is responsible for the live recheck.
+
+Where URLs change, Google's [site-move guidance](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes) recommends mapping old addresses to relevant replacements and testing redirects. Ask for that map. Sending every old page to the home page can lose the useful connection someone followed.
+
+Also ask the provider to confirm that intended public pages meet Google's [technical access requirements](https://developers.google.com/search/docs/essentials/technical). Preview restrictions should be removed deliberately, while private systems retain the protections they need. Search eligibility does not guarantee indexing or a particular search position.
+
+### After the site is public
+
+Repeat the essential checks on the actual domain. Confirm that the office receives a coordinated test request, important old links reach the right pages, and email still sends and receives if its setup was affected. Check the site on a phone outside the office network.
+
+A preview approval and a successful live recheck are separate milestones. Keep the former service available for an agreed overlap where needed and consistent with the contract, then close out only the services no longer required.
+
+The [website migration guide](/writing/changing-dental-website-companies) covers that transition in more detail.
+
+## Decide who keeps the website useful after launch
+
+The work continues when the practice changes.
+
+A new associate, revised hours, a different insurer arrangement, or a replacement booking system can make a previously accurate page wrong. Decide who at the office reports those changes and who updates the website and relevant business listings.
+
+Define maintenance in concrete terms. Which party handles hosting, software updates where applicable, security patches, domain renewals, backups, broken connections, and recovery? Who receives alerts? Who responds when the appointment path fails? Ask what is backed up and how restoration has been checked.
+
+Treat content changes as part of quality control. After replacing a phone number, test the link. After adding a form field, test submission and errors. After changing the booking provider, check the destination and the office's process. Revisit privacy and accessibility when a new integration changes the experience.
+
+Ask for reporting that helps the practice make decisions. Website visits, contact actions, qualified inquiries, booked appointments, and attended appointments are different measures. The [discovery and dental SEO guide](/writing/how-dental-practices-get-found-online) explains those distinctions.
+
+The important ongoing arrangement is simple to state: someone at the practice knows when the facts change, someone can update the website, and someone verifies that the change worked.
+
+## Common questions about dental website design
+
+### Do I need a new dental website or a smaller update?
+
+Start with the problem you can observe. Incorrect information, a broken link, or an unclear appointment process may need a focused repair. A rebuild becomes more useful when the structure, technology, or maintenance arrangement prevents the site from meeting the practice’s needs. Ask a provider to explain what can be kept and why the proposed work is necessary.
+
+### How should I compare dental website quotes?
+
+Compare proposals that include the same work: design, writing, photography, integrations, launch, hosting, updates, and support. Add setup charges and recurring fees over the same period, then check third-party costs and cancellation terms. A price alone does not tell you what the practice receives or how much work remains with your team.
+
+### Is a custom dental website better than a template?
+
+The label does not establish quality. A template can be adapted carefully, and a custom build can still be difficult to use or maintain. Evaluate the actual pages, patient tasks, performance, accessibility, editing process, and handoff. Ask what will be designed specifically for the practice and what comes from an existing system.
+
+### What should I receive if I leave my website company?
+
+Get a written handoff agreement covering the domain account, content, usable site files or exports, image and software licenses, relevant business accounts, and any data the provider holds for the practice. Clarify fees, timing, hosting continuity, and what requires rebuilding elsewhere. Ownership, account access, and the ability to move a working site are separate questions.
+
+### How long does a dental website take to build?
+
+The schedule depends on the agreed pages, writing, photography, integrations, migration, and approvals. Ask for a proposed launch date with clear dependencies and named responsibilities. Review content and working pages along the way, and allow for testing and a live recheck. A quick preview is only one part of a finished website.
+
+## Where Root fits
+
+Root is a monthly website service for independent, dentist-owned practices. I personally handle the design, writing, build, hosting, and ongoing changes, alongside Google Business Profile management and local-search fundamentals.
+
+Your team supplies the practice knowledge and approves the facts and clinical content. I turn that into clear, useful pages and keep the site current as the office changes.
+
+The standard price is $249 a month with no setup fee. The [what's included page](/whats-included) explains the service, current offer, and cancellation and handoff terms.
+
+If you are weighing an update or a new site, [send me your current website and what you want to improve](/#contact). We can start with what to keep, what to change, and who will look after it.
+
+_This guide was substantially updated on October 31, 2026. Technical and privacy guidance is linked beside the relevant advice; requirements and platform features can change._

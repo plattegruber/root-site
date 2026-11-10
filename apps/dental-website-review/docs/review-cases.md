@@ -32,7 +32,7 @@ Use a new chat for each case.
   context.
 - **Expected result:** A focused answer about the phone experience: whether call and book
   are visible on the first screen, tap targets, layout problems. Not a full eight-persona
-  review.
+  review, and no contact details or staff names.
 
 ### 3. A specific patient question
 
@@ -53,7 +53,7 @@ Use a new chat for each case.
   `read_pages`.
 - **Expected result:** Which booking links exist and whether they respond. If a scheduler
   refuses automated checks, ChatGPT says to confirm on a phone rather than calling it
-  broken.
+  broken. Nothing else from the homepage: no phone numbers, email addresses or hours.
 
 ### 5. Fictional example with the visual summary
 

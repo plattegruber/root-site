@@ -188,3 +188,43 @@ test('sample, guide, rendered fallback, performance and render tools round-trip'
 		await close();
 	}
 });
+
+test('tool responses carry no full phone numbers, email addresses or timestamps', async () => {
+	const { client, close } = await connect({
+		fixture: true,
+		fetcher: siteFetcher('brightsmiles'),
+		browserEnabled: false,
+		pagespeedEnabled: true
+	});
+	try {
+		await client.listTools();
+		const results = await Promise.all([
+			client.callTool({
+				name: 'map_site',
+				arguments: { websiteUrl: 'https://brightsmiles.example/' }
+			}),
+			client.callTool({
+				name: 'read_pages',
+				arguments: { urls: ['https://brightsmiles.example/contact'] }
+			}),
+			client.callTool({
+				name: 'inspect_rendered_pages',
+				arguments: { urls: ['https://brightsmiles.example/'] }
+			}),
+			client.callTool({
+				name: 'measure_performance',
+				arguments: { url: 'https://brightsmiles.example/' }
+			})
+		]);
+		const text = JSON.stringify(results.map((r) => r.structuredContent));
+		assert.doesNotMatch(text, /\(555\) 020-0456|555[\s.-]?020[\s.-]?0456/);
+		assert.doesNotMatch(text, /frontdesk@/);
+		assert.doesNotMatch(text, /fetchedAt|collectedAt|measuredAt/);
+		assert.match(text, /\*\*\*-\*\*\*-0456/);
+		assert.match(text, /mailto:\[email\]@brightsmiles\.example/);
+		const { pages } = results[1]!.structuredContent as { pages: PageEvidence[] };
+		assert.equal(pages[0]!.forms[0]!.submitsTo, 'mailto');
+	} finally {
+		await close();
+	}
+});

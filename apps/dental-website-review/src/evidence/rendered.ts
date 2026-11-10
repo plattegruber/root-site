@@ -4,7 +4,7 @@ import { crawlWebsite } from '../audit/pages.js';
 import { inspectBrowser } from '../providers/browser.js';
 import { measurePerformance } from '../providers/performance.js';
 import type { Report } from '../model.js';
-import type { CollectOptions } from './collect.js';
+import { redactIdentifiers, type CollectOptions } from './collect.js';
 
 export type RenderOptions = CollectOptions & { browserEnabled?: boolean };
 
@@ -46,7 +46,7 @@ export async function inspectRenderedPages(
 		targets
 	);
 	result.browser.errors.unshift(...blocked);
-	return result.browser;
+	return redactIdentifiers(result.browser);
 }
 
 export async function measurePagePerformance(

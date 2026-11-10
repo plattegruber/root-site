@@ -68,6 +68,22 @@ business/site assessment, not diagnosis/treatment. It requests no patient record
 adds no unverified clinical claims, and requires owner/clinical copy approval.
 No accessibility certification, rankings or patient/clinical outcomes are promised.
 
+## Response minimization
+
+The first submission (0.3.0) was rejected on 2026-11-09: "A plugin call returns personal
+identifiers that isn't required for the user's request." The review FAQ
+(https://developers.openai.com/plugins/deploy/app-review) asks that tool responses carry
+only what the request needs, naming personal identifiers and "telemetry/internal
+identifiers (for example, session, trace, or request IDs; timestamps …)". Running the
+test-case sites through the tools showed staff and office email addresses, every phone
+number on the site, and `fetchedAt`/`collectedAt`/`measuredAt` on each page and view.
+
+Since 0.3.1 every tool response passes through `redactIdentifiers` (collect.ts): phone
+numbers keep their last four digits, email addresses their domain, and the timestamps are
+gone from the output schemas. Redirect targets from `check_links` lose their tracking
+parameters. The skill tells ChatGPT to answer narrow questions narrowly and not to
+reproduce contact details. The privacy policy says what responses contain.
+
 ## Submission checklist
 
 Rechecked against the submission page on 2026-10-27.

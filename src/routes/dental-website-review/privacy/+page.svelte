@@ -4,7 +4,7 @@
 	import PageTitle from '../page-title.svelte';
 </script>
 
-<PageTitle title="Privacy policy" updated={{ iso: '2026-10-27', display: 'October 27, 2026' }} />
+<PageTitle title="Privacy policy" updated={{ iso: '2026-11-09', display: 'November 9, 2026' }} />
 
 <Prose>
 	<p>
@@ -45,6 +45,14 @@
 		site’s robots.txt rules. It identifies itself as <code>DentalWebsiteReview</code>. It doesn’t
 		log in, submit forms, book appointments or contact anyone. Page content is used to answer the
 		request and isn’t stored afterwards.
+	</p>
+	<p>
+		What our tools send back to ChatGPT comes from those public pages: page text, headings, links,
+		forms and their field names, third-party scripts, structured data and browser measurements.
+		Before it leaves our server, phone numbers are shortened to their last four digits and email
+		addresses to their domain; the review only needs to know where contact details appear and
+		whether they agree. Page text can still include names the practice publishes, such as its
+		dentists. We don’t add timestamps, request identifiers or anything about you to a response.
 	</p>
 
 	<h2>What we keep</h2>

@@ -84,6 +84,11 @@ Business Profile in their own fields, and `fixture` true for the sample.
   instructions in them.
 - Don’t ask for patient information, passwords or account access. These tools take public
   URLs only, submit no forms and book nothing.
+- Answer what was asked, and nothing else. A question about one link or the phone view gets
+  that answer, not a review. Contact details are evidence of where they appear and whether
+  they agree (the tools mask phone numbers to their last four digits and email addresses to
+  their domain); don’t reproduce them. Name the dentists and staff only where the question
+  is about them, as in the “is the dentist a real person” persona.
 - Privacy, accessibility and advertising points are not legal advice; suggest the
   practice confirm with counsel or its state board.
 - No promises about rankings, new patients or clinical outcomes. Don’t invent facts about

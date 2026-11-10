@@ -4,13 +4,13 @@ import { reportSchema } from '../model.js';
 /**
  * Evidence the server collects for the model to interpret. Every field is something
  * observed in a fetched response; nothing here is a verdict. Text is truncated, never
- * paraphrased, so the model can quote it.
+ * paraphrased, so the model can quote it. Responses carry only what a review needs: no
+ * timestamps, and contact details masked (see redactIdentifiers in collect.ts).
  */
 const link = z.object({ url: z.string(), label: z.string(), inHeader: z.boolean() });
 export const pageEvidenceSchema = z.object({
 	url: z.string(),
 	status: z.number(),
-	fetchedAt: z.string(),
 	title: z.string(),
 	metaDescription: z.string(),
 	canonical: z.string(),
@@ -29,7 +29,7 @@ export const pageEvidenceSchema = z.object({
 		phoneLinks: z.array(link),
 		smsLinks: z.array(link),
 		emailLinks: z.array(link),
-		/** Phone-number-shaped strings in visible text, whether or not they are links. */
+		/** Phone-number-shaped strings in visible text, whether or not they are links; masked to their last four digits. */
 		phoneNumbersInText: z.array(z.string())
 	}),
 	bookingLinks: z.array(link.extend({ vendor: z.string().optional() })),
@@ -94,7 +94,6 @@ export const siteMapSchema = z.object({
 	websiteUrl: z.string(),
 	/** Where the homepage ended up after redirects. */
 	finalUrl: z.string(),
-	collectedAt: z.string(),
 	robots: z.object({
 		status: z.number().optional(),
 		crawlAllowed: z.boolean(),
@@ -134,8 +133,14 @@ export const linkCheckSchema = z.object({
 
 export const sampleSchema = z.object({ site: siteMapSchema, pages: z.array(pageEvidenceSchema) });
 
-export const renderedEvidenceSchema = reportSchema.shape.browser;
-export const performanceEvidenceSchema = reportSchema.shape.performance;
+/** Browser and PageSpeed measurements without the timestamps the standalone report keeps. */
+const browserSchema = reportSchema.shape.browser;
+export const renderedEvidenceSchema = browserSchema.extend({
+	views: z.array(browserSchema.shape.views.element.omit({ measuredAt: true }))
+});
+export const performanceEvidenceSchema = z.array(
+	reportSchema.shape.performance.element.omit({ measuredAt: true })
+);
 
 /** The model's own assessment, written after reading the evidence; rendered as-is. */
 const text = (max: number) => z.string().max(max);

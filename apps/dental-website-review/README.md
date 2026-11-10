@@ -108,6 +108,7 @@ ranked or capped: ChatGPT maps the site, then reads the pages it chooses.
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `map_site`               | The menu in order, footer links, every sitemap URL, robots.txt rules, and the homepage.                                                     |
 | `read_pages`             | Up to 8 chosen pages per call: text, headings, meta tags, contact/booking links, forms and where they submit, trackers, structured data.    |
+|                          | Every tool masks phone numbers to their last four digits and email addresses to their domain, and returns no timestamps.                    |
 | `check_links`            | Status of chosen links, requested as a browser would (own query string, GET after a failed HEAD); robots-blocked links come back unchecked. |
 | `inspect_rendered_pages` | Chromium at 360/390/1440px: call/book on the first screen, overflow, tap targets, axe results, JavaScript-rendered forms, hosts requested.  |
 | `measure_performance`    | PageSpeed lab and CrUX field data, when configured.                                                                                         |

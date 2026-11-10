@@ -1,7 +1,7 @@
 {
 	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 	"name": "dental-website-review",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. ChatGPT explores the public site and a real phone browser like a dental-practice web developer, then reviews it through root.site’s eight patient personas, with a line for the practice and a line for the developer.",
 	"author": {
 		"name": "root.site",
@@ -53,19 +53,19 @@
 							"description": "Phone experience only: the user asks about one aspect, not a full review.",
 							"prompt": "How does https://www.taylormeadowsdental.com/ work on a phone? Can a patient call or book easily?",
 							"tools_triggered": "inspect_rendered_pages, map_site",
-							"expected_behavior": "ChatGPT calls inspect_rendered_pages (and map_site or read_pages if it needs context) and gives a focused answer about the phone experience: whether call and book are visible on the first screen, tap target sizes and layout problems. It does not produce a full eight-persona review."
+							"expected_behavior": "ChatGPT calls inspect_rendered_pages (and map_site or read_pages if it needs context) and gives a focused answer about the phone experience: whether call and book are visible on the first screen, tap target sizes and layout problems. It does not produce a full eight-persona review, and it does not repeat the practice's contact details or staff names."
 						},
 						{
 							"description": "A specific patient question: a practice manager wants to know whether insurance and cost information is easy to find.",
 							"prompt": "On https://starcitydentalne.com/, would a patient be able to tell whether we take their insurance and what a visit might cost?",
 							"tools_triggered": "map_site, read_pages",
-							"expected_behavior": "ChatGPT calls map_site, then read_pages on the insurance, payment or new-patient pages it finds. It answers from the cost-conscious patient's point of view, naming the pages it read, what is clear, what is missing, and a concrete fix."
+							"expected_behavior": "ChatGPT calls map_site, then read_pages on the insurance, payment or new-patient pages it finds. It answers from the cost-conscious patient's point of view, naming the pages it read, what is clear, what is missing, and a concrete fix. It does not repeat contact details."
 						},
 						{
 							"description": "Checking a booking link: the user wants to know whether online booking works.",
 							"prompt": "Does the online booking link on https://starcitydentalne.com/ actually work?",
 							"tools_triggered": "map_site, check_links",
-							"expected_behavior": "ChatGPT calls map_site to find the booking links, then check_links on them. It reports which booking links exist and whether they respond. If a scheduler refuses automated checks, it says to confirm on a phone rather than calling the link broken."
+							"expected_behavior": "ChatGPT calls map_site to find the booking links, then check_links on them. It reports which booking links exist and whether they respond. If a scheduler refuses automated checks, it says to confirm on a phone rather than calling the link broken. The answer stays on the booking links: no phone numbers, email addresses or other details from the homepage."
 						},
 						{
 							"description": "Fictional example with the visual summary: someone wants to see what a review looks like before using it on their own site.",
@@ -94,7 +94,7 @@
 				}
 			},
 			"publication": {
-				"release_notes": "First release. Reviews a dental practice's public website through eight patient personas, using tools that map the site, read chosen pages, check links and inspect the phone experience. Public pages only; no sign-in, forms or bookings."
+				"release_notes": "First release. Reviews a dental practice's public website through eight patient personas, using tools that map the site, read chosen pages, check links and inspect the phone experience. Public pages only; no sign-in, forms or bookings. Tool responses carry only what a review needs: phone numbers are masked to their last four digits, email addresses to their domain, and no timestamps or internal identifiers are returned."
 			}
 		}
 	}

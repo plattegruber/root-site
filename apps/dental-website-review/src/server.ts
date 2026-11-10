@@ -126,7 +126,7 @@ export function createApp(options: ServerOptions = {}) {
 		res.type('text/plain').send(challenge);
 	});
 	app.get('/health', (_req, res) =>
-		res.json({ ok: true, service: 'dental-website-review', version: '0.3.1' })
+		res.json({ ok: true, service: 'dental-website-review', version: '0.3.2' })
 	);
 	app.get('/api/sample', (_req, res) => {
 		try {

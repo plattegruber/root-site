@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { createMcpServer, REPORT_URI, type McpOptions } from '../src/mcp.js';
+import { redactText } from '../src/evidence/collect.js';
 import { fixtureFetcher, root, siteFetcher } from './helpers.js';
 import type { Assessment, PageEvidence, SiteMap } from '../src/evidence/model.js';
 import type { Report } from '../src/model.js';
@@ -218,7 +219,11 @@ test('tool responses carry no full phone numbers, email addresses or timestamps'
 		]);
 		const text = JSON.stringify(results.map((r) => r.structuredContent));
 		assert.doesNotMatch(text, /\(555\) 020-0456|555[\s.-]?020[\s.-]?0456/);
+		assert.doesNotMatch(text, /020-0457/, 'a fax number glued to the words around it');
 		assert.doesNotMatch(text, /frontdesk@/);
+		assert.doesNotMatch(text, /Shirley/, 'testimonial signature');
+		assert.match(text, /\[name\] \| Bright Smiles patient/);
+		assert.doesNotMatch(text, /formId|acct_7781|7781/, 'form vendor identifiers');
 		assert.doesNotMatch(text, /fetchedAt|collectedAt|measuredAt/);
 		assert.match(text, /\*\*\*-\*\*\*-0456/);
 		assert.match(text, /mailto:\[email\]@brightsmiles\.example/);
@@ -227,4 +232,29 @@ test('tool responses carry no full phone numbers, email addresses or timestamps'
 	} finally {
 		await close();
 	}
+});
+
+test('redactText masks glued phone numbers and testimonial signatures but keeps names', () => {
+	assert.equal(
+		redactText('info@taylormeadowsdental.com402-483-1101Fax: 402-483-1453Monday 8am'),
+		'[email]@taylormeadowsdental.com***-***-1101Fax: ***-***-1453Monday 8am'
+	);
+	assert.equal(
+		redactText('Call (402) 483-1101 or +1 402.483.1101'),
+		'Call ***-***-1101 or ***-***-1101'
+	);
+	assert.equal(
+		redactText('1101 S. 70th St., Suite 201, Lincoln NE 68510-1234'),
+		'1101 S. 70th St., Suite 201, Lincoln NE 68510-1234'
+	);
+	assert.equal(
+		redactText('I wanted to come back. Shirley P. | Star City Dental Patient'),
+		'I wanted to come back. [name] | Star City Dental Patient'
+	);
+	assert.equal(redactText('— Marcus T.'), '— [name]');
+	assert.equal(
+		redactText('Dr. John F. Smith, DDS and Jay Miller DDS'),
+		'Dr. John F. Smith, DDS and Jay Miller DDS'
+	);
+	assert.equal(redactText('Open Mon. to Fri. on Main St. N.'), 'Open Mon. to Fri. on Main St. N.');
 });

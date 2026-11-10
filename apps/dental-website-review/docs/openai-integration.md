@@ -84,6 +84,12 @@ gone from the output schemas. Redirect targets from `check_links` lose their tra
 parameters. The skill tells ChatGPT to answer narrow questions narrowly and not to
 reproduce contact details. The privacy policy says what responses contain.
 
+0.3.2 (2026-11-10) closed three gaps found by running the tools against the test-case
+sites: phone numbers glued to the words around them in footers (`...dental.com402-483-1101Fax:`)
+escaped the word-boundary regex; testimonial signatures ("Shirley P.") are now "[name]";
+form actions lose their query strings, which carry vendor account and form identifiers.
+Form fields never carried values. Tracker hosts are reported as hostnames only.
+
 ## Submission checklist
 
 Rechecked against the submission page on 2026-10-27.

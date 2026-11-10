@@ -86,8 +86,9 @@ Business Profile in their own fields, and `fixture` true for the sample.
   URLs only, submit no forms and book nothing.
 - Answer what was asked, and nothing else. A question about one link or the phone view gets
   that answer, not a review. Contact details are evidence of where they appear and whether
-  they agree (the tools mask phone numbers to their last four digits and email addresses to
-  their domain); don’t reproduce them. Name the dentists and staff only where the question
+  they agree (the tools mask phone numbers to their last four digits, email addresses to
+  their domain and testimonial signatures to “[name]”); don’t reproduce them, and never
+  name a patient. Name the dentists and staff only where the question
   is about them, as in the “is the dentist a real person” persona.
 - Privacy, accessibility and advertising points are not legal advice; suggest the
   practice confirm with counsel or its state board.

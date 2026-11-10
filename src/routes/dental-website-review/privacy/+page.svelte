@@ -4,7 +4,7 @@
 	import PageTitle from '../page-title.svelte';
 </script>
 
-<PageTitle title="Privacy policy" updated={{ iso: '2026-11-09', display: 'November 9, 2026' }} />
+<PageTitle title="Privacy policy" updated={{ iso: '2026-11-10', display: 'November 10, 2026' }} />
 
 <Prose>
 	<p>
@@ -51,8 +51,10 @@
 		forms and their field names, third-party scripts, structured data and browser measurements.
 		Before it leaves our server, phone numbers are shortened to their last four digits and email
 		addresses to their domain; the review only needs to know where contact details appear and
-		whether they agree. Page text can still include names the practice publishes, such as its
-		dentists. We don’t add timestamps, request identifiers or anything about you to a response.
+		whether they agree. Testimonial signatures such as a first name and an initial are replaced with
+		“[name]”, and form addresses lose their query strings. Page text can still include names the
+		practice publishes, such as its dentists. We don’t add timestamps, request identifiers or
+		anything about you to a response.
 	</p>
 
 	<h2>What we keep</h2>

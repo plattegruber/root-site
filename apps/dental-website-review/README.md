@@ -112,17 +112,17 @@ in the `audit-practice` skill: `SKILL.md` (role, tools, approach, boundaries) an
 good dental website). Edit those files to change how reviews are written. Nothing is
 ranked or capped: ChatGPT maps the site, then reads the pages it chooses.
 
-| Tool                     | What it returns                                                                                                                             |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `map_site`               | The menu in order, footer links, every sitemap URL, robots.txt rules, and the homepage.                                                     |
-| `read_pages`             | Up to 8 chosen pages per call: text, headings, meta tags, contact/booking links, forms and where they submit, trackers, structured data.    |
-|                          | Every tool masks phone numbers to their last four digits and email addresses to their domain, and returns no timestamps.                    |
-| `check_links`            | Status of chosen links, requested as a browser would (own query string, GET after a failed HEAD); robots-blocked links come back unchecked. |
-| `inspect_rendered_pages` | Chromium at 360/390/1440px: call/book on the first screen, overflow, tap targets, axe results, JavaScript-rendered forms, hosts requested.  |
-| `measure_performance`    | PageSpeed lab and CrUX field data, when configured.                                                                                         |
-| `get_assessment_guide`   | The skill and the guide, for clients that connect the server without the skill.                                                             |
-| `sample_site`            | `map_site` and `read_pages` output for the fictional Bright Smiles practice.                                                                |
-| `render_assessment`      | Displays ChatGPT’s written review (light and dark themes).                                                                                  |
+| Tool                     | What it returns                                                                                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map_site`               | The menu in order, footer links, every sitemap URL, robots.txt rules, and the homepage.                                                                    |
+| `read_pages`             | Up to 8 chosen pages per call: text, headings, meta tags, contact/booking links, forms and where they submit, trackers, structured data.                   |
+|                          | Every tool masks phone numbers to their last four digits, email addresses to their domain and testimonial signatures to [name], and returns no timestamps. |
+| `check_links`            | Status of chosen links, requested as a browser would (own query string, GET after a failed HEAD); robots-blocked links come back unchecked.                |
+| `inspect_rendered_pages` | Chromium at 360/390/1440px: call/book on the first screen, overflow, tap targets, axe results, JavaScript-rendered forms, hosts requested.                 |
+| `measure_performance`    | PageSpeed lab and CrUX field data, when configured.                                                                                                        |
+| `get_assessment_guide`   | The skill and the guide, for clients that connect the server without the skill.                                                                            |
+| `sample_site`            | `map_site` and `read_pages` output for the fictional Bright Smiles practice.                                                                               |
+| `render_assessment`      | Displays ChatGPT’s written review (light and dark themes).                                                                                                 |
 
 The standalone page and `pnpm audit` still use the older rule-based report engine
 (`src/audit/engine.ts`); the ChatGPT plugin no longer does.

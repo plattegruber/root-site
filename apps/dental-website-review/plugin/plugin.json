@@ -1,7 +1,7 @@
 {
 	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
 	"name": "dental-website-review",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"description": "Assess a dental practice’s website the way a patient uses it: call, book, cost, emergency, the dentist. ChatGPT explores the public site and a real phone browser like a dental-practice web developer, then reviews it through root.site’s eight patient personas, with a line for the practice and a line for the developer.",
 	"author": {
 		"name": "root.site",
@@ -94,7 +94,7 @@
 				}
 			},
 			"publication": {
-				"release_notes": "First release. Reviews a dental practice's public website through eight patient personas, using tools that map the site, read chosen pages, check links and inspect the phone experience. Public pages only; no sign-in, forms or bookings. Tool responses carry only what a review needs: phone numbers are masked to their last four digits, email addresses to their domain, testimonial signatures to [name], form actions to their path, and no timestamps or internal identifiers are returned."
+				"release_notes": "First release. Reviews a dental practice's public website through eight patient personas, using tools that map the site, read chosen pages, check links and inspect the phone experience. Public pages only; no sign-in, forms or bookings. Tool responses carry only what a review needs: phone numbers are masked to their last four digits, email addresses to their domain, patient testimonials to a [patient testimonial] marker, form actions to their path, and no timestamps or internal identifiers are returned."
 			}
 		}
 	}

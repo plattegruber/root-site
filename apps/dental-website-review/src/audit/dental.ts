@@ -280,7 +280,7 @@ export function dentalCompliance(crawl: Crawl): Finding[] {
 		(p) =>
 			/testimonial|what (?:our )?patients say|patient stories|reviews/i.test(
 				p.headings.map((h) => h.text).join(' ')
-			) && /[“"][^”"]{40,}[”"]\s*[-–—]\s*[A-Z][a-z]+/.test(p.mainText)
+			) && /\[patient testimonial\]/.test(p.mainText)
 	);
 	const galleryPages = pages.filter((p) =>
 		patterns.beforeAfter.test(`${p.url} ${p.title} ${p.headings.map((h) => h.text).join(' ')}`)

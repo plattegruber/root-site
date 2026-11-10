@@ -21,7 +21,7 @@ export const pageEvidenceSchema = z.object({
 	headerText: z.string(),
 	/** Visible text inside <footer>; hours and address often live here. Empty when identical to the first page in the batch. */
 	footerText: z.string(),
-	/** Visible text of the page's own content, excluding header, nav and footer. */
+	/** Visible text of the page's own content, excluding header, nav and footer. Patient testimonials appear as "[patient testimonial]". */
 	mainText: z.string(),
 	mainTextTruncated: z.boolean(),
 	wordCount: z.number(),

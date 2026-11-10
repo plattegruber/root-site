@@ -240,6 +240,28 @@ export function parsePage(result: FetchResult): Page {
 	const headings = $('h1,h2,h3,h4,h5,h6')
 		.map((_, n) => ({ level: Number(n.tagName[1]), text: tidy($(n).text()) }))
 		.get();
+	// Patient testimonials are personal content a review never needs to quote; what matters
+	// is that they exist and where. Each testimonial container (a blockquote, a schema.org
+	// Review, an element whose class or id names testimonials or reviews, or a paragraph that
+	// is a quotation signed with a dash) becomes a marker. Headings and links were read first.
+	const testimonialWord = /^(?:testimonials?|reviews?)$/i;
+	const signedQuote = /^[“"'].{20,}[”"']\s*[-–—]\s*.{2,80}$/s;
+	$('body *')
+		.filter((_, n) => {
+			if (n.type !== 'tag') return false;
+			if (n.tagName === 'blockquote') return true;
+			if (/schema\.org\/Review\b/i.test(n.attribs.itemtype ?? '')) return true;
+			if (
+				`${n.attribs.class ?? ''} ${n.attribs.id ?? ''}`
+					.split(/[^a-z]+/i)
+					.some((w) => testimonialWord.test(w))
+			)
+				return true;
+			return /^(?:p|li|div|figure)$/.test(n.tagName) && signedQuote.test(tidy($(n).text()));
+		})
+		.each((_, n) => {
+			if ($(n).parents('body').length) $(n).replaceWith('<p>[patient testimonial]</p>');
+		});
 	const text = tidy($('body').text()).slice(0, 70_000);
 	const headerText = tidy($('header,[role="banner"],nav,[role="navigation"]').text()).slice(
 		0,

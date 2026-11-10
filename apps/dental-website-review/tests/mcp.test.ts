@@ -221,8 +221,9 @@ test('tool responses carry no full phone numbers, email addresses or timestamps'
 		assert.doesNotMatch(text, /\(555\) 020-0456|555[\s.-]?020[\s.-]?0456/);
 		assert.doesNotMatch(text, /020-0457/, 'a fax number glued to the words around it');
 		assert.doesNotMatch(text, /frontdesk@/);
-		assert.doesNotMatch(text, /Shirley/, 'testimonial signature');
-		assert.match(text, /\[name\] \| Bright Smiles patient/);
+		assert.doesNotMatch(text, /Shirley|Okonkwo|Vanderbilt|Jennifer R|Marcus T/, 'patient names');
+		assert.doesNotMatch(text, /Painless root canal|my crown was done/, 'testimonial text');
+		assert.match(text, /\[patient testimonial\]/);
 		assert.doesNotMatch(text, /formId|acct_7781|7781/, 'form vendor identifiers');
 		assert.doesNotMatch(text, /fetchedAt|collectedAt|measuredAt/);
 		assert.match(text, /\*\*\*-\*\*\*-0456/);

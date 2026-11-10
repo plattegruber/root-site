@@ -90,6 +90,12 @@ escaped the word-boundary regex; testimonial signatures ("Shirley P.") are now "
 form actions lose their query strings, which carry vendor account and form identifiers.
 Form fields never carried values. Tracker hosts are reported as hostnames only.
 
+0.3.3 (2026-11-10) removes testimonials structurally rather than by recognising names: the
+HTML extractor (pages.ts) replaces blockquotes, schema.org Review nodes, elements whose class
+or id names testimonials or reviews, and dash-signed quotation paragraphs with
+"[patient testimonial]" before any text is read. A patient signed with a full name no longer
+reaches the response.
+
 ## Submission checklist
 
 Rechecked against the submission page on 2026-10-27.

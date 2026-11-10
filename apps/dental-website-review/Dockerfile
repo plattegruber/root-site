@@ -8,7 +8,7 @@ ENV CI=true \
 	PATH=/pnpm:$PATH \
 	PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
-RUN corepack enable && corepack prepare pnpm@11 --activate
+RUN corepack enable && corepack prepare pnpm@12 --activate
 
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./

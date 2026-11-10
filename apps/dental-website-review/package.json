@@ -15,7 +15,8 @@
 		"test:browser": "node --import tsx --test --test-isolation=none tests/browser.integration.ts",
 		"sample": "node --import tsx scripts/sample.ts",
 		"audit": "node --import tsx scripts/audit.ts",
-		"package:plugin": "node scripts/package-plugin.mjs"
+		"package:plugin": "node scripts/package-plugin.mjs",
+		"check:listing": "node scripts/check-listing.mjs"
 	},
 	"dependencies": {
 		"@modelcontextprotocol/ext-apps": "^1.0.1",

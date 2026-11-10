@@ -128,7 +128,7 @@ Embedding structured data helps Google understand your practice. Use the `Dentis
   "name": "City Smiles Dental",
   "description": "Full-service family dental clinic",
   "openingHours": "Mo-Fr 09:00-17:00",
-  "telephone": "(555) 123-4567",
+  "telephone": "[practice phone number]",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "123 Main Street",

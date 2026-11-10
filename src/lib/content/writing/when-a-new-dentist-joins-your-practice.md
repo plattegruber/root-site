@@ -1,11 +1,11 @@
 ---
-title: "A New Dentist Is Joining Your Practice. Is Your Website Ready?"
+title: 'A New Dentist Is Joining Your Practice. Is Your Website Ready?'
 date: 2026-11-09
-excerpt: "A practical checklist for introducing a new dentist online: biographies, scheduling, insurance, Google profiles, and the details patients actually need."
+excerpt: 'A practical checklist for introducing a new dentist online: biographies, scheduling, insurance, Google profiles, and the details patients actually need.'
 faq:
-  - q: "When should we add a new dentist to our website?"
+  - q: 'When should we add a new dentist to our website?'
     a: "Once the start date and details are confirmed and approved. If appointments aren't open yet, say when patients can request them."
-  - q: "Does an associate dentist need a Google Business Profile?"
+  - q: 'Does an associate dentist need a Google Business Profile?'
     a: "Not automatically. Check Google's individual practitioner eligibility and naming guidance, and look for existing listings before creating one."
 related:
   - dental-practice-new-patient-page
@@ -60,7 +60,7 @@ A good dentist page can be short. I'd aim for:
 
 Education and training matter, but don't turn the page into a wall of credentials. A patient shouldn't have to read twelve paragraphs before learning how to get an appointment.
 
-Be careful with words such as *specialist*, *board-certified*, or *sedation*. Those are factual claims, not decoration. Have the dentist approve the copy.
+Be careful with words such as _specialist_, _board-certified_, or _sedation_. Those are factual claims, not decoration. Have the dentist approve the copy.
 
 Link to your existing [new patient page](/writing/dental-practice-new-patient-page) for paperwork, directions, and the usual first-visit details.
 
@@ -104,7 +104,7 @@ Google has [specific rules for individual practitioners](https://support.google.
 
 “We hired a dentist” is not, by itself, an instruction to create a new listing.
 
-First, make sure your *practice* profile still points to the right website, phone number, location, and booking destination. Then check whether the joining dentist already has an individual profile and whether it should be updated under Google's rules. Don't create duplicates just because a profile seems like another marketing opportunity.
+First, make sure your _practice_ profile still points to the right website, phone number, location, and booking destination. Then check whether the joining dentist already has an individual profile and whether it should be updated under Google's rules. Don't create duplicates just because a profile seems like another marketing opportunity.
 
 A profile change should reflect reality. It isn't a shortcut to better rankings.
 

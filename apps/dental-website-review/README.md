@@ -82,6 +82,14 @@ submission, conditional forms and live calls are **not** automated.
 Compliance findings are patterns regulators and state dental boards have acted on; they
 are not legal advice and rules vary by state.
 
+## Guideline compliance
+
+`docs/guideline-compliance.md` maps every section of OpenAI's plugin guidelines and review
+requirements to how this plugin meets it. `tests/guidelines.test.ts` (part of `pnpm test`)
+checks the manifest, tool metadata, response minimisation, the skill and the privacy policy;
+`pnpm check:listing` checks the live listing pages, the domain challenge and the deployed
+server against the manifest. Run both before every submission.
+
 ## Integration and remaining setup
 
 Official docs were fetched on October 1, 2026. Older Apps SDK paths redirect to

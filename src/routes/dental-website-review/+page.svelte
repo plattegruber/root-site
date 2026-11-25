@@ -16,9 +16,13 @@
 
 	<h2>How to use it</h2>
 	<p>
-		In ChatGPT, add Dental Website Review from the plugin directory, then ask something like “Review
-		my dental practice website: yourpractice.com”. You can also ask for one thing, such as “Is my
-		site easy to use on a phone?” or “What should my web developer fix first?”
+		<a
+			href="https://chatgpt.com/plugins/plugin_asdk_app_6ae17d8d2e0c819192fcaad617d0d394"
+			target="_blank"
+			rel="noopener noreferrer">Open Dental Website Review in ChatGPT</a
+		>, then ask something like “Review my dental practice website: yourpractice.com”. You can also
+		ask for one thing, such as “Is my site easy to use on a phone?” or “What should my web developer
+		fix first?”
 	</p>
 
 	<h2>What it looks at</h2>

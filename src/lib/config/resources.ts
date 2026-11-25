@@ -126,10 +126,10 @@ export const resources: Resource[] = [
 			width: 2400,
 			height: 1600
 		},
-		href: '/dental-website-review',
-		cta: 'How the review works',
-		status: 'soon',
-		statusLabel: 'Coming soon to ChatGPT',
+		href: 'https://chatgpt.com/plugins/plugin_asdk_app_6ae17d8d2e0c819192fcaad617d0d394',
+		cta: 'Open in ChatGPT',
+		status: 'live',
+		more: { label: 'How the review works', href: '/dental-website-review' },
 		category: 'UtilitiesApplication'
 	}
 ];

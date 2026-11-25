@@ -1,14 +1,14 @@
 ---
 title: "Moving Your Dental Practice? Don't Send Patients to the Old Address"
 date: 2026-11-23
-excerpt: "Moving a dental office? A patient-first checklist for updating your website, Google listing, directions, appointment reminders, and the details that get missed."
+excerpt: 'Moving a dental office? A patient-first checklist for updating your website, Google listing, directions, appointment reminders, and the details that get missed.'
 faq:
-  - q: "Should I create a new Google Business Profile when my dental practice moves?"
+  - q: 'Should I create a new Google Business Profile when my dental practice moves?'
     a: "No, not for a relocation of the same practice. Google's guidance is to update the address on the existing Business Profile, which may require verification again."
-  - q: "When should we change the address on our dental website?"
+  - q: 'When should we change the address on our dental website?'
     a: "Tell patients the move date in advance, with the old and new addresses clearly labeled. Switch the site's primary address when the office actually begins seeing patients at the new location."
-  - q: "Do we need a new website or domain name when our dental practice moves?"
-    a: "Usually not. A physical move does not require a new domain or website. Keep useful existing page addresses and update the location details, map links, and directions."
+  - q: 'Do we need a new website or domain name when our dental practice moves?'
+    a: 'Usually not. A physical move does not require a new domain or website. Keep useful existing page addresses and update the location details, map links, and directions.'
 related:
   - google-business-profile-for-dentists
   - dental-practice-new-patient-page
@@ -83,7 +83,7 @@ Google's [business representation rules](https://support.google.com/business/ans
 
 Once the edit is accepted, search for the practice like a patient would and use the **Directions** button. See where the route ends. A correct street address with a misplaced map pin is not really a finished update.
 
-If you're opening an *additional* staffed office while keeping the original one, that is a different situation. This checklist is about moving one practice, not adding a second location.
+If you're opening an _additional_ staffed office while keeping the original one, that is a different situation. This checklist is about moving one practice, not adding a second location.
 
 ## 4. Check every map link on the website
 
@@ -165,7 +165,7 @@ A patient-first moving page answers the everyday questions:
 
 Only answer what you know. If accessibility features or parking arrangements haven't been checked, verify them rather than guessing.
 
-For an established practice, it can be useful to say what *hasn't* changed: same team, same phone number, same way to request an appointment—if all of that is true.
+For an established practice, it can be useful to say what _hasn't_ changed: same team, same phone number, same way to request an appointment—if all of that is true.
 
 That reassurance will often mean more to a longtime patient than a gallery of the renovation.
 
